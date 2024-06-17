@@ -1,0 +1,42 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Python for Business Analytics and Informaton Systems",
+    "section": "",
+    "text": "Preface\n\nInstalling Python\n\nWindows:\n\nDownload Python: Visit the official Python website at python.org and download the latest version for Windows. Click on the “Download” button for the most recent release.\nRun Installer: Open the downloaded file and make sure to check the box that says “Add Python 3.x to PATH” at the beginning of the installation process. Then click “Install Now”.\nVerify Installation: Open Command Prompt and type python --version. You should see the Python version number if it was installed correctly.\n\n\n\nmacOS:\n\nDownload Python: Go to python.org and download the latest Python version for macOS.\nInstall Python: Open the downloaded .pkg file and follow the instructions to install Python.\nVerify Installation: Open Terminal and type python3 --version to check that Python installed correctly.\n\n\n\nLinux:\n\nInstall Python: Python is usually pre-installed on Linux. To check if it is installed and to install the latest version, open a terminal and type:\nsudo apt update\nsudo apt install python3\nVerify Installation: Type python3 --version in the terminal.\n\n\n\n\nInstalling Visual Studio Code (VSCode)\n\nDownload VSCode: Visit the VSCode website and download the version suitable for your operating system.\nInstall VSCode: Run the downloaded installer file and follow the instructions provided.\n\n\n\nSetting Up Python in VSCode\n\nOpen VSCode.\nInstall the Python extension: Click on the extensions view icon on the Sidebar or press Ctrl+Shift+X. Search for “Python” and install the extension provided by Microsoft.\nSelect Python Interpreter: Press Ctrl+Shift+P to open the Command Palette and type “Python: Select Interpreter”. Choose the Python version you installed earlier.\n\n\n\nWriting Your First Python Program in VSCode\n\nCreate a new file: File &gt; New File.\nSave the file: Save the file with a .py extension, e.g., hello.py.\nWrite some Python code:\nprint(\"Hello, world!\")\nRun the program: Right-click in the editor window and select “Run Python File in Terminal”, or press Ctrl+F5 to run without debugging.\n\n\n\nBasic Python Programming\n\nVariables: Storing data values.\nx = 5\ny = \"Hello\"\nData Types: Python has various data types including integers, float, string, and more.\nOperators: Perform operations on variables and values.\nControl Structures: Use if, else, and elif for decisions, and for and while loops for repeating blocks of code.\n\n\n\nExploring More Features\n\nIntellisense: VSCode provides smart completions based on variable types, function definitions, and imported modules.\nDebugging: Set breakpoints, step through your code, and inspect variables.\nExtensions: Enhance VSCode functionality with extensions like “Python Docstring Generator” to automatically generate docstrings for your Python functions.\n\nThis format should help make the tutorial flow more smoothly from one section to the next without the formal structure of numbering.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  }
+]

@@ -1,0 +1,4 @@
+# `scapy` for network packet analysis.
+
+# `socket` for implementing TCP and UDP clients and servers.
+
