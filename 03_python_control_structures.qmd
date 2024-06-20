@@ -1,0 +1,161 @@
+## Python Control Structures for Business Applications
+
+Control structures in Python allow you to control the flow of your program based on conditions and loops. This tutorial will focus on using control structures in business-related scenarios, including if statements, for loops, and while loops.
+
+### Conditional Statements
+
+Conditional statements execute code based on whether a condition is true or false.
+
+#### If Statements
+
+If statements are used to execute a block of code only if a specified condition is true.
+
+##### Example: Discount Calculation
+
+Let's say you want to apply a discount to a product based on the purchase quantity.
+
+```python
+quantity = 15
+unit_price = 100
+total_cost = quantity * unit_price
+
+if quantity > 10:
+    discount = 0.1  # 10% discount
+    total_cost *= (1 - discount)
+
+print(f"Total cost after discount: ${total_cost:.2f}")
+```
+
+#### If-Else Statements
+
+If-else statements provide an alternative block of code to execute if the condition is false.
+
+##### Example: Determine Employee Bonus Eligibility
+
+```python
+employee_performance = "Excellent"
+bonus = 0
+
+if employee_performance == "Excellent":
+    bonus = 1000
+else:
+    bonus = 500
+
+print(f"Employee bonus: ${bonus}")
+```
+
+#### Elif Statements
+
+Elif statements are used to check multiple conditions.
+
+##### Example: Categorize Sales Performance
+
+```python
+monthly_sales = 75000
+
+if monthly_sales >= 100000:
+    performance_category = "Outstanding"
+elif monthly_sales >= 75000:
+    performance_category = "Good"
+elif monthly_sales >= 50000:
+    performance_category = "Average"
+else:
+    performance_category = "Needs Improvement"
+
+print(f"Sales performance: {performance_category}")
+```
+
+### Loops
+
+Loops allow you to repeat a block of code multiple times.
+
+#### For Loops
+
+For loops are used to iterate over a sequence (such as a list, tuple, or range).
+
+##### Example: Calculate Total Revenue from Sales Data
+
+```python
+sales_data = [1000, 2000, 1500, 3000, 2500]
+total_revenue = 0
+
+for sale in sales_data:
+    total_revenue += sale
+
+print(f"Total revenue: ${total_revenue}")
+```
+
+##### Example: Generate Quarterly Sales Report
+
+```python
+quarterly_sales = {
+    "Q1": 20000,
+    "Q2": 25000,
+    "Q3": 30000,
+    "Q4": 35000
+}
+
+for quarter, sales in quarterly_sales.items():
+    print(f"{quarter} sales: ${sales}")
+```
+
+#### While Loops
+
+While loops are used to execute a block of code as long as a specified condition is true.
+
+##### Example: Track Inventory Levels
+
+```python
+inventory = 100
+
+while inventory > 0:
+    print(f"Inventory level: {inventory}")
+    inventory -= 10  # Selling 10 units
+
+print("Inventory depleted")
+```
+
+##### Example: Customer Payment Processing
+
+```python
+balance_due = 500
+
+while balance_due > 0:
+    payment = float(input("Enter payment amount: $"))
+    balance_due -= payment
+    print(f"Remaining balance: ${balance_due:.2f}")
+
+print("Payment complete")
+```
+
+### Nested Control Structures
+
+You can nest control structures within each other to handle more complex logic.
+
+##### Example: Approve Loan Application
+
+```python
+credit_score = 720
+annual_income = 50000
+loan_amount = 20000
+
+if credit_score >= 700:
+    if annual_income >= 40000:
+        if loan_amount <= 25000:
+            loan_approved = True
+        else:
+            loan_approved = False
+    else:
+        loan_approved = False
+else:
+    loan_approved = False
+
+if loan_approved:
+    print("Loan application approved")
+else:
+    print("Loan application denied")
+```
+
+### Conclusion
+
+Control structures are essential for managing the flow of your programs based on conditions and repetitions. By using if statements, for loops, and while loops, you can create efficient and effective business applications. These examples demonstrate how to apply these concepts to common business scenarios, helping you to develop practical and functional Python programs.

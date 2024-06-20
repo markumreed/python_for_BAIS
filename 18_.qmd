@@ -1,5 +1,0 @@
-# Ansible and Terraform for infrastructure management.
-
-# `matplotlib` for visualizing IT budget data.
-
-# `Flask` or `Django` for developing RESTful APIs. (Flask)

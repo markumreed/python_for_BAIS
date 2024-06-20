@@ -1,0 +1,188 @@
+## Introduction to API Interactions with Python
+
+APIs (Application Programming Interfaces) allow applications to communicate with external services and data sources over the web. Python provides robust libraries for making HTTP requests and handling JSON data, enabling you to integrate external data and services into your applications seamlessly. This tutorial will cover making requests to web APIs and handling responses using Python.
+
+### Libraries/Tools
+
+- `requests`: A popular library for making HTTP requests.
+- `json`: A standard library module for handling JSON data.
+
+### Making HTTP Requests with `requests`
+
+The `requests` library makes it easy to send HTTP requests and handle responses. First, you need to install the `requests` library if you haven't already:
+
+```bash
+pip install requests
+```
+
+#### Basic GET Request
+
+A GET request is used to retrieve data from a server.
+
+##### Example: Fetching Data from a Public API
+
+```python
+import requests
+
+# Define the API endpoint
+url = 'https://api.exchangerate-api.com/v4/latest/USD'
+
+# Make a GET request to the API
+response = requests.get(url)
+
+# Check the status code of the response
+if response.status_code == 200:
+    # Parse the JSON data
+    data = response.json()
+    print(data)
+else:
+    print(f"Failed to retrieve data: {response.status_code}")
+```
+
+### Handling JSON Data
+
+Most APIs return data in JSON format. The `json` module in Python can parse JSON data and convert it into Python objects.
+
+#### Example: Parsing JSON Response
+
+```python
+import requests
+import json
+
+# Define the API endpoint
+url = 'https://api.exchangerate-api.com/v4/latest/USD'
+
+# Make a GET request to the API
+response = requests.get(url)
+
+if response.status_code == 200:
+    # Parse the JSON data
+    data = response.json()
+    # Pretty print the JSON data
+    print(json.dumps(data, indent=4))
+else:
+    print(f"Failed to retrieve data: {response.status_code}")
+```
+
+### Making POST Requests
+
+A POST request is used to send data to a server.
+
+#### Example: Sending Data to an API
+
+```python
+import requests
+
+# Define the API endpoint
+url = 'https://jsonplaceholder.typicode.com/posts'
+
+# Define the data to be sent
+data = {
+    "title": "foo",
+    "body": "bar",
+    "userId": 1
+}
+
+# Make a POST request to the API
+response = requests.post(url, json=data)
+
+if response.status_code == 201:
+    # Parse the JSON response
+    response_data = response.json()
+    print(response_data)
+else:
+    print(f"Failed to send data: {response.status_code}")
+```
+
+### Handling API Authentication
+
+Some APIs require authentication. The `requests` library supports various authentication methods, including API keys and OAuth.
+
+#### Example: Using an API Key
+
+```python
+import requests
+
+# Define the API endpoint and your API key
+url = 'https://api.example.com/data'
+api_key = 'your_api_key_here'
+
+# Set the headers with the API key
+headers = {
+    'Authorization': f'Bearer {api_key}'
+}
+
+# Make a GET request to the API
+response = requests.get(url, headers=headers)
+
+if response.status_code == 200:
+    # Parse the JSON data
+    data = response.json()
+    print(data)
+else:
+    print(f"Failed to retrieve data: {response.status_code}")
+```
+
+### Error Handling
+
+Proper error handling is essential when working with APIs to ensure your application can gracefully handle unexpected responses.
+
+#### Example: Handling Errors in API Requests
+
+```python
+import requests
+
+# Define the API endpoint
+url = 'https://api.exchangerate-api.com/v4/latest/INVALID'
+
+# Make a GET request to the API
+response = requests.get(url)
+
+try:
+    response.raise_for_status()
+    data = response.json()
+    print(data)
+except requests.exceptions.HTTPError as errh:
+    print(f"HTTP Error: {errh}")
+except requests.exceptions.ConnectionError as errc:
+    print(f"Error Connecting: {errc}")
+except requests.exceptions.Timeout as errt:
+    print(f"Timeout Error: {errt}")
+except requests.exceptions.RequestException as err:
+    print(f"OOps: Something Else {err}")
+```
+
+### Example: Integrating External Data into Your Application
+
+Let's combine what we've learned to build a small application that fetches and displays the current exchange rates.
+
+```python
+import requests
+import json
+
+def fetch_exchange_rates(base_currency):
+    url = f'https://api.exchangerate-api.com/v4/latest/{base_currency}'
+    response = requests.get(url)
+    
+    if response.status_code == 200:
+        data = response.json()
+        return data['rates']
+    else:
+        return None
+
+def display_exchange_rates(rates):
+    if rates:
+        print("Exchange Rates:")
+        for currency, rate in rates.items():
+            print(f"{currency}: {rate}")
+    else:
+        print("Failed to retrieve exchange rates")
+
+# Fetch and display exchange rates for USD
+rates = fetch_exchange_rates('USD')
+display_exchange_rates(rates)
+```
+
+### Conclusion
+
+Interacting with web APIs is a powerful way to integrate external data and services into your Python applications. By using the `requests` library to make HTTP requests and the `json` module to handle JSON data, you can efficiently fetch, send, and process data from various APIs. Proper error handling and understanding of authentication methods are crucial for robust API interactions.

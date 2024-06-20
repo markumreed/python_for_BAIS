@@ -1,0 +1,194 @@
+## Introduction to Python Libraries for System Design
+
+System design involves creating architectural diagrams and generating documentation to illustrate the components and interactions within a system. Python offers several libraries to facilitate these tasks programmatically. This tutorial will cover using the `diagrams` library for creating architectural diagrams and `Graphviz` for generating graph-based diagrams like data flow diagrams.
+
+### Creating Architectural Diagrams with `diagrams`
+
+The `diagrams` library allows you to create system architecture diagrams programmatically. It provides a simple and intuitive way to visualize cloud infrastructure, data flows, and other components.
+
+#### Installing `diagrams`
+
+First, you need to install the `diagrams` library. You can install it using pip:
+
+```bash
+pip install diagrams
+```
+
+#### Basic Usage of `diagrams`
+
+You can create diagrams by defining nodes and edges within a context block.
+
+##### Example: Creating a Simple Architecture Diagram
+
+```python
+from diagrams import Diagram
+from diagrams.aws.compute import EC2
+from diagrams.aws.database import RDS
+from diagrams.aws.network import ELB
+
+# Define the diagram
+with Diagram("Simple Architecture", show=False):
+    load_balancer = ELB("Load Balancer")
+    web_server = EC2("Web Server")
+    database = RDS("Database")
+
+    load_balancer >> web_server >> database
+```
+
+The above code creates a simple architecture diagram showing an ELB (Elastic Load Balancer) connected to an EC2 instance, which in turn is connected to an RDS (Relational Database Service) instance.
+
+#### Customizing Diagrams
+
+You can customize the appearance and structure of your diagrams by setting various parameters.
+
+##### Example: Customizing Diagram Attributes
+
+```python
+from diagrams import Diagram, Cluster
+from diagrams.aws.compute import EC2
+from diagrams.aws.database import RDS
+from diagrams.aws.network import ELB
+
+# Define the diagram
+with Diagram("Grouped Architecture", show=False, direction="TB"):
+    with Cluster("Web Tier"):
+        web_server1 = EC2("Web Server 1")
+        web_server2 = EC2("Web Server 2")
+
+    with Cluster("Database Cluster"):
+        primary_db = RDS("Primary DB")
+        replica_db = RDS("Replica DB")
+
+    load_balancer = ELB("Load Balancer")
+    load_balancer >> web_server1
+    load_balancer >> web_server2
+    web_server1 >> primary_db
+    web_server2 >> replica_db
+```
+
+### Generating Graph-Based Diagrams with `Graphviz`
+
+`Graphviz` is a powerful tool for creating graph-based diagrams such as data flow diagrams, dependency graphs, and more.
+
+#### Installing `Graphviz`
+
+You need to install both the `graphviz` library and the Graphviz system package. You can install the Python library using pip:
+
+```bash
+pip install graphviz
+```
+
+You also need to install Graphviz system package. For example, on Ubuntu:
+
+```bash
+sudo apt-get install graphviz
+```
+
+On macOS using Homebrew:
+
+```bash
+brew install graphviz
+```
+
+#### Basic Usage of `Graphviz`
+
+You can create graphs by defining nodes and edges using the `graphviz` library.
+
+##### Example: Creating a Simple Graph
+
+```python
+from graphviz import Digraph
+
+# Create a new directed graph
+dot = Digraph(comment="Simple Graph")
+
+# Add nodes
+dot.node("A", "Node A")
+dot.node("B", "Node B")
+dot.node("C", "Node C")
+
+# Add edges
+dot.edges(["AB", "BC", "CA"])
+
+# Render the graph
+dot.render("simple_graph", format="png", view=True)
+```
+
+This code creates a simple directed graph with three nodes and edges between them.
+
+#### Customizing Graphs
+
+You can customize nodes and edges with different shapes, colors, and styles.
+
+##### Example: Customizing Nodes and Edges
+
+```python
+from graphviz import Digraph
+
+# Create a new directed graph
+dot = Digraph(comment="Customized Graph")
+
+# Add customized nodes
+dot.node("A", "Node A", shape="box", color="blue", style="filled")
+dot.node("B", "Node B", shape="ellipse", color="green")
+dot.node("C", "Node C", shape="diamond", color="red", style="filled")
+
+# Add customized edges
+dot.edge("A", "B", label="A to B", color="black")
+dot.edge("B", "C", label="B to C", color="gray")
+dot.edge("C", "A", label="C to A", color="orange")
+
+# Render the graph
+dot.render("customized_graph", format="png", view=True)
+```
+
+### Example: Combining `diagrams` and `Graphviz` for System Design
+
+Let's create a more complex system design example by combining both `diagrams` and `Graphviz`.
+
+##### Example: Visualizing a Multi-Tier Application with `diagrams` and `Graphviz`
+
+```python
+from diagrams import Diagram, Cluster
+from diagrams.aws.compute import EC2
+from diagrams.aws.database import RDS
+from diagrams.aws.network import ELB
+from diagrams.onprem.client import User
+from graphviz import Digraph
+
+# Define the architecture diagram using `diagrams`
+with Diagram("Multi-Tier Application", show=False, direction="TB"):
+    user = User("User")
+    with Cluster("Web Tier"):
+        web_server1 = EC2("Web Server 1")
+        web_server2 = EC2("Web Server 2")
+
+    with Cluster("Application Tier"):
+        app_server = EC2("App Server")
+
+    with Cluster("Database Cluster"):
+        primary_db = RDS("Primary DB")
+        replica_db = RDS("Replica DB")
+
+    user >> ELB("Load Balancer") >> [web_server1, web_server2] >> app_server >> primary_db
+    app_server >> replica_db
+
+# Define the data flow diagram using `Graphviz`
+dot = Digraph(comment="Data Flow Diagram")
+dot.node("A", "User")
+dot.node("B", "Load Balancer")
+dot.node("C", "Web Server 1")
+dot.node("D", "Web Server 2")
+dot.node("E", "App Server")
+dot.node("F", "Primary DB")
+dot.node("G", "Replica DB")
+
+dot.edges(["AB", "BC", "BD", "CE", "DE", "EF", "EG"])
+
+# Render the data flow diagram
+dot.render("data_flow_diagram", format="png", view=True)
+```
+
+### Conclusion
+
+Python libraries like `diagrams` and `Graphviz` provide powerful tools for creating architectural diagrams and graph-based visualizations programmatically. By mastering these libraries, you can enhance your system design tasks, making it easier to visualize, document, and communicate complex architectures and data flows.

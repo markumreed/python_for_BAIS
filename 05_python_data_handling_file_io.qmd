@@ -1,0 +1,175 @@
+## Introduction to Data Handling and File I/O in Python
+
+Handling data and performing file input/output (I/O) operations are fundamental tasks in any programming language. Python provides robust tools and libraries to manage data storage, read and write files, and manipulate different file formats. This tutorial will cover reading and writing files in Python, managing data storage, and performing operations on files using libraries such as `pandas`, `csv`, and `json`.
+
+### Reading and Writing Text Files
+
+Text files are the most basic form of file handling in Python. You can use built-in functions to read from and write to text files.
+
+#### Reading Text Files
+
+To read a text file, you use the `open` function in read mode (`'r'`).
+
+```python
+# Read a text file
+with open('example.txt', 'r') as file:
+    content = file.read()
+    print(content)
+```
+
+#### Writing Text Files
+
+To write to a text file, you use the `open` function in write mode (`'w'`).
+
+```python
+# Write to a text file
+with open('example.txt', 'w') as file:
+    file.write('Hello, World!')
+```
+
+### Handling CSV Files
+
+CSV (Comma-Separated Values) files are commonly used to store tabular data. Python provides the `csv` module to handle CSV files.
+
+#### Reading CSV Files
+
+You can read a CSV file using the `csv.reader` function.
+
+```python
+import csv
+
+# Read a CSV file
+with open('data.csv', 'r') as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+```
+
+#### Writing CSV Files
+
+You can write to a CSV file using the `csv.writer` function.
+
+```python
+import csv
+
+# Write to a CSV file
+with open('data.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(['Name', 'Age', 'Department'])
+    writer.writerow(['John Doe', 30, 'Finance'])
+    writer.writerow(['Jane Smith', 25, 'Marketing'])
+```
+
+### Handling JSON Files
+
+JSON (JavaScript Object Notation) is a lightweight data-interchange format. Python provides the `json` module to handle JSON files.
+
+#### Reading JSON Files
+
+You can read a JSON file using the `json.load` function.
+
+```python
+import json
+
+# Read a JSON file
+with open('data.json', 'r') as file:
+    data = json.load(file)
+    print(data)
+```
+
+#### Writing JSON Files
+
+You can write to a JSON file using the `json.dump` function.
+
+```python
+import json
+
+# Write to a JSON file
+data = {
+    'name': 'John Doe',
+    'age': 30,
+    'department': 'Finance'
+}
+
+with open('data.json', 'w') as file:
+    json.dump(data, file, indent=4)
+```
+
+### Data Manipulation with Pandas
+
+Pandas is a powerful data manipulation library in Python. It provides data structures and functions needed to manipulate structured data seamlessly.
+
+#### Reading CSV Files with Pandas
+
+You can read a CSV file into a DataFrame using `pandas.read_csv`.
+
+```python
+import pandas as pd
+
+# Read a CSV file into a DataFrame
+df = pd.read_csv('data.csv')
+print(df)
+```
+
+#### Writing CSV Files with Pandas
+
+You can write a DataFrame to a CSV file using `DataFrame.to_csv`.
+
+```python
+# Write a DataFrame to a CSV file
+df.to_csv('data_output.csv', index=False)
+```
+
+#### Reading JSON Files with Pandas
+
+You can read a JSON file into a DataFrame using `pandas.read_json`.
+
+```python
+# Read a JSON file into a DataFrame
+df = pd.read_json('data.json')
+print(df)
+```
+
+#### Writing JSON Files with Pandas
+
+You can write a DataFrame to a JSON file using `DataFrame.to_json`.
+
+```python
+# Write a DataFrame to a JSON file
+df.to_json('data_output.json', orient='records', indent=4)
+```
+
+### Example: Processing Sales Data
+
+Let's combine these concepts to read sales data from a CSV file, manipulate it using Pandas, and then save the results to a JSON file.
+
+1. **Read Sales Data from a CSV File**
+
+```python
+import pandas as pd
+
+# Read sales data from a CSV file
+sales_df = pd.read_csv('sales_data.csv')
+print(sales_df)
+```
+
+2. **Manipulate Data**
+
+Calculate the total sales for each product.
+
+```python
+# Calculate total sales for each product
+sales_df['Total Sales'] = sales_df['Quantity'] * sales_df['Unit Price']
+print(sales_df)
+```
+
+3. **Write the Results to a JSON File**
+
+```python
+# Write the results to a JSON file
+sales_df.to_json('sales_data_output.json', orient='records', indent=4)
+```
+
+### Conclusion
+
+Handling data and performing file I/O operations are crucial skills for any programmer. Python's built-in functions and libraries like `pandas`, `csv`, and `json` make it easy to read, write, and manipulate different file formats. By mastering these tools, you can efficiently process data inputs and outputs in any system, making your programs more powerful and versatile.

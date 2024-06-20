@@ -1,0 +1,327 @@
+## Introduction to Python Functions
+
+Functions are reusable blocks of code that perform a specific task in a program. Using functions makes your code more organized, modular, and easier to manage. This tutorial will introduce you to Python functions with a focus on business-related examples.
+
+### Defining and Calling Functions
+
+A function in Python is defined using the `def` keyword, followed by the function name, parentheses, and a colon. The code block within every function starts with an indentation.
+
+#### Basic Function
+
+##### Example: Calculate Total Sales
+
+```python
+def calculate_total_sales(unit_price, quantity):
+    total_sales = unit_price * quantity
+    return total_sales
+
+# Calling the function
+unit_price = 50
+quantity = 100
+total_sales = calculate_total_sales(unit_price, quantity)
+print(f"Total sales: ${total_sales}")
+```
+
+### Function Parameters and Arguments
+
+Functions can accept parameters, which are values passed to the function when it is called.
+
+#### Positional Arguments
+
+Positional arguments are the most common way to pass data to functions.
+
+##### Example: Calculate Discounted Price
+
+```python
+def calculate_discounted_price(price, discount):
+    discounted_price = price * (1 - discount)
+    return discounted_price
+
+# Calling the function
+price = 200
+discount = 0.1  # 10% discount
+discounted_price = calculate_discounted_price(price, discount)
+print(f"Discounted price: ${discounted_price:.2f}")
+```
+
+#### Keyword Arguments
+
+Keyword arguments are passed to the function with their parameter names.
+
+##### Example: Calculate Employee Bonus
+
+```python
+def calculate_bonus(salary, performance_rating):
+    if performance_rating >= 4.5:
+        bonus = salary * 0.2  # 20% bonus
+    elif performance_rating >= 3.5:
+        bonus = salary * 0.1  # 10% bonus
+    else:
+        bonus = salary * 0.05  # 5% bonus
+    return bonus
+
+# Calling the function with keyword arguments
+bonus = calculate_bonus(salary=50000, performance_rating=4.7)
+print(f"Bonus: ${bonus}")
+```
+
+### Default Parameters
+
+Default parameters are used when the function is called without arguments.
+
+##### Example: Calculate Monthly Salary
+
+```python
+def calculate_monthly_salary(annual_salary, months=12):
+    monthly_salary = annual_salary / months
+    return monthly_salary
+
+# Calling the function with and without the default parameter
+annual_salary = 60000
+monthly_salary = calculate_monthly_salary(annual_salary)
+print(f"Monthly salary: ${monthly_salary:.2f}")
+
+monthly_salary_10_months = calculate_monthly_salary(annual_salary, months=10)
+print(f"Monthly salary (10 months): ${monthly_salary_10_months:.2f}")
+```
+
+### Variable-Length Arguments
+
+Functions can accept an arbitrary number of arguments using `*args` for positional arguments and `**kwargs` for keyword arguments.
+
+#### Positional Variable-Length Arguments
+
+##### Example: Calculate Total Revenue
+
+```python
+def calculate_total_revenue(*revenues):
+    total_revenue = sum(revenues)
+    return total_revenue
+
+# Calling the function with multiple arguments
+total_revenue = calculate_total_revenue(1000, 2000, 3000, 4000)
+print(f"Total revenue: ${total_revenue}")
+```
+
+#### Keyword Variable-Length Arguments
+
+##### Example: Create Employee Profile
+
+```python
+def create_employee_profile(**employee_details):
+    profile = ""
+    for key, value in employee_details.items():
+        profile += f"{key}: {value}\n"
+    return profile
+
+# Calling the function with multiple keyword arguments
+employee_profile = create_employee_profile(name="John Doe", age=30, position="Data Analyst", salary=70000)
+print("Employee Profile:")
+print(employee_profile)
+```
+
+### Returning Values
+
+Functions can return multiple values using tuples.
+
+##### Example: Calculate Statistics
+
+```python
+def calculate_statistics(sales):
+    total_sales = sum(sales)
+    average_sales = total_sales / len(sales)
+    max_sales = max(sales)
+    min_sales = min(sales)
+    return total_sales, average_sales, max_sales, min_sales
+
+# Calling the function
+sales = [2000, 3000, 4000, 5000, 6000]
+total, average, highest, lowest = calculate_statistics(sales)
+print(f"Total: ${total}, Average: ${average}, Highest: ${highest}, Lowest: ${lowest}")
+```
+
+### Lambda Functions
+
+Lambda functions are small anonymous functions defined using the `lambda` keyword.
+
+##### Example: Calculate Tax
+
+```python
+calculate_tax = lambda amount, tax_rate: amount * tax_rate
+
+# Using the lambda function
+amount = 1000
+tax_rate = 0.15  # 15% tax rate
+tax = calculate_tax(amount, tax_rate)
+print(f"Tax: ${tax}")
+```
+
+### Conclusion
+
+Functions are a powerful feature in Python that help you create organized and modular code. By defining and calling functions, using parameters and arguments, and leveraging lambda functions, you can create efficient business applications. These examples demonstrate how to apply these concepts to common business scenarios, helping you to develop practical and functional Python programs.
+
+
+## Introduction to Python Modules
+
+Python modules are files containing Python code that can be reused across different programs. They help in organizing code, making it more manageable, and promoting code reuse. This tutorial will introduce you to Python modules, how to create them, and how to use built-in and third-party modules with business-related examples.
+
+### What is a Module?
+
+A module is simply a file containing Python definitions and statements. For instance, a file named `mymodule.py` is a module whose name is `mymodule`.
+
+### Importing Modules
+
+You can use the `import` statement to import a module and access its functions and variables.
+
+#### Example: Using Built-in Modules
+
+Python comes with a rich standard library of modules.
+
+##### Example: Using the `math` Module
+
+```python
+import math
+
+# Calculate the ceiling value of a product price
+product_price = 123.45
+ceiling_price = math.ceil(product_price)
+print(f"Ceiling price: ${ceiling_price}")
+```
+
+### Creating Your Own Module
+
+You can create your own modules by writing Python code in a `.py` file.
+
+#### Example: Create a Module for Financial Calculations
+
+1. Create a file named `financial.py`:
+
+```python
+# financial.py
+
+def calculate_gross_profit(revenue, cogs):
+    return revenue - cogs
+
+def calculate_net_profit(gross_profit, expenses):
+    return gross_profit - expenses
+
+def calculate_roi(profit, investment):
+    return (profit / investment) * 100
+```
+
+2. Use the `financial.py` module in another Python script:
+
+```python
+# main.py
+import financial
+
+revenue = 100000
+cogs = 40000
+expenses = 30000
+investment = 50000
+
+gross_profit = financial.calculate_gross_profit(revenue, cogs)
+net_profit = financial.calculate_net_profit(gross_profit, expenses)
+roi = financial.calculate_roi(net_profit, investment)
+
+print(f"Gross Profit: ${gross_profit}")
+print(f"Net Profit: ${net_profit}")
+print(f"Return on Investment: {roi}%")
+```
+
+### Using the `from` Import Statement
+
+You can import specific functions or variables from a module using the `from` statement.
+
+#### Example: Import Specific Functions
+
+```python
+from financial import calculate_gross_profit, calculate_net_profit
+
+revenue = 80000
+cogs = 30000
+expenses = 20000
+
+gross_profit = calculate_gross_profit(revenue, cogs)
+net_profit = calculate_net_profit(gross_profit, expenses)
+
+print(f"Gross Profit: ${gross_profit}")
+print(f"Net Profit: ${net_profit}")
+```
+
+### Using Aliases
+
+You can use aliases to give a module or a function a different name.
+
+#### Example: Using Aliases for Modules
+
+```python
+import financial as fin
+
+revenue = 120000
+cogs = 50000
+expenses = 40000
+
+gross_profit = fin.calculate_gross_profit(revenue, cogs)
+net_profit = fin.calculate_net_profit(gross_profit, expenses)
+
+print(f"Gross Profit: ${gross_profit}")
+print(f"Net Profit: ${net_profit}")
+```
+
+### Exploring Built-in Modules
+
+Python’s standard library includes many modules that can be very useful in business applications.
+
+#### Example: Using the `datetime` Module
+
+The `datetime` module is useful for manipulating dates and times.
+
+```python
+import datetime
+
+# Calculate the number of days between two dates
+date_format = "%Y-%m-%d"
+start_date = datetime.datetime.strptime("2024-01-01", date_format)
+end_date = datetime.datetime.strptime("2024-12-31", date_format)
+delta = end_date - start_date
+
+print(f"Number of days between the dates: {delta.days}")
+```
+
+### Installing and Using Third-Party Modules
+
+You can install third-party modules using `pip`, Python’s package installer.
+
+#### Example: Using the `pandas` Module
+
+`pandas` is a popular data manipulation library useful for business data analysis.
+
+1. Install `pandas`:
+
+```bash
+pip install pandas
+```
+
+2. Use `pandas` in your Python script:
+
+```python
+import pandas as pd
+
+# Create a DataFrame with sales data
+data = {
+    "Product": ["A", "B", "C"],
+    "Sales": [1000, 1500, 800]
+}
+
+df = pd.DataFrame(data)
+print(df)
+
+# Calculate total sales
+total_sales = df["Sales"].sum()
+print(f"Total Sales: ${total_sales}")
+```
+
+### Conclusion
+
+Python modules are powerful tools for organizing and reusing code. By understanding how to create, import, and use both built-in and third-party modules, you can enhance the functionality and efficiency of your business applications. These examples demonstrate the practical use of modules in various business scenarios, helping you to develop robust and maintainable Python programs.

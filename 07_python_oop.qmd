@@ -1,0 +1,172 @@
+## Introduction to Object-Oriented Programming with Python
+
+Object-Oriented Programming (OOP) is a programming paradigm that uses objects and classes to structure software programs. OOP is centered around the concept of objects, which are instances of classes. This tutorial will introduce you to the basics of OOP in Python, including classes, objects, inheritance, and encapsulation.
+
+### Basics of Classes and Objects
+
+#### Classes
+
+A class is a blueprint for creating objects. It defines a set of attributes and methods that the created objects will have.
+
+```python
+class Employee:
+    def __init__(self, name, age, position):
+        self.name = name
+        self.age = age
+        self.position = position
+    
+    def display_info(self):
+        print(f"Name: {self.name}, Age: {self.age}, Position: {self.position}")
+```
+
+#### Objects
+
+An object is an instance of a class. It has the properties and behaviors defined by the class.
+
+```python
+# Creating an object of the Employee class
+employee1 = Employee("John Doe", 30, "Software Engineer")
+employee1.display_info()  # Output: Name: John Doe, Age: 30, Position: Software Engineer
+```
+
+### Attributes and Methods
+
+#### Instance Attributes
+
+Instance attributes are specific to each object. They are defined within the `__init__` method.
+
+```python
+class Product:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+    
+    def display_info(self):
+        print(f"Product Name: {self.name}, Price: ${self.price}, Quantity: {self.quantity}")
+```
+
+```python
+# Creating an object of the Product class
+product1 = Product("Laptop", 1200, 5)
+product1.display_info()  # Output: Product Name: Laptop, Price: $1200, Quantity: 5
+```
+
+#### Class Attributes
+
+Class attributes are shared by all instances of the class.
+
+```python
+class Company:
+    # Class attribute
+    company_name = "Tech Solutions Inc."
+    
+    def __init__(self, employee_name):
+        self.employee_name = employee_name
+    
+    def display_info(self):
+        print(f"Employee: {self.employee_name}, Company: {Company.company_name}")
+
+# Creating objects of the Company class
+employee1 = Company("Alice")
+employee2 = Company("Bob")
+employee1.display_info()  # Output: Employee: Alice, Company: Tech Solutions Inc.
+employee2.display_info()  # Output: Employee: Bob, Company: Tech Solutions Inc.
+```
+
+### Inheritance
+
+Inheritance allows a class to inherit attributes and methods from another class.
+
+#### Example: Single Inheritance
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def display_info(self):
+        print(f"Name: {self.name}, Age: {self.age}")
+
+# Employee class inherits from Person class
+class Employee(Person):
+    def __init__(self, name, age, position):
+        super().__init__(name, age)
+        self.position = position
+    
+    def display_info(self):
+        super().display_info()
+        print(f"Position: {self.position}")
+
+# Creating an object of the Employee class
+employee1 = Employee("John Doe", 30, "Software Engineer")
+employee1.display_info()
+# Output:
+# Name: John Doe, Age: 30
+# Position: Software Engineer
+```
+
+### Encapsulation
+
+Encapsulation is the concept of restricting access to certain attributes and methods to protect the integrity of the object's data.
+
+#### Example: Encapsulation with Private Attributes
+
+```python
+class BankAccount:
+    def __init__(self, account_number, balance):
+        self.account_number = account_number
+        self.__balance = balance  # Private attribute
+    
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+    
+    def withdraw(self, amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
+    
+    def get_balance(self):
+        return self.__balance
+
+# Creating an object of the BankAccount class
+account = BankAccount("12345678", 1000)
+account.deposit(500)
+account.withdraw(200)
+print(account.get_balance())  # Output: 1300
+```
+
+### Polymorphism
+
+Polymorphism allows objects of different classes to be treated as objects of a common superclass. It is often used when different classes share a common interface.
+
+#### Example: Polymorphism with Method Overriding
+
+```python
+class Animal:
+    def make_sound(self):
+        pass
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Bark"
+
+class Cat(Animal):
+    def make_sound(self):
+        return "Meow"
+
+# Function to demonstrate polymorphism
+def animal_sound(animal):
+    print(animal.make_sound())
+
+# Creating objects of Dog and Cat classes
+dog = Dog()
+cat = Cat()
+animal_sound(dog)  # Output: Bark
+animal_sound(cat)  # Output: Meow
+```
+
+### Conclusion
+
+Object-Oriented Programming (OOP) is a powerful paradigm that allows you to structure your Python programs using classes and objects. By understanding and implementing the concepts of classes, objects, inheritance, encapsulation, and polymorphism, you can create more modular, reusable, and maintainable code.

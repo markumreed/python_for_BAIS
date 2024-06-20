@@ -1,0 +1,190 @@
+## Introduction to Automating System Tasks with Python
+
+Automating system tasks with Python can enhance efficiency and reduce manual errors by performing repetitive tasks programmatically. Python provides robust libraries for interacting with the operating system, running external processes, and performing high-level file operations. This tutorial will cover automating system tasks using the `os`, `subprocess`, and `shutil` libraries.
+
+### Interacting with the Operating System using `os`
+
+The `os` module provides a way to use operating system-dependent functionality, including file and directory operations, environment variables, and system information.
+
+#### Working with Directories
+
+##### Example: Creating, Changing, and Removing Directories
+
+```python
+import os
+
+# Create a new directory
+os.mkdir('new_directory')
+
+# Change the current working directory
+os.chdir('new_directory')
+print(f"Current Directory: {os.getcwd()}")
+
+# Go back to the parent directory
+os.chdir('..')
+
+# Remove the created directory
+os.rmdir('new_directory')
+```
+
+#### Listing Files and Directories
+
+You can list files and directories in a specified directory using `os.listdir`.
+
+##### Example: Listing Files
+
+```python
+import os
+
+# List files and directories in the current directory
+items = os.listdir('.')
+print("Files and Directories in '.':", items)
+```
+
+#### Handling Environment Variables
+
+Environment variables are used to store system-wide information.
+
+##### Example: Accessing Environment Variables
+
+```python
+import os
+
+# Get the value of the 'HOME' environment variable
+home_dir = os.getenv('HOME')
+print(f"Home Directory: {home_dir}")
+
+# Set a new environment variable
+os.environ['MY_VAR'] = 'my_value'
+print("MY_VAR:", os.getenv('MY_VAR'))
+```
+
+### Running External Processes using `subprocess`
+
+The `subprocess` module allows you to spawn new processes, connect to their input/output/error pipes, and obtain their return codes.
+
+#### Running Simple Commands
+
+##### Example: Running a Shell Command
+
+```python
+import subprocess
+
+# Run a simple command
+result = subprocess.run(['echo', 'Hello, World!'], capture_output=True, text=True)
+print("Output:", result.stdout)
+```
+
+#### Running Complex Commands
+
+##### Example: Running a Command and Capturing Output
+
+```python
+import subprocess
+
+# Run a command and capture its output
+result = subprocess.run(['ls', '-l'], capture_output=True, text=True)
+print("Output:\n", result.stdout)
+```
+
+### High-Level File Operations using `shutil`
+
+The `shutil` module provides a higher-level interface for file operations, including copying, moving, and removing files and directories.
+
+#### Copying Files and Directories
+
+##### Example: Copying Files
+
+```python
+import shutil
+
+# Copy a file
+shutil.copy('source_file.txt', 'destination_file.txt')
+```
+
+##### Example: Copying Directories
+
+```python
+import shutil
+
+# Copy a directory
+shutil.copytree('source_directory', 'destination_directory')
+```
+
+#### Moving and Renaming Files
+
+##### Example: Moving Files
+
+```python
+import shutil
+
+# Move a file
+shutil.move('source_file.txt', 'destination_directory/source_file.txt')
+```
+
+##### Example: Renaming Files
+
+```python
+import shutil
+
+# Rename a file
+shutil.move('old_name.txt', 'new_name.txt')
+```
+
+#### Removing Files and Directories
+
+##### Example: Removing Files
+
+```python
+import os
+
+# Remove a file
+os.remove('file_to_remove.txt')
+```
+
+##### Example: Removing Directories
+
+```python
+import shutil
+
+# Remove a directory
+shutil.rmtree('directory_to_remove')
+```
+
+### Example: Automating a Backup Process
+
+Let's combine what we've learned to automate a simple backup process. We'll create a script that copies files from a source directory to a backup directory, adding a timestamp to the backup directory name.
+
+```python
+import os
+import shutil
+import datetime
+
+def backup_files(source_dir, backup_root):
+    # Create a timestamped backup directory
+    timestamp = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+    backup_dir = os.path.join(backup_root, f'backup_{timestamp}')
+    os.makedirs(backup_dir)
+    
+    # Copy all files from the source directory to the backup directory
+    for item in os.listdir(source_dir):
+        source_item = os.path.join(source_dir, item)
+        backup_item = os.path.join(backup_dir, item)
+        if os.path.isdir(source_item):
+            shutil.copytree(source_item, backup_item)
+        else:
+            shutil.copy2(source_item, backup_item)
+    
+    print(f"Backup completed: {backup_dir}")
+
+# Define the source and backup directories
+source_directory = 'source_directory'
+backup_directory = 'backup_directory'
+
+# Perform the backup
+backup_files(source_directory, backup_directory)
+```
+
+### Conclusion
+
+Automating system tasks with Python can save time and reduce errors by performing repetitive tasks programmatically. The `os`, `subprocess`, and `shutil` libraries provide powerful tools for interacting with the operating system, running external processes, and handling files and directories. By mastering these libraries, you can automate a wide range of system tasks, enhancing your efficiency and productivity.

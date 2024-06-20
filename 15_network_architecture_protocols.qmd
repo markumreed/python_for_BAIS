@@ -1,4 +1,195 @@
-# `scapy` for network packet analysis.
+## Network Architecture and Protocols with Python
 
-# `socket` for implementing TCP and UDP clients and servers.
+Understanding network architecture and protocols is crucial for designing and managing efficient networks. This tutorial will cover key concepts in network architecture, including IP addressing, subnetting, and routing algorithms. It will also delve into transport layer topics like TCP/UDP protocols, flow control, and error control, and explore application layer protocols such as HTTP, FTP, and SMTP. We'll use Python libraries like `scapy` for network packet analysis and `socket` for implementing TCP and UDP clients and servers.
 
+### Network Layer Topics
+
+#### IP Addressing
+
+IP addressing is the method by which devices on a network are identified. IPv4 addresses are 32-bit numbers usually represented in dot-decimal notation (e.g., 192.168.1.1).
+
+##### Example: Displaying Local IP Address
+
+```python
+import socket
+
+hostname = socket.gethostname()
+local_ip = socket.gethostbyname(hostname)
+print(f"Local IP Address: {local_ip}")
+```
+
+#### Subnetting
+
+Subnetting divides a network into smaller sub-networks (subnets) to improve management and security. Subnets are defined by their subnet mask.
+
+##### Example: Calculating Subnet Information
+
+```python
+import ipaddress
+
+network = ipaddress.ip_network('192.168.1.0/24')
+print(f"Network: {network}")
+print(f"Netmask: {network.netmask}")
+print(f"Broadcast: {network.broadcast_address}")
+print(f"Hosts: {list(network.hosts())[:5]}...")  # Display first 5 hosts
+```
+
+#### Routing Algorithms
+
+Routing algorithms determine the best path for data to travel across a network. Common algorithms include Distance Vector Routing and Link State Routing.
+
+### Transport Layer Topics
+
+#### TCP/UDP Protocols
+
+TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are key transport layer protocols. TCP is connection-oriented and reliable, while UDP is connectionless and faster but less reliable.
+
+##### Example: TCP Client and Server
+
+**TCP Server:**
+
+```python
+import socket
+
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_socket.bind(('127.0.0.1', 65432))
+server_socket.listen()
+
+print("TCP Server listening on port 65432")
+
+while True:
+    conn, addr = server_socket.accept()
+    with conn:
+        print(f"Connected by {addr}")
+        data = conn.recv(1024)
+        if not data:
+            break
+        conn.sendall(data)
+```
+
+**TCP Client:**
+
+```python
+import socket
+
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client_socket.connect(('127.0.0.1', 65432))
+client_socket.sendall(b'Hello, World!')
+data = client_socket.recv(1024)
+print(f"Received: {data.decode()}")
+```
+
+##### Example: UDP Client and Server
+
+**UDP Server:**
+
+```python
+import socket
+
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+server_socket.bind(('127.0.0.1', 65432))
+
+print("UDP Server listening on port 65432")
+
+while True:
+    data, addr = server_socket.recvfrom(1024)
+    print(f"Received from {addr}: {data.decode()}")
+    server_socket.sendto(data, addr)
+```
+
+**UDP Client:**
+
+```python
+import socket
+
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+client_socket.sendto(b'Hello, World!', ('127.0.0.1', 65432))
+data, server = client_socket.recvfrom(1024)
+print(f"Received: {data.decode()}")
+```
+
+#### Flow Control and Error Control
+
+Flow control ensures data is sent at a rate that the receiver can handle. Error control detects and corrects errors in transmitted data. TCP implements both flow control (using windowing) and error control (using checksums and acknowledgments).
+
+### Application Layer Protocols
+
+#### HTTP (Hypertext Transfer Protocol)
+
+HTTP is the foundation of data communication on the web.
+
+##### Example: Simple HTTP GET Request using `socket`
+
+```python
+import socket
+
+request = "GET / HTTP/1.1\r\nHost: www.example.com\r\n\r\n"
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client_socket.connect(('www.example.com', 80))
+client_socket.sendall(request.encode())
+response = client_socket.recv(4096)
+print(response.decode())
+```
+
+#### FTP (File Transfer Protocol)
+
+FTP is used for transferring files between a client and server.
+
+##### Example: Simple FTP Interaction using `ftplib`
+
+```python
+from ftplib import FTP
+
+ftp = FTP('ftp.dlptest.com')
+ftp.login()
+
+ftp.retrlines('LIST')
+
+ftp.quit()
+```
+
+#### SMTP (Simple Mail Transfer Protocol)
+
+SMTP is used for sending emails.
+
+##### Example: Sending Email using `smtplib`
+
+```python
+import smtplib
+from email.mime.text import MIMEText
+
+msg = MIMEText("This is the body of the email.")
+msg['Subject'] = "Test Email"
+msg['From'] = "your_email@example.com"
+msg['To'] = "recipient_email@example.com"
+
+with smtplib.SMTP('smtp.example.com') as server:
+    server.login("your_email@example.com", "your_password")
+    server.sendmail(msg['From'], [msg['To']], msg.as_string())
+```
+
+### Network Packet Analysis with `scapy`
+
+`scapy` is a powerful Python library for network packet manipulation and analysis.
+
+#### Installing `scapy`
+
+```bash
+pip install scapy
+```
+
+#### Example: Capturing and Analyzing Packets
+
+```python
+from scapy.all import sniff
+
+def packet_callback(packet):
+    print(packet.show())
+
+# Capture 10 packets
+sniff(prn=packet_callback, count=10)
+```
+
+### Conclusion
+
+Understanding network architecture and protocols is essential for designing and managing efficient networks. Python provides powerful libraries like `scapy` and `socket` to interact with and analyze network traffic. By mastering these tools and concepts, you can develop robust networked applications and effectively troubleshoot network issues.
