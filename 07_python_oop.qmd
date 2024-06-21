@@ -170,3 +170,279 @@ animal_sound(cat)  # Output: Meow
 ### Conclusion
 
 Object-Oriented Programming (OOP) is a powerful paradigm that allows you to structure your Python programs using classes and objects. By understanding and implementing the concepts of classes, objects, inheritance, encapsulation, and polymorphism, you can create more modular, reusable, and maintainable code.
+
+# Deep Dive Tutorial: Python Object-Oriented Programming (OOP) Using Business Analytics and Information Systems Examples
+
+Object-Oriented Programming (OOP) is a programming paradigm that uses objects and classes to structure software in a way that is modular, reusable, and easy to maintain. This tutorial will provide a comprehensive guide to Python OOP concepts, using examples relevant to Business Analytics and Information Systems (BAIS).
+
+## Table of Contents
+
+1. [Introduction to OOP](#introduction-to-oop)
+2. [Defining Classes and Creating Objects](#defining-classes-and-creating-objects)
+3. [Attributes and Methods](#attributes-and-methods)
+4. [Encapsulation](#encapsulation)
+5. [Inheritance](#inheritance)
+6. [Polymorphism](#polymorphism)
+7. [Using OOP in Business Analytics](#using-oop-in-business-analytics)
+8. [Practical Examples](#practical-examples)
+9. [Conclusion](#conclusion)
+
+## Introduction to OOP
+
+OOP is centered around objects, which are instances of classes. A class defines a blueprint for objects, encapsulating data (attributes) and behavior (methods).
+
+### Key Concepts
+
+1. **Class**: A blueprint for creating objects. Defines a set of attributes and methods.
+2. **Object**: An instance of a class.
+3. **Attributes**: Data stored inside an object.
+4. **Methods**: Functions that operate on the data inside an object.
+
+## Defining Classes and Creating Objects
+
+### Defining a Class
+
+In Python, a class is defined using the `class` keyword.
+
+```python
+class Employee:
+    pass
+```
+
+### Creating an Object
+
+An object is created by calling the class.
+
+```python
+emp1 = Employee()
+```
+
+## Attributes and Methods
+
+### Attributes
+
+Attributes are variables that belong to an object.
+
+```python
+class Employee:
+    def __init__(self, name, id):
+        self.name = name
+        self.id = id
+```
+
+### Methods
+
+Methods are functions defined inside a class.
+
+```python
+class Employee:
+    def __init__(self, name, id):
+        self.name = name
+        self.id = id
+    
+    def display_info(self):
+        print(f"Name: {self.name}, ID: {self.id}")
+
+emp1 = Employee("John Doe", 101)
+emp1.display_info()
+```
+
+## Encapsulation
+
+Encapsulation is the bundling of data and methods within a class. It restricts access to some of the object's components, which can prevent the accidental modification of data.
+
+### Example
+
+```python
+class Employee:
+    def __init__(self, name, id):
+        self.__name = name  # Private attribute
+        self.__id = id      # Private attribute
+    
+    def display_info(self):
+        print(f"Name: {self.__name}, ID: {self.__id}")
+
+    def set_name(self, name):
+        self.__name = name
+
+    def get_name(self):
+        return self.__name
+
+emp1 = Employee("John Doe", 101)
+emp1.display_info()
+emp1.set_name("Jane Doe")
+print(emp1.get_name())
+```
+
+## Inheritance
+
+Inheritance allows a class (child class) to inherit attributes and methods from another class (parent class).
+
+### Example
+
+```python
+class Employee:
+    def __init__(self, name, id):
+        self.name = name
+        self.id = id
+    
+    def display_info(self):
+        print(f"Name: {self.name}, ID: {self.id}")
+
+class Manager(Employee):
+    def __init__(self, name, id, department):
+        super().__init__(name, id)
+        self.department = department
+    
+    def display_info(self):
+        super().display_info()
+        print(f"Department: {self.department}")
+
+mgr1 = Manager("Alice Smith", 102, "IT")
+mgr1.display_info()
+```
+
+## Polymorphism
+
+Polymorphism allows methods to be used in different ways, often by overriding them in derived classes.
+
+### Example
+
+```python
+class Employee:
+    def __init__(self, name, id):
+        self.name = name
+        self.id = id
+    
+    def display_info(self):
+        print(f"Name: {self.name}, ID: {self.id}")
+
+class Manager(Employee):
+    def __init__(self, name, id, department):
+        super().__init__(name, id)
+        self.department = department
+    
+    def display_info(self):
+        super().display_info()
+        print(f"Department: {self.department}")
+
+class Intern(Employee):
+    def __init__(self, name, id, duration):
+        super().__init__(name, id)
+        self.duration = duration
+    
+    def display_info(self):
+        super().display_info()
+        print(f"Internship Duration: {self.duration} months")
+
+employees = [Manager("Alice Smith", 102, "IT"), Intern("Bob Brown", 103, 6)]
+
+for employee in employees:
+    employee.display_info()
+```
+
+## Using OOP in Business Analytics
+
+OOP can be used to model and manage complex data structures and processes in business analytics.
+
+### Example: Data Analysis Classes
+
+```python
+class DataSource:
+    def __init__(self, data):
+        self.data = data
+
+    def display_data(self):
+        print(self.data)
+
+class DataAnalyzer:
+    def __init__(self, data_source):
+        self.data_source = data_source
+
+    def analyze(self):
+        # Placeholder for analysis logic
+        print("Analyzing data...")
+
+class ReportGenerator:
+    def __init__(self, data_analyzer):
+        self.data_analyzer = data_analyzer
+
+    def generate_report(self):
+        # Placeholder for report generation logic
+        print("Generating report...")
+
+data = [1, 2, 3, 4, 5]
+data_source = DataSource(data)
+analyzer = DataAnalyzer(data_source)
+report_gen = ReportGenerator(analyzer)
+
+data_source.display_data()
+analyzer.analyze()
+report_gen.generate_report()
+```
+
+## Practical Examples
+
+### Example 1: Customer Relationship Management (CRM)
+
+```python
+class Customer:
+    def __init__(self, customer_id, name, email):
+        self.customer_id = customer_id
+        self.name = name
+        self.email = email
+
+    def display_info(self):
+        print(f"Customer ID: {self.customer_id}, Name: {self.name}, Email: {self.email}")
+
+class Order:
+    def __init__(self, order_id, customer, total):
+        self.order_id = order_id
+        self.customer = customer
+        self.total = total
+
+    def display_info(self):
+        print(f"Order ID: {self.order_id}, Customer: {self.customer.name}, Total: {self.total}")
+
+cust1 = Customer(1, "John Doe", "john@example.com")
+order1 = Order(101, cust1, 250.75)
+
+cust1.display_info()
+order1.display_info()
+```
+
+### Example 2: Inventory Management System
+
+```python
+class Product:
+    def __init__(self, product_id, name, price):
+        self.product_id = product_id
+        self.name = name
+        self.price = price
+
+    def display_info(self):
+        print(f"Product ID: {self.product_id}, Name: {self.name}, Price: {self.price}")
+
+class Inventory:
+    def __init__(self):
+        self.products = []
+
+    def add_product(self, product):
+        self.products.append(product)
+
+    def display_inventory(self):
+        for product in self.products:
+            product.display_info()
+
+inv = Inventory()
+prod1 = Product(201, "Laptop", 1200.50)
+prod2 = Product(202, "Mouse", 25.75)
+
+inv.add_product(prod1)
+inv.add_product(prod2)
+inv.display_inventory()
+```
+
+## Conclusion
+
+Object-Oriented Programming in Python provides a robust framework for modeling complex systems in business analytics and information systems. By understanding and applying concepts such as classes, objects, encapsulation, inheritance, and polymorphism, you can create modular, reusable, and maintainable code. This tutorial covered the basics and provided practical examples to help you get started with OOP in Python for BAIS applications. Happy coding!

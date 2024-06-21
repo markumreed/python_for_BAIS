@@ -325,3 +325,664 @@ print(f"Total Sales: ${total_sales}")
 ### Conclusion
 
 Python modules are powerful tools for organizing and reusing code. By understanding how to create, import, and use both built-in and third-party modules, you can enhance the functionality and efficiency of your business applications. These examples demonstrate the practical use of modules in various business scenarios, helping you to develop robust and maintainable Python programs.
+
+# Deep Dive Tutorial on Python Functions using Business Analytics and Information Systems Examples
+
+Functions are a fundamental building block in Python that allow you to encapsulate reusable blocks of code. Functions help make your code modular, readable, and maintainable. This tutorial provides an in-depth look at Python functions, with practical examples in the context of business analytics and information systems (BAIS).
+
+## Table of Contents
+
+1. [Defining Functions](#defining-functions)
+2. [Calling Functions](#calling-functions)
+3. [Function Arguments](#function-arguments)
+    - [Positional Arguments](#positional-arguments)
+    - [Keyword Arguments](#keyword-arguments)
+    - [Default Arguments](#default-arguments)
+    - [Variable-length Arguments](#variable-length-arguments)
+4. [Return Statement](#return-statement)
+5. [Lambda Functions](#lambda-functions)
+6. [Higher-Order Functions](#higher-order-functions)
+7. [Docstrings](#docstrings)
+8. [Decorators](#decorators)
+9. [Scope and Lifetime of Variables](#scope-and-lifetime-of-variables)
+10. [Practical Examples in BAIS](#practical-examples-in-bais)
+    - [Sales Analysis Function](#sales-analysis-function)
+    - [Data Cleaning Function](#data-cleaning-function)
+    - [Database Query Function](#database-query-function)
+11. [Conclusion](#conclusion)
+
+## Defining Functions
+
+Functions in Python are defined using the `def` keyword, followed by the function name, parentheses, and a colon. The body of the function is indented.
+
+**Example: Simple Function**
+
+```python
+def greet():
+    print("Hello, welcome to the BAIS tutorial!")
+```
+
+## Calling Functions
+
+To execute a function, you need to call it by its name followed by parentheses.
+
+**Example: Calling a Function**
+
+```python
+greet()
+```
+
+Output:
+```
+Hello, welcome to the BAIS tutorial!
+```
+
+## Function Arguments
+
+Functions can accept arguments to process data and return results.
+
+### Positional Arguments
+
+Positional arguments are the most common way to pass values to a function. The order of arguments matters.
+
+**Example: Function with Positional Arguments**
+
+```python
+def calculate_profit(revenue, expenses):
+    profit = revenue - expenses
+    return profit
+
+# Calling the function with positional arguments
+profit = calculate_profit(100000, 50000)
+print(f"Profit: {profit}")
+```
+
+Output:
+```
+Profit: 50000
+```
+
+### Keyword Arguments
+
+Keyword arguments allow you to specify arguments by their parameter name, making the function call more readable.
+
+**Example: Function with Keyword Arguments**
+
+```python
+# Calling the function with keyword arguments
+profit = calculate_profit(expenses=50000, revenue=100000)
+print(f"Profit: {profit}")
+```
+
+### Default Arguments
+
+Default arguments allow you to specify default values for parameters. If no value is provided, the default is used.
+
+**Example: Function with Default Arguments**
+
+```python
+def calculate_profit(revenue, expenses=40000):
+    profit = revenue - expenses
+    return profit
+
+# Calling the function with and without the default argument
+print(calculate_profit(100000))  # Uses default expenses
+print(calculate_profit(100000, 50000))  # Overrides default expenses
+```
+
+Output:
+```
+60000
+50000
+```
+
+### Variable-length Arguments
+
+Variable-length arguments allow you to pass a variable number of arguments to a function using `*args` for non-keyword arguments and `**kwargs` for keyword arguments.
+
+**Example: Function with Variable-length Arguments**
+
+```python
+def print_sales(*args, **kwargs):
+    for sale in args:
+        print(f"Sale: {sale}")
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+# Calling the function with variable-length arguments
+print_sales(1000, 2000, 3000, region="North", manager="Alice")
+```
+
+Output:
+```
+Sale: 1000
+Sale: 2000
+Sale: 3000
+region: North
+manager: Alice
+```
+
+## Return Statement
+
+The `return` statement is used to send a result back to the caller. A function can return multiple values as a tuple.
+
+**Example: Function with Return Statement**
+
+```python
+def analyze_sales(sales):
+    total_sales = sum(sales)
+    average_sales = total_sales / len(sales)
+    return total_sales, average_sales
+
+# Calling the function and unpacking the returned tuple
+total, average = analyze_sales([1000, 2000, 3000, 4000, 5000])
+print(f"Total Sales: {total}, Average Sales: {average}")
+```
+
+Output:
+```
+Total Sales: 15000, Average Sales: 3000.0
+```
+
+## Lambda Functions
+
+Lambda functions are small anonymous functions defined using the `lambda` keyword. They are often used for short, simple operations.
+
+**Example: Lambda Function for Sales Tax Calculation**
+
+```python
+# Lambda function to calculate sales tax
+calculate_tax = lambda price, tax_rate: price * tax_rate
+print(calculate_tax(100, 0.05))
+```
+
+Output:
+```
+5.0
+```
+
+## Higher-Order Functions
+
+Higher-order functions are functions that take other functions as arguments or return them as results.
+
+**Example: Higher-Order Function for Applying Discounts**
+
+```python
+def apply_discount(price, discount_function):
+    return discount_function(price)
+
+# Regular function to calculate a discount
+def ten_percent_discount(price):
+    return price * 0.9
+
+# Using the higher-order function
+print(apply_discount(100, ten_percent_discount))
+```
+
+Output:
+```
+90.0
+```
+
+## Docstrings
+
+Docstrings provide a convenient way of associating documentation with Python modules, functions, classes, and methods.
+
+**Example: Function with Docstring**
+
+```python
+def analyze_sales(sales):
+    """
+    Calculate the total and average sales.
+
+    Parameters:
+    sales (list): A list of sales amounts
+
+    Returns:
+    tuple: Total and average sales
+    """
+    total_sales = sum(sales)
+    average_sales = total_sales / len(sales)
+    return total_sales, average_sales
+```
+
+## Decorators
+
+Decorators are a powerful and flexible way to extend the behavior of functions or methods without modifying their actual code. A decorator is a function that wraps another function.
+
+**Example: Logging Decorator**
+
+```python
+def log_function_call(func):
+    def wrapper(*args, **kwargs):
+        print(f"Calling function {func.__name__}")
+        result = func(*args, **kwargs)
+        print(f"Function {func.__name__} returned {result}")
+        return result
+    return wrapper
+
+@log_function_call
+def calculate_profit(revenue, expenses):
+    return revenue - expenses
+
+# Using the decorated function
+print(calculate_profit(100000, 50000))
+```
+
+Output:
+```
+Calling function calculate_profit
+Function calculate_profit returned 50000
+50000
+```
+
+## Scope and Lifetime of Variables
+
+Variables defined inside a function are local to that function and cannot be accessed from outside. The lifetime of these variables is confined to the function's execution.
+
+**Example: Variable Scope**
+
+```python
+def analyze_sales(sales):
+    total_sales = sum(sales)
+    return total_sales
+
+# total_sales is not accessible outside the function
+total = analyze_sales([1000, 2000, 3000])
+print(total)
+```
+
+Output:
+```
+6000
+```
+
+## Practical Examples in BAIS
+
+### Sales Analysis Function
+
+**Example: Calculate Sales Metrics**
+
+```python
+def calculate_sales_metrics(sales):
+    """
+    Calculate total, average, and highest sales.
+
+    Parameters:
+    sales (list): A list of sales amounts
+
+    Returns:
+    dict: A dictionary with total, average, and highest sales
+    """
+    total_sales = sum(sales)
+    average_sales = total_sales / len(sales)
+    highest_sale = max(sales)
+    return {
+        "total_sales": total_sales,
+        "average_sales": average_sales,
+        "highest_sale": highest_sale
+    }
+
+# Example usage
+sales_data = [1000, 2000, 3000, 4000, 5000]
+metrics = calculate_sales_metrics(sales_data)
+print(metrics)
+```
+
+Output:
+```
+{'total_sales': 15000, 'average_sales': 3000.0, 'highest_sale': 5000}
+```
+
+### Data Cleaning Function
+
+**Example: Remove Outliers from Sales Data**
+
+```python
+def remove_outliers(data, threshold=2):
+    """
+    Remove outliers from the data.
+
+    Parameters:
+    data (list): A list of numerical values
+    threshold (int): The number of standard deviations to use as the cutoff
+
+    Returns:
+    list: A list with outliers removed
+    """
+    import numpy as np
+    mean = np.mean(data)
+    std_dev = np.std(data)
+    filtered_data = [x for x in data if (mean - threshold * std_dev < x < mean + threshold * std_dev)]
+    return filtered_data
+
+# Example usage
+sales_data = [1000, 2000, 3000, 4000, 5000, 100000]
+cleaned_data = remove_outliers(sales_data)
+print(cleaned_data)
+```
+
+Output:
+```
+[1000, 2000, 3000, 4000, 5000]
+```
+
+### Database Query Function
+
+**Example: Query Sales Data from Database**
+
+```python
+import sqlite3
+
+def query_sales_data(db_name):
+    """
+    Query sales data from the database.
+
+    Parameters:
+    db_name
+
+ (str): The name of the database file
+
+    Returns:
+    list: A list of sales records
+    """
+    connection = sqlite3.connect(db_name)
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM sales")
+    sales_data = cursor.fetchall()
+    connection.close()
+    return sales_data
+
+# Example usage
+# Make sure to have a database file named 'sales.db' with a 'sales' table
+sales_data = query_sales_data('sales.db')
+print(sales_data)
+```
+
+## Conclusion
+
+This deep dive tutorial covered the fundamentals and advanced features of Python functions, with practical examples in business analytics and information systems (BAIS). Understanding how to define, call, and utilize functions effectively is essential for writing modular, readable, and maintainable code. Functions are a powerful tool that allows you to encapsulate logic, improve code reuse, and manage complexity in your Python programs.
+
+# Deep Dive Tutorial on Python Modules using Business Analytics and Information Systems Examples
+
+Python modules are essential for organizing and structuring your code, allowing you to reuse code across different projects and improve maintainability. This tutorial provides a deep dive into Python modules, with practical examples in the context of business analytics and information systems (BAIS).
+
+## Table of Contents
+
+1. [What is a Python Module?](#what-is-a-python-module)
+2. [Creating a Module](#creating-a-module)
+3. [Importing a Module](#importing-a-module)
+4. [The `__name__` Variable](#the-__name__-variable)
+5. [Creating a Package](#creating-a-package)
+6. [Importing from a Package](#importing-from-a-package)
+7. [Using `__init__.py`](#using-__init__py)
+8. [Practical Examples in BAIS](#practical-examples-in-bais)
+    - [Data Analysis Module](#data-analysis-module)
+    - [Data Visualization Module](#data-visualization-module)
+    - [Database Interaction Module](#database-interaction-module)
+9. [Best Practices for Using Modules](#best-practices-for-using-modules)
+10. [Conclusion](#conclusion)
+
+## What is a Python Module?
+
+A Python module is a file containing Python definitions and statements. Modules can define functions, classes, and variables. They can also include runnable code. Grouping related code into a module makes the code easier to understand and use.
+
+## Creating a Module
+
+Creating a module in Python is simple. Just save your code in a `.py` file.
+
+**Example: `math_operations.py`**
+
+```python
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    if b == 0:
+        raise ValueError("Cannot divide by zero.")
+    return a / b
+```
+
+## Importing a Module
+
+To use the functions and variables in a module, you need to import the module into your script.
+
+**Example: Importing `math_operations.py`**
+
+```python
+import math_operations
+
+print(math_operations.add(10, 5))
+print(math_operations.subtract(10, 5))
+print(math_operations.multiply(10, 5))
+print(math_operations.divide(10, 5))
+```
+
+You can also import specific functions or variables from a module.
+
+```python
+from math_operations import add, subtract
+
+print(add(10, 5))
+print(subtract(10, 5))
+```
+
+## The `__name__` Variable
+
+The `__name__` variable is a special built-in variable in Python. It gets its value depending on how the script is executed. If the script is run directly, `__name__` is set to `"__main__"`. If the script is imported as a module, `__name__` is set to the module's name.
+
+**Example: Using `__name__`**
+
+```python
+# save as my_module.py
+def main():
+    print("This is the main function.")
+
+if __name__ == "__main__":
+    main()
+```
+
+**Example: Importing `my_module.py`**
+
+```python
+import my_module
+
+# This will not print "This is the main function." because __name__ is not "__main__"
+```
+
+## Creating a Package
+
+A package is a way of organizing related modules into a directory hierarchy. A package is simply a directory containing an `__init__.py` file and one or more module files.
+
+**Example: Directory Structure**
+
+```
+my_package/
+    __init__.py
+    math_operations.py
+    string_operations.py
+```
+
+## Importing from a Package
+
+You can import modules from a package using the `import` statement.
+
+**Example: Importing from a Package**
+
+```python
+from my_package import math_operations
+
+print(math_operations.add(10, 5))
+```
+
+## Using `__init__.py`
+
+The `__init__.py` file is used to initialize a Python package. It can be empty or contain initialization code for the package.
+
+**Example: `__init__.py`**
+
+```python
+# This file can be empty or contain initialization code
+```
+
+**Example: Using `__init__.py` to Simplify Imports**
+
+```python
+# my_package/__init__.py
+from .math_operations import add, subtract, multiply, divide
+from .string_operations import uppercase, lowercase
+```
+
+Now you can import directly from `my_package`:
+
+```python
+from my_package import add, uppercase
+
+print(add(10, 5))
+print(uppercase("hello"))
+```
+
+## Practical Examples in BAIS
+
+### Data Analysis Module
+
+**Example: `data_analysis.py`**
+
+```python
+import pandas as pd
+
+def calculate_statistics(data):
+    return {
+        "mean": data.mean(),
+        "median": data.median(),
+        "std_dev": data.std()
+    }
+
+def filter_data(data, column, value):
+    return data[data[column] == value]
+```
+
+**Usage:**
+
+```python
+import data_analysis as da
+
+data = pd.DataFrame({
+    "sales": [100, 200, 150, 300, 250],
+    "region": ["North", "South", "East", "West", "North"]
+})
+
+stats = da.calculate_statistics(data["sales"])
+print(stats)
+
+filtered_data = da.filter_data(data, "region", "North")
+print(filtered_data)
+```
+
+### Data Visualization Module
+
+**Example: `data_visualization.py`**
+
+```python
+import matplotlib.pyplot as plt
+
+def plot_sales(data):
+    plt.plot(data)
+    plt.title("Sales Over Time")
+    plt.xlabel("Time")
+    plt.ylabel("Sales")
+    plt.show()
+
+def plot_bar_chart(data, labels):
+    plt.bar(labels, data)
+    plt.title("Sales by Region")
+    plt.xlabel("Region")
+    plt.ylabel("Sales")
+    plt.show()
+```
+
+**Usage:**
+
+```python
+import data_visualization as dv
+
+sales_data = [100, 200, 150, 300, 250]
+regions = ["North", "South", "East", "West", "North"]
+
+dv.plot_sales(sales_data)
+dv.plot_bar_chart(sales_data, regions)
+```
+
+### Database Interaction Module
+
+**Example: `database_interaction.py`**
+
+```python
+import sqlite3
+
+def create_connection(db_file):
+    conn = sqlite3.connect(db_file)
+    return conn
+
+def create_table(conn, create_table_sql):
+    cursor = conn.cursor()
+    cursor.execute(create_table_sql)
+    conn.commit()
+
+def insert_data(conn, table, data):
+    placeholders = ", ".join("?" * len(data))
+    sql = f"INSERT INTO {table} VALUES ({placeholders})"
+    cursor = conn.cursor()
+    cursor.execute(sql, data)
+    conn.commit()
+
+def query_data(conn, query):
+    cursor = conn.cursor()
+    cursor.execute(query)
+    return cursor.fetchall()
+```
+
+**Usage:**
+
+```python
+import database_interaction as db
+
+conn = db.create_connection("sales.db")
+
+create_sales_table = """
+CREATE TABLE IF NOT EXISTS sales (
+    id INTEGER PRIMARY KEY,
+    region TEXT,
+    amount INTEGER
+)
+"""
+db.create_table(conn, create_sales_table)
+
+db.insert_data(conn, "sales", (1, "North", 100))
+db.insert_data(conn, "sales", (2, "South", 200))
+
+results = db.query_data(conn, "SELECT * FROM sales")
+for row in results:
+    print(row)
+
+conn.close()
+```
+
+## Best Practices for Using Modules
+
+1. **Modularity**: Break your code into smaller, reusable modules.
+2. **Naming Conventions**: Use meaningful names for modules and functions.
+3. **Documentation**: Include docstrings to document your functions and modules.
+4. **Avoiding Circular Imports**: Be mindful of dependencies between modules to avoid circular imports.
+5. **Testing**: Write tests for your modules to ensure they work as expected.
+6. **Version Control**: Use version control (e.g., Git) to manage changes to your modules.
+
+## Conclusion
+
+This deep dive tutorial covered the fundamentals and advanced features of Python modules, with practical examples in business analytics and information systems (BAIS). Understanding how to create, import, and use modules effectively is essential for writing modular, readable, and maintainable code. Modules allow you to encapsulate logic, improve code reuse, and manage complexity in your Python programs.

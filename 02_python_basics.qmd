@@ -199,3 +199,422 @@ print(sqrt(annual_growth))  # Output: 4.0
 ### Conclusion
 
 This tutorial covered the basics of Python programming with a focus on business-related examples, including variables, data types, control structures, functions, lists, dictionaries, and basic module usage. With these fundamentals, you can start building simple Python programs to solve business problems and gradually move on to more complex projects.
+
+# Deep Dive Tutorial into Python Basics
+
+Python is a high-level, interpreted programming language known for its readability, simplicity, and versatility. It is widely used for web development, data analysis, artificial intelligence, scientific computing, and more. This tutorial provides a comprehensive introduction to the basics of Python, covering essential concepts and practical examples.
+
+## Table of Contents
+
+1. [Introduction to Python](#introduction-to-python)
+2. [Installing Python](#installing-python)
+3. [Running Python Programs](#running-python-programs)
+4. [Python Syntax and Semantics](#python-syntax-and-semantics)
+    - [Indentation](#indentation)
+    - [Comments](#comments)
+5. [Variables and Data Types](#variables-and-data-types)
+    - [Numbers](#numbers)
+    - [Strings](#strings)
+    - [Booleans](#booleans)
+    - [None](#none)
+6. [Operators](#operators)
+    - [Arithmetic Operators](#arithmetic-operators)
+    - [Comparison Operators](#comparison-operators)
+    - [Logical Operators](#logical-operators)
+    - [Assignment Operators](#assignment-operators)
+    - [Membership Operators](#membership-operators)
+    - [Identity Operators](#identity-operators)
+7. [Control Flow](#control-flow)
+    - [Conditional Statements](#conditional-statements)
+    - [Loops](#loops)
+8. [Functions](#functions)
+    - [Defining Functions](#defining-functions)
+    - [Function Arguments](#function-arguments)
+    - [Return Values](#return-values)
+9. [Data Structures](#data-structures)
+    - [Lists](#lists)
+    - [Tuples](#tuples)
+    - [Sets](#sets)
+    - [Dictionaries](#dictionaries)
+10. [Modules and Packages](#modules-and-packages)
+    - [Importing Modules](#importing-modules)
+    - [Creating Modules](#creating-modules)
+    - [Using Packages](#using-packages)
+11. [File Handling](#file-handling)
+    - [Reading Files](#reading-files)
+    - [Writing Files](#writing-files)
+12. [Exception Handling](#exception-handling)
+13. [Conclusion](#conclusion)
+
+## Introduction to Python
+
+Python was created by Guido van Rossum and first released in 1991. It emphasizes code readability and allows programmers to express concepts in fewer lines of code than languages like C++ or Java. Python supports multiple programming paradigms, including procedural, object-oriented, and functional programming.
+
+## Installing Python
+
+To install Python, download the installer from the [official Python website](https://www.python.org/downloads/) and follow the installation instructions for your operating system.
+
+## Running Python Programs
+
+Python programs can be run in various ways:
+- **Interactive Mode**: Open a terminal or command prompt, type `python` or `python3`, and press Enter.
+- **Script Mode**: Write your code in a file with a `.py` extension and run it using `python filename.py` or `python3 filename.py`.
+
+## Python Syntax and Semantics
+
+### Indentation
+
+Python uses indentation to define the structure of the code. Consistent indentation is crucial as it defines blocks of code.
+
+```python
+if 5 > 2:
+    print("Five is greater than two!")
+```
+
+### Comments
+
+Comments are used to explain code and are ignored by the interpreter. Single-line comments start with `#`.
+
+```python
+# This is a comment
+print("Hello, World!")  # This is an inline comment
+```
+
+## Variables and Data Types
+
+Variables are used to store data values. In Python, you don't need to declare variables before using them.
+
+```python
+x = 5
+y = "Hello"
+```
+
+### Numbers
+
+Python supports integers, floating-point numbers, and complex numbers.
+
+```python
+a = 10       # Integer
+b = 3.14     # Float
+c = 1 + 2j   # Complex
+```
+
+### Strings
+
+Strings are sequences of characters enclosed in single, double, or triple quotes.
+
+```python
+name = "Alice"
+greeting = 'Hello, World!'
+multiline = """This is
+a multiline
+string."""
+```
+
+### Booleans
+
+Booleans represent `True` or `False`.
+
+```python
+is_true = True
+is_false = False
+```
+
+### None
+
+`None` represents the absence of a value.
+
+```python
+nothing = None
+```
+
+## Operators
+
+### Arithmetic Operators
+
+```python
+x = 10
+y = 3
+print(x + y)  # Addition
+print(x - y)  # Subtraction
+print(x * y)  # Multiplication
+print(x / y)  # Division
+print(x % y)  # Modulus
+print(x ** y) # Exponentiation
+print(x // y) # Floor Division
+```
+
+### Comparison Operators
+
+```python
+print(x == y)  # Equal
+print(x != y)  # Not equal
+print(x > y)   # Greater than
+print(x < y)   # Less than
+print(x >= y)  # Greater than or equal to
+print(x <= y)  # Less than or equal to
+```
+
+### Logical Operators
+
+```python
+print(x > 5 and y < 5)  # Logical AND
+print(x > 5 or y > 5)   # Logical OR
+print(not(x > 5))       # Logical NOT
+```
+
+### Assignment Operators
+
+```python
+x = 10
+x += 5  # x = x + 5
+x -= 3  # x = x - 3
+x *= 2  # x = x * 2
+x /= 2  # x = x / 2
+x %= 3  # x = x % 3
+x **= 2 # x = x ** 2
+x //= 2 # x = x // 2
+```
+
+### Membership Operators
+
+```python
+lst = [1, 2, 3, 4, 5]
+print(3 in lst)  # True
+print(6 in lst)  # False
+print(6 not in lst)  # True
+```
+
+### Identity Operators
+
+```python
+a = [1, 2, 3]
+b = [1, 2, 3]
+print(a is b)      # False (different objects)
+print(a is not b)  # True
+print(a == b)      # True (same content)
+```
+
+## Control Flow
+
+### Conditional Statements
+
+```python
+x = 10
+
+if x > 0:
+    print("x is positive")
+elif x == 0:
+    print("x is zero")
+else:
+    print("x is negative")
+```
+
+### Loops
+
+#### `for` Loop
+
+```python
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(fruit)
+```
+
+#### `while` Loop
+
+```python
+i = 1
+while i < 6:
+    print(i)
+    i += 1
+```
+
+#### Loop Control Statements
+
+```python
+for i in range(10):
+    if i == 5:
+        break  # Exit the loop
+    if i % 2 == 0:
+        continue  # Skip the rest of the loop
+    print(i)
+```
+
+## Functions
+
+### Defining Functions
+
+```python
+def greet(name):
+    print(f"Hello, {name}!")
+greet("Alice")
+```
+
+### Function Arguments
+
+```python
+def add(a, b):
+    return a + b
+
+print(add(3, 5))  # Positional arguments
+print(add(a=3, b=5))  # Keyword arguments
+
+def greet(name, message="Hello"):
+    print(f"{message}, {name}!")
+greet("Alice")
+greet("Bob", "Hi")
+```
+
+### Return Values
+
+```python
+def square(x):
+    return x * x
+
+result = square(4)
+print(result)
+```
+
+## Data Structures
+
+### Lists
+
+```python
+fruits = ["apple", "banana", "cherry"]
+print(fruits[0])  # Accessing elements
+fruits[1] = "blackberry"  # Modifying elements
+print(fruits)
+fruits.append("orange")  # Adding elements
+print(fruits)
+```
+
+### Tuples
+
+```python
+coordinates = (10, 20)
+print(coordinates[0])
+# coordinates[0] = 30  # Error: Tuples are immutable
+```
+
+### Sets
+
+```python
+unique_numbers = {1, 2, 3, 3, 4}
+print(unique_numbers)  # {1, 2, 3, 4}
+unique_numbers.add(5)
+print(unique_numbers)
+```
+
+### Dictionaries
+
+```python
+person = {"name": "Alice", "age": 30}
+print(person["name"])
+person["age"] = 31
+print(person)
+person["city"] = "New York"
+print(person)
+```
+
+## Modules and Packages
+
+### Importing Modules
+
+```python
+import math
+print(math.sqrt(16))
+
+from math import sqrt
+print(sqrt(16))
+```
+
+### Creating Modules
+
+Create a file named `mymodule.py`:
+
+```python
+# mymodule.py
+def greet(name):
+    print(f"Hello, {name}!")
+```
+
+Then import and use it:
+
+```python
+import mymodule
+mymodule.greet("Alice")
+```
+
+### Using Packages
+
+Create a package directory structure:
+
+```
+mypackage/
+    __
+
+init__.py
+    module1.py
+    module2.py
+```
+
+In `module1.py`:
+
+```python
+def function1():
+    print("Function 1 from module 1")
+```
+
+In `module2.py`:
+
+```python
+def function2():
+    print("Function 2 from module 2")
+```
+
+In `__init__.py`:
+
+```python
+from .module1 import function1
+from .module2 import function2
+```
+
+Then use the package:
+
+```python
+import mypackage
+mypackage.function1()
+mypackage.function2()
+```
+
+## File Handling
+
+### Reading Files
+
+```python
+with open('file.txt', 'r') as file:
+    content = file.read()
+    print(content)
+```
+
+### Writing Files
+
+```python
+with open('file.txt', 'w') as file:
+    file.write("Hello, World!")
+```
+
+## Exception Handling
+
+```python
+try:
+    x = 1 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+finally:
+    print("This is always executed")
+```
+
+## Conclusion
+
+This deep dive tutorial covered the basics of Python, including syntax, data types, operators, control flow, functions, data structures, modules, file handling, and exception handling. By mastering these fundamentals, you'll be well-equipped to explore more advanced topics and develop robust Python applications. Python's simplicity and readability make it an excellent choice for beginners and experienced developers alike.

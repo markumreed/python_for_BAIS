@@ -188,3 +188,542 @@ backup_files(source_directory, backup_directory)
 ### Conclusion
 
 Automating system tasks with Python can save time and reduce errors by performing repetitive tasks programmatically. The `os`, `subprocess`, and `shutil` libraries provide powerful tools for interacting with the operating system, running external processes, and handling files and directories. By mastering these libraries, you can automate a wide range of system tasks, enhancing your efficiency and productivity.
+
+# Deep Dive into the `os` Module in Python
+
+The `os` module in Python provides a way of using operating system-dependent functionality like reading or writing to the file system. The `os` module also allows you to interface with the underlying operating system that Python is running on, whether it's Windows, Mac, or Linux. Let's explore the `os` module in detail.
+
+## Importing the `os` Module
+
+To use the `os` module, you need to import it first:
+
+```python
+import os
+```
+
+## File and Directory Operations
+
+### Working with Directories
+
+#### Get Current Working Directory
+
+You can get the current working directory using `os.getcwd()`:
+
+```python
+import os
+
+current_directory = os.getcwd()
+print("Current Directory:", current_directory)
+```
+
+#### Change Directory
+
+You can change the current working directory using `os.chdir(path)`:
+
+```python
+os.chdir('/path/to/directory')
+print("Changed Directory:", os.getcwd())
+```
+
+#### List Directory Contents
+
+To list the contents of a directory, use `os.listdir(path)`:
+
+```python
+directory_contents = os.listdir('.')
+print("Directory Contents:", directory_contents)
+```
+
+#### Create a Directory
+
+You can create a new directory using `os.mkdir(path)`:
+
+```python
+os.mkdir('new_directory')
+print("New Directory Created:", os.listdir('.'))
+```
+
+#### Create Intermediate Directories
+
+To create intermediate directories, use `os.makedirs(path)`:
+
+```python
+os.makedirs('parent_directory/child_directory')
+print("Directories Created:", os.listdir('parent_directory'))
+```
+
+#### Remove a Directory
+
+To remove a directory, use `os.rmdir(path)`:
+
+```python
+os.rmdir('new_directory')
+print("Directory Removed:", os.listdir('.'))
+```
+
+To remove intermediate directories, use `os.removedirs(path)`:
+
+```python
+os.removedirs('parent_directory/child_directory')
+print("Directories Removed:", os.listdir('.'))
+```
+
+### Working with Files
+
+#### Create and Write to a File
+
+To create and write to a file, you can use standard file handling methods:
+
+```python
+with open('example.txt', 'w') as file:
+    file.write('Hello, World!')
+print("File Created and Written to:", os.listdir('.'))
+```
+
+#### Remove a File
+
+To remove a file, use `os.remove(path)`:
+
+```python
+os.remove('example.txt')
+print("File Removed:", os.listdir('.'))
+```
+
+#### Rename a File
+
+To rename a file, use `os.rename(src, dst)`:
+
+```python
+with open('old_name.txt', 'w') as file:
+    file.write('Hello, World!')
+
+os.rename('old_name.txt', 'new_name.txt')
+print("File Renamed:", os.listdir('.'))
+```
+
+#### Get File Status
+
+To get the status of a file, use `os.stat(path)`:
+
+```python
+file_status = os.stat('new_name.txt')
+print("File Status:", file_status)
+```
+
+## Environment Variables
+
+### Get Environment Variables
+
+To get the value of an environment variable, use `os.environ.get(key)`:
+
+```python
+home_directory = os.environ.get('HOME')
+print("Home Directory:", home_directory)
+```
+
+### Set Environment Variables
+
+To set the value of an environment variable, use `os.environ[key] = value`:
+
+```python
+os.environ['MY_VARIABLE'] = 'my_value'
+print("Environment Variable Set:", os.environ.get('MY_VARIABLE'))
+```
+
+### Delete Environment Variables
+
+To delete an environment variable, use `os.environ.pop(key, default)`:
+
+```python
+os.environ.pop('MY_VARIABLE', None)
+print("Environment Variable Deleted:", os.environ.get('MY_VARIABLE'))
+```
+
+## Process Management
+
+### Get Process ID
+
+To get the current process ID, use `os.getpid()`:
+
+```python
+process_id = os.getpid()
+print("Process ID:", process_id)
+```
+
+### Get Parent Process ID
+
+To get the parent process ID, use `os.getppid()`:
+
+```python
+parent_process_id = os.getppid()
+print("Parent Process ID:", parent_process_id)
+```
+
+### Fork a Process
+
+To fork a process (UNIX only), use `os.fork()`:
+
+```python
+try:
+    pid = os.fork()
+    if pid > 0:
+        print("Parent process ID:", os.getpid())
+        print("Child process ID:", pid)
+    else:
+        print("Child process ID:", os.getpid())
+        print("Parent process ID:", os.getppid())
+except AttributeError:
+    print("Fork not available on this operating system")
+```
+
+### Execute a Program
+
+To replace the current process with a new one, use `os.exec*()` methods. For example, `os.execl(path, arg0, arg1, ...)`:
+
+```python
+import sys
+
+if len(sys.argv) == 1:
+    print("Starting new process")
+    os.execl(sys.executable, sys.executable, *sys.argv, 'child')
+else:
+    print("Running in child process")
+```
+
+### Wait for a Child Process
+
+To wait for a child process to terminate, use `os.wait()`:
+
+```python
+pid = os.fork()
+if pid > 0:
+    os.wait()
+    print("Child process terminated")
+else:
+    print("In child process")
+    sys.exit(0)
+```
+
+## Miscellaneous OS Operations
+
+### Get OS Name
+
+To get the name of the operating system, use `os.name`:
+
+```python
+os_name = os.name
+print("OS Name:", os_name)
+```
+
+### Execute a System Command
+
+To execute a system command, use `os.system(command)`:
+
+```python
+os.system('echo Hello, World!')
+```
+
+### Get System Information
+
+To get more detailed system information, use `os.uname()` (UNIX only):
+
+```python
+try:
+    system_info = os.uname()
+    print("System Info:", system_info)
+except AttributeError:
+    print("os.uname() not available on this operating system")
+```
+
+## Path Manipulations
+
+The `os.path` module provides utilities for manipulating file and directory paths.
+
+### Join Paths
+
+To join paths, use `os.path.join(path, *paths)`:
+
+```python
+full_path = os.path.join('parent_directory', 'child_directory', 'file.txt')
+print("Full Path:", full_path)
+```
+
+### Split Paths
+
+To split a path into the directory and file, use `os.path.split(path)`:
+
+```python
+directory, file_name = os.path.split('/path/to/file.txt')
+print("Directory:", directory)
+print("File Name:", file_name)
+```
+
+### Get File Extension
+
+To get the file extension, use `os.path.splitext(path)`:
+
+```python
+file_name, file_extension = os.path.splitext('file.txt')
+print("File Name:", file_name)
+print("File Extension:", file_extension)
+```
+
+### Check Path Existence
+
+To check if a path exists, use `os.path.exists(path)`:
+
+```python
+path_exists = os.path.exists('/path/to/file.txt')
+print("Path Exists:", path_exists)
+```
+
+### Check if Path is a File or Directory
+
+To check if a path is a file or directory, use `os.path.isfile(path)` and `os.path.isdir(path)`:
+
+```python
+is_file = os.path.isfile('/path/to/file.txt')
+is_directory = os.path.isdir('/path/to/directory')
+print("Is File:", is_file)
+print("Is Directory:", is_directory)
+```
+
+### Get Absolute Path
+
+To get the absolute path, use `os.path.abspath(path)`:
+
+```python
+absolute_path = os.path.abspath('file.txt')
+print("Absolute Path:", absolute_path)
+```
+
+## Conclusion
+
+The `os` module in Python provides a wide range of functionalities for interacting with the operating system. Whether you need to manage files and directories, work with environment variables, manage processes, or manipulate paths, the `os` module has you covered. Understanding and utilizing these functions can significantly enhance your ability to create robust and versatile Python programs.
+
+# Deep Dive into the `shutil` Module in Python
+
+The `shutil` (shell utilities) module in Python provides a higher-level interface for file operations than the `os` module. It is designed to handle operations like copying and moving files and directories, managing file permissions, and creating archive files. Let's explore the `shutil` module in detail.
+
+## Importing the `shutil` Module
+
+To use the `shutil` module, you need to import it first:
+
+```python
+import shutil
+```
+
+## Copying Files and Directories
+
+### Copy a File
+
+To copy a file from one location to another, use `shutil.copy(src, dst)`. This function copies the content and permissions of the source file to the destination file.
+
+```python
+import shutil
+
+shutil.copy('source_file.txt', 'destination_file.txt')
+print("File copied successfully")
+```
+
+### Copy a File with Metadata
+
+To copy a file along with its metadata (like permissions, last access time, etc.), use `shutil.copy2(src, dst)`:
+
+```python
+shutil.copy2('source_file.txt', 'destination_file_with_metadata.txt')
+print("File copied with metadata successfully")
+```
+
+### Copy a Directory
+
+To copy an entire directory tree, use `shutil.copytree(src, dst)`. This function recursively copies an entire directory tree rooted at `src` to a directory named `dst`.
+
+```python
+shutil.copytree('source_directory', 'destination_directory')
+print("Directory copied successfully")
+```
+
+### Copy Only Directory Structure
+
+To copy only the directory structure without files, you can use the `ignore` parameter of `shutil.copytree`:
+
+```python
+def ignore_files(dir, files):
+    return [f for f in files if os.path.isfile(os.path.join(dir, f))]
+
+shutil.copytree('source_directory', 'destination_directory_structure', ignore=ignore_files)
+print("Directory structure copied successfully")
+```
+
+## Moving Files and Directories
+
+To move a file or directory from one location to another, use `shutil.move(src, dst)`:
+
+```python
+shutil.move('source_file.txt', 'destination_file.txt')
+print("File moved successfully")
+```
+
+You can also move entire directories:
+
+```python
+shutil.move('source_directory', 'destination_directory')
+print("Directory moved successfully")
+```
+
+## Deleting Files and Directories
+
+### Delete a File
+
+To delete a file, use `os.remove(path)` from the `os` module:
+
+```python
+import os
+
+os.remove('file_to_delete.txt')
+print("File deleted successfully")
+```
+
+### Delete a Directory
+
+To delete a directory tree, use `shutil.rmtree(path)`:
+
+```python
+shutil.rmtree('directory_to_delete')
+print("Directory deleted successfully")
+```
+
+## File Permissions
+
+### Change File Permissions
+
+To change the mode (permissions) of a file, use `os.chmod(path, mode)` from the `os` module:
+
+```python
+import os
+
+os.chmod('file.txt', 0o755)  # Sets file permissions to rwxr-xr-x
+print("File permissions changed successfully")
+```
+
+### Copy File Permissions
+
+To copy the permissions of one file to another, use `shutil.copymode(src, dst)`:
+
+```python
+shutil.copymode('source_file.txt', 'destination_file.txt')
+print("File permissions copied successfully")
+```
+
+### Copy File Metadata
+
+To copy the metadata of one file to another, use `shutil.copystat(src, dst)`:
+
+```python
+shutil.copystat('source_file.txt', 'destination_file.txt')
+print("File metadata copied successfully")
+```
+
+## Archiving Operations
+
+### Create Archive Files
+
+To create an archive file (like .zip or .tar), use `shutil.make_archive(base_name, format, root_dir)`:
+
+```python
+shutil.make_archive('archive_name', 'zip', 'directory_to_archive')
+print("Archive created successfully")
+```
+
+You can create archives in different formats like 'zip', 'tar', 'gztar', 'bztar', or 'xztar'.
+
+### Extract Archive Files
+
+To extract an archive file, use the `tarfile` or `zipfile` module. For example, to extract a .zip file:
+
+```python
+import zipfile
+
+with zipfile.ZipFile('archive_name.zip', 'r') as zip_ref:
+    zip_ref.extractall('extracted_directory')
+print("Archive extracted successfully")
+```
+
+## Disk Usage
+
+### Get Disk Usage Statistics
+
+To get disk usage statistics, use `shutil.disk_usage(path)`. This function returns a named tuple with attributes `total`, `used`, and `free`, which are the total, used, and free space on the disk, respectively.
+
+```python
+disk_usage = shutil.disk_usage('/')
+print("Total:", disk_usage.total)
+print("Used:", disk_usage.used)
+print("Free:", disk_usage.free)
+```
+
+## Temporary Files and Directories
+
+### Create Temporary Files and Directories
+
+To create temporary files and directories, use the `tempfile` module. For example, to create a temporary file:
+
+```python
+import tempfile
+
+with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+    temp_file.write(b'Hello, World!')
+    print("Temporary file created:", temp_file.name)
+```
+
+To create a temporary directory:
+
+```python
+with tempfile.TemporaryDirectory() as temp_dir:
+    print("Temporary directory created:", temp_dir)
+```
+
+## Example Use Cases
+
+### Example 1: Backup a Directory
+
+```python
+import shutil
+import os
+import time
+
+# Source and backup directories
+source_dir = 'source_directory'
+backup_dir = 'backup_directory'
+
+# Create a backup directory with a timestamp
+timestamp = time.strftime('%Y%m%d%H%M%S')
+backup_dir = os.path.join(backup_dir, timestamp)
+shutil.copytree(source_dir, backup_dir)
+print("Backup created successfully at", backup_dir)
+```
+
+### Example 2: Clean Up Old Backups
+
+```python
+import shutil
+import os
+import time
+
+backup_dir = 'backup_directory'
+days_to_keep = 7
+now = time.time()
+
+for filename in os.listdir(backup_dir):
+    file_path = os.path.join(backup_dir, filename)
+    if os.path.isdir(file_path):
+        file_creation_time = os.path.getctime(file_path)
+        if (now - file_creation_time) // (24 * 3600) >= days_to_keep:
+            shutil.rmtree(file_path)
+            print("Deleted old backup:", file_path)
+```
+
+## Conclusion
+
+The `shutil` module in Python provides a powerful and convenient way to handle high-level file operations. Whether you need to copy, move, or delete files and directories, manage file permissions, or create and extract archives, the `shutil` module has you covered. Understanding and utilizing these functions can significantly simplify your file management tasks in Python.
