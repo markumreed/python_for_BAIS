@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Markum Reed">
-<meta name="dcterms.date" content="2024-01-01">
 
-<title>Python for Business Analytics and Informaton Systems</title>
+<title>17&nbsp; Network Services and Management with Python – Python for Business Analytics and Informaton Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./17_adv_network_concepts.html" rel="next">
+<link href="./15_network_architecture_protocols.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./16_network_services_mgmt.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Network Services and Management with Python</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -211,7 +244,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./16_network_services_mgmt.html" class="sidebar-item-text sidebar-link">
+  <a href="./16_network_services_mgmt.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Network Services and Management with Python</span></span></a>
   </div>
 </li>
@@ -255,7 +288,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#dns-domain-name-system" id="toc-dns-domain-name-system" class="nav-link active" data-scroll-target="#dns-domain-name-system"><span class="header-section-number">17.0.1</span> DNS (Domain Name System)</a></li>
+  <li><a href="#dhcp-dynamic-host-configuration-protocol" id="toc-dhcp-dynamic-host-configuration-protocol" class="nav-link" data-scroll-target="#dhcp-dynamic-host-configuration-protocol"><span class="header-section-number">17.0.2</span> DHCP (Dynamic Host Configuration Protocol)</a></li>
+  <li><a href="#routing-protocols" id="toc-routing-protocols" class="nav-link" data-scroll-target="#routing-protocols"><span class="header-section-number">17.0.3</span> Routing Protocols</a></li>
+  <li><a href="#ipv4-and-ipv6-subnetting" id="toc-ipv4-and-ipv6-subnetting" class="nav-link" data-scroll-target="#ipv4-and-ipv6-subnetting"><span class="header-section-number">17.0.4</span> IPv4 and IPv6 Subnetting</a></li>
+  <li><a href="#example-comprehensive-network-management-script" id="toc-example-comprehensive-network-management-script" class="nav-link" data-scroll-target="#example-comprehensive-network-management-script"><span class="header-section-number">17.0.5</span> Example: Comprehensive Network Management Script</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">17.0.6</span> Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -264,26 +302,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python for Business Analytics and Informaton Systems</h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Network Services and Management with Python</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Markum Reed </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -293,8 +319,152 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
+<p>Network services like DNS and DHCP, along with routing protocols such as RIP, OSPF, and BGP, are critical components of network management. Understanding IPv4 and IPv6 subnetting is also essential for efficient network design. This tutorial will cover these topics and show how to use Python libraries like <code>dnspython</code> for implementing DNS query scripts.</p>
+<section id="dns-domain-name-system" class="level3" data-number="17.0.1">
+<h3 data-number="17.0.1" class="anchored" data-anchor-id="dns-domain-name-system"><span class="header-section-number">17.0.1</span> DNS (Domain Name System)</h3>
+<p>DNS is a service that translates domain names into IP addresses, making it easier for users to access websites without remembering numeric IP addresses.</p>
+<section id="installing-dnspython" class="level4" data-number="17.0.1.1">
+<h4 data-number="17.0.1.1" class="anchored" data-anchor-id="installing-dnspython"><span class="header-section-number">17.0.1.1</span> Installing <code>dnspython</code></h4>
+<p>First, install the <code>dnspython</code> library:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install dnspython</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="performing-dns-queries" class="level4" data-number="17.0.1.2">
+<h4 data-number="17.0.1.2" class="anchored" data-anchor-id="performing-dns-queries"><span class="header-section-number">17.0.1.2</span> Performing DNS Queries</h4>
+<p>You can use <code>dnspython</code> to perform various DNS queries such as A, MX, and NS records.</p>
+<section id="example-querying-a-records" class="level5" data-number="17.0.1.2.1">
+<h5 data-number="17.0.1.2.1" class="anchored" data-anchor-id="example-querying-a-records"><span class="header-section-number">17.0.1.2.1</span> Example: Querying A Records</h5>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_a_record(domain):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> dns.resolver.resolve(domain, <span class="st">'A'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ipval <span class="kw">in</span> result:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'IP'</span>, ipval.to_text())</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>query_a_record(<span class="st">'example.com'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-querying-mx-records" class="level5" data-number="17.0.1.2.2">
+<h5 data-number="17.0.1.2.2" class="anchored" data-anchor-id="example-querying-mx-records"><span class="header-section-number">17.0.1.2.2</span> Example: Querying MX Records</h5>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_mx_record(domain):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> dns.resolver.resolve(domain, <span class="st">'MX'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> exchange <span class="kw">in</span> result:</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'MX Record:'</span>, exchange.exchange, <span class="st">'Priority:'</span>, exchange.preference)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>query_mx_record(<span class="st">'example.com'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="dhcp-dynamic-host-configuration-protocol" class="level3" data-number="17.0.2">
+<h3 data-number="17.0.2" class="anchored" data-anchor-id="dhcp-dynamic-host-configuration-protocol"><span class="header-section-number">17.0.2</span> DHCP (Dynamic Host Configuration Protocol)</h3>
+<p>DHCP is a network management protocol used to automatically assign IP addresses and other network configuration parameters to devices on a network.</p>
+</section>
+<section id="routing-protocols" class="level3" data-number="17.0.3">
+<h3 data-number="17.0.3" class="anchored" data-anchor-id="routing-protocols"><span class="header-section-number">17.0.3</span> Routing Protocols</h3>
+<p>Routing protocols determine the best path for data to travel across a network.</p>
+<section id="rip-routing-information-protocol" class="level4" data-number="17.0.3.1">
+<h4 data-number="17.0.3.1" class="anchored" data-anchor-id="rip-routing-information-protocol"><span class="header-section-number">17.0.3.1</span> RIP (Routing Information Protocol)</h4>
+<p>RIP is a distance-vector routing protocol that uses hop count as a routing metric. It’s suitable for small networks.</p>
+</section>
+<section id="ospf-open-shortest-path-first" class="level4" data-number="17.0.3.2">
+<h4 data-number="17.0.3.2" class="anchored" data-anchor-id="ospf-open-shortest-path-first"><span class="header-section-number">17.0.3.2</span> OSPF (Open Shortest Path First)</h4>
+<p>OSPF is a link-state routing protocol that uses the shortest path first algorithm. It is more efficient for larger and more complex networks.</p>
+</section>
+<section id="bgp-border-gateway-protocol" class="level4" data-number="17.0.3.3">
+<h4 data-number="17.0.3.3" class="anchored" data-anchor-id="bgp-border-gateway-protocol"><span class="header-section-number">17.0.3.3</span> BGP (Border Gateway Protocol)</h4>
+<p>BGP is a path-vector protocol used to exchange routing information between autonomous systems on the internet.</p>
+</section>
+</section>
+<section id="ipv4-and-ipv6-subnetting" class="level3" data-number="17.0.4">
+<h3 data-number="17.0.4" class="anchored" data-anchor-id="ipv4-and-ipv6-subnetting"><span class="header-section-number">17.0.4</span> IPv4 and IPv6 Subnetting</h3>
+<p>Subnetting divides a larger network into smaller sub-networks, improving management and security.</p>
+<section id="ipv4-subnetting" class="level4" data-number="17.0.4.1">
+<h4 data-number="17.0.4.1" class="anchored" data-anchor-id="ipv4-subnetting"><span class="header-section-number">17.0.4.1</span> IPv4 Subnetting</h4>
+<p>IPv4 addresses are 32-bit numbers. Subnet masks define the network and host portions of the address.</p>
+<section id="example-calculating-subnet-information-for-ipv4" class="level5" data-number="17.0.4.1.1">
+<h5 data-number="17.0.4.1.1" class="anchored" data-anchor-id="example-calculating-subnet-information-for-ipv4"><span class="header-section-number">17.0.4.1.1</span> Example: Calculating Subnet Information for IPv4</h5>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipaddress</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ipv4_subnet_info(network):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    net <span class="op">=</span> ipaddress.ip_network(network)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Network: </span><span class="sc">{</span>net<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Netmask: </span><span class="sc">{</span>net<span class="sc">.</span>netmask<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Broadcast: </span><span class="sc">{</span>net<span class="sc">.</span>broadcast_address<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Hosts: </span><span class="sc">{</span><span class="bu">list</span>(net.hosts())<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ipv4_subnet_info(<span class="st">'192.168.1.0/24'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="ipv6-subnetting" class="level4" data-number="17.0.4.2">
+<h4 data-number="17.0.4.2" class="anchored" data-anchor-id="ipv6-subnetting"><span class="header-section-number">17.0.4.2</span> IPv6 Subnetting</h4>
+<p>IPv6 addresses are 128-bit numbers, providing a significantly larger address space than IPv4.</p>
+<section id="example-calculating-subnet-information-for-ipv6" class="level5" data-number="17.0.4.2.1">
+<h5 data-number="17.0.4.2.1" class="anchored" data-anchor-id="example-calculating-subnet-information-for-ipv6"><span class="header-section-number">17.0.4.2.1</span> Example: Calculating Subnet Information for IPv6</h5>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipaddress</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ipv6_subnet_info(network):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    net <span class="op">=</span> ipaddress.ip_network(network)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Network: </span><span class="sc">{</span>net<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Netmask: </span><span class="sc">{</span>net<span class="sc">.</span>netmask<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Broadcast: </span><span class="sc">{</span>net<span class="sc">.</span>broadcast_address<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Hosts: </span><span class="sc">{</span><span class="bu">list</span>(net.hosts())[:<span class="dv">5</span>]<span class="sc">}</span><span class="ss">..."</span>)  <span class="co"># Display first 5 hosts</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ipv6_subnet_info(<span class="st">'2001:0db8::/32'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="example-comprehensive-network-management-script" class="level3" data-number="17.0.5">
+<h3 data-number="17.0.5" class="anchored" data-anchor-id="example-comprehensive-network-management-script"><span class="header-section-number">17.0.5</span> Example: Comprehensive Network Management Script</h3>
+<p>This script combines DNS querying, subnet calculation, and basic routing protocol concepts.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipaddress</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to query DNS A record</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_a_record(domain):</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> dns.resolver.resolve(domain, <span class="st">'A'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"A Records for </span><span class="sc">{</span>domain<span class="sc">}</span><span class="ss">:"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ipval <span class="kw">in</span> result:</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'IP'</span>, ipval.to_text())</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to query DNS MX record</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_mx_record(domain):</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> dns.resolver.resolve(domain, <span class="st">'MX'</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"MX Records for </span><span class="sc">{</span>domain<span class="sc">}</span><span class="ss">:"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> exchange <span class="kw">in</span> result:</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'MX Record:'</span>, exchange.exchange, <span class="st">'Priority:'</span>, exchange.preference)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to calculate IPv4 subnet information</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ipv4_subnet_info(network):</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    net <span class="op">=</span> ipaddress.ip_network(network)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"IPv4 Network: </span><span class="sc">{</span>net<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Netmask: </span><span class="sc">{</span>net<span class="sc">.</span>netmask<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Broadcast: </span><span class="sc">{</span>net<span class="sc">.</span>broadcast_address<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Hosts: </span><span class="sc">{</span><span class="bu">list</span>(net.hosts())[:<span class="dv">5</span>]<span class="sc">}</span><span class="ss">..."</span>)  <span class="co"># Display first 5 hosts</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to calculate IPv6 subnet information</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ipv6_subnet_info(network):</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    net <span class="op">=</span> ipaddress.ip_network(network)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"IPv6 Network: </span><span class="sc">{</span>net<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Netmask: </span><span class="sc">{</span>net<span class="sc">.</span>netmask<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Broadcast: </span><span class="sc">{</span>net<span class="sc">.</span>broadcast_address<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Hosts: </span><span class="sc">{</span><span class="bu">list</span>(net.hosts())[:<span class="dv">5</span>]<span class="sc">}</span><span class="ss">..."</span>)  <span class="co"># Display first 5 hosts</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Main function to perform network management tasks</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># DNS Queries</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    query_a_record(<span class="st">'example.com'</span>)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    query_mx_record(<span class="st">'example.com'</span>)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Subnet Calculations</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    ipv4_subnet_info(<span class="st">'192.168.1.0/24'</span>)</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    ipv6_subnet_info(<span class="st">'2001:0db8::/32'</span>)</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="conclusion" class="level3" data-number="17.0.6">
+<h3 data-number="17.0.6" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">17.0.6</span> Conclusion</h3>
+<p>Understanding network services and management, including DNS, DHCP, routing protocols, and subnetting, is essential for effective network design and administration. Python provides powerful tools like <code>dnspython</code> for DNS queries and the <code>ipaddress</code> module for subnet calculations. By mastering these tools and concepts, you can efficiently manage and troubleshoot networks, ensuring optimal performance and reliability.</p>
 
 
 </section>
@@ -722,10 +892,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./15_network_architecture_protocols.html" class="pagination-link" aria-label="Network Architecture and Protocols with Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Network Architecture and Protocols with Python</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./17_adv_network_concepts.html" class="pagination-link" aria-label="Advanced Networking Concepts with Python">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Advanced Networking Concepts with Python</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

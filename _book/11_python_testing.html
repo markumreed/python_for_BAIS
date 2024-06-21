@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Markum Reed">
-<meta name="dcterms.date" content="2024-01-01">
 
-<title>Python for Business Analytics and Informaton Systems</title>
+<title>12&nbsp; Introduction to Testing in Python – Python for Business Analytics and Informaton Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./12_python_adv_concepts.html" rel="next">
+<link href="./10_python_automated_sys_tasks.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./11_python_testing.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introduction to Testing in Python</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -181,7 +214,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_python_testing.html" class="sidebar-item-text sidebar-link">
+  <a href="./11_python_testing.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introduction to Testing in Python</span></span></a>
   </div>
 </li>
@@ -255,7 +288,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#unit-testing-with-unittest" id="toc-unit-testing-with-unittest" class="nav-link active" data-scroll-target="#unit-testing-with-unittest"><span class="header-section-number">12.0.1</span> Unit Testing with <code>unittest</code></a></li>
+  <li><a href="#running-tests" id="toc-running-tests" class="nav-link" data-scroll-target="#running-tests"><span class="header-section-number">12.0.2</span> Running Tests</a></li>
+  <li><a href="#test-fixtures-setup-and-teardown" id="toc-test-fixtures-setup-and-teardown" class="nav-link" data-scroll-target="#test-fixtures-setup-and-teardown"><span class="header-section-number">12.0.3</span> Test Fixtures: Setup and Teardown</a></li>
+  <li><a href="#organizing-tests-into-suites" id="toc-organizing-tests-into-suites" class="nav-link" data-scroll-target="#organizing-tests-into-suites"><span class="header-section-number">12.0.4</span> Organizing Tests into Suites</a></li>
+  <li><a href="#advanced-testing-with-pytest" id="toc-advanced-testing-with-pytest" class="nav-link" data-scroll-target="#advanced-testing-with-pytest"><span class="header-section-number">12.0.5</span> Advanced Testing with <code>pytest</code></a></li>
+  <li><a href="#using-fixtures-in-pytest" id="toc-using-fixtures-in-pytest" class="nav-link" data-scroll-target="#using-fixtures-in-pytest"><span class="header-section-number">12.0.6</span> Using Fixtures in <code>pytest</code></a></li>
+  <li><a href="#parameterized-tests-in-pytest" id="toc-parameterized-tests-in-pytest" class="nav-link" data-scroll-target="#parameterized-tests-in-pytest"><span class="header-section-number">12.0.7</span> Parameterized Tests in <code>pytest</code></a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">12.0.8</span> Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -264,26 +304,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python for Business Analytics and Informaton Systems</h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introduction to Testing in Python</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Markum Reed </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -293,8 +321,154 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
+<p>Testing is a crucial aspect of software development, ensuring that your code works as expected and helping to identify and fix bugs early in the development process. Python provides robust tools and frameworks for writing and running tests. This tutorial will introduce you to testing in Python using the <code>unittest</code> framework for basic unit testing and <code>pytest</code> for more advanced testing needs.</p>
+<section id="unit-testing-with-unittest" class="level3" data-number="12.0.1">
+<h3 data-number="12.0.1" class="anchored" data-anchor-id="unit-testing-with-unittest"><span class="header-section-number">12.0.1</span> Unit Testing with <code>unittest</code></h3>
+<p><code>unittest</code> is Python’s built-in library for writing and running tests. It supports test discovery, setup, teardown, and provides assertions for verifying the correctness of your code.</p>
+<section id="basic-structure-of-a-test-case" class="level4" data-number="12.0.1.1">
+<h4 data-number="12.0.1.1" class="anchored" data-anchor-id="basic-structure-of-a-test-case"><span class="header-section-number">12.0.1.1</span> Basic Structure of a Test Case</h4>
+<p>A test case is a single unit of testing. It checks for a specific response to a particular set of inputs. To write a test case in <code>unittest</code>, you define a class that inherits from <code>unittest.TestCase</code>.</p>
+<section id="example-basic-test-case" class="level5" data-number="12.0.1.1.1">
+<h5 data-number="12.0.1.1.1" class="anchored" data-anchor-id="example-basic-test-case"><span class="header-section-number">12.0.1.1.1</span> Example: Basic Test Case</h5>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># The code to be tested</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add(a, b):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestMathOperations(unittest.TestCase):</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_add(<span class="va">self</span>):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(add(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dv">3</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(add(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>), <span class="dv">0</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(add(<span class="dv">0</span>, <span class="dv">0</span>), <span class="dv">0</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="running-tests" class="level3" data-number="12.0.2">
+<h3 data-number="12.0.2" class="anchored" data-anchor-id="running-tests"><span class="header-section-number">12.0.2</span> Running Tests</h3>
+<p>You can run the tests by executing the script. The <code>unittest</code> framework will automatically discover and run the tests defined in the <code>TestMathOperations</code> class.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> test_math_operations.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="test-fixtures-setup-and-teardown" class="level3" data-number="12.0.3">
+<h3 data-number="12.0.3" class="anchored" data-anchor-id="test-fixtures-setup-and-teardown"><span class="header-section-number">12.0.3</span> Test Fixtures: Setup and Teardown</h3>
+<p>Test fixtures allow you to set up any state needed for your tests and clean up afterward. Use the <code>setUp</code> and <code>tearDown</code> methods for this purpose.</p>
+<section id="example-using-test-fixtures" class="level5" data-number="12.0.3.0.1">
+<h5 data-number="12.0.3.0.1" class="anchored" data-anchor-id="example-using-test-fixtures"><span class="header-section-number">12.0.3.0.1</span> Example: Using Test Fixtures</h5>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestMathOperations(unittest.TestCase):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> setUp(<span class="va">self</span>):</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Set up any necessary state</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.a <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.b <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> tearDown(<span class="va">self</span>):</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Clean up any necessary state</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_add(<span class="va">self</span>):</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(add(<span class="va">self</span>.a, <span class="va">self</span>.b), <span class="dv">3</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    unittest.main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="organizing-tests-into-suites" class="level3" data-number="12.0.4">
+<h3 data-number="12.0.4" class="anchored" data-anchor-id="organizing-tests-into-suites"><span class="header-section-number">12.0.4</span> Organizing Tests into Suites</h3>
+<p>A test suite is a collection of test cases, test suites, or both. You can use test suites to aggregate tests that should be executed together.</p>
+<section id="example-creating-a-test-suite" class="level5" data-number="12.0.4.0.1">
+<h5 data-number="12.0.4.0.1" class="anchored" data-anchor-id="example-creating-a-test-suite"><span class="header-section-number">12.0.4.0.1</span> Example: Creating a Test Suite</h5>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> unittest</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestMathOperations(unittest.TestCase):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_add(<span class="va">self</span>):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(add(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dv">3</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_subtract(<span class="va">self</span>):</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.assertEqual(subtract(<span class="dv">2</span>, <span class="dv">1</span>), <span class="dv">1</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> suite():</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    suite <span class="op">=</span> unittest.TestSuite()</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    suite.addTest(TestMathOperations(<span class="st">'test_add'</span>))</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    suite.addTest(TestMathOperations(<span class="st">'test_subtract'</span>))</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> suite</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    runner <span class="op">=</span> unittest.TextTestRunner()</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    runner.run(suite())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="advanced-testing-with-pytest" class="level3" data-number="12.0.5">
+<h3 data-number="12.0.5" class="anchored" data-anchor-id="advanced-testing-with-pytest"><span class="header-section-number">12.0.5</span> Advanced Testing with <code>pytest</code></h3>
+<p><code>pytest</code> is a powerful testing framework that supports fixtures, parameterized testing, and a more flexible structure compared to <code>unittest</code>. It is highly recommended for more complex testing needs.</p>
+<section id="installing-pytest" class="level4" data-number="12.0.5.1">
+<h4 data-number="12.0.5.1" class="anchored" data-anchor-id="installing-pytest"><span class="header-section-number">12.0.5.1</span> Installing <code>pytest</code></h4>
+<p>You can install <code>pytest</code> using pip:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install pytest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="writing-tests-with-pytest" class="level4" data-number="12.0.5.2">
+<h4 data-number="12.0.5.2" class="anchored" data-anchor-id="writing-tests-with-pytest"><span class="header-section-number">12.0.5.2</span> Writing Tests with <code>pytest</code></h4>
+<p>Tests in <code>pytest</code> are simple functions. You can use <code>assert</code> statements to check for expected outcomes.</p>
+<section id="example-basic-pytest-test" class="level5" data-number="12.0.5.2.1">
+<h5 data-number="12.0.5.2.1" class="anchored" data-anchor-id="example-basic-pytest-test"><span class="header-section-number">12.0.5.2.1</span> Example: Basic <code>pytest</code> Test</h5>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test_math_operations.py</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add(a, b):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_add():</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> add(<span class="dv">1</span>, <span class="dv">2</span>) <span class="op">==</span> <span class="dv">3</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> add(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> add(<span class="dv">0</span>, <span class="dv">0</span>) <span class="op">==</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="running-pytest-tests" class="level4" data-number="12.0.5.3">
+<h4 data-number="12.0.5.3" class="anchored" data-anchor-id="running-pytest-tests"><span class="header-section-number">12.0.5.3</span> Running <code>pytest</code> Tests</h4>
+<p>Run the tests using the <code>pytest</code> command:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> test_math_operations.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="using-fixtures-in-pytest" class="level3" data-number="12.0.6">
+<h3 data-number="12.0.6" class="anchored" data-anchor-id="using-fixtures-in-pytest"><span class="header-section-number">12.0.6</span> Using Fixtures in <code>pytest</code></h3>
+<p>Fixtures in <code>pytest</code> provide a way to set up and clean up resources needed for tests.</p>
+<section id="example-using-fixtures" class="level5" data-number="12.0.6.0.1">
+<h5 data-number="12.0.6.0.1" class="anchored" data-anchor-id="example-using-fixtures"><span class="header-section-number">12.0.6.0.1</span> Example: Using Fixtures</h5>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytest</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.fixture</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> numbers():</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span>, <span class="dv">2</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_add(numbers):</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    a, b <span class="op">=</span> numbers</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> add(a, b) <span class="op">==</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="parameterized-tests-in-pytest" class="level3" data-number="12.0.7">
+<h3 data-number="12.0.7" class="anchored" data-anchor-id="parameterized-tests-in-pytest"><span class="header-section-number">12.0.7</span> Parameterized Tests in <code>pytest</code></h3>
+<p>Parameterized tests allow you to run a test function with different sets of parameters.</p>
+<section id="example-parameterized-tests" class="level5" data-number="12.0.7.0.1">
+<h5 data-number="12.0.7.0.1" class="anchored" data-anchor-id="example-parameterized-tests"><span class="header-section-number">12.0.7.0.1</span> Example: Parameterized Tests</h5>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytest</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">@pytest.mark.parametrize</span>(<span class="st">"a,b,expected"</span>, [</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    (<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_add(a, b, expected):</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> add(a, b) <span class="op">==</span> expected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion" class="level3" data-number="12.0.8">
+<h3 data-number="12.0.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">12.0.8</span> Conclusion</h3>
+<p>Testing is an essential part of software development that ensures your code works correctly and efficiently. By using <code>unittest</code> for basic unit testing and <code>pytest</code> for more advanced testing scenarios, you can create comprehensive test suites that cover various aspects of your application. Proper testing leads to more robust and reliable code, ultimately improving the quality of your software.</p>
 
 
 </section>
@@ -722,10 +896,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./10_python_automated_sys_tasks.html" class="pagination-link" aria-label="Introduction to Automating System Tasks with Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Automating System Tasks with Python</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./12_python_adv_concepts.html" class="pagination-link" aria-label="Advanced Python Concepts">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Advanced Python Concepts</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

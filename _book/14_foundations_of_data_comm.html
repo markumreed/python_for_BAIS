@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Markum Reed">
-<meta name="dcterms.date" content="2024-01-01">
 
-<title>Python for Business Analytics and Informaton Systems</title>
+<title>15&nbsp; Foundations of Data Communication with Python – Python for Business Analytics and Informaton Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./15_network_architecture_protocols.html" rel="next">
+<link href="./13_python_lib_for_sys_design.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./14_foundations_of_data_comm.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Foundations of Data Communication with Python</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -199,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14_foundations_of_data_comm.html" class="sidebar-item-text sidebar-link">
+  <a href="./14_foundations_of_data_comm.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Foundations of Data Communication with Python</span></span></a>
   </div>
 </li>
@@ -255,7 +288,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#overview-of-data-communication" id="toc-overview-of-data-communication" class="nav-link active" data-scroll-target="#overview-of-data-communication"><span class="header-section-number">15.0.1</span> Overview of Data Communication</a></li>
+  <li><a href="#network-architectures" id="toc-network-architectures" class="nav-link" data-scroll-target="#network-architectures"><span class="header-section-number">15.0.2</span> Network Architectures</a></li>
+  <li><a href="#communication-protocols" id="toc-communication-protocols" class="nav-link" data-scroll-target="#communication-protocols"><span class="header-section-number">15.0.3</span> Communication Protocols</a></li>
+  <li><a href="#basic-network-communication-with-socket" id="toc-basic-network-communication-with-socket" class="nav-link" data-scroll-target="#basic-network-communication-with-socket"><span class="header-section-number">15.0.4</span> Basic Network Communication with <code>socket</code></a></li>
+  <li><a href="#creating-a-simple-udp-server" id="toc-creating-a-simple-udp-server" class="nav-link" data-scroll-target="#creating-a-simple-udp-server"><span class="header-section-number">15.0.5</span> Creating a Simple UDP Server</a></li>
+  <li><a href="#creating-a-simple-udp-client" id="toc-creating-a-simple-udp-client" class="nav-link" data-scroll-target="#creating-a-simple-udp-client"><span class="header-section-number">15.0.6</span> Creating a Simple UDP Client</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">15.0.7</span> Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -264,26 +303,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python for Business Analytics and Informaton Systems</h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Foundations of Data Communication with Python</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Markum Reed </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -293,8 +320,136 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
+<p>Data communication is the process of transmitting data between devices and systems. Understanding the basics of data communication, network architectures, and communication protocols is essential for designing and managing efficient networks. This tutorial will provide an overview of data communication and demonstrate how to use the <code>socket</code> library in Python for basic network communication.</p>
+<section id="overview-of-data-communication" class="level3" data-number="15.0.1">
+<h3 data-number="15.0.1" class="anchored" data-anchor-id="overview-of-data-communication"><span class="header-section-number">15.0.1</span> Overview of Data Communication</h3>
+<p>Data communication involves the exchange of data between devices through a transmission medium. Key components include:</p>
+<ol type="1">
+<li><strong>Sender</strong>: The device that sends the data.</li>
+<li><strong>Receiver</strong>: The device that receives the data.</li>
+<li><strong>Transmission Medium</strong>: The physical path through which the data is transmitted (e.g., cables, wireless signals).</li>
+<li><strong>Protocol</strong>: A set of rules governing data communication.</li>
+</ol>
+</section>
+<section id="network-architectures" class="level3" data-number="15.0.2">
+<h3 data-number="15.0.2" class="anchored" data-anchor-id="network-architectures"><span class="header-section-number">15.0.2</span> Network Architectures</h3>
+<p>Network architectures define the layout and structure of a network. Common architectures include:</p>
+<ol type="1">
+<li><strong>Peer-to-Peer (P2P)</strong>: Each device (peer) has equal status and can act as both a client and a server.</li>
+<li><strong>Client-Server</strong>: A central server provides services to multiple clients. Clients request services, and the server responds.</li>
+</ol>
+</section>
+<section id="communication-protocols" class="level3" data-number="15.0.3">
+<h3 data-number="15.0.3" class="anchored" data-anchor-id="communication-protocols"><span class="header-section-number">15.0.3</span> Communication Protocols</h3>
+<p>Communication protocols are sets of rules that determine how data is transmitted and received over a network. Key protocols include:</p>
+<ol type="1">
+<li><strong>TCP/IP (Transmission Control Protocol/Internet Protocol)</strong>: Ensures reliable data transmission over the internet.</li>
+<li><strong>UDP (User Datagram Protocol)</strong>: A simpler, connectionless protocol for faster, less reliable communication.</li>
+<li><strong>HTTP (Hypertext Transfer Protocol)</strong>: Used for transferring web pages.</li>
+<li><strong>FTP (File Transfer Protocol)</strong>: Used for transferring files.</li>
+</ol>
+</section>
+<section id="basic-network-communication-with-socket" class="level3" data-number="15.0.4">
+<h3 data-number="15.0.4" class="anchored" data-anchor-id="basic-network-communication-with-socket"><span class="header-section-number">15.0.4</span> Basic Network Communication with <code>socket</code></h3>
+<p>Python’s <code>socket</code> library allows you to perform network communication. It provides a low-level interface for sending and receiving data over the network.</p>
+<section id="installing-socket" class="level4" data-number="15.0.4.1">
+<h4 data-number="15.0.4.1" class="anchored" data-anchor-id="installing-socket"><span class="header-section-number">15.0.4.1</span> Installing <code>socket</code></h4>
+<p>The <code>socket</code> library is part of Python’s standard library, so no installation is needed.</p>
+</section>
+<section id="creating-a-simple-tcp-server" class="level4" data-number="15.0.4.2">
+<h4 data-number="15.0.4.2" class="anchored" data-anchor-id="creating-a-simple-tcp-server"><span class="header-section-number">15.0.4.2</span> Creating a Simple TCP Server</h4>
+<p>A TCP server listens for incoming connections from clients and processes their requests.</p>
+<section id="example-tcp-server" class="level5" data-number="15.0.4.2.1">
+<h5 data-number="15.0.4.2.1" class="anchored" data-anchor-id="example-tcp-server"><span class="header-section-number">15.0.4.2.1</span> Example: TCP Server</h5>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the host and port</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>HOST <span class="op">=</span> <span class="st">'127.0.0.1'</span>  <span class="co"># Localhost</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>PORT <span class="op">=</span> <span class="dv">65432</span>        <span class="co"># Arbitrary non-privileged port</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a TCP socket</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> socket.socket(socket.AF_INET, socket.SOCK_STREAM) <span class="im">as</span> server_socket:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    server_socket.bind((HOST, PORT))</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    server_socket.listen()</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Server listening on </span><span class="sc">{</span>HOST<span class="sc">}</span><span class="ss">:</span><span class="sc">{</span>PORT<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Accept a connection</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    conn, addr <span class="op">=</span> server_socket.accept()</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> conn:</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Connected by </span><span class="sc">{</span>addr<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            data <span class="op">=</span> conn.recv(<span class="dv">1024</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> data:</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Received: </span><span class="sc">{</span>data<span class="sc">.</span>decode()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>            conn.sendall(data)  <span class="co"># Echo the received data back to the client</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="creating-a-simple-tcp-client" class="level4" data-number="15.0.4.3">
+<h4 data-number="15.0.4.3" class="anchored" data-anchor-id="creating-a-simple-tcp-client"><span class="header-section-number">15.0.4.3</span> Creating a Simple TCP Client</h4>
+<p>A TCP client connects to a server, sends data, and receives a response.</p>
+<section id="example-tcp-client" class="level5" data-number="15.0.4.3.1">
+<h5 data-number="15.0.4.3.1" class="anchored" data-anchor-id="example-tcp-client"><span class="header-section-number">15.0.4.3.1</span> Example: TCP Client</h5>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the host and port</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>HOST <span class="op">=</span> <span class="st">'127.0.0.1'</span>  <span class="co"># The server's hostname or IP address</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>PORT <span class="op">=</span> <span class="dv">65432</span>        <span class="co"># The port used by the server</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a TCP socket</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> socket.socket(socket.AF_INET, socket.SOCK_STREAM) <span class="im">as</span> client_socket:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    client_socket.<span class="ex">connect</span>((HOST, PORT))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    client_socket.sendall(<span class="st">b'Hello, World!'</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> client_socket.recv(<span class="dv">1024</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Received: </span><span class="sc">{</span>data<span class="sc">.</span>decode()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="creating-a-simple-udp-server" class="level3" data-number="15.0.5">
+<h3 data-number="15.0.5" class="anchored" data-anchor-id="creating-a-simple-udp-server"><span class="header-section-number">15.0.5</span> Creating a Simple UDP Server</h3>
+<p>A UDP server listens for incoming datagrams (packets) from clients and processes them.</p>
+<section id="example-udp-server" class="level5" data-number="15.0.5.0.1">
+<h5 data-number="15.0.5.0.1" class="anchored" data-anchor-id="example-udp-server"><span class="header-section-number">15.0.5.0.1</span> Example: UDP Server</h5>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the host and port</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>HOST <span class="op">=</span> <span class="st">'127.0.0.1'</span>  <span class="co"># Localhost</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>PORT <span class="op">=</span> <span class="dv">65432</span>        <span class="co"># Arbitrary non-privileged port</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a UDP socket</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> socket.socket(socket.AF_INET, socket.SOCK_DGRAM) <span class="im">as</span> server_socket:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    server_socket.bind((HOST, PORT))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"UDP server listening on </span><span class="sc">{</span>HOST<span class="sc">}</span><span class="ss">:</span><span class="sc">{</span>PORT<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        data, addr <span class="op">=</span> server_socket.recvfrom(<span class="dv">1024</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Received: </span><span class="sc">{</span>data<span class="sc">.</span>decode()<span class="sc">}</span><span class="ss"> from </span><span class="sc">{</span>addr<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        server_socket.sendto(data, addr)  <span class="co"># Echo the received data back to the client</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="creating-a-simple-udp-client" class="level3" data-number="15.0.6">
+<h3 data-number="15.0.6" class="anchored" data-anchor-id="creating-a-simple-udp-client"><span class="header-section-number">15.0.6</span> Creating a Simple UDP Client</h3>
+<p>A UDP client sends datagrams to a server and receives responses.</p>
+<section id="example-udp-client" class="level5" data-number="15.0.6.0.1">
+<h5 data-number="15.0.6.0.1" class="anchored" data-anchor-id="example-udp-client"><span class="header-section-number">15.0.6.0.1</span> Example: UDP Client</h5>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the host and port</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>HOST <span class="op">=</span> <span class="st">'127.0.0.1'</span>  <span class="co"># The server's hostname or IP address</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>PORT <span class="op">=</span> <span class="dv">65432</span>        <span class="co"># The port used by the server</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a UDP socket</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> socket.socket(socket.AF_INET, socket.SOCK_DGRAM) <span class="im">as</span> client_socket:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    client_socket.sendto(<span class="st">b'Hello, World!'</span>, (HOST, PORT))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    data, server <span class="op">=</span> client_socket.recvfrom(<span class="dv">1024</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Received: </span><span class="sc">{</span>data<span class="sc">.</span>decode()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion" class="level3" data-number="15.0.7">
+<h3 data-number="15.0.7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">15.0.7</span> Conclusion</h3>
+<p>Understanding the foundations of data communication, network architectures, and communication protocols is essential for designing and managing efficient networks. Python’s <code>socket</code> library provides powerful tools for basic network communication, allowing you to create both TCP and UDP clients and servers. By mastering these concepts and tools, you can develop robust networked applications that effectively communicate over the internet.</p>
 
 
 </section>
@@ -722,10 +877,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./13_python_lib_for_sys_design.html" class="pagination-link" aria-label="Introduction to Python Libraries for System Design">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Introduction to Python Libraries for System Design</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./15_network_architecture_protocols.html" class="pagination-link" aria-label="Network Architecture and Protocols with Python">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Network Architecture and Protocols with Python</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

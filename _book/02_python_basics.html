@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Markum Reed">
-<meta name="dcterms.date" content="2024-01-01">
 
-<title>Python for Business Analytics and Informaton Systems</title>
+<title>3&nbsp; Introduction to Python Programming Basics for Business – Python for Business Analytics and Informaton Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./03_python_control_structures.html" rel="next">
+<link href="./01_python_install_env_setup.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_python_basics.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to Python Programming Basics for Business</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -127,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_python_basics.html" class="sidebar-item-text sidebar-link">
+  <a href="./02_python_basics.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to Python Programming Basics for Business</span></span></a>
   </div>
 </li>
@@ -255,7 +288,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#variables-and-data-types" id="toc-variables-and-data-types" class="nav-link active" data-scroll-target="#variables-and-data-types"><span class="header-section-number">3.0.1</span> Variables and Data Types</a></li>
+  <li><a href="#basic-operations" id="toc-basic-operations" class="nav-link" data-scroll-target="#basic-operations"><span class="header-section-number">3.0.2</span> Basic Operations</a></li>
+  <li><a href="#control-structures" id="toc-control-structures" class="nav-link" data-scroll-target="#control-structures"><span class="header-section-number">3.0.3</span> Control Structures</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">3.0.4</span> Functions</a></li>
+  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists"><span class="header-section-number">3.0.5</span> Lists</a></li>
+  <li><a href="#dictionaries" id="toc-dictionaries" class="nav-link" data-scroll-target="#dictionaries"><span class="header-section-number">3.0.6</span> Dictionaries</a></li>
+  <li><a href="#basic-modules-and-importing" id="toc-basic-modules-and-importing" class="nav-link" data-scroll-target="#basic-modules-and-importing"><span class="header-section-number">3.0.7</span> Basic Modules and Importing</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">3.0.8</span> Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -264,26 +304,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python for Business Analytics and Informaton Systems</h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to Python Programming Basics for Business</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Markum Reed </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -293,8 +321,166 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
+<p>Python is a versatile, high-level programming language known for its readability and broad applicability, especially in the business world. This tutorial will introduce you to the fundamentals of Python, focusing on business-related examples. You will learn about variables, data types, control structures, functions, and basic modules.</p>
+<section id="variables-and-data-types" class="level3" data-number="3.0.1">
+<h3 data-number="3.0.1" class="anchored" data-anchor-id="variables-and-data-types"><span class="header-section-number">3.0.1</span> Variables and Data Types</h3>
+<section id="variables" class="level4" data-number="3.0.1.1">
+<h4 data-number="3.0.1.1" class="anchored" data-anchor-id="variables"><span class="header-section-number">3.0.1.1</span> Variables</h4>
+<p>In Python, variables are used to store data values. You do not need to declare a variable before using it.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>company_name <span class="op">=</span> <span class="st">"Tech Solutions Inc."</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>number_of_employees <span class="op">=</span> <span class="dv">250</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>is_public <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="data-types" class="level4" data-number="3.0.1.2">
+<h4 data-number="3.0.1.2" class="anchored" data-anchor-id="data-types"><span class="header-section-number">3.0.1.2</span> Data Types</h4>
+<ol type="1">
+<li><strong>Strings</strong>: A sequence of characters. <code>python     greeting = "Welcome to our company!"</code></li>
+<li><strong>Integers</strong>: Whole numbers. <code>python     total_sales = 150000</code></li>
+<li><strong>Floats</strong>: Decimal numbers. <code>python     quarterly_profit = 35000.75</code></li>
+<li><strong>Booleans</strong>: True or False values. <code>python     is_profit_increasing = False</code></li>
+</ol>
+</section>
+</section>
+<section id="basic-operations" class="level3" data-number="3.0.2">
+<h3 data-number="3.0.2" class="anchored" data-anchor-id="basic-operations"><span class="header-section-number">3.0.2</span> Basic Operations</h3>
+<p>Python supports various operations on data types.</p>
+<section id="arithmetic-operations" class="level4" data-number="3.0.2.1">
+<h4 data-number="3.0.2.1" class="anchored" data-anchor-id="arithmetic-operations"><span class="header-section-number">3.0.2.1</span> Arithmetic Operations</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>revenue <span class="op">=</span> <span class="dv">100000</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>expenses <span class="op">=</span> <span class="dv">75000</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>net_income <span class="op">=</span> revenue <span class="op">-</span> expenses  <span class="co"># Subtraction</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(net_income)  <span class="co"># Output: 25000</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>profit_margin <span class="op">=</span> (net_income <span class="op">/</span> revenue) <span class="op">*</span> <span class="dv">100</span>  <span class="co"># Division</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(profit_margin)  <span class="co"># Output: 25.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="string-operations" class="level4" data-number="3.0.2.2">
+<h4 data-number="3.0.2.2" class="anchored" data-anchor-id="string-operations"><span class="header-section-number">3.0.2.2</span> String Operations</h4>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>department1 <span class="op">=</span> <span class="st">"Finance"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>department2 <span class="op">=</span> <span class="st">"Marketing"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenation</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>combined_departments <span class="op">=</span> department1 <span class="op">+</span> <span class="st">" and "</span> <span class="op">+</span> department2</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(combined_departments)  <span class="co"># Output: Finance and Marketing</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Length</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>department_length <span class="op">=</span> <span class="bu">len</span>(department1)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(department_length)  <span class="co"># Output: 7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="control-structures" class="level3" data-number="3.0.3">
+<h3 data-number="3.0.3" class="anchored" data-anchor-id="control-structures"><span class="header-section-number">3.0.3</span> Control Structures</h3>
+<section id="conditional-statements" class="level4" data-number="3.0.3.1">
+<h4 data-number="3.0.3.1" class="anchored" data-anchor-id="conditional-statements"><span class="header-section-number">3.0.3.1</span> Conditional Statements</h4>
+<p>Conditional statements allow you to execute code based on conditions.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>annual_revenue <span class="op">=</span> <span class="dv">1200000</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> annual_revenue <span class="op">&gt;</span> <span class="dv">1000000</span>:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"The company qualifies for the large enterprise category."</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"The company qualifies for the small enterprise category."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="loops" class="level4" data-number="3.0.3.2">
+<h4 data-number="3.0.3.2" class="anchored" data-anchor-id="loops"><span class="header-section-number">3.0.3.2</span> Loops</h4>
+<p>Loops are used to iterate over a sequence of elements.</p>
+<section id="for-loop" class="level5" data-number="3.0.3.2.1">
+<h5 data-number="3.0.3.2.1" class="anchored" data-anchor-id="for-loop"><span class="header-section-number">3.0.3.2.1</span> For Loop</h5>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>departments <span class="op">=</span> [<span class="st">"Finance"</span>, <span class="st">"Marketing"</span>, <span class="st">"HR"</span>, <span class="st">"IT"</span>]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> department <span class="kw">in</span> departments:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(department)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="while-loop" class="level5" data-number="3.0.3.2.2">
+<h5 data-number="3.0.3.2.2" class="anchored" data-anchor-id="while-loop"><span class="header-section-number">3.0.3.2.2</span> While Loop</h5>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pending_tasks <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> pending_tasks <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Tasks remaining: </span><span class="sc">{</span>pending_tasks<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    pending_tasks <span class="op">-=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="functions" class="level3" data-number="3.0.4">
+<h3 data-number="3.0.4" class="anchored" data-anchor-id="functions"><span class="header-section-number">3.0.4</span> Functions</h3>
+<p>Functions are blocks of code that perform a specific task and can be reused.</p>
+<section id="defining-and-calling-functions" class="level4" data-number="3.0.4.1">
+<h4 data-number="3.0.4.1" class="anchored" data-anchor-id="defining-and-calling-functions"><span class="header-section-number">3.0.4.1</span> Defining and Calling Functions</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_bonus(salary, performance_rating):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    bonus_percentage <span class="op">=</span> <span class="fl">0.1</span> <span class="cf">if</span> performance_rating <span class="op">&gt;=</span> <span class="dv">4</span> <span class="cf">else</span> <span class="fl">0.05</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> salary <span class="op">*</span> bonus_percentage</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_bonus(<span class="dv">50000</span>, <span class="fl">4.5</span>))  <span class="co"># Output: 5000.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="functions-with-multiple-arguments" class="level4" data-number="3.0.4.2">
+<h4 data-number="3.0.4.2" class="anchored" data-anchor-id="functions-with-multiple-arguments"><span class="header-section-number">3.0.4.2</span> Functions with Multiple Arguments</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_total_cost(unit_price, quantity):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> unit_price <span class="op">*</span> quantity</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_total_cost(<span class="dv">50</span>, <span class="dv">100</span>))  <span class="co"># Output: 5000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="lists" class="level3" data-number="3.0.5">
+<h3 data-number="3.0.5" class="anchored" data-anchor-id="lists"><span class="header-section-number">3.0.5</span> Lists</h3>
+<p>Lists are ordered collections of items.</p>
+<section id="creating-and-accessing-lists" class="level4" data-number="3.0.5.1">
+<h4 data-number="3.0.5.1" class="anchored" data-anchor-id="creating-and-accessing-lists"><span class="header-section-number">3.0.5.1</span> Creating and Accessing Lists</h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>clients <span class="op">=</span> [<span class="st">"Client A"</span>, <span class="st">"Client B"</span>, <span class="st">"Client C"</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clients[<span class="dv">0</span>])  <span class="co"># Accessing first element, Output: Client A</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clients[<span class="op">-</span><span class="dv">1</span>]) <span class="co"># Accessing last element, Output: Client C</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="adding-and-removing-elements" class="level4" data-number="3.0.5.2">
+<h4 data-number="3.0.5.2" class="anchored" data-anchor-id="adding-and-removing-elements"><span class="header-section-number">3.0.5.2</span> Adding and Removing Elements</h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>clients.append(<span class="st">"Client D"</span>)  <span class="co"># Adding an element</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>clients.remove(<span class="st">"Client B"</span>)  <span class="co"># Removing an element</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clients)  <span class="co"># Output: ['Client A', 'Client C', 'Client D']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="dictionaries" class="level3" data-number="3.0.6">
+<h3 data-number="3.0.6" class="anchored" data-anchor-id="dictionaries"><span class="header-section-number">3.0.6</span> Dictionaries</h3>
+<p>Dictionaries store data in key-value pairs.</p>
+<section id="creating-and-accessing-dictionaries" class="level4" data-number="3.0.6.1">
+<h4 data-number="3.0.6.1" class="anchored" data-anchor-id="creating-and-accessing-dictionaries"><span class="header-section-number">3.0.6.1</span> Creating and Accessing Dictionaries</h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>employee <span class="op">=</span> {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"name"</span>: <span class="st">"John Doe"</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"age"</span>: <span class="dv">30</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"position"</span>: <span class="st">"Data Analyst"</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(employee[<span class="st">"name"</span>])  <span class="co"># Accessing value by key, Output: John Doe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="adding-and-removing-key-value-pairs" class="level4" data-number="3.0.6.2">
+<h4 data-number="3.0.6.2" class="anchored" data-anchor-id="adding-and-removing-key-value-pairs"><span class="header-section-number">3.0.6.2</span> Adding and Removing Key-Value Pairs</h4>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>employee[<span class="st">"salary"</span>] <span class="op">=</span> <span class="dv">70000</span>  <span class="co"># Adding a new key-value pair</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> employee[<span class="st">"age"</span>]         <span class="co"># Removing a key-value pair</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(employee)  <span class="co"># Output: {'name': 'John Doe', 'position': 'Data Analyst', 'salary': 70000}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="basic-modules-and-importing" class="level3" data-number="3.0.7">
+<h3 data-number="3.0.7" class="anchored" data-anchor-id="basic-modules-and-importing"><span class="header-section-number">3.0.7</span> Basic Modules and Importing</h3>
+<p>Python has a rich standard library of modules you can import to extend functionality.</p>
+<section id="importing-modules" class="level4" data-number="3.0.7.1">
+<h4 data-number="3.0.7.1" class="anchored" data-anchor-id="importing-modules"><span class="header-section-number">3.0.7.1</span> Importing Modules</h4>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the ceiling value of monthly earnings</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>monthly_earnings <span class="op">=</span> <span class="fl">10234.56</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.ceil(monthly_earnings))  <span class="co"># Output: 10235</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="importing-specific-functions" class="level4" data-number="3.0.7.2">
+<h4 data-number="3.0.7.2" class="anchored" data-anchor-id="importing-specific-functions"><span class="header-section-number">3.0.7.2</span> Importing Specific Functions</h4>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the square root of the annual growth percentage</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>annual_growth <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sqrt(annual_growth))  <span class="co"># Output: 4.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion" class="level3" data-number="3.0.8">
+<h3 data-number="3.0.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">3.0.8</span> Conclusion</h3>
+<p>This tutorial covered the basics of Python programming with a focus on business-related examples, including variables, data types, control structures, functions, lists, dictionaries, and basic module usage. With these fundamentals, you can start building simple Python programs to solve business problems and gradually move on to more complex projects.</p>
 
 
 </section>
@@ -722,10 +908,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./01_python_install_env_setup.html" class="pagination-link" aria-label="Installing Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing Python</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./03_python_control_structures.html" class="pagination-link" aria-label="Python Control Structures for Business Applications">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Python Control Structures for Business Applications</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

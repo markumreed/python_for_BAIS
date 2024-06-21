@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Markum Reed">
-<meta name="dcterms.date" content="2024-01-01">
 
-<title>Python for Business Analytics and Informaton Systems</title>
+<title>16&nbsp; Network Architecture and Protocols with Python – Python for Business Analytics and Informaton Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./16_network_services_mgmt.html" rel="next">
+<link href="./14_foundations_of_data_comm.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./15_network_architecture_protocols.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Network Architecture and Protocols with Python</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -205,7 +238,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./15_network_architecture_protocols.html" class="sidebar-item-text sidebar-link">
+  <a href="./15_network_architecture_protocols.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Network Architecture and Protocols with Python</span></span></a>
   </div>
 </li>
@@ -255,7 +288,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#network-layer-topics" id="toc-network-layer-topics" class="nav-link active" data-scroll-target="#network-layer-topics"><span class="header-section-number">16.0.1</span> Network Layer Topics</a></li>
+  <li><a href="#transport-layer-topics" id="toc-transport-layer-topics" class="nav-link" data-scroll-target="#transport-layer-topics"><span class="header-section-number">16.0.2</span> Transport Layer Topics</a></li>
+  <li><a href="#application-layer-protocols" id="toc-application-layer-protocols" class="nav-link" data-scroll-target="#application-layer-protocols"><span class="header-section-number">16.0.3</span> Application Layer Protocols</a></li>
+  <li><a href="#network-packet-analysis-with-scapy" id="toc-network-packet-analysis-with-scapy" class="nav-link" data-scroll-target="#network-packet-analysis-with-scapy"><span class="header-section-number">16.0.4</span> Network Packet Analysis with <code>scapy</code></a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">16.0.5</span> Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -264,26 +301,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python for Business Analytics and Informaton Systems</h1>
+<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Network Architecture and Protocols with Python</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Markum Reed </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -293,8 +318,173 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
+<p>Understanding network architecture and protocols is crucial for designing and managing efficient networks. This tutorial will cover key concepts in network architecture, including IP addressing, subnetting, and routing algorithms. It will also delve into transport layer topics like TCP/UDP protocols, flow control, and error control, and explore application layer protocols such as HTTP, FTP, and SMTP. We’ll use Python libraries like <code>scapy</code> for network packet analysis and <code>socket</code> for implementing TCP and UDP clients and servers.</p>
+<section id="network-layer-topics" class="level3" data-number="16.0.1">
+<h3 data-number="16.0.1" class="anchored" data-anchor-id="network-layer-topics"><span class="header-section-number">16.0.1</span> Network Layer Topics</h3>
+<section id="ip-addressing" class="level4" data-number="16.0.1.1">
+<h4 data-number="16.0.1.1" class="anchored" data-anchor-id="ip-addressing"><span class="header-section-number">16.0.1.1</span> IP Addressing</h4>
+<p>IP addressing is the method by which devices on a network are identified. IPv4 addresses are 32-bit numbers usually represented in dot-decimal notation (e.g., 192.168.1.1).</p>
+<section id="example-displaying-local-ip-address" class="level5" data-number="16.0.1.1.1">
+<h5 data-number="16.0.1.1.1" class="anchored" data-anchor-id="example-displaying-local-ip-address"><span class="header-section-number">16.0.1.1.1</span> Example: Displaying Local IP Address</h5>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>hostname <span class="op">=</span> socket.gethostname()</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>local_ip <span class="op">=</span> socket.gethostbyname(hostname)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Local IP Address: </span><span class="sc">{</span>local_ip<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="subnetting" class="level4" data-number="16.0.1.2">
+<h4 data-number="16.0.1.2" class="anchored" data-anchor-id="subnetting"><span class="header-section-number">16.0.1.2</span> Subnetting</h4>
+<p>Subnetting divides a network into smaller sub-networks (subnets) to improve management and security. Subnets are defined by their subnet mask.</p>
+<section id="example-calculating-subnet-information" class="level5" data-number="16.0.1.2.1">
+<h5 data-number="16.0.1.2.1" class="anchored" data-anchor-id="example-calculating-subnet-information"><span class="header-section-number">16.0.1.2.1</span> Example: Calculating Subnet Information</h5>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ipaddress</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>network <span class="op">=</span> ipaddress.ip_network(<span class="st">'192.168.1.0/24'</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Network: </span><span class="sc">{</span>network<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Netmask: </span><span class="sc">{</span>network<span class="sc">.</span>netmask<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Broadcast: </span><span class="sc">{</span>network<span class="sc">.</span>broadcast_address<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Hosts: </span><span class="sc">{</span><span class="bu">list</span>(network.hosts())[:<span class="dv">5</span>]<span class="sc">}</span><span class="ss">..."</span>)  <span class="co"># Display first 5 hosts</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="routing-algorithms" class="level4" data-number="16.0.1.3">
+<h4 data-number="16.0.1.3" class="anchored" data-anchor-id="routing-algorithms"><span class="header-section-number">16.0.1.3</span> Routing Algorithms</h4>
+<p>Routing algorithms determine the best path for data to travel across a network. Common algorithms include Distance Vector Routing and Link State Routing.</p>
+</section>
+</section>
+<section id="transport-layer-topics" class="level3" data-number="16.0.2">
+<h3 data-number="16.0.2" class="anchored" data-anchor-id="transport-layer-topics"><span class="header-section-number">16.0.2</span> Transport Layer Topics</h3>
+<section id="tcpudp-protocols" class="level4" data-number="16.0.2.1">
+<h4 data-number="16.0.2.1" class="anchored" data-anchor-id="tcpudp-protocols"><span class="header-section-number">16.0.2.1</span> TCP/UDP Protocols</h4>
+<p>TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are key transport layer protocols. TCP is connection-oriented and reliable, while UDP is connectionless and faster but less reliable.</p>
+<section id="example-tcp-client-and-server" class="level5" data-number="16.0.2.1.1">
+<h5 data-number="16.0.2.1.1" class="anchored" data-anchor-id="example-tcp-client-and-server"><span class="header-section-number">16.0.2.1.1</span> Example: TCP Client and Server</h5>
+<p><strong>TCP Server:</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>server_socket <span class="op">=</span> socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>server_socket.bind((<span class="st">'127.0.0.1'</span>, <span class="dv">65432</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>server_socket.listen()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"TCP Server listening on port 65432"</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    conn, addr <span class="op">=</span> server_socket.accept()</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> conn:</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Connected by </span><span class="sc">{</span>addr<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> conn.recv(<span class="dv">1024</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> data:</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        conn.sendall(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>TCP Client:</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>client_socket <span class="op">=</span> socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>client_socket.<span class="ex">connect</span>((<span class="st">'127.0.0.1'</span>, <span class="dv">65432</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>client_socket.sendall(<span class="st">b'Hello, World!'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> client_socket.recv(<span class="dv">1024</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Received: </span><span class="sc">{</span>data<span class="sc">.</span>decode()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-udp-client-and-server" class="level5" data-number="16.0.2.1.2">
+<h5 data-number="16.0.2.1.2" class="anchored" data-anchor-id="example-udp-client-and-server"><span class="header-section-number">16.0.2.1.2</span> Example: UDP Client and Server</h5>
+<p><strong>UDP Server:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>server_socket <span class="op">=</span> socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>server_socket.bind((<span class="st">'127.0.0.1'</span>, <span class="dv">65432</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"UDP Server listening on port 65432"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    data, addr <span class="op">=</span> server_socket.recvfrom(<span class="dv">1024</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Received from </span><span class="sc">{</span>addr<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>data<span class="sc">.</span>decode()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    server_socket.sendto(data, addr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>UDP Client:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>client_socket <span class="op">=</span> socket.socket(socket.AF_INET, socket.SOCK_DGRAM)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>client_socket.sendto(<span class="st">b'Hello, World!'</span>, (<span class="st">'127.0.0.1'</span>, <span class="dv">65432</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>data, server <span class="op">=</span> client_socket.recvfrom(<span class="dv">1024</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Received: </span><span class="sc">{</span>data<span class="sc">.</span>decode()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="flow-control-and-error-control" class="level4" data-number="16.0.2.2">
+<h4 data-number="16.0.2.2" class="anchored" data-anchor-id="flow-control-and-error-control"><span class="header-section-number">16.0.2.2</span> Flow Control and Error Control</h4>
+<p>Flow control ensures data is sent at a rate that the receiver can handle. Error control detects and corrects errors in transmitted data. TCP implements both flow control (using windowing) and error control (using checksums and acknowledgments).</p>
+</section>
+</section>
+<section id="application-layer-protocols" class="level3" data-number="16.0.3">
+<h3 data-number="16.0.3" class="anchored" data-anchor-id="application-layer-protocols"><span class="header-section-number">16.0.3</span> Application Layer Protocols</h3>
+<section id="http-hypertext-transfer-protocol" class="level4" data-number="16.0.3.1">
+<h4 data-number="16.0.3.1" class="anchored" data-anchor-id="http-hypertext-transfer-protocol"><span class="header-section-number">16.0.3.1</span> HTTP (Hypertext Transfer Protocol)</h4>
+<p>HTTP is the foundation of data communication on the web.</p>
+<section id="example-simple-http-get-request-using-socket" class="level5" data-number="16.0.3.1.1">
+<h5 data-number="16.0.3.1.1" class="anchored" data-anchor-id="example-simple-http-get-request-using-socket"><span class="header-section-number">16.0.3.1.1</span> Example: Simple HTTP GET Request using <code>socket</code></h5>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>request <span class="op">=</span> <span class="st">"GET / HTTP/1.1</span><span class="ch">\r\n</span><span class="st">Host: www.example.com</span><span class="ch">\r\n\r\n</span><span class="st">"</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>client_socket <span class="op">=</span> socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>client_socket.<span class="ex">connect</span>((<span class="st">'www.example.com'</span>, <span class="dv">80</span>))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>client_socket.sendall(request.encode())</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> client_socket.recv(<span class="dv">4096</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.decode())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="ftp-file-transfer-protocol" class="level4" data-number="16.0.3.2">
+<h4 data-number="16.0.3.2" class="anchored" data-anchor-id="ftp-file-transfer-protocol"><span class="header-section-number">16.0.3.2</span> FTP (File Transfer Protocol)</h4>
+<p>FTP is used for transferring files between a client and server.</p>
+<section id="example-simple-ftp-interaction-using-ftplib" class="level5" data-number="16.0.3.2.1">
+<h5 data-number="16.0.3.2.1" class="anchored" data-anchor-id="example-simple-ftp-interaction-using-ftplib"><span class="header-section-number">16.0.3.2.1</span> Example: Simple FTP Interaction using <code>ftplib</code></h5>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ftplib <span class="im">import</span> FTP</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ftp <span class="op">=</span> FTP(<span class="st">'ftp.dlptest.com'</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>ftp.login()</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>ftp.retrlines(<span class="st">'LIST'</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>ftp.quit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="smtp-simple-mail-transfer-protocol" class="level4" data-number="16.0.3.3">
+<h4 data-number="16.0.3.3" class="anchored" data-anchor-id="smtp-simple-mail-transfer-protocol"><span class="header-section-number">16.0.3.3</span> SMTP (Simple Mail Transfer Protocol)</h4>
+<p>SMTP is used for sending emails.</p>
+<section id="example-sending-email-using-smtplib" class="level5" data-number="16.0.3.3.1">
+<h5 data-number="16.0.3.3.1" class="anchored" data-anchor-id="example-sending-email-using-smtplib"><span class="header-section-number">16.0.3.3.1</span> Example: Sending Email using <code>smtplib</code></h5>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> smtplib</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> email.mime.text <span class="im">import</span> MIMEText</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>msg <span class="op">=</span> MIMEText(<span class="st">"This is the body of the email."</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>msg[<span class="st">'Subject'</span>] <span class="op">=</span> <span class="st">"Test Email"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>msg[<span class="st">'From'</span>] <span class="op">=</span> <span class="st">"your_email@example.com"</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>msg[<span class="st">'To'</span>] <span class="op">=</span> <span class="st">"recipient_email@example.com"</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> smtplib.SMTP(<span class="st">'smtp.example.com'</span>) <span class="im">as</span> server:</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    server.login(<span class="st">"your_email@example.com"</span>, <span class="st">"your_password"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    server.sendmail(msg[<span class="st">'From'</span>], [msg[<span class="st">'To'</span>]], msg.as_string())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="network-packet-analysis-with-scapy" class="level3" data-number="16.0.4">
+<h3 data-number="16.0.4" class="anchored" data-anchor-id="network-packet-analysis-with-scapy"><span class="header-section-number">16.0.4</span> Network Packet Analysis with <code>scapy</code></h3>
+<p><code>scapy</code> is a powerful Python library for network packet manipulation and analysis.</p>
+<section id="installing-scapy" class="level4" data-number="16.0.4.1">
+<h4 data-number="16.0.4.1" class="anchored" data-anchor-id="installing-scapy"><span class="header-section-number">16.0.4.1</span> Installing <code>scapy</code></h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install scapy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-capturing-and-analyzing-packets" class="level4" data-number="16.0.4.2">
+<h4 data-number="16.0.4.2" class="anchored" data-anchor-id="example-capturing-and-analyzing-packets"><span class="header-section-number">16.0.4.2</span> Example: Capturing and Analyzing Packets</h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scapy.<span class="bu">all</span> <span class="im">import</span> sniff</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> packet_callback(packet):</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(packet.show())</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Capture 10 packets</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>sniff(prn<span class="op">=</span>packet_callback, count<span class="op">=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion" class="level3" data-number="16.0.5">
+<h3 data-number="16.0.5" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">16.0.5</span> Conclusion</h3>
+<p>Understanding network architecture and protocols is essential for designing and managing efficient networks. Python provides powerful libraries like <code>scapy</code> and <code>socket</code> to interact with and analyze network traffic. By mastering these tools and concepts, you can develop robust networked applications and effectively troubleshoot network issues.</p>
 
 
 </section>
@@ -722,10 +912,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./14_foundations_of_data_comm.html" class="pagination-link" aria-label="Foundations of Data Communication with Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Foundations of Data Communication with Python</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./16_network_services_mgmt.html" class="pagination-link" aria-label="Network Services and Management with Python">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Network Services and Management with Python</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

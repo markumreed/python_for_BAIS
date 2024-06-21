@@ -1,0 +1,324 @@
+# Using Docker
+
+## Introduction to Docker with Python
+
+Docker is a powerful platform that allows you to create, deploy, and run applications in isolated containers. Containers are lightweight, portable, and ensure that your application runs consistently regardless of the environment. This tutorial will introduce you to Docker, demonstrate how to containerize a Python application, and manage Docker containers.
+
+### Installing Docker
+
+First, you need to install Docker. You can download and install Docker from the [official Docker website](https://www.docker.com/products/docker-desktop).
+
+### Docker Basics
+
+#### Key Concepts
+
+1. **Image**: A lightweight, standalone, executable package that includes everything needed to run a piece of software, including the code, runtime, libraries, and dependencies.
+2. **Container**: A runnable instance of an image. You can create, start, stop, move, and delete a container using the Docker API or CLI.
+3. **Dockerfile**: A text file that contains a series of instructions on how to build a Docker image.
+
+### Containerizing a Python Application
+
+Let's create a simple Python application and containerize it using Docker.
+
+#### Step 1: Create a Simple Python Application
+
+Create a directory for your project and add a Python script:
+
+```bash
+mkdir docker-python-app
+cd docker-python-app
+```
+
+Create a file named `app.py` with the following content:
+
+```python
+# app.py
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, Docker!'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+```
+
+Create a `requirements.txt` file with the following content:
+
+```txt
+flask
+```
+
+#### Step 2: Create a Dockerfile
+
+Create a file named `Dockerfile` in the project directory with the following content:
+
+```dockerfile
+# Use the official Python image from the Docker Hub
+FROM python:3.9-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install the required packages
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
+
+# Define the command to run the application
+CMD ["python", "app.py"]
+```
+
+#### Step 3: Build the Docker Image
+
+Open a terminal, navigate to your project directory, and run the following command to build the Docker image:
+
+```bash
+docker build -t docker-python-app .
+```
+
+#### Step 4: Run the Docker Container
+
+Run the following command to start a container from the image you built:
+
+```bash
+docker run -d -p 5000:5000 docker-python-app
+```
+
+This command runs the container in detached mode (`-d`) and maps port 5000 on your host to port 5000 in the container (`-p 5000:5000`).
+
+#### Step 5: Test the Application
+
+Open a web browser and go to `http://localhost:5000`. You should see the message "Hello, Docker!".
+
+### Managing Docker Containers
+
+#### List Running Containers
+
+To list all running containers, use the following command:
+
+```bash
+docker ps
+```
+
+#### Stop a Container
+
+To stop a running container, use the `docker stop` command followed by the container ID or name:
+
+```bash
+docker stop <container_id>
+```
+
+#### Remove a Container
+
+To remove a container, use the `docker rm` command followed by the container ID or name:
+
+```bash
+docker rm <container_id>
+```
+
+### Docker Compose
+
+Docker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.
+
+#### Step 1: Create a `docker-compose.yml` File
+
+Create a file named `docker-compose.yml` in your project directory with the following content:
+
+```yaml
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+```
+
+#### Step 2: Run Docker Compose
+
+Run the following command to start the application:
+
+```bash
+docker-compose up
+```
+
+This command builds the image (if it hasn’t been built already) and starts the services defined in the `docker-compose.yml` file.
+
+#### Step 3: Stop Docker Compose
+
+To stop the application, run:
+
+```bash
+docker-compose down
+```
+
+### Conclusion
+
+Docker simplifies the process of developing, shipping, and running applications by using containerization. By containerizing your Python application, you ensure it runs consistently across different environments. Docker Compose further simplifies managing multi-container applications. Mastering Docker can greatly enhance your development workflow, making your applications more portable, scalable, and easier to manage.
+## Introduction to Docker with Python
+
+Docker is a powerful platform that allows you to create, deploy, and run applications in isolated containers. Containers are lightweight, portable, and ensure that your application runs consistently regardless of the environment. This tutorial will introduce you to Docker, demonstrate how to containerize a Python application, and manage Docker containers.
+
+### Installing Docker
+
+First, you need to install Docker. You can download and install Docker from the [official Docker website](https://www.docker.com/products/docker-desktop).
+
+### Docker Basics
+
+#### Key Concepts
+
+1. **Image**: A lightweight, standalone, executable package that includes everything needed to run a piece of software, including the code, runtime, libraries, and dependencies.
+2. **Container**: A runnable instance of an image. You can create, start, stop, move, and delete a container using the Docker API or CLI.
+3. **Dockerfile**: A text file that contains a series of instructions on how to build a Docker image.
+
+### Containerizing a Python Application
+
+Let's create a simple Python application and containerize it using Docker.
+
+#### Step 1: Create a Simple Python Application
+
+Create a directory for your project and add a Python script:
+
+```bash
+mkdir docker-python-app
+cd docker-python-app
+```
+
+Create a file named `app.py` with the following content:
+
+```python
+# app.py
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, Docker!'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+```
+
+Create a `requirements.txt` file with the following content:
+
+```txt
+flask
+```
+
+#### Step 2: Create a Dockerfile
+
+Create a file named `Dockerfile` in the project directory with the following content:
+
+```dockerfile
+# Use the official Python image from the Docker Hub
+FROM python:3.9-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install the required packages
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
+
+# Define the command to run the application
+CMD ["python", "app.py"]
+```
+
+#### Step 3: Build the Docker Image
+
+Open a terminal, navigate to your project directory, and run the following command to build the Docker image:
+
+```bash
+docker build -t docker-python-app .
+```
+
+#### Step 4: Run the Docker Container
+
+Run the following command to start a container from the image you built:
+
+```bash
+docker run -d -p 5000:5000 docker-python-app
+```
+
+This command runs the container in detached mode (`-d`) and maps port 5000 on your host to port 5000 in the container (`-p 5000:5000`).
+
+#### Step 5: Test the Application
+
+Open a web browser and go to `http://localhost:5000`. You should see the message "Hello, Docker!".
+
+### Managing Docker Containers
+
+#### List Running Containers
+
+To list all running containers, use the following command:
+
+```bash
+docker ps
+```
+
+#### Stop a Container
+
+To stop a running container, use the `docker stop` command followed by the container ID or name:
+
+```bash
+docker stop <container_id>
+```
+
+#### Remove a Container
+
+To remove a container, use the `docker rm` command followed by the container ID or name:
+
+```bash
+docker rm <container_id>
+```
+
+### Docker Compose
+
+Docker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.
+
+#### Step 1: Create a `docker-compose.yml` File
+
+Create a file named `docker-compose.yml` in your project directory with the following content:
+
+```yaml
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+```
+
+#### Step 2: Run Docker Compose
+
+Run the following command to start the application:
+
+```bash
+docker-compose up
+```
+
+This command builds the image (if it hasn’t been built already) and starts the services defined in the `docker-compose.yml` file.
+
+#### Step 3: Stop Docker Compose
+
+To stop the application, run:
+
+```bash
+docker-compose down
+```
+
+### Conclusion
+
+Docker simplifies the process of developing, shipping, and running applications by using containerization. By containerizing your Python application, you ensure it runs consistently across different environments. Docker Compose further simplifies managing multi-container applications. Mastering Docker can greatly enhance your development workflow, making your applications more portable, scalable, and easier to manage.

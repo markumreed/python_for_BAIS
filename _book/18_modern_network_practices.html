@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Markum Reed">
-<meta name="dcterms.date" content="2024-01-01">
 
-<title>Python for Business Analytics and Informaton Systems</title>
+<title>19&nbsp; Modern Network Practices with Python – Python for Business Analytics and Informaton Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./summary.html" rel="next">
+<link href="./17_adv_network_concepts.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./18_modern_network_practices.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Modern Network Practices with Python</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -223,7 +256,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./18_modern_network_practices.html" class="sidebar-item-text sidebar-link">
+  <a href="./18_modern_network_practices.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Modern Network Practices with Python</span></span></a>
   </div>
 </li>
@@ -255,7 +288,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#devops-practices" id="toc-devops-practices" class="nav-link active" data-scroll-target="#devops-practices"><span class="header-section-number">19.0.1</span> DevOps Practices</a></li>
+  <li><a href="#managerial-issues" id="toc-managerial-issues" class="nav-link" data-scroll-target="#managerial-issues"><span class="header-section-number">19.0.2</span> Managerial Issues</a></li>
+  <li><a href="#wireless-communication-protocols" id="toc-wireless-communication-protocols" class="nav-link" data-scroll-target="#wireless-communication-protocols"><span class="header-section-number">19.0.3</span> Wireless Communication Protocols</a></li>
+  <li><a href="#phone-networks-and-service-delivery" id="toc-phone-networks-and-service-delivery" class="nav-link" data-scroll-target="#phone-networks-and-service-delivery"><span class="header-section-number">19.0.4</span> Phone Networks and Service Delivery</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">19.0.5</span> Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -264,26 +301,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python for Business Analytics and Informaton Systems</h1>
+<h1 class="title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Modern Network Practices with Python</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Markum Reed </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -293,8 +318,147 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
+<p>Modern network practices encompass a wide range of methodologies and technologies to manage and automate network infrastructure, optimize project management, and ensure efficient communication and service delivery. This tutorial covers DevOps practices, managerial issues, wireless communication protocols, phone networks, and service delivery, with examples using Python libraries such as Ansible, Terraform, Matplotlib, Flask, and Django.</p>
+<section id="devops-practices" class="level3" data-number="19.0.1">
+<h3 data-number="19.0.1" class="anchored" data-anchor-id="devops-practices"><span class="header-section-number">19.0.1</span> DevOps Practices</h3>
+<section id="continuous-integration-and-deployment" class="level4" data-number="19.0.1.1">
+<h4 data-number="19.0.1.1" class="anchored" data-anchor-id="continuous-integration-and-deployment"><span class="header-section-number">19.0.1.1</span> Continuous Integration and Deployment</h4>
+<p>Continuous Integration (CI) and Continuous Deployment (CD) are DevOps practices aimed at automating the integration and deployment of code changes.</p>
+<section id="example-automating-infrastructure-with-ansible" class="level5" data-number="19.0.1.1.1">
+<h5 data-number="19.0.1.1.1" class="anchored" data-anchor-id="example-automating-infrastructure-with-ansible"><span class="header-section-number">19.0.1.1.1</span> Example: Automating Infrastructure with Ansible</h5>
+<p>Ansible is an open-source automation tool for configuration management, application deployment, and task automation.</p>
+<p><strong>Install Ansible:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install ansible</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Example Ansible Playbook:</strong></p>
+<p>Create a file named <code>playbook.yml</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Ensure web server is installed</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hosts</span><span class="kw">:</span><span class="at"> webservers</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">become</span><span class="kw">:</span><span class="at"> </span><span class="ch">yes</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">tasks</span><span class="kw">:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Install nginx</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">apt</span><span class="kw">:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">name</span><span class="kw">:</span><span class="at"> nginx</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">state</span><span class="kw">:</span><span class="at"> present</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Run the playbook:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ansible-playbook</span> <span class="at">-i</span> inventory playbook.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-infrastructure-as-code-with-terraform" class="level5" data-number="19.0.1.1.2">
+<h5 data-number="19.0.1.1.2" class="anchored" data-anchor-id="example-infrastructure-as-code-with-terraform"><span class="header-section-number">19.0.1.1.2</span> Example: Infrastructure as Code with Terraform</h5>
+<p>Terraform is an open-source tool for building, changing, and versioning infrastructure safely and efficiently.</p>
+<p><strong>Install Terraform:</strong></p>
+<p>Follow the installation instructions on the <a href="https://www.terraform.io/downloads">Terraform website</a>.</p>
+<p><strong>Example Terraform Configuration:</strong></p>
+<p>Create a file named <code>main.tf</code>:</p>
+<pre class="hcl"><code>provider "aws" {
+  region = "us-west-2"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "web_instance"
+  }
+}</code></pre>
+<p>Run the Terraform commands:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">terraform</span> init</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">terraform</span> apply</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="managerial-issues" class="level3" data-number="19.0.2">
+<h3 data-number="19.0.2" class="anchored" data-anchor-id="managerial-issues"><span class="header-section-number">19.0.2</span> Managerial Issues</h3>
+<section id="it-project-management-budgeting-and-strategic-planning" class="level4" data-number="19.0.2.1">
+<h4 data-number="19.0.2.1" class="anchored" data-anchor-id="it-project-management-budgeting-and-strategic-planning"><span class="header-section-number">19.0.2.1</span> IT Project Management, Budgeting, and Strategic Planning</h4>
+<p>Effective IT project management and budgeting are essential for successful strategic planning.</p>
+<section id="example-visualizing-it-budget-data-with-matplotlib" class="level5" data-number="19.0.2.1.1">
+<h5 data-number="19.0.2.1.1" class="anchored" data-anchor-id="example-visualizing-it-budget-data-with-matplotlib"><span class="header-section-number">19.0.2.1.1</span> Example: Visualizing IT Budget Data with Matplotlib</h5>
+<p>Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations in Python.</p>
+<p><strong>Install Matplotlib:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Example Visualization:</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample IT budget data</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>categories <span class="op">=</span> [<span class="st">'Hardware'</span>, <span class="st">'Software'</span>, <span class="st">'Services'</span>, <span class="st">'Other'</span>]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>budget <span class="op">=</span> [<span class="dv">25000</span>, <span class="dv">15000</span>, <span class="dv">10000</span>, <span class="dv">5000</span>]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pie chart</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.pie(budget, labels<span class="op">=</span>categories, autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'IT Budget Allocation'</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="wireless-communication-protocols" class="level3" data-number="19.0.3">
+<h3 data-number="19.0.3" class="anchored" data-anchor-id="wireless-communication-protocols"><span class="header-section-number">19.0.3</span> Wireless Communication Protocols</h3>
+<section id="wi-fi-mobile-networks" class="level4" data-number="19.0.3.1">
+<h4 data-number="19.0.3.1" class="anchored" data-anchor-id="wi-fi-mobile-networks"><span class="header-section-number">19.0.3.1</span> Wi-Fi, Mobile Networks</h4>
+<p>Wireless communication protocols like Wi-Fi and mobile networks are crucial for modern connectivity.</p>
+<section id="example-simulating-wi-fi-network-connection" class="level5" data-number="19.0.3.1.1">
+<h5 data-number="19.0.3.1.1" class="anchored" data-anchor-id="example-simulating-wi-fi-network-connection"><span class="header-section-number">19.0.3.1.1</span> Example: Simulating Wi-Fi Network Connection</h5>
+<p><strong>Example Simulation:</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> subprocess</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> connect_to_wifi(ssid, password):</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> subprocess.run([<span class="st">'nmcli'</span>, <span class="st">'dev'</span>, <span class="st">'wifi'</span>, <span class="st">'connect'</span>, ssid, <span class="st">'password'</span>, password], capture_output<span class="op">=</span><span class="va">True</span>, text<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> result.returncode <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Successfully connected to </span><span class="sc">{</span>ssid<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Failed to connect to </span><span class="sc">{</span>ssid<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>result<span class="sc">.</span>stderr<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"An error occurred: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>connect_to_wifi(<span class="st">'Your_SSID'</span>, <span class="st">'Your_Password'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="phone-networks-and-service-delivery" class="level3" data-number="19.0.4">
+<h3 data-number="19.0.4" class="anchored" data-anchor-id="phone-networks-and-service-delivery"><span class="header-section-number">19.0.4</span> Phone Networks and Service Delivery</h3>
+<section id="pstn-voip-mobile-network-architectures-web-services-content-delivery-networks-and-service-oriented-architecture" class="level4" data-number="19.0.4.1">
+<h4 data-number="19.0.4.1" class="anchored" data-anchor-id="pstn-voip-mobile-network-architectures-web-services-content-delivery-networks-and-service-oriented-architecture"><span class="header-section-number">19.0.4.1</span> PSTN, VoIP, Mobile Network Architectures, Web Services, Content Delivery Networks, and Service-Oriented Architecture</h4>
+<p>Phone networks and service delivery are essential for modern communication.</p>
+<section id="example-developing-restful-apis-with-flask" class="level5" data-number="19.0.4.1.1">
+<h5 data-number="19.0.4.1.1" class="anchored" data-anchor-id="example-developing-restful-apis-with-flask"><span class="header-section-number">19.0.4.1.1</span> Example: Developing RESTful APIs with Flask</h5>
+<p>Flask is a lightweight WSGI web application framework in Python.</p>
+<p><strong>Install Flask:</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install flask</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Example Flask API:</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> flask <span class="im">import</span> Flask, jsonify, request</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> Flask(<span class="va">__name__</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>devices <span class="op">=</span> [</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'id'</span>: <span class="dv">1</span>, <span class="st">'name'</span>: <span class="st">'Router'</span>, <span class="st">'status'</span>: <span class="st">'Active'</span>},</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'id'</span>: <span class="dv">2</span>, <span class="st">'name'</span>: <span class="st">'Switch'</span>, <span class="st">'status'</span>: <span class="st">'Inactive'</span>}</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">'/devices'</span>, methods<span class="op">=</span>[<span class="st">'GET'</span>])</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_devices():</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jsonify(devices)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">'/devices/&lt;int:device_id&gt;'</span>, methods<span class="op">=</span>[<span class="st">'GET'</span>])</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_device(device_id):</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    device <span class="op">=</span> <span class="bu">next</span>((device <span class="cf">for</span> device <span class="kw">in</span> devices <span class="cf">if</span> device[<span class="st">'id'</span>] <span class="op">==</span> device_id), <span class="va">None</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jsonify(device) <span class="cf">if</span> device <span class="cf">else</span> (<span class="st">''</span>, <span class="dv">404</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="at">@app.route</span>(<span class="st">'/devices'</span>, methods<span class="op">=</span>[<span class="st">'POST'</span>])</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_device():</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    new_device <span class="op">=</span> request.get_json()</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    devices.append(new_device)</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> jsonify(new_device), <span class="dv">201</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    app.run(debug<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="conclusion" class="level3" data-number="19.0.5">
+<h3 data-number="19.0.5" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">19.0.5</span> Conclusion</h3>
+<p>Modern network practices involve a combination of DevOps methodologies, effective IT project management, wireless communication protocols, and efficient service delivery systems. Python provides powerful libraries such as Ansible, Terraform, Matplotlib, Flask, and Django to facilitate these tasks. By mastering these tools and practices, you can build, manage, and optimize robust network infrastructures.</p>
 
 
 </section>
@@ -722,10 +886,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./17_adv_network_concepts.html" class="pagination-link" aria-label="Advanced Networking Concepts with Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Advanced Networking Concepts with Python</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./summary.html" class="pagination-link" aria-label="Summary">
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

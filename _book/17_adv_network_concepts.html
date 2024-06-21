@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Markum Reed">
-<meta name="dcterms.date" content="2024-01-01">
 
-<title>Python for Business Analytics and Informaton Systems</title>
+<title>18&nbsp; Advanced Networking Concepts with Python – Python for Business Analytics and Informaton Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./18_modern_network_practices.html" rel="next">
+<link href="./16_network_services_mgmt.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./17_adv_network_concepts.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Advanced Networking Concepts with Python</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -217,7 +250,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./17_adv_network_concepts.html" class="sidebar-item-text sidebar-link">
+  <a href="./17_adv_network_concepts.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Advanced Networking Concepts with Python</span></span></a>
   </div>
 </li>
@@ -255,7 +288,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#wan-technologies-and-protocols" id="toc-wan-technologies-and-protocols" class="nav-link active" data-scroll-target="#wan-technologies-and-protocols"><span class="header-section-number">18.0.1</span> WAN Technologies and Protocols</a></li>
+  <li><a href="#network-security-fundamentals" id="toc-network-security-fundamentals" class="nav-link" data-scroll-target="#network-security-fundamentals"><span class="header-section-number">18.0.2</span> Network Security Fundamentals</a></li>
+  <li><a href="#computing-infrastructures" id="toc-computing-infrastructures" class="nav-link" data-scroll-target="#computing-infrastructures"><span class="header-section-number">18.0.3</span> Computing Infrastructures</a></li>
+  <li><a href="#example-comprehensive-advanced-networking-script" id="toc-example-comprehensive-advanced-networking-script" class="nav-link" data-scroll-target="#example-comprehensive-advanced-networking-script"><span class="header-section-number">18.0.4</span> Example: Comprehensive Advanced Networking Script</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">18.0.5</span> Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -264,26 +301,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python for Business Analytics and Informaton Systems</h1>
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Advanced Networking Concepts with Python</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Markum Reed </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -293,8 +318,152 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
+<p>Understanding advanced networking concepts is essential for building and managing complex network infrastructures. This tutorial covers WAN technologies and protocols, network security fundamentals including encryption and firewalls, and computing infrastructures such as cloud computing, virtualization, and data centers. We’ll also demonstrate basic encryption and decryption using the <code>cryptography</code> library in Python.</p>
+<section id="wan-technologies-and-protocols" class="level3" data-number="18.0.1">
+<h3 data-number="18.0.1" class="anchored" data-anchor-id="wan-technologies-and-protocols"><span class="header-section-number">18.0.1</span> WAN Technologies and Protocols</h3>
+<p>Wide Area Networks (WANs) connect devices across large geographical areas. Key WAN technologies and protocols include:</p>
+<ol type="1">
+<li><strong>MPLS (Multiprotocol Label Switching)</strong>: A technique for routing network packets.</li>
+<li><strong>VPN (Virtual Private Network)</strong>: Extends a private network across a public network.</li>
+<li><strong>Frame Relay</strong>: A standardized wide area network technology that specifies the physical and logical link layers of digital telecommunications channels.</li>
+<li><strong>ATM (Asynchronous Transfer Mode)</strong>: A networking technology that transfers data in cells or packets of a fixed size.</li>
+</ol>
+</section>
+<section id="network-security-fundamentals" class="level3" data-number="18.0.2">
+<h3 data-number="18.0.2" class="anchored" data-anchor-id="network-security-fundamentals"><span class="header-section-number">18.0.2</span> Network Security Fundamentals</h3>
+<p>Network security involves protecting networks from unauthorized access, misuse, and data breaches. Key concepts include encryption and firewalls.</p>
+<section id="encryption" class="level4" data-number="18.0.2.1">
+<h4 data-number="18.0.2.1" class="anchored" data-anchor-id="encryption"><span class="header-section-number">18.0.2.1</span> Encryption</h4>
+<p>Encryption transforms data into a secure format that can only be read by someone with the appropriate decryption key.</p>
+<section id="installing-the-cryptography-library" class="level5" data-number="18.0.2.1.1">
+<h5 data-number="18.0.2.1.1" class="anchored" data-anchor-id="installing-the-cryptography-library"><span class="header-section-number">18.0.2.1.1</span> Installing the <code>cryptography</code> Library</h5>
+<p>First, install the <code>cryptography</code> library:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install cryptography</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="basic-encryption-and-decryption" class="level5" data-number="18.0.2.1.2">
+<h5 data-number="18.0.2.1.2" class="anchored" data-anchor-id="basic-encryption-and-decryption"><span class="header-section-number">18.0.2.1.2</span> Basic Encryption and Decryption</h5>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cryptography.fernet <span class="im">import</span> Fernet</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a key</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>key <span class="op">=</span> Fernet.generate_key()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>cipher_suite <span class="op">=</span> Fernet(key)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Encrypt a message</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>message <span class="op">=</span> <span class="st">b"Secret message"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>encrypted_message <span class="op">=</span> cipher_suite.encrypt(message)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Encrypted message: </span><span class="sc">{</span>encrypted_message<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Decrypt the message</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>decrypted_message <span class="op">=</span> cipher_suite.decrypt(encrypted_message)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Decrypted message: </span><span class="sc">{</span>decrypted_message<span class="sc">.</span>decode()<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="firewalls" class="level4" data-number="18.0.2.2">
+<h4 data-number="18.0.2.2" class="anchored" data-anchor-id="firewalls"><span class="header-section-number">18.0.2.2</span> Firewalls</h4>
+<p>Firewalls are security systems that monitor and control incoming and outgoing network traffic based on predetermined security rules.</p>
+</section>
+</section>
+<section id="computing-infrastructures" class="level3" data-number="18.0.3">
+<h3 data-number="18.0.3" class="anchored" data-anchor-id="computing-infrastructures"><span class="header-section-number">18.0.3</span> Computing Infrastructures</h3>
+<section id="cloud-computing" class="level4" data-number="18.0.3.1">
+<h4 data-number="18.0.3.1" class="anchored" data-anchor-id="cloud-computing"><span class="header-section-number">18.0.3.1</span> Cloud Computing</h4>
+<p>Cloud computing delivers computing services (e.g., servers, storage, databases, networking, software) over the internet. Key providers include AWS, Azure, and Google Cloud.</p>
+<section id="example-connecting-to-aws-s3-using-boto3" class="level5" data-number="18.0.3.1.1">
+<h5 data-number="18.0.3.1.1" class="anchored" data-anchor-id="example-connecting-to-aws-s3-using-boto3"><span class="header-section-number">18.0.3.1.1</span> Example: Connecting to AWS S3 using Boto3</h5>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> boto3</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a session using Amazon S3</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>session <span class="op">=</span> boto3.Session(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    aws_access_key_id<span class="op">=</span><span class="st">'YOUR_ACCESS_KEY'</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    aws_secret_access_key<span class="op">=</span><span class="st">'YOUR_SECRET_KEY'</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    region_name<span class="op">=</span><span class="st">'us-west-2'</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an S3 client</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>s3 <span class="op">=</span> session.client(<span class="st">'s3'</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># List buckets</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> s3.list_buckets()</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Buckets:'</span>, [bucket[<span class="st">'Name'</span>] <span class="cf">for</span> bucket <span class="kw">in</span> response[<span class="st">'Buckets'</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="virtualization" class="level4" data-number="18.0.3.2">
+<h4 data-number="18.0.3.2" class="anchored" data-anchor-id="virtualization"><span class="header-section-number">18.0.3.2</span> Virtualization</h4>
+<p>Virtualization allows you to create multiple simulated environments or dedicated resources from a single, physical hardware system.</p>
+<section id="example-using-docker-python-library-for-container-management" class="level5" data-number="18.0.3.2.1">
+<h5 data-number="18.0.3.2.1" class="anchored" data-anchor-id="example-using-docker-python-library-for-container-management"><span class="header-section-number">18.0.3.2.1</span> Example: Using <code>docker</code> Python Library for Container Management</h5>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install docker</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> docker</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> docker.from_env()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># List containers</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> container <span class="kw">in</span> client.containers.<span class="bu">list</span>():</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(container.name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="data-centers" class="level4" data-number="18.0.3.3">
+<h4 data-number="18.0.3.3" class="anchored" data-anchor-id="data-centers"><span class="header-section-number">18.0.3.3</span> Data Centers</h4>
+<p>Data centers house computing resources like servers, storage, and networking equipment. They are critical for hosting applications and managing data.</p>
+</section>
+</section>
+<section id="example-comprehensive-advanced-networking-script" class="level3" data-number="18.0.4">
+<h3 data-number="18.0.4" class="anchored" data-anchor-id="example-comprehensive-advanced-networking-script"><span class="header-section-number">18.0.4</span> Example: Comprehensive Advanced Networking Script</h3>
+<p>This script demonstrates WAN connection simulation, encryption, and cloud resource management.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cryptography.fernet <span class="im">import</span> Fernet</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> boto3</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> docker</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># WAN Connection Simulation</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simulate_wan_connection():</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Simulating WAN connection using MPLS..."</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simulation logic here</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"WAN connection established."</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Encryption and Decryption</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> encrypt_decrypt_message(message):</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    key <span class="op">=</span> Fernet.generate_key()</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    cipher_suite <span class="op">=</span> Fernet(key)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    encrypted_message <span class="op">=</span> cipher_suite.encrypt(message.encode())</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Encrypted message: </span><span class="sc">{</span>encrypted_message<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    decrypted_message <span class="op">=</span> cipher_suite.decrypt(encrypted_message)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Decrypted message: </span><span class="sc">{</span>decrypted_message<span class="sc">.</span>decode()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Cloud Resource Management</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> manage_aws_s3():</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    session <span class="op">=</span> boto3.Session(</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        aws_access_key_id<span class="op">=</span><span class="st">'YOUR_ACCESS_KEY'</span>,</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        aws_secret_access_key<span class="op">=</span><span class="st">'YOUR_SECRET_KEY'</span>,</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        region_name<span class="op">=</span><span class="st">'us-west-2'</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    s3 <span class="op">=</span> session.client(<span class="st">'s3'</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> s3.list_buckets()</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Buckets:'</span>, [bucket[<span class="st">'Name'</span>] <span class="cf">for</span> bucket <span class="kw">in</span> response[<span class="st">'Buckets'</span>]])</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Container Management with Docker</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> manage_docker_containers():</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    client <span class="op">=</span> docker.from_env()</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> container <span class="kw">in</span> client.containers.<span class="bu">list</span>():</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(container.name)</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Main function to execute all tasks</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    simulate_wan_connection()</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    encrypt_decrypt_message(<span class="st">"Advanced Networking with Python"</span>)</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    manage_aws_s3()</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>    manage_docker_containers()</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="conclusion" class="level3" data-number="18.0.5">
+<h3 data-number="18.0.5" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">18.0.5</span> Conclusion</h3>
+<p>Advanced networking concepts like WAN technologies, network security, and computing infrastructures are vital for managing modern networks. Python provides powerful libraries to handle these tasks, such as <code>cryptography</code> for encryption, <code>boto3</code> for cloud resource management, and <code>docker</code> for container management. By mastering these tools and concepts, you can design and manage secure, efficient, and scalable network infrastructures.</p>
 
 
 </section>
@@ -722,10 +891,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./16_network_services_mgmt.html" class="pagination-link" aria-label="Network Services and Management with Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Network Services and Management with Python</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./18_modern_network_practices.html" class="pagination-link" aria-label="Modern Network Practices with Python">
+        <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Modern Network Practices with Python</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

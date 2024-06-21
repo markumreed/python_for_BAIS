@@ -10,5 +10,62 @@
   },
   "references.qmd": {
     "references.html": "3b3a4c96"
+  },
+  "18_modern_network_practices.qmd": {
+    "18_modern_network_practices.html": "094e5855"
+  },
+  "01_python_install_env_setup.qmd": {
+    "01_python_install_env_setup.html": "fc40aeda"
+  },
+  "02_python_basics.qmd": {
+    "02_python_basics.html": "02c1c711"
+  },
+  "03_python_control_structures.qmd": {
+    "03_python_control_structures.html": "a0ecff32"
+  },
+  "04_python_functions_modules.qmd": {
+    "04_python_functions_modules.html": "642c9250"
+  },
+  "05_python_data_handling_file_io.qmd": {
+    "05_python_data_handling_file_io.html": "42cad964"
+  },
+  "06_python_error_handling_debugging.qmd": {
+    "06_python_error_handling_debugging.html": "be22f0bf"
+  },
+  "07_python_oop.qmd": {
+    "07_python_oop.html": "fce88b0f"
+  },
+  "08_python_database_interaction.qmd": {
+    "08_python_database_interaction.html": "a1b151da"
+  },
+  "09_python_api_interaction.qmd": {
+    "09_python_api_interaction.html": "86efd9ee"
+  },
+  "10_python_automated_sys_tasks.qmd": {
+    "10_python_automated_sys_tasks.html": "c88068ee"
+  },
+  "11_python_testing.qmd": {
+    "11_python_testing.html": "8a18cabf"
+  },
+  "12_python_adv_concepts.qmd": {
+    "12_python_adv_concepts.html": "631d6e6b"
+  },
+  "13_python_lib_for_sys_design.qmd": {
+    "13_python_lib_for_sys_design.html": "ead9133e"
+  },
+  "14_foundations_of_data_comm.qmd": {
+    "14_foundations_of_data_comm.html": "41693a70"
+  },
+  "15_network_architecture_protocols.qmd": {
+    "15_network_architecture_protocols.html": "2e175667"
+  },
+  "16_network_services_mgmt.qmd": {
+    "16_network_services_mgmt.html": "e5f4a28a"
+  },
+  "17_adv_network_concepts.qmd": {
+    "17_adv_network_concepts.html": "76710901"
+  },
+  "A1_version_control.qmd": {
+    "A1_version_control.html": "708ce2af"
   }
 }

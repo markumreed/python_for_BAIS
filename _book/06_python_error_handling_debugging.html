@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Markum Reed">
-<meta name="dcterms.date" content="2024-01-01">
 
-<title>Python for Business Analytics and Informaton Systems</title>
+<title>7&nbsp; Introduction to Error Handling and Debugging in Python – Python for Business Analytics and Informaton Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./07_python_oop.html" rel="next">
+<link href="./05_python_data_handling_file_io.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_python_error_handling_debugging.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Error Handling and Debugging in Python</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -151,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06_python_error_handling_debugging.html" class="sidebar-item-text sidebar-link">
+  <a href="./06_python_error_handling_debugging.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Error Handling and Debugging in Python</span></span></a>
   </div>
 </li>
@@ -255,7 +288,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#error-handling-in-python" id="toc-error-handling-in-python" class="nav-link active" data-scroll-target="#error-handling-in-python"><span class="header-section-number">7.0.1</span> Error Handling in Python</a></li>
+  <li><a href="#debugging-techniques" id="toc-debugging-techniques" class="nav-link" data-scroll-target="#debugging-techniques"><span class="header-section-number">7.0.2</span> Debugging Techniques</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7.0.3</span> Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -264,26 +299,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python for Business Analytics and Informaton Systems</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Introduction to Error Handling and Debugging in Python</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Markum Reed </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -293,8 +316,154 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
+<p>Error handling and debugging are crucial skills for any programmer. Proper error handling ensures your program can handle unexpected situations gracefully, while effective debugging techniques help you find and fix bugs more efficiently. This tutorial will cover implementing error handling in Python using <code>try-except</code> blocks and introduce debugging techniques using built-in Python functionalities and IDE tools like Visual Studio Code.</p>
+<section id="error-handling-in-python" class="level3" data-number="7.0.1">
+<h3 data-number="7.0.1" class="anchored" data-anchor-id="error-handling-in-python"><span class="header-section-number">7.0.1</span> Error Handling in Python</h3>
+<p>Error handling in Python is managed using <code>try-except</code> blocks, which allow you to catch and handle exceptions gracefully, preventing your program from crashing unexpectedly.</p>
+<section id="basic-try-except-block" class="level4" data-number="7.0.1.1">
+<h4 data-number="7.0.1.1" class="anchored" data-anchor-id="basic-try-except-block"><span class="header-section-number">7.0.1.1</span> Basic Try-Except Block</h4>
+<p>The <code>try</code> block lets you test a block of code for errors, and the <code>except</code> block lets you handle the error.</p>
+<section id="example-handling-division-by-zero" class="level5" data-number="7.0.1.1.1">
+<h5 data-number="7.0.1.1.1" class="anchored" data-anchor-id="example-handling-division-by-zero"><span class="header-section-number">7.0.1.1.1</span> Example: Handling Division by Zero</h5>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> divide(a, b):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> a <span class="op">/</span> b</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Error: Division by zero is not allowed."</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the function</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(divide(<span class="dv">10</span>, <span class="dv">2</span>))  <span class="co"># Output: 5.0</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(divide(<span class="dv">10</span>, <span class="dv">0</span>))  <span class="co"># Output: Error: Division by zero is not allowed. None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="catching-multiple-exceptions" class="level4" data-number="7.0.1.2">
+<h4 data-number="7.0.1.2" class="anchored" data-anchor-id="catching-multiple-exceptions"><span class="header-section-number">7.0.1.2</span> Catching Multiple Exceptions</h4>
+<p>You can catch multiple exceptions by specifying different <code>except</code> blocks for each type of error.</p>
+<section id="example-handling-different-errors" class="level5" data-number="7.0.1.2.1">
+<h5 data-number="7.0.1.2.1" class="anchored" data-anchor-id="example-handling-different-errors"><span class="header-section-number">7.0.1.2.1</span> Example: Handling Different Errors</h5>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> read_file(filename):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            content <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error: The file '</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">' was not found."</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">IOError</span>:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error: Could not read the file '</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">'."</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        content <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> content</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the function</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(read_file(<span class="st">'existing_file.txt'</span>))  <span class="co"># Outputs file content</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(read_file(<span class="st">'non_existing_file.txt'</span>))  <span class="co"># Output: Error: The file 'non_existing_file.txt' was not found.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="using-else-and-finally" class="level4" data-number="7.0.1.3">
+<h4 data-number="7.0.1.3" class="anchored" data-anchor-id="using-else-and-finally"><span class="header-section-number">7.0.1.3</span> Using Else and Finally</h4>
+<p>The <code>else</code> block can be used to execute code if no exceptions are raised, and the <code>finally</code> block can be used to execute code regardless of whether an exception was raised or not.</p>
+<section id="example-else-and-finally-blocks" class="level5" data-number="7.0.1.3.1">
+<h5 data-number="7.0.1.3.1" class="anchored" data-anchor-id="example-else-and-finally-blocks"><span class="header-section-number">7.0.1.3.1</span> Example: Else and Finally Blocks</h5>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> process_file(filename):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(filename, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            content <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">FileNotFoundError</span>:</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Error: The file '</span><span class="sc">{</span>filename<span class="sc">}</span><span class="ss">' was not found."</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"File read successfully."</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> content</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">finally</span>:</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Finished file processing."</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the function</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>process_file(<span class="st">'existing_file.txt'</span>)  <span class="co"># Output: File read successfully. Finished file processing.</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>process_file(<span class="st">'non_existing_file.txt'</span>)  <span class="co"># Output: Error: The file 'non_existing_file.txt' was not found. Finished file processing.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="debugging-techniques" class="level3" data-number="7.0.2">
+<h3 data-number="7.0.2" class="anchored" data-anchor-id="debugging-techniques"><span class="header-section-number">7.0.2</span> Debugging Techniques</h3>
+<p>Debugging is the process of finding and fixing bugs in your code. Effective debugging involves understanding the flow of your program and identifying where it deviates from expected behavior.</p>
+<section id="print-statements" class="level4" data-number="7.0.2.1">
+<h4 data-number="7.0.2.1" class="anchored" data-anchor-id="print-statements"><span class="header-section-number">7.0.2.1</span> Print Statements</h4>
+<p>One of the simplest debugging techniques is using print statements to track the flow of your program and inspect variables.</p>
+<section id="example-using-print-statements" class="level5" data-number="7.0.2.1.1">
+<h5 data-number="7.0.2.1.1" class="anchored" data-anchor-id="example-using-print-statements"><span class="header-section-number">7.0.2.1.1</span> Example: Using Print Statements</h5>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_total_price(price, quantity):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Price: </span><span class="sc">{</span>price<span class="sc">}</span><span class="ss">, Quantity: </span><span class="sc">{</span>quantity<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> price <span class="op">*</span> quantity</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Total: </span><span class="sc">{</span>total<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> total</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the function</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>calculate_total_price(<span class="dv">10</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="using-the-built-in-pdb-module" class="level4" data-number="7.0.2.2">
+<h4 data-number="7.0.2.2" class="anchored" data-anchor-id="using-the-built-in-pdb-module"><span class="header-section-number">7.0.2.2</span> Using the Built-in <code>pdb</code> Module</h4>
+<p>Python’s built-in <code>pdb</code> module provides an interactive debugger that allows you to set breakpoints, step through code, and inspect variables.</p>
+<section id="example-using-pdb-for-debugging" class="level5" data-number="7.0.2.2.1">
+<h5 data-number="7.0.2.2.1" class="anchored" data-anchor-id="example-using-pdb-for-debugging"><span class="header-section-number">7.0.2.2.1</span> Example: Using <code>pdb</code> for Debugging</h5>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pdb</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_total_price(price, quantity):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    pdb.set_trace()  <span class="co"># Set a breakpoint</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> price <span class="op">*</span> quantity</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> total</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the function</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>calculate_total_price(<span class="dv">10</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Run the script in your terminal, and the <code>pdb</code> debugger will start at the breakpoint, allowing you to inspect variables and step through the code.</p>
+</section>
+</section>
+<section id="debugging-with-visual-studio-code" class="level4" data-number="7.0.2.3">
+<h4 data-number="7.0.2.3" class="anchored" data-anchor-id="debugging-with-visual-studio-code"><span class="header-section-number">7.0.2.3</span> Debugging with Visual Studio Code</h4>
+<p>Visual Studio Code (VS Code) is a popular IDE that provides powerful debugging tools. Here’s how to use VS Code for debugging Python code:</p>
+<ol type="1">
+<li><strong>Set Up a Debug Configuration</strong>:
+<ul>
+<li><p>Open VS Code and load your Python project.</p></li>
+<li><p>Click on the Debug icon on the left sidebar.</p></li>
+<li><p>Click on the gear icon to open the <code>launch.json</code> file.</p></li>
+<li><p>Add a new configuration for Python:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Python: Current File"</span><span class="fu">,</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"python"</span><span class="fu">,</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"request"</span><span class="fu">:</span> <span class="st">"launch"</span><span class="fu">,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"program"</span><span class="fu">:</span> <span class="st">"${file}"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><strong>Set Breakpoints</strong>:
+<ul>
+<li>Click in the gutter next to the line number where you want to set a breakpoint. A red dot will appear, indicating a breakpoint.</li>
+</ul></li>
+<li><strong>Start Debugging</strong>:
+<ul>
+<li>Click the green play button in the Debug panel or press <code>F5</code> to start debugging.</li>
+<li>The program will run until it hits a breakpoint, allowing you to inspect variables, step through code, and evaluate expressions.</li>
+</ul></li>
+</ol>
+</section>
+<section id="example-debugging-with-vs-code" class="level4" data-number="7.0.2.4">
+<h4 data-number="7.0.2.4" class="anchored" data-anchor-id="example-debugging-with-vs-code"><span class="header-section-number">7.0.2.4</span> Example: Debugging with VS Code</h4>
+<ol type="1">
+<li>Open your Python script in VS Code.</li>
+<li>Set a breakpoint in the <code>calculate_total_price</code> function.</li>
+<li>Start the debugger and inspect the variables when the breakpoint is hit.</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_total_price(price, quantity):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> price <span class="op">*</span> quantity</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> total</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the function</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>calculate_total_price(<span class="dv">10</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion" class="level3" data-number="7.0.3">
+<h3 data-number="7.0.3" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">7.0.3</span> Conclusion</h3>
+<p>Error handling and debugging are essential skills for writing robust and reliable Python programs. By using <code>try-except</code> blocks, you can gracefully handle errors and ensure your program runs smoothly. Debugging techniques, such as print statements, the <code>pdb</code> module, and IDE tools like Visual Studio Code, help you identify and fix bugs more efficiently. Mastering these skills will make you a more effective and productive programmer.</p>
 
 
 </section>
@@ -722,10 +891,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./05_python_data_handling_file_io.html" class="pagination-link" aria-label="Introduction to Data Handling and File I/O in Python">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Introduction to Data Handling and File I/O in Python</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./07_python_oop.html" class="pagination-link" aria-label="Introduction to Object-Oriented Programming with Python">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Introduction to Object-Oriented Programming with Python</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

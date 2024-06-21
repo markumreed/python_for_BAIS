@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Markum Reed">
-<meta name="dcterms.date" content="2024-01-01">
 
-<title>Python for Business Analytics and Informaton Systems</title>
+<title>2&nbsp; Installing Python – Python for Business Analytics and Informaton Systems</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./02_python_basics.html" rel="next">
+<link href="./intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_python_install_env_setup.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing Python</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -121,7 +154,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_python_install_env_setup.html" class="sidebar-item-text sidebar-link">
+  <a href="./01_python_install_env_setup.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing Python</span></span></a>
   </div>
 </li>
@@ -255,7 +288,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
+  <li><a href="#installing-visual-studio-code-vscode" id="toc-installing-visual-studio-code-vscode" class="nav-link active" data-scroll-target="#installing-visual-studio-code-vscode"><span class="header-section-number">2.0.1</span> Installing Visual Studio Code (VSCode)</a></li>
+  <li><a href="#setting-up-python-in-vscode" id="toc-setting-up-python-in-vscode" class="nav-link" data-scroll-target="#setting-up-python-in-vscode"><span class="header-section-number">2.0.2</span> Setting Up Python in VSCode</a></li>
+  <li><a href="#writing-your-first-python-program-in-vscode" id="toc-writing-your-first-python-program-in-vscode" class="nav-link" data-scroll-target="#writing-your-first-python-program-in-vscode"><span class="header-section-number">2.0.3</span> Writing Your First Python Program in VSCode</a></li>
+  <li><a href="#basic-python-programming" id="toc-basic-python-programming" class="nav-link" data-scroll-target="#basic-python-programming"><span class="header-section-number">2.0.4</span> Basic Python Programming</a></li>
+  <li><a href="#exploring-more-features" id="toc-exploring-more-features" class="nav-link" data-scroll-target="#exploring-more-features"><span class="header-section-number">2.0.5</span> Exploring More Features</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">2.0.6</span> Prerequisites</a></li>
+  <li><a href="#creating-a-virtual-environment" id="toc-creating-a-virtual-environment" class="nav-link" data-scroll-target="#creating-a-virtual-environment"><span class="header-section-number">2.0.7</span> Creating a Virtual Environment</a></li>
+  <li><a href="#activating-the-virtual-environment" id="toc-activating-the-virtual-environment" class="nav-link" data-scroll-target="#activating-the-virtual-environment"><span class="header-section-number">2.0.8</span> Activating the Virtual Environment</a></li>
+  <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages"><span class="header-section-number">2.0.9</span> Installing Packages</a></li>
+  <li><a href="#running-python-code" id="toc-running-python-code" class="nav-link" data-scroll-target="#running-python-code"><span class="header-section-number">2.0.10</span> Running Python Code</a></li>
+  <li><a href="#deactivating-the-virtual-environment" id="toc-deactivating-the-virtual-environment" class="nav-link" data-scroll-target="#deactivating-the-virtual-environment"><span class="header-section-number">2.0.11</span> Deactivating the Virtual Environment</a></li>
+  <li><a href="#managing-dependencies" id="toc-managing-dependencies" class="nav-link" data-scroll-target="#managing-dependencies"><span class="header-section-number">2.0.12</span> Managing Dependencies</a></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices"><span class="header-section-number">2.0.13</span> Best Practices</a></li>
   </ul>
 </nav>
     </div>
@@ -264,26 +309,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python for Business Analytics and Informaton Systems</h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Installing Python</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Markum Reed </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -293,8 +326,141 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
+<section id="windows" class="level4" data-number="2.0.0.1">
+<h4 data-number="2.0.0.1" class="anchored" data-anchor-id="windows"><span class="header-section-number">2.0.0.1</span> Windows:</h4>
+<ol type="1">
+<li><strong>Download Python</strong>: Visit the official Python website at <a href="https://www.python.org/downloads/">python.org</a> and download the latest version for Windows. Click on the “Download” button for the most recent release.</li>
+<li><strong>Run Installer</strong>: Open the downloaded file and make sure to check the box that says “Add Python 3.x to PATH” at the beginning of the installation process. Then click “Install Now”.</li>
+<li><strong>Verify Installation</strong>: Open Command Prompt and type <code>python --version</code>. You should see the Python version number if it was installed correctly.</li>
+</ol>
+</section>
+<section id="macos" class="level4" data-number="2.0.0.2">
+<h4 data-number="2.0.0.2" class="anchored" data-anchor-id="macos"><span class="header-section-number">2.0.0.2</span> macOS:</h4>
+<ol type="1">
+<li><strong>Download Python</strong>: Go to <a href="https://www.python.org/downloads/">python.org</a> and download the latest Python version for macOS.</li>
+<li><strong>Install Python</strong>: Open the downloaded <code>.pkg</code> file and follow the instructions to install Python.</li>
+<li><strong>Verify Installation</strong>: Open Terminal and type <code>python3 --version</code> to check that Python installed correctly.</li>
+</ol>
+</section>
+<section id="linux" class="level4" data-number="2.0.0.3">
+<h4 data-number="2.0.0.3" class="anchored" data-anchor-id="linux"><span class="header-section-number">2.0.0.3</span> Linux:</h4>
+<ol type="1">
+<li><p><strong>Install Python</strong>: Python is usually pre-installed on Linux. To check if it is installed and to install the latest version, open a terminal and type:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install python3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Verify Installation</strong>: Type <code>python3 --version</code> in the terminal.</p></li>
+</ol>
+</section>
+<section id="installing-visual-studio-code-vscode" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="installing-visual-studio-code-vscode"><span class="header-section-number">2.0.1</span> Installing Visual Studio Code (VSCode)</h3>
+<ol type="1">
+<li><strong>Download VSCode</strong>: Visit the <a href="https://code.visualstudio.com/">VSCode website</a> and download the version suitable for your operating system.</li>
+<li><strong>Install VSCode</strong>: Run the downloaded installer file and follow the instructions provided.</li>
+</ol>
+</section>
+<section id="setting-up-python-in-vscode" class="level3" data-number="2.0.2">
+<h3 data-number="2.0.2" class="anchored" data-anchor-id="setting-up-python-in-vscode"><span class="header-section-number">2.0.2</span> Setting Up Python in VSCode</h3>
+<ol type="1">
+<li><strong>Open VSCode</strong>.</li>
+<li><strong>Install the Python extension</strong>: Click on the extensions view icon on the Sidebar or press <code>Ctrl+Shift+X</code>. Search for “Python” and install the extension provided by Microsoft.</li>
+<li><strong>Select Python Interpreter</strong>: Press <code>Ctrl+Shift+P</code> to open the Command Palette and type “Python: Select Interpreter”. Choose the Python version you installed earlier.</li>
+</ol>
+</section>
+<section id="writing-your-first-python-program-in-vscode" class="level3" data-number="2.0.3">
+<h3 data-number="2.0.3" class="anchored" data-anchor-id="writing-your-first-python-program-in-vscode"><span class="header-section-number">2.0.3</span> Writing Your First Python Program in VSCode</h3>
+<ol type="1">
+<li><p><strong>Create a new file</strong>: File &gt; New File.</p></li>
+<li><p><strong>Save the file</strong>: Save the file with a <code>.py</code> extension, e.g., <code>hello.py</code>.</p></li>
+<li><p><strong>Write some Python code</strong>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello, world!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Run the program</strong>: Right-click in the editor window and select “Run Python File in Terminal”, or press <code>Ctrl+F5</code> to run without debugging.</p></li>
+</ol>
+</section>
+<section id="basic-python-programming" class="level3" data-number="2.0.4">
+<h3 data-number="2.0.4" class="anchored" data-anchor-id="basic-python-programming"><span class="header-section-number">2.0.4</span> Basic Python Programming</h3>
+<ul>
+<li><p><strong>Variables</strong>: Storing data values.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">"Hello"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Data Types</strong>: Python has various data types including integers, float, string, and more.</p></li>
+<li><p><strong>Operators</strong>: Perform operations on variables and values.</p></li>
+<li><p><strong>Control Structures</strong>: Use <code>if</code>, <code>else</code>, and <code>elif</code> for decisions, and <code>for</code> and <code>while</code> loops for repeating blocks of code.</p></li>
+</ul>
+</section>
+<section id="exploring-more-features" class="level3" data-number="2.0.5">
+<h3 data-number="2.0.5" class="anchored" data-anchor-id="exploring-more-features"><span class="header-section-number">2.0.5</span> Exploring More Features</h3>
+<ul>
+<li><strong>Intellisense</strong>: VSCode provides smart completions based on variable types, function definitions, and imported modules.</li>
+<li><strong>Debugging</strong>: Set breakpoints, step through your code, and inspect variables.</li>
+<li><strong>Extensions</strong>: Enhance VSCode functionality with extensions like “Python Docstring Generator” to automatically generate docstrings for your Python functions.</li>
+</ul>
+<p>This format should help make the tutorial flow more smoothly from one section to the next without the formal structure of numbering.</p>
+<hr>
+<p>Setting up a virtual environment in Python using <code>venv</code> is an essential skill for managing dependencies and ensuring that projects run consistently across different systems. Here’s a step-by-step guide to help you set up a Python virtual environment using the <code>venv</code> module.</p>
+</section>
+<section id="prerequisites" class="level3" data-number="2.0.6">
+<h3 data-number="2.0.6" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">2.0.6</span> Prerequisites</h3>
+<p>Before creating a virtual environment, make sure Python 3 is installed on your system. You can verify this by running <code>python --version</code> or <code>python3 --version</code> in your command prompt or terminal.</p>
+</section>
+<section id="creating-a-virtual-environment" class="level3" data-number="2.0.7">
+<h3 data-number="2.0.7" class="anchored" data-anchor-id="creating-a-virtual-environment"><span class="header-section-number">2.0.7</span> Creating a Virtual Environment</h3>
+<ol type="1">
+<li><p><strong>Navigate to Your Project Directory</strong>: Open your command prompt or terminal. Use the <code>cd</code> command to change to the directory where you want to set up the virtual environment.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> path/to/your/project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Create the Virtual Environment</strong>: Use the following command to create a virtual environment named <code>env</code> (you can choose any name you like). The command might slightly vary depending on whether your system recognizes <code>python</code> or <code>python3</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> venv env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="activating-the-virtual-environment" class="level3" data-number="2.0.8">
+<h3 data-number="2.0.8" class="anchored" data-anchor-id="activating-the-virtual-environment"><span class="header-section-number">2.0.8</span> Activating the Virtual Environment</h3>
+<p>To use the virtual environment, you need to activate it. The activation command differs depending on your operating system:</p>
+<section id="windows-1" class="level4" data-number="2.0.8.1">
+<h4 data-number="2.0.8.1" class="anchored" data-anchor-id="windows-1"><span class="header-section-number">2.0.8.1</span> Windows</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span><span class="dt">\S</span>cripts<span class="dt">\a</span>ctivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="macos-and-linux" class="level4" data-number="2.0.8.2">
+<h4 data-number="2.0.8.2" class="anchored" data-anchor-id="macos-and-linux"><span class="header-section-number">2.0.8.2</span> macOS and Linux</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> env/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once activated, your command line will typically show the name of the virtual environment (in this case, <code>env</code>), indicating that it is active. From now on, any Python or pip commands will use the Python version and packages installed in the virtual environment.</p>
+</section>
+</section>
+<section id="installing-packages" class="level3" data-number="2.0.9">
+<h3 data-number="2.0.9" class="anchored" data-anchor-id="installing-packages"><span class="header-section-number">2.0.9</span> Installing Packages</h3>
+<p>With the virtual environment active, install packages using <code>pip</code>. For example, to install the <code>requests</code> library, you would run:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will install the package only within the virtual environment.</p>
+</section>
+<section id="running-python-code" class="level3" data-number="2.0.10">
+<h3 data-number="2.0.10" class="anchored" data-anchor-id="running-python-code"><span class="header-section-number">2.0.10</span> Running Python Code</h3>
+<p>Run Python scripts as usual with the virtual environment activated. For instance:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or if your system defaults to Python 2:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="deactivating-the-virtual-environment" class="level3" data-number="2.0.11">
+<h3 data-number="2.0.11" class="anchored" data-anchor-id="deactivating-the-virtual-environment"><span class="header-section-number">2.0.11</span> Deactivating the Virtual Environment</h3>
+<p>When you’re done working in the virtual environment, you can deactivate it by simply typing:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command will return you to the system’s default Python settings.</p>
+</section>
+<section id="managing-dependencies" class="level3" data-number="2.0.12">
+<h3 data-number="2.0.12" class="anchored" data-anchor-id="managing-dependencies"><span class="header-section-number">2.0.12</span> Managing Dependencies</h3>
+<ul>
+<li><p><strong>Freezing Dependencies</strong>: To keep track of the packages you’ve installed in the virtual environment, you can generate a <code>requirements.txt</code> file using:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Installing from <code>requirements.txt</code></strong>: You can install all the dependencies at once with:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="best-practices" class="level3" data-number="2.0.13">
+<h3 data-number="2.0.13" class="anchored" data-anchor-id="best-practices"><span class="header-section-number">2.0.13</span> Best Practices</h3>
+<ul>
+<li><strong>Separate Environments</strong>: Create a separate virtual environment for each project to avoid conflicts between package versions.</li>
+<li><strong>Version Control</strong>: Exclude your virtual environment directory (<code>env</code> in this case) from version control by adding it to the <code>.gitignore</code> file.</li>
+</ul>
+<p>Using virtual environments is a best practice that keeps your Python projects organized and ensures they work consistently across different setups.</p>
 
 
 </section>
@@ -722,10 +888,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02_python_basics.html" class="pagination-link" aria-label="Introduction to Python Programming Basics for Business">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Introduction to Python Programming Basics for Business</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
