@@ -1,4 +1,5 @@
 /.quarto/
+
 venv/
 
 # Unit test / coverage reports
