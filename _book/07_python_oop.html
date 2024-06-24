@@ -274,6 +274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./A2_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Using Docker</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -294,6 +300,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#encapsulation" id="toc-encapsulation" class="nav-link" data-scroll-target="#encapsulation"><span class="header-section-number">8.0.4</span> Encapsulation</a></li>
   <li><a href="#polymorphism" id="toc-polymorphism" class="nav-link" data-scroll-target="#polymorphism"><span class="header-section-number">8.0.5</span> Polymorphism</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">8.0.6</span> Conclusion</a></li>
+  <li><a href="#deep-dive-tutorial-python-object-oriented-programming-oop-using-business-analytics-and-information-systems-examples" id="toc-deep-dive-tutorial-python-object-oriented-programming-oop-using-business-analytics-and-information-systems-examples" class="nav-link" data-scroll-target="#deep-dive-tutorial-python-object-oriented-programming-oop-using-business-analytics-and-information-systems-examples"><span class="header-section-number">9</span> Deep Dive Tutorial: Python Object-Oriented Programming (OOP) Using Business Analytics and Information Systems Examples</a>
+  <ul class="collapse">
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents"><span class="header-section-number">9.1</span> Table of Contents</a></li>
+  <li><a href="#introduction-to-oop" id="toc-introduction-to-oop" class="nav-link" data-scroll-target="#introduction-to-oop"><span class="header-section-number">9.2</span> Introduction to OOP</a>
+  <ul class="collapse">
+  <li><a href="#key-concepts" id="toc-key-concepts" class="nav-link" data-scroll-target="#key-concepts"><span class="header-section-number">9.2.1</span> Key Concepts</a></li>
+  </ul></li>
+  <li><a href="#defining-classes-and-creating-objects" id="toc-defining-classes-and-creating-objects" class="nav-link" data-scroll-target="#defining-classes-and-creating-objects"><span class="header-section-number">9.3</span> Defining Classes and Creating Objects</a>
+  <ul class="collapse">
+  <li><a href="#defining-a-class" id="toc-defining-a-class" class="nav-link" data-scroll-target="#defining-a-class"><span class="header-section-number">9.3.1</span> Defining a Class</a></li>
+  <li><a href="#creating-an-object" id="toc-creating-an-object" class="nav-link" data-scroll-target="#creating-an-object"><span class="header-section-number">9.3.2</span> Creating an Object</a></li>
+  </ul></li>
+  <li><a href="#attributes-and-methods-1" id="toc-attributes-and-methods-1" class="nav-link" data-scroll-target="#attributes-and-methods-1"><span class="header-section-number">9.4</span> Attributes and Methods</a>
+  <ul class="collapse">
+  <li><a href="#attributes" id="toc-attributes" class="nav-link" data-scroll-target="#attributes"><span class="header-section-number">9.4.1</span> Attributes</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><span class="header-section-number">9.4.2</span> Methods</a></li>
+  </ul></li>
+  <li><a href="#encapsulation-1" id="toc-encapsulation-1" class="nav-link" data-scroll-target="#encapsulation-1"><span class="header-section-number">9.5</span> Encapsulation</a>
+  <ul class="collapse">
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">9.5.1</span> Example</a></li>
+  </ul></li>
+  <li><a href="#inheritance-1" id="toc-inheritance-1" class="nav-link" data-scroll-target="#inheritance-1"><span class="header-section-number">9.6</span> Inheritance</a>
+  <ul class="collapse">
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1"><span class="header-section-number">9.6.1</span> Example</a></li>
+  </ul></li>
+  <li><a href="#polymorphism-1" id="toc-polymorphism-1" class="nav-link" data-scroll-target="#polymorphism-1"><span class="header-section-number">9.7</span> Polymorphism</a>
+  <ul class="collapse">
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2"><span class="header-section-number">9.7.1</span> Example</a></li>
+  </ul></li>
+  <li><a href="#using-oop-in-business-analytics" id="toc-using-oop-in-business-analytics" class="nav-link" data-scroll-target="#using-oop-in-business-analytics"><span class="header-section-number">9.8</span> Using OOP in Business Analytics</a>
+  <ul class="collapse">
+  <li><a href="#example-data-analysis-classes" id="toc-example-data-analysis-classes" class="nav-link" data-scroll-target="#example-data-analysis-classes"><span class="header-section-number">9.8.1</span> Example: Data Analysis Classes</a></li>
+  </ul></li>
+  <li><a href="#practical-examples" id="toc-practical-examples" class="nav-link" data-scroll-target="#practical-examples"><span class="header-section-number">9.9</span> Practical Examples</a>
+  <ul class="collapse">
+  <li><a href="#example-1-customer-relationship-management-crm" id="toc-example-1-customer-relationship-management-crm" class="nav-link" data-scroll-target="#example-1-customer-relationship-management-crm"><span class="header-section-number">9.9.1</span> Example 1: Customer Relationship Management (CRM)</a></li>
+  <li><a href="#example-2-inventory-management-system" id="toc-example-2-inventory-management-system" class="nav-link" data-scroll-target="#example-2-inventory-management-system"><span class="header-section-number">9.9.2</span> Example 2: Inventory Management System</a></li>
+  </ul></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1"><span class="header-section-number">9.10</span> Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -469,8 +515,267 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="conclusion" class="level3" data-number="8.0.6">
 <h3 data-number="8.0.6" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">8.0.6</span> Conclusion</h3>
 <p>Object-Oriented Programming (OOP) is a powerful paradigm that allows you to structure your Python programs using classes and objects. By understanding and implementing the concepts of classes, objects, inheritance, encapsulation, and polymorphism, you can create more modular, reusable, and maintainable code.</p>
+</section>
+<section id="deep-dive-tutorial-python-object-oriented-programming-oop-using-business-analytics-and-information-systems-examples" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Deep Dive Tutorial: Python Object-Oriented Programming (OOP) Using Business Analytics and Information Systems Examples</h1>
+<p>Object-Oriented Programming (OOP) is a programming paradigm that uses objects and classes to structure software in a way that is modular, reusable, and easy to maintain. This tutorial will provide a comprehensive guide to Python OOP concepts, using examples relevant to Business Analytics and Information Systems (BAIS).</p>
+<section id="table-of-contents" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="table-of-contents"><span class="header-section-number">9.1</span> Table of Contents</h2>
+<ol type="1">
+<li><a href="#introduction-to-oop">Introduction to OOP</a></li>
+<li><a href="#defining-classes-and-creating-objects">Defining Classes and Creating Objects</a></li>
+<li><a href="#attributes-and-methods">Attributes and Methods</a></li>
+<li><a href="#encapsulation">Encapsulation</a></li>
+<li><a href="#inheritance">Inheritance</a></li>
+<li><a href="#polymorphism">Polymorphism</a></li>
+<li><a href="#using-oop-in-business-analytics">Using OOP in Business Analytics</a></li>
+<li><a href="#practical-examples">Practical Examples</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+</section>
+<section id="introduction-to-oop" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="introduction-to-oop"><span class="header-section-number">9.2</span> Introduction to OOP</h2>
+<p>OOP is centered around objects, which are instances of classes. A class defines a blueprint for objects, encapsulating data (attributes) and behavior (methods).</p>
+<section id="key-concepts" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="key-concepts"><span class="header-section-number">9.2.1</span> Key Concepts</h3>
+<ol type="1">
+<li><strong>Class</strong>: A blueprint for creating objects. Defines a set of attributes and methods.</li>
+<li><strong>Object</strong>: An instance of a class.</li>
+<li><strong>Attributes</strong>: Data stored inside an object.</li>
+<li><strong>Methods</strong>: Functions that operate on the data inside an object.</li>
+</ol>
+</section>
+</section>
+<section id="defining-classes-and-creating-objects" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="defining-classes-and-creating-objects"><span class="header-section-number">9.3</span> Defining Classes and Creating Objects</h2>
+<section id="defining-a-class" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="defining-a-class"><span class="header-section-number">9.3.1</span> Defining a Class</h3>
+<p>In Python, a class is defined using the <code>class</code> keyword.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Employee:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="creating-an-object" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="creating-an-object"><span class="header-section-number">9.3.2</span> Creating an Object</h3>
+<p>An object is created by calling the class.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>emp1 <span class="op">=</span> Employee()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="attributes-and-methods-1" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="attributes-and-methods-1"><span class="header-section-number">9.4</span> Attributes and Methods</h2>
+<section id="attributes" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="attributes"><span class="header-section-number">9.4.1</span> Attributes</h3>
+<p>Attributes are variables that belong to an object.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Employee:</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, <span class="bu">id</span>):</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> <span class="bu">id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="methods" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="methods"><span class="header-section-number">9.4.2</span> Methods</h3>
+<p>Methods are functions defined inside a class.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Employee:</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, <span class="bu">id</span>):</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> <span class="bu">id</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">, ID: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>emp1 <span class="op">=</span> Employee(<span class="st">"John Doe"</span>, <span class="dv">101</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>emp1.display_info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="encapsulation-1" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="encapsulation-1"><span class="header-section-number">9.5</span> Encapsulation</h2>
+<p>Encapsulation is the bundling of data and methods within a class. It restricts access to some of the object’s components, which can prevent the accidental modification of data.</p>
+<section id="example" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="example"><span class="header-section-number">9.5.1</span> Example</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Employee:</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, <span class="bu">id</span>):</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.__name <span class="op">=</span> name  <span class="co"># Private attribute</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.__id <span class="op">=</span> <span class="bu">id</span>      <span class="co"># Private attribute</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>__name<span class="sc">}</span><span class="ss">, ID: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>__id<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> set_name(<span class="va">self</span>, name):</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.__name <span class="op">=</span> name</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_name(<span class="va">self</span>):</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.__name</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>emp1 <span class="op">=</span> Employee(<span class="st">"John Doe"</span>, <span class="dv">101</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>emp1.display_info()</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>emp1.set_name(<span class="st">"Jane Doe"</span>)</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(emp1.get_name())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="inheritance-1" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="inheritance-1"><span class="header-section-number">9.6</span> Inheritance</h2>
+<p>Inheritance allows a class (child class) to inherit attributes and methods from another class (parent class).</p>
+<section id="example-1" class="level3" data-number="9.6.1">
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="example-1"><span class="header-section-number">9.6.1</span> Example</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Employee:</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, <span class="bu">id</span>):</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> <span class="bu">id</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">, ID: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Manager(Employee):</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, <span class="bu">id</span>, department):</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(name, <span class="bu">id</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.department <span class="op">=</span> department</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().display_info()</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Department: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>department<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>mgr1 <span class="op">=</span> Manager(<span class="st">"Alice Smith"</span>, <span class="dv">102</span>, <span class="st">"IT"</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>mgr1.display_info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="polymorphism-1" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="polymorphism-1"><span class="header-section-number">9.7</span> Polymorphism</h2>
+<p>Polymorphism allows methods to be used in different ways, often by overriding them in derived classes.</p>
+<section id="example-2" class="level3" data-number="9.7.1">
+<h3 data-number="9.7.1" class="anchored" data-anchor-id="example-2"><span class="header-section-number">9.7.1</span> Example</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Employee:</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, <span class="bu">id</span>):</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.<span class="bu">id</span> <span class="op">=</span> <span class="bu">id</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Name: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">, ID: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Manager(Employee):</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, <span class="bu">id</span>, department):</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(name, <span class="bu">id</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.department <span class="op">=</span> department</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().display_info()</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Department: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>department<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Intern(Employee):</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, <span class="bu">id</span>, duration):</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(name, <span class="bu">id</span>)</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.duration <span class="op">=</span> duration</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().display_info()</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Internship Duration: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>duration<span class="sc">}</span><span class="ss"> months"</span>)</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>employees <span class="op">=</span> [Manager(<span class="st">"Alice Smith"</span>, <span class="dv">102</span>, <span class="st">"IT"</span>), Intern(<span class="st">"Bob Brown"</span>, <span class="dv">103</span>, <span class="dv">6</span>)]</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> employee <span class="kw">in</span> employees:</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    employee.display_info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="using-oop-in-business-analytics" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="using-oop-in-business-analytics"><span class="header-section-number">9.8</span> Using OOP in Business Analytics</h2>
+<p>OOP can be used to model and manage complex data structures and processes in business analytics.</p>
+<section id="example-data-analysis-classes" class="level3" data-number="9.8.1">
+<h3 data-number="9.8.1" class="anchored" data-anchor-id="example-data-analysis-classes"><span class="header-section-number">9.8.1</span> Example: Data Analysis Classes</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DataSource:</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data):</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.data <span class="op">=</span> data</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_data(<span class="va">self</span>):</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="va">self</span>.data)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> DataAnalyzer:</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data_source):</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.data_source <span class="op">=</span> data_source</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> analyze(<span class="va">self</span>):</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Placeholder for analysis logic</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Analyzing data..."</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ReportGenerator:</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data_analyzer):</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.data_analyzer <span class="op">=</span> data_analyzer</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> generate_report(<span class="va">self</span>):</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Placeholder for report generation logic</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Generating report..."</span>)</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>data_source <span class="op">=</span> DataSource(data)</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>analyzer <span class="op">=</span> DataAnalyzer(data_source)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>report_gen <span class="op">=</span> ReportGenerator(analyzer)</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>data_source.display_data()</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>analyzer.analyze()</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>report_gen.generate_report()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="practical-examples" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="practical-examples"><span class="header-section-number">9.9</span> Practical Examples</h2>
+<section id="example-1-customer-relationship-management-crm" class="level3" data-number="9.9.1">
+<h3 data-number="9.9.1" class="anchored" data-anchor-id="example-1-customer-relationship-management-crm"><span class="header-section-number">9.9.1</span> Example 1: Customer Relationship Management (CRM)</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Customer:</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, customer_id, name, email):</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.customer_id <span class="op">=</span> customer_id</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.email <span class="op">=</span> email</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Customer ID: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>customer_id<span class="sc">}</span><span class="ss">, Name: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">, Email: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>email<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Order:</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, order_id, customer, total):</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.order_id <span class="op">=</span> order_id</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.customer <span class="op">=</span> customer</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.total <span class="op">=</span> total</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Order ID: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>order_id<span class="sc">}</span><span class="ss">, Customer: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>customer<span class="sc">.</span>name<span class="sc">}</span><span class="ss">, Total: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>total<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>cust1 <span class="op">=</span> Customer(<span class="dv">1</span>, <span class="st">"John Doe"</span>, <span class="st">"john@example.com"</span>)</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>order1 <span class="op">=</span> Order(<span class="dv">101</span>, cust1, <span class="fl">250.75</span>)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>cust1.display_info()</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>order1.display_info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-2-inventory-management-system" class="level3" data-number="9.9.2">
+<h3 data-number="9.9.2" class="anchored" data-anchor-id="example-2-inventory-management-system"><span class="header-section-number">9.9.2</span> Example 2: Inventory Management System</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Product:</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, product_id, name, price):</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.product_id <span class="op">=</span> product_id</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.price <span class="op">=</span> price</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_info(<span class="va">self</span>):</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Product ID: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>product_id<span class="sc">}</span><span class="ss">, Name: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">, Price: </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>price<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Inventory:</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.products <span class="op">=</span> []</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> add_product(<span class="va">self</span>, product):</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.products.append(product)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> display_inventory(<span class="va">self</span>):</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> product <span class="kw">in</span> <span class="va">self</span>.products:</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>            product.display_info()</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>inv <span class="op">=</span> Inventory()</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>prod1 <span class="op">=</span> Product(<span class="dv">201</span>, <span class="st">"Laptop"</span>, <span class="fl">1200.50</span>)</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>prod2 <span class="op">=</span> Product(<span class="dv">202</span>, <span class="st">"Mouse"</span>, <span class="fl">25.75</span>)</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>inv.add_product(prod1)</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>inv.add_product(prod2)</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>inv.display_inventory()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion-1" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="conclusion-1"><span class="header-section-number">9.10</span> Conclusion</h2>
+<p>Object-Oriented Programming in Python provides a robust framework for modeling complex systems in business analytics and information systems. By understanding and applying concepts such as classes, objects, encapsulation, inheritance, and polymorphism, you can create modular, reusable, and maintainable code. This tutorial covered the basics and provided practical examples to help you get started with OOP in Python for BAIS applications. Happy coding!</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -274,6 +274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./A2_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Using Docker</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -294,6 +300,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#data-manipulation-with-pandas" id="toc-data-manipulation-with-pandas" class="nav-link" data-scroll-target="#data-manipulation-with-pandas"><span class="header-section-number">6.0.4</span> Data Manipulation with Pandas</a></li>
   <li><a href="#example-processing-sales-data" id="toc-example-processing-sales-data" class="nav-link" data-scroll-target="#example-processing-sales-data"><span class="header-section-number">6.0.5</span> Example: Processing Sales Data</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">6.0.6</span> Conclusion</a></li>
+  <li><a href="#deep-dive-tutorial-on-python-data-handling-and-file-io-using-business-analytics-and-information-systems-examples" id="toc-deep-dive-tutorial-on-python-data-handling-and-file-io-using-business-analytics-and-information-systems-examples" class="nav-link" data-scroll-target="#deep-dive-tutorial-on-python-data-handling-and-file-io-using-business-analytics-and-information-systems-examples"><span class="header-section-number">7</span> Deep Dive Tutorial on Python Data Handling and File I/O Using Business Analytics and Information Systems Examples</a>
+  <ul class="collapse">
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents"><span class="header-section-number">7.1</span> Table of Contents</a></li>
+  <li><a href="#introduction-to-file-io" id="toc-introduction-to-file-io" class="nav-link" data-scroll-target="#introduction-to-file-io"><span class="header-section-number">7.2</span> Introduction to File I/O</a></li>
+  <li><a href="#reading-and-writing-text-files-1" id="toc-reading-and-writing-text-files-1" class="nav-link" data-scroll-target="#reading-and-writing-text-files-1"><span class="header-section-number">7.3</span> Reading and Writing Text Files</a>
+  <ul class="collapse">
+  <li><a href="#reading-text-files-1" id="toc-reading-text-files-1" class="nav-link" data-scroll-target="#reading-text-files-1"><span class="header-section-number">7.3.1</span> Reading Text Files</a></li>
+  <li><a href="#writing-text-files-1" id="toc-writing-text-files-1" class="nav-link" data-scroll-target="#writing-text-files-1"><span class="header-section-number">7.3.2</span> Writing Text Files</a></li>
+  </ul></li>
+  <li><a href="#reading-and-writing-csv-files" id="toc-reading-and-writing-csv-files" class="nav-link" data-scroll-target="#reading-and-writing-csv-files"><span class="header-section-number">7.4</span> Reading and Writing CSV Files</a>
+  <ul class="collapse">
+  <li><a href="#reading-csv-files-1" id="toc-reading-csv-files-1" class="nav-link" data-scroll-target="#reading-csv-files-1"><span class="header-section-number">7.4.1</span> Reading CSV Files</a></li>
+  <li><a href="#writing-csv-files-1" id="toc-writing-csv-files-1" class="nav-link" data-scroll-target="#writing-csv-files-1"><span class="header-section-number">7.4.2</span> Writing CSV Files</a></li>
+  </ul></li>
+  <li><a href="#reading-and-writing-excel-files" id="toc-reading-and-writing-excel-files" class="nav-link" data-scroll-target="#reading-and-writing-excel-files"><span class="header-section-number">7.5</span> Reading and Writing Excel Files</a>
+  <ul class="collapse">
+  <li><a href="#reading-excel-files" id="toc-reading-excel-files" class="nav-link" data-scroll-target="#reading-excel-files"><span class="header-section-number">7.5.1</span> Reading Excel Files</a></li>
+  <li><a href="#writing-excel-files" id="toc-writing-excel-files" class="nav-link" data-scroll-target="#writing-excel-files"><span class="header-section-number">7.5.2</span> Writing Excel Files</a></li>
+  </ul></li>
+  <li><a href="#handling-json-data" id="toc-handling-json-data" class="nav-link" data-scroll-target="#handling-json-data"><span class="header-section-number">7.6</span> Handling JSON Data</a>
+  <ul class="collapse">
+  <li><a href="#reading-json-data" id="toc-reading-json-data" class="nav-link" data-scroll-target="#reading-json-data"><span class="header-section-number">7.6.1</span> Reading JSON Data</a></li>
+  <li><a href="#writing-json-data" id="toc-writing-json-data" class="nav-link" data-scroll-target="#writing-json-data"><span class="header-section-number">7.6.2</span> Writing JSON Data</a></li>
+  </ul></li>
+  <li><a href="#database-interaction" id="toc-database-interaction" class="nav-link" data-scroll-target="#database-interaction"><span class="header-section-number">7.7</span> Database Interaction</a>
+  <ul class="collapse">
+  <li><a href="#connecting-to-a-sqlite-database" id="toc-connecting-to-a-sqlite-database" class="nav-link" data-scroll-target="#connecting-to-a-sqlite-database"><span class="header-section-number">7.7.1</span> Connecting to a SQLite Database</a></li>
+  </ul></li>
+  <li><a href="#working-with-large-data-sets" id="toc-working-with-large-data-sets" class="nav-link" data-scroll-target="#working-with-large-data-sets"><span class="header-section-number">7.8</span> Working with Large Data Sets</a>
+  <ul class="collapse">
+  <li><a href="#reading-large-csv-files-in-chunks" id="toc-reading-large-csv-files-in-chunks" class="nav-link" data-scroll-target="#reading-large-csv-files-in-chunks"><span class="header-section-number">7.8.1</span> Reading Large CSV Files in Chunks</a></li>
+  </ul></li>
+  <li><a href="#practical-examples-in-bais" id="toc-practical-examples-in-bais" class="nav-link" data-scroll-target="#practical-examples-in-bais"><span class="header-section-number">7.9</span> Practical Examples in BAIS</a>
+  <ul class="collapse">
+  <li><a href="#sales-data-analysis" id="toc-sales-data-analysis" class="nav-link" data-scroll-target="#sales-data-analysis"><span class="header-section-number">7.9.1</span> Sales Data Analysis</a></li>
+  <li><a href="#customer-data-management" id="toc-customer-data-management" class="nav-link" data-scroll-target="#customer-data-management"><span class="header-section-number">7.9.2</span> Customer Data Management</a></li>
+  </ul></li>
+  <li><a href="#best-practices-for-data-handling-and-file-io" id="toc-best-practices-for-data-handling-and-file-io" class="nav-link" data-scroll-target="#best-practices-for-data-handling-and-file-io"><span class="header-section-number">7.10</span> Best Practices for Data Handling and File I/O</a></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1"><span class="header-section-number">7.11</span> Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -454,8 +500,247 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="conclusion" class="level3" data-number="6.0.6">
 <h3 data-number="6.0.6" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">6.0.6</span> Conclusion</h3>
 <p>Handling data and performing file I/O operations are crucial skills for any programmer. Python’s built-in functions and libraries like <code>pandas</code>, <code>csv</code>, and <code>json</code> make it easy to read, write, and manipulate different file formats. By mastering these tools, you can efficiently process data inputs and outputs in any system, making your programs more powerful and versatile.</p>
+</section>
+<section id="deep-dive-tutorial-on-python-data-handling-and-file-io-using-business-analytics-and-information-systems-examples" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Deep Dive Tutorial on Python Data Handling and File I/O Using Business Analytics and Information Systems Examples</h1>
+<p>Data handling and file I/O (input/output) are critical skills in business analytics and information systems (BAIS). This tutorial will provide a deep dive into Python’s data handling and file I/O capabilities, demonstrating how to use these features with practical BAIS examples.</p>
+<section id="table-of-contents" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="table-of-contents"><span class="header-section-number">7.1</span> Table of Contents</h2>
+<ol type="1">
+<li><a href="#introduction-to-file-i-o">Introduction to File I/O</a></li>
+<li><a href="#reading-and-writing-text-files">Reading and Writing Text Files</a></li>
+<li><a href="#reading-and-writing-csv-files">Reading and Writing CSV Files</a></li>
+<li><a href="#reading-and-writing-excel-files">Reading and Writing Excel Files</a></li>
+<li><a href="#handling-json-data">Handling JSON Data</a></li>
+<li><a href="#database-interaction">Database Interaction</a></li>
+<li><a href="#working-with-large-data-sets">Working with Large Data Sets</a></li>
+<li><a href="#practical-examples-in-bais">Practical Examples in BAIS</a>
+<ul>
+<li><a href="#sales-data-analysis">Sales Data Analysis</a></li>
+<li><a href="#customer-data-management">Customer Data Management</a></li>
+</ul></li>
+<li><a href="#best-practices-for-data-handling-and-file-i-o">Best Practices for Data Handling and File I/O</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+</section>
+<section id="introduction-to-file-io" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="introduction-to-file-io"><span class="header-section-number">7.2</span> Introduction to File I/O</h2>
+<p>File I/O in Python involves reading from and writing to files. Python provides built-in functions for file operations, making it easy to handle various file types such as text, CSV, Excel, and JSON.</p>
+</section>
+<section id="reading-and-writing-text-files-1" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="reading-and-writing-text-files-1"><span class="header-section-number">7.3</span> Reading and Writing Text Files</h2>
+<p>Text files are the simplest form of file I/O in Python.</p>
+<section id="reading-text-files-1" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="reading-text-files-1"><span class="header-section-number">7.3.1</span> Reading Text Files</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read entire file</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'data.txt'</span>, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(data)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Read file line by line</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'data.txt'</span>, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> <span class="bu">file</span>:</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(line.strip())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="writing-text-files-1" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="writing-text-files-1"><span class="header-section-number">7.3.2</span> Writing Text Files</h3>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write to a file</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'output.txt'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">'This is a line of text.</span><span class="ch">\n</span><span class="st">'</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Append to a file</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'output.txt'</span>, <span class="st">'a'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">'This is another line of text.</span><span class="ch">\n</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="reading-and-writing-csv-files" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="reading-and-writing-csv-files"><span class="header-section-number">7.4</span> Reading and Writing CSV Files</h2>
+<p>CSV (Comma-Separated Values) files are commonly used for data storage and exchange in business analytics.</p>
+<section id="reading-csv-files-1" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="reading-csv-files-1"><span class="header-section-number">7.4.1</span> Reading CSV Files</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read CSV file</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'data.csv'</span>, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    reader <span class="op">=</span> csv.reader(<span class="bu">file</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(row)</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Read CSV file into a dictionary</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'data.csv'</span>, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    reader <span class="op">=</span> csv.DictReader(<span class="bu">file</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> reader:</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="writing-csv-files-1" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="writing-csv-files-1"><span class="header-section-number">7.4.2</span> Writing CSV Files</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Write to a CSV file</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'output.csv'</span>, <span class="st">'w'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    writer <span class="op">=</span> csv.writer(<span class="bu">file</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'Name'</span>, <span class="st">'Age'</span>, <span class="st">'Department'</span>])</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'Alice'</span>, <span class="st">'30'</span>, <span class="st">'HR'</span>])</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">'Bob'</span>, <span class="st">'25'</span>, <span class="st">'IT'</span>])</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Write dictionary to CSV file</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'output.csv'</span>, <span class="st">'w'</span>, newline<span class="op">=</span><span class="st">''</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    fieldnames <span class="op">=</span> [<span class="st">'Name'</span>, <span class="st">'Age'</span>, <span class="st">'Department'</span>]</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    writer <span class="op">=</span> csv.DictWriter(<span class="bu">file</span>, fieldnames<span class="op">=</span>fieldnames)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    writer.writeheader()</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    writer.writerow({<span class="st">'Name'</span>: <span class="st">'Alice'</span>, <span class="st">'Age'</span>: <span class="st">'30'</span>, <span class="st">'Department'</span>: <span class="st">'HR'</span>})</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    writer.writerow({<span class="st">'Name'</span>: <span class="st">'Bob'</span>, <span class="st">'Age'</span>: <span class="st">'25'</span>, <span class="st">'Department'</span>: <span class="st">'IT'</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="reading-and-writing-excel-files" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="reading-and-writing-excel-files"><span class="header-section-number">7.5</span> Reading and Writing Excel Files</h2>
+<p>Excel files are widely used in business analytics for data storage and manipulation.</p>
+<section id="reading-excel-files" class="level3" data-number="7.5.1">
+<h3 data-number="7.5.1" class="anchored" data-anchor-id="reading-excel-files"><span class="header-section-number">7.5.1</span> Reading Excel Files</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read Excel file</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_excel(<span class="st">'data.xlsx'</span>, sheet_name<span class="op">=</span><span class="st">'Sheet1'</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="writing-excel-files" class="level3" data-number="7.5.2">
+<h3 data-number="7.5.2" class="anchored" data-anchor-id="writing-excel-files"><span class="header-section-number">7.5.2</span> Writing Excel Files</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Write to Excel file</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Name'</span>: [<span class="st">'Alice'</span>, <span class="st">'Bob'</span>],</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Age'</span>: [<span class="dv">30</span>, <span class="dv">25</span>],</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Department'</span>: [<span class="st">'HR'</span>, <span class="st">'IT'</span>]</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>df.to_excel(<span class="st">'output.xlsx'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="handling-json-data" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="handling-json-data"><span class="header-section-number">7.6</span> Handling JSON Data</h2>
+<p>JSON (JavaScript Object Notation) is a lightweight data interchange format.</p>
+<section id="reading-json-data" class="level3" data-number="7.6.1">
+<h3 data-number="7.6.1" class="anchored" data-anchor-id="reading-json-data"><span class="header-section-number">7.6.1</span> Reading JSON Data</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read JSON file</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'data.json'</span>, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> json.load(<span class="bu">file</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="writing-json-data" class="level3" data-number="7.6.2">
+<h3 data-number="7.6.2" class="anchored" data-anchor-id="writing-json-data"><span class="header-section-number">7.6.2</span> Writing JSON Data</h3>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Write to JSON file</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'name'</span>: <span class="st">'Alice'</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'age'</span>: <span class="dv">30</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'department'</span>: <span class="st">'HR'</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'output.json'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    json.dump(data, <span class="bu">file</span>, indent<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="database-interaction" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="database-interaction"><span class="header-section-number">7.7</span> Database Interaction</h2>
+<p>Interacting with databases is essential for managing and querying large datasets in business analytics.</p>
+<section id="connecting-to-a-sqlite-database" class="level3" data-number="7.7.1">
+<h3 data-number="7.7.1" class="anchored" data-anchor-id="connecting-to-a-sqlite-database"><span class="header-section-number">7.7.1</span> Connecting to a SQLite Database</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect to database</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>conn <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">'example.db'</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a cursor object</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> conn.cursor()</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Execute a query</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>cursor.execute(<span class="st">'CREATE TABLE IF NOT EXISTS employees (id INTEGER PRIMARY KEY, name TEXT, age INTEGER, department TEXT)'</span>)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert data</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>cursor.execute(<span class="st">'INSERT INTO employees (name, age, department) VALUES (?, ?, ?)'</span>, (<span class="st">'Alice'</span>, <span class="dv">30</span>, <span class="st">'HR'</span>))</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>conn.commit()</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Query data</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>cursor.execute(<span class="st">'SELECT * FROM employees'</span>)</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> cursor.fetchall()</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> rows:</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(row)</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Close the connection</span></span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>conn.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="working-with-large-data-sets" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="working-with-large-data-sets"><span class="header-section-number">7.8</span> Working with Large Data Sets</h2>
+<p>Handling large datasets efficiently is crucial in business analytics. The <code>pandas</code> library is often used for this purpose.</p>
+<section id="reading-large-csv-files-in-chunks" class="level3" data-number="7.8.1">
+<h3 data-number="7.8.1" class="anchored" data-anchor-id="reading-large-csv-files-in-chunks"><span class="header-section-number">7.8.1</span> Reading Large CSV Files in Chunks</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read CSV file in chunks</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>chunk_size <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>chunks <span class="op">=</span> pd.read_csv(<span class="st">'large_data.csv'</span>, chunksize<span class="op">=</span>chunk_size)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> chunk <span class="kw">in</span> chunks:</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    process(chunk)  <span class="co"># Replace with actual processing logic</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="practical-examples-in-bais" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="practical-examples-in-bais"><span class="header-section-number">7.9</span> Practical Examples in BAIS</h2>
+<section id="sales-data-analysis" class="level3" data-number="7.9.1">
+<h3 data-number="7.9.1" class="anchored" data-anchor-id="sales-data-analysis"><span class="header-section-number">7.9.1</span> Sales Data Analysis</h3>
+<p><strong>Example: Analyzing Sales Data</strong></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read sales data from CSV</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>sales_data <span class="op">=</span> pd.read_csv(<span class="st">'sales_data.csv'</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate total sales</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>total_sales <span class="op">=</span> sales_data[<span class="st">'Sales'</span>].<span class="bu">sum</span>()</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Total Sales: </span><span class="sc">{</span>total_sales<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Group sales by region</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>sales_by_region <span class="op">=</span> sales_data.groupby(<span class="st">'Region'</span>)[<span class="st">'Sales'</span>].<span class="bu">sum</span>()</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sales_by_region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="customer-data-management" class="level3" data-number="7.9.2">
+<h3 data-number="7.9.2" class="anchored" data-anchor-id="customer-data-management"><span class="header-section-number">7.9.2</span> Customer Data Management</h3>
+<p><strong>Example: Managing Customer Data</strong></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Read customer data from JSON</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'customers.json'</span>, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    customers <span class="op">=</span> json.load(<span class="bu">file</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter customers by age</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>young_customers <span class="op">=</span> [customer <span class="cf">for</span> customer <span class="kw">in</span> customers <span class="cf">if</span> customer[<span class="st">'age'</span>] <span class="op">&lt;</span> <span class="dv">30</span>]</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(young_customers)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Write filtered data to new JSON file</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'young_customers.json'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    json.dump(young_customers, <span class="bu">file</span>, indent<span class="op">=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="best-practices-for-data-handling-and-file-io" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="best-practices-for-data-handling-and-file-io"><span class="header-section-number">7.10</span> Best Practices for Data Handling and File I/O</h2>
+<ol type="1">
+<li><strong>Use Context Managers</strong>: Always use context managers (<code>with</code> statements) for file operations to ensure proper resource management.</li>
+<li><strong>Exception Handling</strong>: Implement exception handling to manage errors during file operations.</li>
+<li><strong>Data Validation</strong>: Validate data before processing to avoid errors and inconsistencies.</li>
+<li><strong>Efficient Processing</strong>: Use efficient data processing techniques, especially for large datasets.</li>
+<li><strong>Security</strong>: Be mindful of security when handling sensitive data, such as using secure connections for database interactions and avoiding hardcoding sensitive information.</li>
+</ol>
+</section>
+<section id="conclusion-1" class="level2" data-number="7.11">
+<h2 data-number="7.11" class="anchored" data-anchor-id="conclusion-1"><span class="header-section-number">7.11</span> Conclusion</h2>
+<p>In this tutorial, we covered the fundamentals of data handling and file I/O in Python, with practical examples related to business analytics and information systems. Mastering these skills will enable you to efficiently manage and analyze data, a crucial aspect of BAIS. Whether you are dealing with text files, CSVs, Excel sheets, JSON data, or databases, Python provides a robust set of tools to handle your data needs.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

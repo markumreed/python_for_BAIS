@@ -27,16 +27,14 @@ book:
     - 17_adv_network_concepts.qmd # bus_data_comm
     - 18_modern_network_practices.qmd # bus_data_comm
     - summary.qmd
-    - A1_version_control.qmd
-    - references.qmd
+    - A1_version_control.qmd # Appendix about Git and GitHub
+    - A2_docker.qmd
+    - references.qmd # Appendix about Docker
 
 bibliography: references.bib
 
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
-
-
-
+execute: 
+  enabled: true

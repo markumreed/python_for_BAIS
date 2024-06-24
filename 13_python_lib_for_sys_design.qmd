@@ -20,7 +20,7 @@ You can create diagrams by defining nodes and edges within a context block.
 
 ##### Example: Creating a Simple Architecture Diagram
 
-```python
+```{python}
 from diagrams import Diagram
 from diagrams.aws.compute import EC2
 from diagrams.aws.database import RDS
@@ -43,7 +43,7 @@ You can customize the appearance and structure of your diagrams by setting vario
 
 ##### Example: Customizing Diagram Attributes
 
-```python
+```{python}
 from diagrams import Diagram, Cluster
 from diagrams.aws.compute import EC2
 from diagrams.aws.database import RDS
@@ -96,7 +96,7 @@ You can create graphs by defining nodes and edges using the `graphviz` library.
 
 ##### Example: Creating a Simple Graph
 
-```python
+```{python}
 from graphviz import Digraph
 
 # Create a new directed graph
@@ -122,7 +122,7 @@ You can customize nodes and edges with different shapes, colors, and styles.
 
 ##### Example: Customizing Nodes and Edges
 
-```python
+```{python}
 from graphviz import Digraph
 
 # Create a new directed graph
@@ -148,7 +148,7 @@ Let's create a more complex system design example by combining both `diagrams` a
 
 ##### Example: Visualizing a Multi-Tier Application with `diagrams` and `Graphviz`
 
-```python
+```{python}
 from diagrams import Diagram, Cluster
 from diagrams.aws.compute import EC2
 from diagrams.aws.database import RDS
@@ -245,7 +245,7 @@ Additionally, you need to have `Graphviz` installed. Depending on your operating
 
 Creating a simple diagram with `diagrams` is straightforward. Here’s a basic example that demonstrates how to create a simple architecture diagram:
 
-```python
+```{python}
 from diagrams import Diagram
 from diagrams.aws.compute import EC2
 from diagrams.aws.database import RDS
@@ -263,7 +263,7 @@ Nodes represent different components in the diagram. Each node corresponds to a 
 
 ### Example
 
-```python
+```{python}
 from diagrams.aws.compute import EC2
 from diagrams.aws.database import RDS
 from diagrams.aws.network import ELB
@@ -280,7 +280,7 @@ Nodes can be connected using the `>>` operator, which denotes a directional conn
 
 ### Example
 
-```python
+```{python}
 from diagrams import Diagram
 from diagrams.aws.compute import EC2
 from diagrams.aws.database import RDS
@@ -298,7 +298,7 @@ Nodes can be grouped using clusters, which are used to visually organize nodes i
 
 ### Example
 
-```python
+```{python}
 from diagrams import Cluster, Diagram
 from diagrams.aws.compute import EC2
 from diagrams.aws.database import RDS
@@ -329,7 +329,7 @@ Diagrams can be customized by setting various attributes, such as the output for
 
 ### Example
 
-```python
+```{python}
 from diagrams import Diagram, Cluster
 from diagrams.aws.compute import EC2
 from diagrams.aws.database import RDS
@@ -360,7 +360,7 @@ The `diagrams` module supports various cloud providers and generic components. E
 
 ### AWS
 
-```python
+```{python}
 from diagrams.aws.compute import EC2
 from diagrams.aws.database import RDS
 from diagrams.aws.network import ELB
@@ -368,7 +368,7 @@ from diagrams.aws.network import ELB
 
 ### Azure
 
-```python
+```{python}
 from diagrams.azure.compute import VM
 from diagrams.azure.database import SQLDatabase
 from diagrams.azure.network import LoadBalancer
@@ -376,7 +376,7 @@ from diagrams.azure.network import LoadBalancer
 
 ### GCP
 
-```python
+```{python}
 from diagrams.gcp.compute import GCE
 from diagrams.gcp.database import SQL
 from diagrams.gcp.network import LoadBalancing
@@ -384,7 +384,7 @@ from diagrams.gcp.network import LoadBalancing
 
 ### Generic
 
-```python
+```{python}
 from diagrams.generic.compute import Server
 from diagrams.generic.database import SQL
 from diagrams.generic.network import Firewall
@@ -396,7 +396,7 @@ For a full list of supported providers and services, refer to the [official docu
 
 ### Example 1: Multi-Cloud Architecture
 
-```python
+```{python}
 from diagrams import Diagram, Cluster
 from diagrams.aws.compute import EC2
 from diagrams.azure.compute import VM
@@ -422,7 +422,7 @@ with Diagram("Multi-Cloud Architecture", show=False):
 
 ### Example 2: Complex Microservices Architecture
 
-```python
+```{python}
 from diagrams import Diagram, Cluster
 from diagrams.aws.compute import EC2
 from diagrams.aws.database import RDS
@@ -516,7 +516,7 @@ To create a basic graph using the `graphviz` module, you need to import the `Gra
 
 ### Example
 
-```python
+```{python}
 from graphviz import Digraph
 
 dot = Digraph(comment='My First Graph')
@@ -538,7 +538,7 @@ Nodes represent the vertices of the graph. You can add nodes to the graph using 
 
 ### Example
 
-```python
+```{python}
 dot.node('A', 'Node A')
 dot.node('B', 'Node B')
 ```
@@ -549,7 +549,7 @@ Edges represent the connections between nodes. You can add edges to the graph us
 
 ### Example
 
-```python
+```{python}
 dot.edge('A', 'B', label='Edge from A to B')
 ```
 
@@ -559,7 +559,7 @@ You can add multiple edges at once using the `edges` method.
 
 ### Example
 
-```python
+```{python}
 dot.edges(['AC', 'BD', 'CD'])
 ```
 
@@ -571,7 +571,7 @@ You can customize the appearance of nodes using various attributes such as `colo
 
 ### Example
 
-```python
+```{python}
 dot.node('A', 'Node A', color='lightblue', style='filled', shape='box')
 ```
 
@@ -581,7 +581,7 @@ You can customize the appearance of edges using attributes such as `color`, `sty
 
 ### Example
 
-```python
+```{python}
 dot.edge('A', 'B', label='Edge from A to B', color='red', style='dashed')
 ```
 
@@ -591,7 +591,7 @@ You can set global attributes for the graph, nodes, and edges using the `attr` m
 
 ### Example
 
-```python
+```{python}
 dot.attr(rankdir='LR', size='8,5')
 dot.node_attr.update(style='filled', color='lightgrey')
 dot.edge_attr.update(arrowsize='2', color='blue')
@@ -603,7 +603,7 @@ Subgraphs allow you to group nodes and edges into clusters or logical groups.
 
 ### Example
 
-```python
+```{python}
 with dot.subgraph(name='cluster_0') as c:
     c.attr(style='filled', color='lightgrey')
     c.node_attr.update(style='filled', color='white')
@@ -624,7 +624,7 @@ Record-based nodes allow you to create nodes with multiple fields, which is usef
 
 ### Example
 
-```python
+```{python}
 dot.node('struct1', label='<f0> left|<f1> mid\ dle|<f2> right', shape='record')
 dot.node('struct2', label='one|two', shape='record')
 dot.edge('struct1:f1', 'struct2', label='Field Link')
@@ -636,7 +636,7 @@ You can use HTML-like labels to create more complex node labels.
 
 ### Example
 
-```python
+```{python}
 dot.node('html_node', label='<<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0"><TR><TD>Cell 1</TD><TD>Cell 2</TD></TR></TABLE>>')
 ```
 
@@ -646,7 +646,7 @@ You can change the rank of nodes to control their layout in the graph.
 
 ### Example
 
-```python
+```{python}
 dot.attr(rankdir='LR')
 dot.node('A')
 dot.node('B')
@@ -665,7 +665,7 @@ dot.edge('C', 'D')
 
 ### Example 1: Organizational Chart
 
-```python
+```{python}
 from graphviz import Digraph
 
 org_chart = Digraph(comment='Organizational Chart')
@@ -686,7 +686,7 @@ org_chart.render('output/org_chart', format='png', view=True)
 
 ### Example 2: Network Topology
 
-```python
+```{python}
 from graphviz import Digraph
 
 net_topo = Digraph(comment='Network Topology')
@@ -709,7 +709,7 @@ You can export and render your graph to various formats, including PNG, PDF, and
 
 ### Example
 
-```python
+```{python}
 dot.render('output/my_graph', format='png', view=True)
 ```
 

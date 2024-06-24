@@ -274,6 +274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./A2_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Using Docker</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -296,6 +302,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#dictionaries" id="toc-dictionaries" class="nav-link" data-scroll-target="#dictionaries"><span class="header-section-number">3.0.6</span> Dictionaries</a></li>
   <li><a href="#basic-modules-and-importing" id="toc-basic-modules-and-importing" class="nav-link" data-scroll-target="#basic-modules-and-importing"><span class="header-section-number">3.0.7</span> Basic Modules and Importing</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">3.0.8</span> Conclusion</a></li>
+  <li><a href="#deep-dive-tutorial-into-python-basics" id="toc-deep-dive-tutorial-into-python-basics" class="nav-link" data-scroll-target="#deep-dive-tutorial-into-python-basics"><span class="header-section-number">4</span> Deep Dive Tutorial into Python Basics</a>
+  <ul class="collapse">
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents"><span class="header-section-number">4.1</span> Table of Contents</a></li>
+  <li><a href="#introduction-to-python" id="toc-introduction-to-python" class="nav-link" data-scroll-target="#introduction-to-python"><span class="header-section-number">4.2</span> Introduction to Python</a></li>
+  <li><a href="#installing-python" id="toc-installing-python" class="nav-link" data-scroll-target="#installing-python"><span class="header-section-number">4.3</span> Installing Python</a></li>
+  <li><a href="#running-python-programs" id="toc-running-python-programs" class="nav-link" data-scroll-target="#running-python-programs"><span class="header-section-number">4.4</span> Running Python Programs</a></li>
+  <li><a href="#python-syntax-and-semantics" id="toc-python-syntax-and-semantics" class="nav-link" data-scroll-target="#python-syntax-and-semantics"><span class="header-section-number">4.5</span> Python Syntax and Semantics</a>
+  <ul class="collapse">
+  <li><a href="#indentation" id="toc-indentation" class="nav-link" data-scroll-target="#indentation"><span class="header-section-number">4.5.1</span> Indentation</a></li>
+  <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments"><span class="header-section-number">4.5.2</span> Comments</a></li>
+  </ul></li>
+  <li><a href="#variables-and-data-types-1" id="toc-variables-and-data-types-1" class="nav-link" data-scroll-target="#variables-and-data-types-1"><span class="header-section-number">4.6</span> Variables and Data Types</a>
+  <ul class="collapse">
+  <li><a href="#numbers" id="toc-numbers" class="nav-link" data-scroll-target="#numbers"><span class="header-section-number">4.6.1</span> Numbers</a></li>
+  <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings"><span class="header-section-number">4.6.2</span> Strings</a></li>
+  <li><a href="#booleans" id="toc-booleans" class="nav-link" data-scroll-target="#booleans"><span class="header-section-number">4.6.3</span> Booleans</a></li>
+  <li><a href="#none" id="toc-none" class="nav-link" data-scroll-target="#none"><span class="header-section-number">4.6.4</span> None</a></li>
+  </ul></li>
+  <li><a href="#operators" id="toc-operators" class="nav-link" data-scroll-target="#operators"><span class="header-section-number">4.7</span> Operators</a>
+  <ul class="collapse">
+  <li><a href="#arithmetic-operators" id="toc-arithmetic-operators" class="nav-link" data-scroll-target="#arithmetic-operators"><span class="header-section-number">4.7.1</span> Arithmetic Operators</a></li>
+  <li><a href="#comparison-operators" id="toc-comparison-operators" class="nav-link" data-scroll-target="#comparison-operators"><span class="header-section-number">4.7.2</span> Comparison Operators</a></li>
+  <li><a href="#logical-operators" id="toc-logical-operators" class="nav-link" data-scroll-target="#logical-operators"><span class="header-section-number">4.7.3</span> Logical Operators</a></li>
+  <li><a href="#assignment-operators" id="toc-assignment-operators" class="nav-link" data-scroll-target="#assignment-operators"><span class="header-section-number">4.7.4</span> Assignment Operators</a></li>
+  <li><a href="#membership-operators" id="toc-membership-operators" class="nav-link" data-scroll-target="#membership-operators"><span class="header-section-number">4.7.5</span> Membership Operators</a></li>
+  <li><a href="#identity-operators" id="toc-identity-operators" class="nav-link" data-scroll-target="#identity-operators"><span class="header-section-number">4.7.6</span> Identity Operators</a></li>
+  </ul></li>
+  <li><a href="#control-flow" id="toc-control-flow" class="nav-link" data-scroll-target="#control-flow"><span class="header-section-number">4.8</span> Control Flow</a>
+  <ul class="collapse">
+  <li><a href="#conditional-statements-1" id="toc-conditional-statements-1" class="nav-link" data-scroll-target="#conditional-statements-1"><span class="header-section-number">4.8.1</span> Conditional Statements</a></li>
+  <li><a href="#loops-1" id="toc-loops-1" class="nav-link" data-scroll-target="#loops-1"><span class="header-section-number">4.8.2</span> Loops</a></li>
+  </ul></li>
+  <li><a href="#functions-1" id="toc-functions-1" class="nav-link" data-scroll-target="#functions-1"><span class="header-section-number">4.9</span> Functions</a>
+  <ul class="collapse">
+  <li><a href="#defining-functions" id="toc-defining-functions" class="nav-link" data-scroll-target="#defining-functions"><span class="header-section-number">4.9.1</span> Defining Functions</a></li>
+  <li><a href="#function-arguments" id="toc-function-arguments" class="nav-link" data-scroll-target="#function-arguments"><span class="header-section-number">4.9.2</span> Function Arguments</a></li>
+  <li><a href="#return-values" id="toc-return-values" class="nav-link" data-scroll-target="#return-values"><span class="header-section-number">4.9.3</span> Return Values</a></li>
+  </ul></li>
+  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures"><span class="header-section-number">4.10</span> Data Structures</a>
+  <ul class="collapse">
+  <li><a href="#lists-1" id="toc-lists-1" class="nav-link" data-scroll-target="#lists-1"><span class="header-section-number">4.10.1</span> Lists</a></li>
+  <li><a href="#tuples" id="toc-tuples" class="nav-link" data-scroll-target="#tuples"><span class="header-section-number">4.10.2</span> Tuples</a></li>
+  <li><a href="#sets" id="toc-sets" class="nav-link" data-scroll-target="#sets"><span class="header-section-number">4.10.3</span> Sets</a></li>
+  <li><a href="#dictionaries-1" id="toc-dictionaries-1" class="nav-link" data-scroll-target="#dictionaries-1"><span class="header-section-number">4.10.4</span> Dictionaries</a></li>
+  </ul></li>
+  <li><a href="#modules-and-packages" id="toc-modules-and-packages" class="nav-link" data-scroll-target="#modules-and-packages"><span class="header-section-number">4.11</span> Modules and Packages</a>
+  <ul class="collapse">
+  <li><a href="#importing-modules-1" id="toc-importing-modules-1" class="nav-link" data-scroll-target="#importing-modules-1"><span class="header-section-number">4.11.1</span> Importing Modules</a></li>
+  <li><a href="#creating-modules" id="toc-creating-modules" class="nav-link" data-scroll-target="#creating-modules"><span class="header-section-number">4.11.2</span> Creating Modules</a></li>
+  <li><a href="#using-packages" id="toc-using-packages" class="nav-link" data-scroll-target="#using-packages"><span class="header-section-number">4.11.3</span> Using Packages</a></li>
+  </ul></li>
+  <li><a href="#file-handling" id="toc-file-handling" class="nav-link" data-scroll-target="#file-handling"><span class="header-section-number">4.12</span> File Handling</a>
+  <ul class="collapse">
+  <li><a href="#reading-files" id="toc-reading-files" class="nav-link" data-scroll-target="#reading-files"><span class="header-section-number">4.12.1</span> Reading Files</a></li>
+  <li><a href="#writing-files" id="toc-writing-files" class="nav-link" data-scroll-target="#writing-files"><span class="header-section-number">4.12.2</span> Writing Files</a></li>
+  </ul></li>
+  <li><a href="#exception-handling" id="toc-exception-handling" class="nav-link" data-scroll-target="#exception-handling"><span class="header-section-number">4.13</span> Exception Handling</a></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1"><span class="header-section-number">4.14</span> Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -327,18 +392,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="variables" class="level4" data-number="3.0.1.1">
 <h4 data-number="3.0.1.1" class="anchored" data-anchor-id="variables"><span class="header-section-number">3.0.1.1</span> Variables</h4>
 <p>In Python, variables are used to store data values. You do not need to declare a variable before using it.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
+<div id="6a4b3e76" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>company_name <span class="op">=</span> <span class="st">"Tech Solutions Inc."</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>number_of_employees <span class="op">=</span> <span class="dv">250</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>is_public <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="data-types" class="level4" data-number="3.0.1.2">
 <h4 data-number="3.0.1.2" class="anchored" data-anchor-id="data-types"><span class="header-section-number">3.0.1.2</span> Data Types</h4>
 <ol type="1">
-<li><strong>Strings</strong>: A sequence of characters. <code>python     greeting = "Welcome to our company!"</code></li>
-<li><strong>Integers</strong>: Whole numbers. <code>python     total_sales = 150000</code></li>
-<li><strong>Floats</strong>: Decimal numbers. <code>python     quarterly_profit = 35000.75</code></li>
-<li><strong>Booleans</strong>: True or False values. <code>python     is_profit_increasing = False</code></li>
+<li><p><strong>Strings</strong>: A sequence of characters.</p>
+<p>::: {#d8f876b4 .cell execution_count=2} <code>{.python .cell-code}  greeting = "Welcome to our company!"</code> :::</p></li>
+<li><p><strong>Integers</strong>: Whole numbers.</p>
+<p>::: {#4af8ff5d .cell execution_count=3} <code>{.python .cell-code}  total_sales = 150000</code> :::</p></li>
+<li><p><strong>Floats</strong>: Decimal numbers.</p>
+<p>::: {#c6a57adc .cell execution_count=4} <code>{.python .cell-code}  quarterly_profit = 35000.75</code> :::</p></li>
+<li><p><strong>Booleans</strong>: True or False values.</p>
+<p>::: {#7f46e4e4 .cell execution_count=5} <code>{.python .cell-code}  is_profit_increasing = False</code> :::</p></li>
 </ol>
 </section>
 </section>
@@ -347,7 +418,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Python supports various operations on data types.</p>
 <section id="arithmetic-operations" class="level4" data-number="3.0.2.1">
 <h4 data-number="3.0.2.1" class="anchored" data-anchor-id="arithmetic-operations"><span class="header-section-number">3.0.2.1</span> Arithmetic Operations</h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>revenue <span class="op">=</span> <span class="dv">100000</span></span>
+<div id="6687f890" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>revenue <span class="op">=</span> <span class="dv">100000</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>expenses <span class="op">=</span> <span class="dv">75000</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>net_income <span class="op">=</span> revenue <span class="op">-</span> expenses  <span class="co"># Subtraction</span></span>
@@ -355,19 +427,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>profit_margin <span class="op">=</span> (net_income <span class="op">/</span> revenue) <span class="op">*</span> <span class="dv">100</span>  <span class="co"># Division</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(profit_margin)  <span class="co"># Output: 25.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>25000
+25.0</code></pre>
+</div>
+</div>
 </section>
 <section id="string-operations" class="level4" data-number="3.0.2.2">
 <h4 data-number="3.0.2.2" class="anchored" data-anchor-id="string-operations"><span class="header-section-number">3.0.2.2</span> String Operations</h4>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>department1 <span class="op">=</span> <span class="st">"Finance"</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>department2 <span class="op">=</span> <span class="st">"Marketing"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenation</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>combined_departments <span class="op">=</span> department1 <span class="op">+</span> <span class="st">" and "</span> <span class="op">+</span> department2</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(combined_departments)  <span class="co"># Output: Finance and Marketing</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Length</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>department_length <span class="op">=</span> <span class="bu">len</span>(department1)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(department_length)  <span class="co"># Output: 7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="904b8d7c" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>department1 <span class="op">=</span> <span class="st">"Finance"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>department2 <span class="op">=</span> <span class="st">"Marketing"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenation</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>combined_departments <span class="op">=</span> department1 <span class="op">+</span> <span class="st">" and "</span> <span class="op">+</span> department2</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(combined_departments)  <span class="co"># Output: Finance and Marketing</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Length</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>department_length <span class="op">=</span> <span class="bu">len</span>(department1)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(department_length)  <span class="co"># Output: 7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Finance and Marketing
+7</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="control-structures" class="level3" data-number="3.0.3">
@@ -375,30 +458,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="conditional-statements" class="level4" data-number="3.0.3.1">
 <h4 data-number="3.0.3.1" class="anchored" data-anchor-id="conditional-statements"><span class="header-section-number">3.0.3.1</span> Conditional Statements</h4>
 <p>Conditional statements allow you to execute code based on conditions.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>annual_revenue <span class="op">=</span> <span class="dv">1200000</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> annual_revenue <span class="op">&gt;</span> <span class="dv">1000000</span>:</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"The company qualifies for the large enterprise category."</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"The company qualifies for the small enterprise category."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d8ec69e9" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>annual_revenue <span class="op">=</span> <span class="dv">1200000</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> annual_revenue <span class="op">&gt;</span> <span class="dv">1000000</span>:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"The company qualifies for the large enterprise category."</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"The company qualifies for the small enterprise category."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The company qualifies for the large enterprise category.</code></pre>
+</div>
+</div>
 </section>
 <section id="loops" class="level4" data-number="3.0.3.2">
 <h4 data-number="3.0.3.2" class="anchored" data-anchor-id="loops"><span class="header-section-number">3.0.3.2</span> Loops</h4>
 <p>Loops are used to iterate over a sequence of elements.</p>
 <section id="for-loop" class="level5" data-number="3.0.3.2.1">
 <h5 data-number="3.0.3.2.1" class="anchored" data-anchor-id="for-loop"><span class="header-section-number">3.0.3.2.1</span> For Loop</h5>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>departments <span class="op">=</span> [<span class="st">"Finance"</span>, <span class="st">"Marketing"</span>, <span class="st">"HR"</span>, <span class="st">"IT"</span>]</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> department <span class="kw">in</span> departments:</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(department)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f8f3e5c5" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>departments <span class="op">=</span> [<span class="st">"Finance"</span>, <span class="st">"Marketing"</span>, <span class="st">"HR"</span>, <span class="st">"IT"</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> department <span class="kw">in</span> departments:</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(department)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Finance
+Marketing
+HR
+IT</code></pre>
+</div>
+</div>
 </section>
 <section id="while-loop" class="level5" data-number="3.0.3.2.2">
 <h5 data-number="3.0.3.2.2" class="anchored" data-anchor-id="while-loop"><span class="header-section-number">3.0.3.2.2</span> While Loop</h5>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>pending_tasks <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> pending_tasks <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Tasks remaining: </span><span class="sc">{</span>pending_tasks<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    pending_tasks <span class="op">-=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="32182f3b" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pending_tasks <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> pending_tasks <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Tasks remaining: </span><span class="sc">{</span>pending_tasks<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    pending_tasks <span class="op">-=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Tasks remaining: 5
+Tasks remaining: 4
+Tasks remaining: 3
+Tasks remaining: 2
+Tasks remaining: 1</code></pre>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -407,18 +512,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Functions are blocks of code that perform a specific task and can be reused.</p>
 <section id="defining-and-calling-functions" class="level4" data-number="3.0.4.1">
 <h4 data-number="3.0.4.1" class="anchored" data-anchor-id="defining-and-calling-functions"><span class="header-section-number">3.0.4.1</span> Defining and Calling Functions</h4>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_bonus(salary, performance_rating):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    bonus_percentage <span class="op">=</span> <span class="fl">0.1</span> <span class="cf">if</span> performance_rating <span class="op">&gt;=</span> <span class="dv">4</span> <span class="cf">else</span> <span class="fl">0.05</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> salary <span class="op">*</span> bonus_percentage</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_bonus(<span class="dv">50000</span>, <span class="fl">4.5</span>))  <span class="co"># Output: 5000.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8140fea1" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_bonus(salary, performance_rating):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    bonus_percentage <span class="op">=</span> <span class="fl">0.1</span> <span class="cf">if</span> performance_rating <span class="op">&gt;=</span> <span class="dv">4</span> <span class="cf">else</span> <span class="fl">0.05</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> salary <span class="op">*</span> bonus_percentage</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_bonus(<span class="dv">50000</span>, <span class="fl">4.5</span>))  <span class="co"># Output: 5000.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5000.0</code></pre>
+</div>
+</div>
 </section>
 <section id="functions-with-multiple-arguments" class="level4" data-number="3.0.4.2">
 <h4 data-number="3.0.4.2" class="anchored" data-anchor-id="functions-with-multiple-arguments"><span class="header-section-number">3.0.4.2</span> Functions with Multiple Arguments</h4>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_total_cost(unit_price, quantity):</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> unit_price <span class="op">*</span> quantity</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_total_cost(<span class="dv">50</span>, <span class="dv">100</span>))  <span class="co"># Output: 5000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="71d944ee" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_total_cost(unit_price, quantity):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> unit_price <span class="op">*</span> quantity</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(calculate_total_cost(<span class="dv">50</span>, <span class="dv">100</span>))  <span class="co"># Output: 5000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5000</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="lists" class="level3" data-number="3.0.5">
@@ -426,16 +541,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Lists are ordered collections of items.</p>
 <section id="creating-and-accessing-lists" class="level4" data-number="3.0.5.1">
 <h4 data-number="3.0.5.1" class="anchored" data-anchor-id="creating-and-accessing-lists"><span class="header-section-number">3.0.5.1</span> Creating and Accessing Lists</h4>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>clients <span class="op">=</span> [<span class="st">"Client A"</span>, <span class="st">"Client B"</span>, <span class="st">"Client C"</span>]</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clients[<span class="dv">0</span>])  <span class="co"># Accessing first element, Output: Client A</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clients[<span class="op">-</span><span class="dv">1</span>]) <span class="co"># Accessing last element, Output: Client C</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7e7bd0a8" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>clients <span class="op">=</span> [<span class="st">"Client A"</span>, <span class="st">"Client B"</span>, <span class="st">"Client C"</span>]</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clients[<span class="dv">0</span>])  <span class="co"># Accessing first element, Output: Client A</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clients[<span class="op">-</span><span class="dv">1</span>]) <span class="co"># Accessing last element, Output: Client C</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Client A
+Client C</code></pre>
+</div>
+</div>
 </section>
 <section id="adding-and-removing-elements" class="level4" data-number="3.0.5.2">
 <h4 data-number="3.0.5.2" class="anchored" data-anchor-id="adding-and-removing-elements"><span class="header-section-number">3.0.5.2</span> Adding and Removing Elements</h4>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>clients.append(<span class="st">"Client D"</span>)  <span class="co"># Adding an element</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>clients.remove(<span class="st">"Client B"</span>)  <span class="co"># Removing an element</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clients)  <span class="co"># Output: ['Client A', 'Client C', 'Client D']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="539a67a4" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>clients.append(<span class="st">"Client D"</span>)  <span class="co"># Adding an element</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>clients.remove(<span class="st">"Client B"</span>)  <span class="co"># Removing an element</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clients)  <span class="co"># Output: ['Client A', 'Client C', 'Client D']</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Client A', 'Client C', 'Client D']</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="dictionaries" class="level3" data-number="3.0.6">
@@ -443,19 +569,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Dictionaries store data in key-value pairs.</p>
 <section id="creating-and-accessing-dictionaries" class="level4" data-number="3.0.6.1">
 <h4 data-number="3.0.6.1" class="anchored" data-anchor-id="creating-and-accessing-dictionaries"><span class="header-section-number">3.0.6.1</span> Creating and Accessing Dictionaries</h4>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>employee <span class="op">=</span> {</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"name"</span>: <span class="st">"John Doe"</span>,</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"age"</span>: <span class="dv">30</span>,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"position"</span>: <span class="st">"Data Analyst"</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(employee[<span class="st">"name"</span>])  <span class="co"># Accessing value by key, Output: John Doe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f6df6d7a" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>employee <span class="op">=</span> {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"name"</span>: <span class="st">"John Doe"</span>,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"age"</span>: <span class="dv">30</span>,</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"position"</span>: <span class="st">"Data Analyst"</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(employee[<span class="st">"name"</span>])  <span class="co"># Accessing value by key, Output: John Doe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>John Doe</code></pre>
+</div>
+</div>
 </section>
 <section id="adding-and-removing-key-value-pairs" class="level4" data-number="3.0.6.2">
 <h4 data-number="3.0.6.2" class="anchored" data-anchor-id="adding-and-removing-key-value-pairs"><span class="header-section-number">3.0.6.2</span> Adding and Removing Key-Value Pairs</h4>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>employee[<span class="st">"salary"</span>] <span class="op">=</span> <span class="dv">70000</span>  <span class="co"># Adding a new key-value pair</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> employee[<span class="st">"age"</span>]         <span class="co"># Removing a key-value pair</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(employee)  <span class="co"># Output: {'name': 'John Doe', 'position': 'Data Analyst', 'salary': 70000}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="7f55d950" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>employee[<span class="st">"salary"</span>] <span class="op">=</span> <span class="dv">70000</span>  <span class="co"># Adding a new key-value pair</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> employee[<span class="st">"age"</span>]         <span class="co"># Removing a key-value pair</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(employee)  <span class="co"># Output: {'name': 'John Doe', 'position': 'Data Analyst', 'salary': 70000}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'name': 'John Doe', 'position': 'Data Analyst', 'salary': 70000}</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="basic-modules-and-importing" class="level3" data-number="3.0.7">
@@ -463,26 +599,554 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Python has a rich standard library of modules you can import to extend functionality.</p>
 <section id="importing-modules" class="level4" data-number="3.0.7.1">
 <h4 data-number="3.0.7.1" class="anchored" data-anchor-id="importing-modules"><span class="header-section-number">3.0.7.1</span> Importing Modules</h4>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the ceiling value of monthly earnings</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>monthly_earnings <span class="op">=</span> <span class="fl">10234.56</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.ceil(monthly_earnings))  <span class="co"># Output: 10235</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cf70e70f" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the ceiling value of monthly earnings</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>monthly_earnings <span class="op">=</span> <span class="fl">10234.56</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.ceil(monthly_earnings))  <span class="co"># Output: 10235</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10235</code></pre>
+</div>
+</div>
 </section>
 <section id="importing-specific-functions" class="level4" data-number="3.0.7.2">
 <h4 data-number="3.0.7.2" class="anchored" data-anchor-id="importing-specific-functions"><span class="header-section-number">3.0.7.2</span> Importing Specific Functions</h4>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the square root of the annual growth percentage</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>annual_growth <span class="op">=</span> <span class="dv">16</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sqrt(annual_growth))  <span class="co"># Output: 4.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c83a59a2" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculating the square root of the annual growth percentage</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>annual_growth <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sqrt(annual_growth))  <span class="co"># Output: 4.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4.0</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="conclusion" class="level3" data-number="3.0.8">
 <h3 data-number="3.0.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">3.0.8</span> Conclusion</h3>
 <p>This tutorial covered the basics of Python programming with a focus on business-related examples, including variables, data types, control structures, functions, lists, dictionaries, and basic module usage. With these fundamentals, you can start building simple Python programs to solve business problems and gradually move on to more complex projects.</p>
+</section>
+<section id="deep-dive-tutorial-into-python-basics" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Deep Dive Tutorial into Python Basics</h1>
+<p>Python is a high-level, interpreted programming language known for its readability, simplicity, and versatility. It is widely used for web development, data analysis, artificial intelligence, scientific computing, and more. This tutorial provides a comprehensive introduction to the basics of Python, covering essential concepts and practical examples.</p>
+<section id="table-of-contents" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="table-of-contents"><span class="header-section-number">4.1</span> Table of Contents</h2>
+<ol type="1">
+<li><a href="#introduction-to-python">Introduction to Python</a></li>
+<li><a href="#installing-python">Installing Python</a></li>
+<li><a href="#running-python-programs">Running Python Programs</a></li>
+<li><a href="#python-syntax-and-semantics">Python Syntax and Semantics</a>
+<ul>
+<li><a href="#indentation">Indentation</a></li>
+<li><a href="#comments">Comments</a></li>
+</ul></li>
+<li><a href="#variables-and-data-types">Variables and Data Types</a>
+<ul>
+<li><a href="#numbers">Numbers</a></li>
+<li><a href="#strings">Strings</a></li>
+<li><a href="#booleans">Booleans</a></li>
+<li><a href="#none">None</a></li>
+</ul></li>
+<li><a href="#operators">Operators</a>
+<ul>
+<li><a href="#arithmetic-operators">Arithmetic Operators</a></li>
+<li><a href="#comparison-operators">Comparison Operators</a></li>
+<li><a href="#logical-operators">Logical Operators</a></li>
+<li><a href="#assignment-operators">Assignment Operators</a></li>
+<li><a href="#membership-operators">Membership Operators</a></li>
+<li><a href="#identity-operators">Identity Operators</a></li>
+</ul></li>
+<li><a href="#control-flow">Control Flow</a>
+<ul>
+<li><a href="#conditional-statements">Conditional Statements</a></li>
+<li><a href="#loops">Loops</a></li>
+</ul></li>
+<li><a href="#functions">Functions</a>
+<ul>
+<li><a href="#defining-functions">Defining Functions</a></li>
+<li><a href="#function-arguments">Function Arguments</a></li>
+<li><a href="#return-values">Return Values</a></li>
+</ul></li>
+<li><a href="#data-structures">Data Structures</a>
+<ul>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#tuples">Tuples</a></li>
+<li><a href="#sets">Sets</a></li>
+<li><a href="#dictionaries">Dictionaries</a></li>
+</ul></li>
+<li><a href="#modules-and-packages">Modules and Packages</a>
+<ul>
+<li><a href="#importing-modules">Importing Modules</a></li>
+<li><a href="#creating-modules">Creating Modules</a></li>
+<li><a href="#using-packages">Using Packages</a></li>
+</ul></li>
+<li><a href="#file-handling">File Handling</a>
+<ul>
+<li><a href="#reading-files">Reading Files</a></li>
+<li><a href="#writing-files">Writing Files</a></li>
+</ul></li>
+<li><a href="#exception-handling">Exception Handling</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+</section>
+<section id="introduction-to-python" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="introduction-to-python"><span class="header-section-number">4.2</span> Introduction to Python</h2>
+<p>Python was created by Guido van Rossum and first released in 1991. It emphasizes code readability and allows programmers to express concepts in fewer lines of code than languages like C++ or Java. Python supports multiple programming paradigms, including procedural, object-oriented, and functional programming.</p>
+</section>
+<section id="installing-python" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="installing-python"><span class="header-section-number">4.3</span> Installing Python</h2>
+<p>To install Python, download the installer from the <a href="https://www.python.org/downloads/">official Python website</a> and follow the installation instructions for your operating system.</p>
+</section>
+<section id="running-python-programs" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="running-python-programs"><span class="header-section-number">4.4</span> Running Python Programs</h2>
+<p>Python programs can be run in various ways: - <strong>Interactive Mode</strong>: Open a terminal or command prompt, type <code>python</code> or <code>python3</code>, and press Enter. - <strong>Script Mode</strong>: Write your code in a file with a <code>.py</code> extension and run it using <code>python filename.py</code> or <code>python3 filename.py</code>.</p>
+</section>
+<section id="python-syntax-and-semantics" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="python-syntax-and-semantics"><span class="header-section-number">4.5</span> Python Syntax and Semantics</h2>
+<section id="indentation" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="indentation"><span class="header-section-number">4.5.1</span> Indentation</h3>
+<p>Python uses indentation to define the structure of the code. Consistent indentation is crucial as it defines blocks of code.</p>
+<div id="584cc616" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="dv">5</span> <span class="op">&gt;</span> <span class="dv">2</span>:</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Five is greater than two!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Five is greater than two!</code></pre>
+</div>
+</div>
+</section>
+<section id="comments" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="comments"><span class="header-section-number">4.5.2</span> Comments</h3>
+<p>Comments are used to explain code and are ignored by the interpreter. Single-line comments start with <code>#</code>.</p>
+<div id="625a3f27" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This is a comment</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)  <span class="co"># This is an inline comment</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello, World!</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="variables-and-data-types-1" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="variables-and-data-types-1"><span class="header-section-number">4.6</span> Variables and Data Types</h2>
+<p>Variables are used to store data values. In Python, you don’t need to declare variables before using them.</p>
+<div id="c2b1f7a8" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="st">"Hello"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="numbers" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="numbers"><span class="header-section-number">4.6.1</span> Numbers</h3>
+<p>Python supports integers, floating-point numbers, and complex numbers.</p>
+<div id="2ae89c3a" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span>       <span class="co"># Integer</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">3.14</span>     <span class="co"># Float</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="ot">2j</span>   <span class="co"># Complex</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="strings" class="level3" data-number="4.6.2">
+<h3 data-number="4.6.2" class="anchored" data-anchor-id="strings"><span class="header-section-number">4.6.2</span> Strings</h3>
+<p>Strings are sequences of characters enclosed in single, double, or triple quotes.</p>
+<div id="c828afd2" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">"Alice"</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>greeting <span class="op">=</span> <span class="st">'Hello, World!'</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>multiline <span class="op">=</span> <span class="st">"""This is</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="st">a multiline</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="st">string."""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="booleans" class="level3" data-number="4.6.3">
+<h3 data-number="4.6.3" class="anchored" data-anchor-id="booleans"><span class="header-section-number">4.6.3</span> Booleans</h3>
+<p>Booleans represent <code>True</code> or <code>False</code>.</p>
+<div id="e4b40b54" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>is_true <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>is_false <span class="op">=</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="none" class="level3" data-number="4.6.4">
+<h3 data-number="4.6.4" class="anchored" data-anchor-id="none"><span class="header-section-number">4.6.4</span> None</h3>
+<p><code>None</code> represents the absence of a value.</p>
+<div id="64cd2775" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>nothing <span class="op">=</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="operators" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="operators"><span class="header-section-number">4.7</span> Operators</h2>
+<section id="arithmetic-operators" class="level3" data-number="4.7.1">
+<h3 data-number="4.7.1" class="anchored" data-anchor-id="arithmetic-operators"><span class="header-section-number">4.7.1</span> Arithmetic Operators</h3>
+<div id="392f2fb1" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">+</span> y)  <span class="co"># Addition</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">-</span> y)  <span class="co"># Subtraction</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">*</span> y)  <span class="co"># Multiplication</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">/</span> y)  <span class="co"># Division</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">%</span> y)  <span class="co"># Modulus</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">**</span> y) <span class="co"># Exponentiation</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">//</span> y) <span class="co"># Floor Division</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>13
+7
+30
+3.3333333333333335
+1
+1000
+3</code></pre>
+</div>
+</div>
+</section>
+<section id="comparison-operators" class="level3" data-number="4.7.2">
+<h3 data-number="4.7.2" class="anchored" data-anchor-id="comparison-operators"><span class="header-section-number">4.7.2</span> Comparison Operators</h3>
+<div id="ad98d178" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">==</span> y)  <span class="co"># Equal</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">!=</span> y)  <span class="co"># Not equal</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&gt;</span> y)   <span class="co"># Greater than</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&lt;</span> y)   <span class="co"># Less than</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&gt;=</span> y)  <span class="co"># Greater than or equal to</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&lt;=</span> y)  <span class="co"># Less than or equal to</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False
+True
+True
+False
+True
+False</code></pre>
+</div>
+</div>
+</section>
+<section id="logical-operators" class="level3" data-number="4.7.3">
+<h3 data-number="4.7.3" class="anchored" data-anchor-id="logical-operators"><span class="header-section-number">4.7.3</span> Logical Operators</h3>
+<div id="0e2ebfb9" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&gt;</span> <span class="dv">5</span> <span class="kw">and</span> y <span class="op">&lt;</span> <span class="dv">5</span>)  <span class="co"># Logical AND</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">&gt;</span> <span class="dv">5</span> <span class="kw">or</span> y <span class="op">&gt;</span> <span class="dv">5</span>)   <span class="co"># Logical OR</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="kw">not</span>(x <span class="op">&gt;</span> <span class="dv">5</span>))       <span class="co"># Logical NOT</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True
+True
+False</code></pre>
+</div>
+</div>
+</section>
+<section id="assignment-operators" class="level3" data-number="4.7.4">
+<h3 data-number="4.7.4" class="anchored" data-anchor-id="assignment-operators"><span class="header-section-number">4.7.4</span> Assignment Operators</h3>
+<div id="0588f08f" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">+=</span> <span class="dv">5</span>  <span class="co"># x = x + 5</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">-=</span> <span class="dv">3</span>  <span class="co"># x = x - 3</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">*=</span> <span class="dv">2</span>  <span class="co"># x = x * 2</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">/=</span> <span class="dv">2</span>  <span class="co"># x = x / 2</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">%=</span> <span class="dv">3</span>  <span class="co"># x = x % 3</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">**=</span> <span class="dv">2</span> <span class="co"># x = x ** 2</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">//=</span> <span class="dv">2</span> <span class="co"># x = x // 2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="membership-operators" class="level3" data-number="4.7.5">
+<h3 data-number="4.7.5" class="anchored" data-anchor-id="membership-operators"><span class="header-section-number">4.7.5</span> Membership Operators</h3>
+<div id="3f607b16" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>lst <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">3</span> <span class="kw">in</span> lst)  <span class="co"># True</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">6</span> <span class="kw">in</span> lst)  <span class="co"># False</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">6</span> <span class="kw">not</span> <span class="kw">in</span> lst)  <span class="co"># True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True
+False
+True</code></pre>
+</div>
+</div>
+</section>
+<section id="identity-operators" class="level3" data-number="4.7.6">
+<h3 data-number="4.7.6" class="anchored" data-anchor-id="identity-operators"><span class="header-section-number">4.7.6</span> Identity Operators</h3>
+<div id="360fb9c2" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="kw">is</span> b)      <span class="co"># False (different objects)</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="kw">is</span> <span class="kw">not</span> b)  <span class="co"># True</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a <span class="op">==</span> b)      <span class="co"># True (same content)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False
+True
+True</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="control-flow" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="control-flow"><span class="header-section-number">4.8</span> Control Flow</h2>
+<section id="conditional-statements-1" class="level3" data-number="4.8.1">
+<h3 data-number="4.8.1" class="anchored" data-anchor-id="conditional-statements-1"><span class="header-section-number">4.8.1</span> Conditional Statements</h3>
+<div id="bcf9fa87" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is positive"</span>)</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is zero"</span>)</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"x is negative"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x is positive</code></pre>
+</div>
+</div>
+</section>
+<section id="loops-1" class="level3" data-number="4.8.2">
+<h3 data-number="4.8.2" class="anchored" data-anchor-id="loops-1"><span class="header-section-number">4.8.2</span> Loops</h3>
+<section id="for-loop-1" class="level4" data-number="4.8.2.1">
+<h4 data-number="4.8.2.1" class="anchored" data-anchor-id="for-loop-1"><span class="header-section-number">4.8.2.1</span> <code>for</code> Loop</h4>
+<div id="f5588f7f" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>]</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> fruit <span class="kw">in</span> fruits:</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(fruit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>apple
+banana
+cherry</code></pre>
+</div>
+</div>
+</section>
+<section id="while-loop-1" class="level4" data-number="4.8.2.2">
+<h4 data-number="4.8.2.2" class="anchored" data-anchor-id="while-loop-1"><span class="header-section-number">4.8.2.2</span> <code>while</code> Loop</h4>
+<div id="c97035b5" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">6</span>:</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    i <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+2
+3
+4
+5</code></pre>
+</div>
+</div>
+</section>
+<section id="loop-control-statements" class="level4" data-number="4.8.2.3">
+<h4 data-number="4.8.2.3" class="anchored" data-anchor-id="loop-control-statements"><span class="header-section-number">4.8.2.3</span> Loop Control Statements</h4>
+<div id="66869653" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">5</span>:</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span>  <span class="co"># Exit the loop</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">2</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span>  <span class="co"># Skip the rest of the loop</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+3</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="functions-1" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="functions-1"><span class="header-section-number">4.9</span> Functions</h2>
+<section id="defining-functions" class="level3" data-number="4.9.1">
+<h3 data-number="4.9.1" class="anchored" data-anchor-id="defining-functions"><span class="header-section-number">4.9.1</span> Defining Functions</h3>
+<div id="8a7acd64" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greet(name):</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span>)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>greet(<span class="st">"Alice"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello, Alice!</code></pre>
+</div>
+</div>
+</section>
+<section id="function-arguments" class="level3" data-number="4.9.2">
+<h3 data-number="4.9.2" class="anchored" data-anchor-id="function-arguments"><span class="header-section-number">4.9.2</span> Function Arguments</h3>
+<div id="3cd67c9d" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add(a, b):</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(add(<span class="dv">3</span>, <span class="dv">5</span>))  <span class="co"># Positional arguments</span></span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(add(a<span class="op">=</span><span class="dv">3</span>, b<span class="op">=</span><span class="dv">5</span>))  <span class="co"># Keyword arguments</span></span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greet(name, message<span class="op">=</span><span class="st">"Hello"</span>):</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>message<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span>)</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>greet(<span class="st">"Alice"</span>)</span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>greet(<span class="st">"Bob"</span>, <span class="st">"Hi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>8
+8
+Hello, Alice!
+Hi, Bob!</code></pre>
+</div>
+</div>
+</section>
+<section id="return-values" class="level3" data-number="4.9.3">
+<h3 data-number="4.9.3" class="anchored" data-anchor-id="return-values"><span class="header-section-number">4.9.3</span> Return Values</h3>
+<div id="3fc9d908" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> square(x):</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> x</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> square(<span class="dv">4</span>)</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>16</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="data-structures" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="data-structures"><span class="header-section-number">4.10</span> Data Structures</h2>
+<section id="lists-1" class="level3" data-number="4.10.1">
+<h3 data-number="4.10.1" class="anchored" data-anchor-id="lists-1"><span class="header-section-number">4.10.1</span> Lists</h3>
+<div id="f8aa41f3" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>fruits <span class="op">=</span> [<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"cherry"</span>]</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fruits[<span class="dv">0</span>])  <span class="co"># Accessing elements</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>fruits[<span class="dv">1</span>] <span class="op">=</span> <span class="st">"blackberry"</span>  <span class="co"># Modifying elements</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fruits)</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>fruits.append(<span class="st">"orange"</span>)  <span class="co"># Adding elements</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fruits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>apple
+['apple', 'blackberry', 'cherry']
+['apple', 'blackberry', 'cherry', 'orange']</code></pre>
+</div>
+</div>
+</section>
+<section id="tuples" class="level3" data-number="4.10.2">
+<h3 data-number="4.10.2" class="anchored" data-anchor-id="tuples"><span class="header-section-number">4.10.2</span> Tuples</h3>
+<div id="9dd7003b" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>coordinates <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">20</span>)</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(coordinates[<span class="dv">0</span>])</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="co"># coordinates[0] = 30  # Error: Tuples are immutable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10</code></pre>
+</div>
+</div>
+</section>
+<section id="sets" class="level3" data-number="4.10.3">
+<h3 data-number="4.10.3" class="anchored" data-anchor-id="sets"><span class="header-section-number">4.10.3</span> Sets</h3>
+<div id="4f3cd7ea" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>unique_numbers <span class="op">=</span> {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>}</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unique_numbers)  <span class="co"># {1, 2, 3, 4}</span></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>unique_numbers.add(<span class="dv">5</span>)</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unique_numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{1, 2, 3, 4}
+{1, 2, 3, 4, 5}</code></pre>
+</div>
+</div>
+</section>
+<section id="dictionaries-1" class="level3" data-number="4.10.4">
+<h3 data-number="4.10.4" class="anchored" data-anchor-id="dictionaries-1"><span class="header-section-number">4.10.4</span> Dictionaries</h3>
+<div id="a5be57a0" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>person <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Alice"</span>, <span class="st">"age"</span>: <span class="dv">30</span>}</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(person[<span class="st">"name"</span>])</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>person[<span class="st">"age"</span>] <span class="op">=</span> <span class="dv">31</span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(person)</span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>person[<span class="st">"city"</span>] <span class="op">=</span> <span class="st">"New York"</span></span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(person)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Alice
+{'name': 'Alice', 'age': 31}
+{'name': 'Alice', 'age': 31, 'city': 'New York'}</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="modules-and-packages" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="modules-and-packages"><span class="header-section-number">4.11</span> Modules and Packages</h2>
+<section id="importing-modules-1" class="level3" data-number="4.11.1">
+<h3 data-number="4.11.1" class="anchored" data-anchor-id="importing-modules-1"><span class="header-section-number">4.11.1</span> Importing Modules</h3>
+<div id="53530d4e" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(math.sqrt(<span class="dv">16</span>))</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sqrt(<span class="dv">16</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>4.0
+4.0</code></pre>
+</div>
+</div>
+</section>
+<section id="creating-modules" class="level3" data-number="4.11.2">
+<h3 data-number="4.11.2" class="anchored" data-anchor-id="creating-modules"><span class="header-section-number">4.11.2</span> Creating Modules</h3>
+<p>Create a file named <code>mymodule.py</code>:</p>
+<div id="9cdb7930" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># mymodule.py</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greet(name):</span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Hello, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then import and use it:</p>
+<div id="65494c0f" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mymodule</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>mymodule.greet(<span class="st">"Alice"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello, Alice!</code></pre>
+</div>
+</div>
+</section>
+<section id="using-packages" class="level3" data-number="4.11.3">
+<h3 data-number="4.11.3" class="anchored" data-anchor-id="using-packages"><span class="header-section-number">4.11.3</span> Using Packages</h3>
+<p>Create a package directory structure:</p>
+<pre><code>mypackage/
+    __init__.py
+    module1.py
+    module2.py</code></pre>
+<p>In <code>module1.py</code>:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> function1():</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Function 1 from module 1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In <code>module2.py</code>:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> function2():</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Function 2 from module 2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In <code>__init__.py</code>:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .module1 <span class="im">import</span> function1</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> .module2 <span class="im">import</span> function2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then use the package:</p>
+<div id="31a977b5" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mypackage</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>mypackage.function1()</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>mypackage.function2()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Function 1 from module 1
+Function 2 from module 2</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="file-handling" class="level2" data-number="4.12">
+<h2 data-number="4.12" class="anchored" data-anchor-id="file-handling"><span class="header-section-number">4.12</span> File Handling</h2>
+<section id="reading-files" class="level3" data-number="4.12.1">
+<h3 data-number="4.12.1" class="anchored" data-anchor-id="reading-files"><span class="header-section-number">4.12.1</span> Reading Files</h3>
+<div id="b46800e3" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'file.txt'</span>, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    content <span class="op">=</span> <span class="bu">file</span>.read()</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code></code></pre>
+</div>
+</div>
+</section>
+<section id="writing-files" class="level3" data-number="4.12.2">
+<h3 data-number="4.12.2" class="anchored" data-anchor-id="writing-files"><span class="header-section-number">4.12.2</span> Writing Files</h3>
+<div id="7b317d4c" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'file.txt'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">"Hello, World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="exception-handling" class="level2" data-number="4.13">
+<h2 data-number="4.13" class="anchored" data-anchor-id="exception-handling"><span class="header-section-number">4.13</span> Exception Handling</h2>
+<div id="ef9c7909" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> <span class="dv">0</span></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Cannot divide by zero"</span>)</span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="cf">finally</span>:</span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"This is always executed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Cannot divide by zero
+This is always executed</code></pre>
+</div>
+</div>
+</section>
+<section id="conclusion-1" class="level2" data-number="4.14">
+<h2 data-number="4.14" class="anchored" data-anchor-id="conclusion-1"><span class="header-section-number">4.14</span> Conclusion</h2>
+<p>This deep dive tutorial covered the basics of Python, including syntax, data types, operators, control flow, functions, data structures, modules, file handling, and exception handling. By mastering these fundamentals, you’ll be well-equipped to explore more advanced topics and develop robust Python applications. Python’s simplicity and readability make it an excellent choice for beginners and experienced developers alike.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

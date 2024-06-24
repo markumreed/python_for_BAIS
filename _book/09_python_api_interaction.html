@@ -274,6 +274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./A2_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Using Docker</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -296,6 +302,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#error-handling" id="toc-error-handling" class="nav-link" data-scroll-target="#error-handling"><span class="header-section-number">10.0.6</span> Error Handling</a></li>
   <li><a href="#example-integrating-external-data-into-your-application" id="toc-example-integrating-external-data-into-your-application" class="nav-link" data-scroll-target="#example-integrating-external-data-into-your-application"><span class="header-section-number">10.0.7</span> Example: Integrating External Data into Your Application</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">10.0.8</span> Conclusion</a></li>
+  <li><a href="#deep-dive-tutorial-on-the-requests-python-module-for-interacting-with-apis" id="toc-deep-dive-tutorial-on-the-requests-python-module-for-interacting-with-apis" class="nav-link" data-scroll-target="#deep-dive-tutorial-on-the-requests-python-module-for-interacting-with-apis"><span class="header-section-number">11</span> Deep Dive Tutorial on the <code>requests</code> Python Module for Interacting with APIs</a>
+  <ul class="collapse">
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents"><span class="header-section-number">11.1</span> Table of Contents</a></li>
+  <li><a href="#introduction-to-requests" id="toc-introduction-to-requests" class="nav-link" data-scroll-target="#introduction-to-requests"><span class="header-section-number">11.2</span> Introduction to <code>requests</code></a></li>
+  <li><a href="#installing-requests" id="toc-installing-requests" class="nav-link" data-scroll-target="#installing-requests"><span class="header-section-number">11.3</span> Installing <code>requests</code></a></li>
+  <li><a href="#making-http-requests" id="toc-making-http-requests" class="nav-link" data-scroll-target="#making-http-requests"><span class="header-section-number">11.4</span> Making HTTP Requests</a>
+  <ul class="collapse">
+  <li><a href="#get-request" id="toc-get-request" class="nav-link" data-scroll-target="#get-request"><span class="header-section-number">11.4.1</span> GET Request</a></li>
+  <li><a href="#post-request" id="toc-post-request" class="nav-link" data-scroll-target="#post-request"><span class="header-section-number">11.4.2</span> POST Request</a></li>
+  <li><a href="#put-request" id="toc-put-request" class="nav-link" data-scroll-target="#put-request"><span class="header-section-number">11.4.3</span> PUT Request</a></li>
+  <li><a href="#delete-request" id="toc-delete-request" class="nav-link" data-scroll-target="#delete-request"><span class="header-section-number">11.4.4</span> DELETE Request</a></li>
+  </ul></li>
+  <li><a href="#handling-responses" id="toc-handling-responses" class="nav-link" data-scroll-target="#handling-responses"><span class="header-section-number">11.5</span> Handling Responses</a>
+  <ul class="collapse">
+  <li><a href="#status-codes" id="toc-status-codes" class="nav-link" data-scroll-target="#status-codes"><span class="header-section-number">11.5.1</span> Status Codes</a></li>
+  <li><a href="#response-content" id="toc-response-content" class="nav-link" data-scroll-target="#response-content"><span class="header-section-number">11.5.2</span> Response Content</a></li>
+  <li><a href="#json-responses" id="toc-json-responses" class="nav-link" data-scroll-target="#json-responses"><span class="header-section-number">11.5.3</span> JSON Responses</a></li>
+  </ul></li>
+  <li><a href="#customizing-requests" id="toc-customizing-requests" class="nav-link" data-scroll-target="#customizing-requests"><span class="header-section-number">11.6</span> Customizing Requests</a>
+  <ul class="collapse">
+  <li><a href="#headers" id="toc-headers" class="nav-link" data-scroll-target="#headers"><span class="header-section-number">11.6.1</span> Headers</a></li>
+  <li><a href="#query-parameters" id="toc-query-parameters" class="nav-link" data-scroll-target="#query-parameters"><span class="header-section-number">11.6.2</span> Query Parameters</a></li>
+  <li><a href="#request-body" id="toc-request-body" class="nav-link" data-scroll-target="#request-body"><span class="header-section-number">11.6.3</span> Request Body</a></li>
+  <li><a href="#timeouts" id="toc-timeouts" class="nav-link" data-scroll-target="#timeouts"><span class="header-section-number">11.6.4</span> Timeouts</a></li>
+  </ul></li>
+  <li><a href="#session-objects" id="toc-session-objects" class="nav-link" data-scroll-target="#session-objects"><span class="header-section-number">11.7</span> Session Objects</a></li>
+  <li><a href="#handling-authentication" id="toc-handling-authentication" class="nav-link" data-scroll-target="#handling-authentication"><span class="header-section-number">11.8</span> Handling Authentication</a>
+  <ul class="collapse">
+  <li><a href="#basic-authentication" id="toc-basic-authentication" class="nav-link" data-scroll-target="#basic-authentication"><span class="header-section-number">11.8.1</span> Basic Authentication</a></li>
+  <li><a href="#bearer-token-authentication" id="toc-bearer-token-authentication" class="nav-link" data-scroll-target="#bearer-token-authentication"><span class="header-section-number">11.8.2</span> Bearer Token Authentication</a></li>
+  </ul></li>
+  <li><a href="#error-handling-1" id="toc-error-handling-1" class="nav-link" data-scroll-target="#error-handling-1"><span class="header-section-number">11.9</span> Error Handling</a></li>
+  <li><a href="#advanced-usage" id="toc-advanced-usage" class="nav-link" data-scroll-target="#advanced-usage"><span class="header-section-number">11.10</span> Advanced Usage</a>
+  <ul class="collapse">
+  <li><a href="#streaming-downloads" id="toc-streaming-downloads" class="nav-link" data-scroll-target="#streaming-downloads"><span class="header-section-number">11.10.1</span> Streaming Downloads</a></li>
+  <li><a href="#uploading-files" id="toc-uploading-files" class="nav-link" data-scroll-target="#uploading-files"><span class="header-section-number">11.10.2</span> Uploading Files</a></li>
+  <li><a href="#custom-transport-adapters" id="toc-custom-transport-adapters" class="nav-link" data-scroll-target="#custom-transport-adapters"><span class="header-section-number">11.10.3</span> Custom Transport Adapters</a></li>
+  </ul></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1"><span class="header-section-number">11.11</span> Conclusion</a></li>
+  </ul></li>
+  <li><a href="#deep-dive-tutorial-on-the-json-python-module-for-interacting-with-apis" id="toc-deep-dive-tutorial-on-the-json-python-module-for-interacting-with-apis" class="nav-link" data-scroll-target="#deep-dive-tutorial-on-the-json-python-module-for-interacting-with-apis"><span class="header-section-number">12</span> Deep Dive Tutorial on the <code>json</code> Python Module for Interacting with APIs</a>
+  <ul class="collapse">
+  <li><a href="#table-of-contents-1" id="toc-table-of-contents-1" class="nav-link" data-scroll-target="#table-of-contents-1"><span class="header-section-number">12.1</span> Table of Contents</a></li>
+  <li><a href="#introduction-to-json" id="toc-introduction-to-json" class="nav-link" data-scroll-target="#introduction-to-json"><span class="header-section-number">12.2</span> Introduction to JSON</a></li>
+  <li><a href="#installing-json" id="toc-installing-json" class="nav-link" data-scroll-target="#installing-json"><span class="header-section-number">12.3</span> Installing <code>json</code></a></li>
+  <li><a href="#basic-usage" id="toc-basic-usage" class="nav-link" data-scroll-target="#basic-usage"><span class="header-section-number">12.4</span> Basic Usage</a>
+  <ul class="collapse">
+  <li><a href="#parsing-json-data" id="toc-parsing-json-data" class="nav-link" data-scroll-target="#parsing-json-data"><span class="header-section-number">12.4.1</span> Parsing JSON Data</a></li>
+  <li><a href="#serializing-data-to-json" id="toc-serializing-data-to-json" class="nav-link" data-scroll-target="#serializing-data-to-json"><span class="header-section-number">12.4.2</span> Serializing Data to JSON</a></li>
+  </ul></li>
+  <li><a href="#interacting-with-apis" id="toc-interacting-with-apis" class="nav-link" data-scroll-target="#interacting-with-apis"><span class="header-section-number">12.5</span> Interacting with APIs</a>
+  <ul class="collapse">
+  <li><a href="#sending-json-data" id="toc-sending-json-data" class="nav-link" data-scroll-target="#sending-json-data"><span class="header-section-number">12.5.1</span> Sending JSON Data</a></li>
+  <li><a href="#receiving-json-data" id="toc-receiving-json-data" class="nav-link" data-scroll-target="#receiving-json-data"><span class="header-section-number">12.5.2</span> Receiving JSON Data</a></li>
+  </ul></li>
+  <li><a href="#advanced-usage-1" id="toc-advanced-usage-1" class="nav-link" data-scroll-target="#advanced-usage-1"><span class="header-section-number">12.6</span> Advanced Usage</a>
+  <ul class="collapse">
+  <li><a href="#custom-serialization" id="toc-custom-serialization" class="nav-link" data-scroll-target="#custom-serialization"><span class="header-section-number">12.6.1</span> Custom Serialization</a></li>
+  <li><a href="#custom-deserialization" id="toc-custom-deserialization" class="nav-link" data-scroll-target="#custom-deserialization"><span class="header-section-number">12.6.2</span> Custom Deserialization</a></li>
+  <li><a href="#working-with-complex-data-structures" id="toc-working-with-complex-data-structures" class="nav-link" data-scroll-target="#working-with-complex-data-structures"><span class="header-section-number">12.6.3</span> Working with Complex Data Structures</a></li>
+  </ul></li>
+  <li><a href="#error-handling-2" id="toc-error-handling-2" class="nav-link" data-scroll-target="#error-handling-2"><span class="header-section-number">12.7</span> Error Handling</a></li>
+  <li><a href="#practical-examples" id="toc-practical-examples" class="nav-link" data-scroll-target="#practical-examples"><span class="header-section-number">12.8</span> Practical Examples</a>
+  <ul class="collapse">
+  <li><a href="#example-1-github-api" id="toc-example-1-github-api" class="nav-link" data-scroll-target="#example-1-github-api"><span class="header-section-number">12.8.1</span> Example 1: GitHub API</a></li>
+  <li><a href="#example-2-openweathermap-api" id="toc-example-2-openweathermap-api" class="nav-link" data-scroll-target="#example-2-openweathermap-api"><span class="header-section-number">12.8.2</span> Example 2: OpenWeatherMap API</a></li>
+  </ul></li>
+  <li><a href="#conclusion-2" id="toc-conclusion-2" class="nav-link" data-scroll-target="#conclusion-2"><span class="header-section-number">12.9</span> Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -492,8 +567,492 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="conclusion" class="level3" data-number="10.0.8">
 <h3 data-number="10.0.8" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">10.0.8</span> Conclusion</h3>
 <p>Interacting with web APIs is a powerful way to integrate external data and services into your Python applications. By using the <code>requests</code> library to make HTTP requests and the <code>json</code> module to handle JSON data, you can efficiently fetch, send, and process data from various APIs. Proper error handling and understanding of authentication methods are crucial for robust API interactions.</p>
+</section>
+<section id="deep-dive-tutorial-on-the-requests-python-module-for-interacting-with-apis" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Deep Dive Tutorial on the <code>requests</code> Python Module for Interacting with APIs</h1>
+<p>The <code>requests</code> module is a simple and elegant HTTP library for Python. It is designed to be user-friendly and easy to use for making HTTP requests to interact with APIs. This deep dive tutorial will cover the fundamentals and advanced usage of the <code>requests</code> module.</p>
+<section id="table-of-contents" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="table-of-contents"><span class="header-section-number">11.1</span> Table of Contents</h2>
+<ol type="1">
+<li><a href="#introduction-to-requests">Introduction to <code>requests</code></a></li>
+<li><a href="#installing-requests">Installing <code>requests</code></a></li>
+<li><a href="#making-http-requests">Making HTTP Requests</a>
+<ul>
+<li><a href="#get-request">GET Request</a></li>
+<li><a href="#post-request">POST Request</a></li>
+<li><a href="#put-request">PUT Request</a></li>
+<li><a href="#delete-request">DELETE Request</a></li>
+</ul></li>
+<li><a href="#handling-responses">Handling Responses</a>
+<ul>
+<li><a href="#status-codes">Status Codes</a></li>
+<li><a href="#response-content">Response Content</a></li>
+<li><a href="#json-responses">JSON Responses</a></li>
+</ul></li>
+<li><a href="#customizing-requests">Customizing Requests</a>
+<ul>
+<li><a href="#headers">Headers</a></li>
+<li><a href="#query-parameters">Query Parameters</a></li>
+<li><a href="#request-body">Request Body</a></li>
+<li><a href="#timeouts">Timeouts</a></li>
+</ul></li>
+<li><a href="#session-objects">Session Objects</a></li>
+<li><a href="#handling-authentication">Handling Authentication</a></li>
+<li><a href="#error-handling">Error Handling</a></li>
+<li><a href="#advanced-usage">Advanced Usage</a>
+<ul>
+<li><a href="#streaming-downloads">Streaming Downloads</a></li>
+<li><a href="#uploading-files">Uploading Files</a></li>
+<li><a href="#custom-transport-adapters">Custom Transport Adapters</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+</section>
+<section id="introduction-to-requests" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="introduction-to-requests"><span class="header-section-number">11.2</span> Introduction to <code>requests</code></h2>
+<p>The <code>requests</code> module allows you to send HTTP requests using Python. It abstracts the complexities of making requests behind a simple API, allowing you to send HTTP requests to interact with web resources like REST APIs.</p>
+</section>
+<section id="installing-requests" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="installing-requests"><span class="header-section-number">11.3</span> Installing <code>requests</code></h2>
+<p>To install the <code>requests</code> module, you can use pip:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install requests</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="making-http-requests" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="making-http-requests"><span class="header-section-number">11.4</span> Making HTTP Requests</h2>
+<p>The <code>requests</code> module supports all the major HTTP methods, such as GET, POST, PUT, DELETE, etc. Each method corresponds to a function within the module.</p>
+<section id="get-request" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="get-request"><span class="header-section-number">11.4.1</span> GET Request</h3>
+<p>A GET request is used to retrieve data from a server. Here’s how to make a simple GET request:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">'https://api.example.com/data'</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.status_code)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="post-request" class="level3" data-number="11.4.2">
+<h3 data-number="11.4.2" class="anchored" data-anchor-id="post-request"><span class="header-section-number">11.4.2</span> POST Request</h3>
+<p>A POST request is used to send data to a server. Here’s an example:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'key1'</span>: <span class="st">'value1'</span>, <span class="st">'key2'</span>: <span class="st">'value2'</span>}</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(<span class="st">'https://api.example.com/data'</span>, data<span class="op">=</span>data)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.status_code)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="put-request" class="level3" data-number="11.4.3">
+<h3 data-number="11.4.3" class="anchored" data-anchor-id="put-request"><span class="header-section-number">11.4.3</span> PUT Request</h3>
+<p>A PUT request is used to update data on a server. Here’s an example:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'key1'</span>: <span class="st">'new_value1'</span>, <span class="st">'key2'</span>: <span class="st">'new_value2'</span>}</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.put(<span class="st">'https://api.example.com/data/1'</span>, data<span class="op">=</span>data)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.status_code)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="delete-request" class="level3" data-number="11.4.4">
+<h3 data-number="11.4.4" class="anchored" data-anchor-id="delete-request"><span class="header-section-number">11.4.4</span> DELETE Request</h3>
+<p>A DELETE request is used to delete data from a server. Here’s an example:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.delete(<span class="st">'https://api.example.com/data/1'</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.status_code)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="handling-responses" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="handling-responses"><span class="header-section-number">11.5</span> Handling Responses</h2>
+<section id="status-codes" class="level3" data-number="11.5.1">
+<h3 data-number="11.5.1" class="anchored" data-anchor-id="status-codes"><span class="header-section-number">11.5.1</span> Status Codes</h3>
+<p>HTTP status codes indicate whether a specific HTTP request has been successfully completed. <code>requests</code> allows you to check the status code of the response:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">'https://api.example.com/data'</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.status_code)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Success!"</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> response.status_code <span class="op">==</span> <span class="dv">404</span>:</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Not Found."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="response-content" class="level3" data-number="11.5.2">
+<h3 data-number="11.5.2" class="anchored" data-anchor-id="response-content"><span class="header-section-number">11.5.2</span> Response Content</h3>
+<p>The content of the response can be accessed in different ways:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">'https://api.example.com/data'</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)  <span class="co"># Raw text content</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.content)  <span class="co"># Raw binary content</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.json())  <span class="co"># JSON content (if applicable)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="json-responses" class="level3" data-number="11.5.3">
+<h3 data-number="11.5.3" class="anchored" data-anchor-id="json-responses"><span class="header-section-number">11.5.3</span> JSON Responses</h3>
+<p>If the response contains JSON data, you can directly decode it:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">'https://api.example.com/data'</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> response.json()</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="customizing-requests" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="customizing-requests"><span class="header-section-number">11.6</span> Customizing Requests</h2>
+<section id="headers" class="level3" data-number="11.6.1">
+<h3 data-number="11.6.1" class="anchored" data-anchor-id="headers"><span class="header-section-number">11.6.1</span> Headers</h3>
+<p>You can customize the headers sent with your requests:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {<span class="st">'User-Agent'</span>: <span class="st">'my-app/0.0.1'</span>}</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">'https://api.example.com/data'</span>, headers<span class="op">=</span>headers)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="query-parameters" class="level3" data-number="11.6.2">
+<h3 data-number="11.6.2" class="anchored" data-anchor-id="query-parameters"><span class="header-section-number">11.6.2</span> Query Parameters</h3>
+<p>You can add query parameters to your requests:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {<span class="st">'param1'</span>: <span class="st">'value1'</span>, <span class="st">'param2'</span>: <span class="st">'value2'</span>}</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">'https://api.example.com/data'</span>, params<span class="op">=</span>params)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.url)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="request-body" class="level3" data-number="11.6.3">
+<h3 data-number="11.6.3" class="anchored" data-anchor-id="request-body"><span class="header-section-number">11.6.3</span> Request Body</h3>
+<p>For POST and PUT requests, you can include data in the request body:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'key1'</span>: <span class="st">'value1'</span>, <span class="st">'key2'</span>: <span class="st">'value2'</span>}</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(<span class="st">'https://api.example.com/data'</span>, data<span class="op">=</span>data)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can also send JSON data by using the <code>json</code> parameter:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'key1'</span>: <span class="st">'value1'</span>, <span class="st">'key2'</span>: <span class="st">'value2'</span>}</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(<span class="st">'https://api.example.com/data'</span>, json<span class="op">=</span>data)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="timeouts" class="level3" data-number="11.6.4">
+<h3 data-number="11.6.4" class="anchored" data-anchor-id="timeouts"><span class="header-section-number">11.6.4</span> Timeouts</h3>
+<p>You can specify a timeout for your requests:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">'https://api.example.com/data'</span>, timeout<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="session-objects" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="session-objects"><span class="header-section-number">11.7</span> Session Objects</h2>
+<p>A <code>Session</code> object allows you to persist certain parameters across requests. It also persists cookies across all requests made from the session instance.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>session <span class="op">=</span> requests.Session()</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>session.headers.update({<span class="st">'User-Agent'</span>: <span class="st">'my-app/0.0.1'</span>})</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> session.get(<span class="st">'https://api.example.com/data'</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="handling-authentication" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="handling-authentication"><span class="header-section-number">11.8</span> Handling Authentication</h2>
+<p>The <code>requests</code> module supports various types of authentication, such as Basic Auth, Digest Auth, OAuth, etc.</p>
+<section id="basic-authentication" class="level3" data-number="11.8.1">
+<h3 data-number="11.8.1" class="anchored" data-anchor-id="basic-authentication"><span class="header-section-number">11.8.1</span> Basic Authentication</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> requests.auth <span class="im">import</span> HTTPBasicAuth</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">'https://api.example.com/data'</span>, auth<span class="op">=</span>HTTPBasicAuth(<span class="st">'user'</span>, <span class="st">'pass'</span>))</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="bearer-token-authentication" class="level3" data-number="11.8.2">
+<h3 data-number="11.8.2" class="anchored" data-anchor-id="bearer-token-authentication"><span class="header-section-number">11.8.2</span> Bearer Token Authentication</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {<span class="st">'Authorization'</span>: <span class="st">'Bearer YOUR_ACCESS_TOKEN'</span>}</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(<span class="st">'https://api.example.com/data'</span>, headers<span class="op">=</span>headers)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="error-handling-1" class="level2" data-number="11.9">
+<h2 data-number="11.9" class="anchored" data-anchor-id="error-handling-1"><span class="header-section-number">11.9</span> Error Handling</h2>
+<p>The <code>requests</code> module provides built-in exception handling for common HTTP errors.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(<span class="st">'https://api.example.com/data'</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    response.raise_for_status()</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> requests.exceptions.HTTPError <span class="im">as</span> err:</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'HTTP error occurred: </span><span class="sc">{</span>err<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> requests.exceptions.<span class="pp">ConnectionError</span> <span class="im">as</span> err:</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Connection error occurred: </span><span class="sc">{</span>err<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> requests.exceptions.Timeout <span class="im">as</span> err:</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Timeout error occurred: </span><span class="sc">{</span>err<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> requests.exceptions.RequestException <span class="im">as</span> err:</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'An error occurred: </span><span class="sc">{</span>err<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="advanced-usage" class="level2" data-number="11.10">
+<h2 data-number="11.10" class="anchored" data-anchor-id="advanced-usage"><span class="header-section-number">11.10</span> Advanced Usage</h2>
+<section id="streaming-downloads" class="level3" data-number="11.10.1">
+<h3 data-number="11.10.1" class="anchored" data-anchor-id="streaming-downloads"><span class="header-section-number">11.10.1</span> Streaming Downloads</h3>
+<p>For large files, you can stream the content to avoid loading it all into memory at once.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://example.com/largefile.zip'</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> requests.get(url, stream<span class="op">=</span><span class="va">True</span>) <span class="im">as</span> response:</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    response.raise_for_status()</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">'largefile.zip'</span>, <span class="st">'wb'</span>) <span class="im">as</span> f:</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> chunk <span class="kw">in</span> response.iter_content(chunk_size<span class="op">=</span><span class="dv">8192</span>):</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>            f.write(chunk)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="uploading-files" class="level3" data-number="11.10.2">
+<h3 data-number="11.10.2" class="anchored" data-anchor-id="uploading-files"><span class="header-section-number">11.10.2</span> Uploading Files</h3>
+<p>You can upload files using the <code>files</code> parameter.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>files <span class="op">=</span> {<span class="st">'file'</span>: <span class="bu">open</span>(<span class="st">'report.csv'</span>, <span class="st">'rb'</span>)}</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(<span class="st">'https://api.example.com/upload'</span>, files<span class="op">=</span>files)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="custom-transport-adapters" class="level3" data-number="11.10.3">
+<h3 data-number="11.10.3" class="anchored" data-anchor-id="custom-transport-adapters"><span class="header-section-number">11.10.3</span> Custom Transport Adapters</h3>
+<p>You can create custom transport adapters for specific needs.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> requests.adapters <span class="im">import</span> HTTPAdapter</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> requests.packages.urllib3.util.retry <span class="im">import</span> Retry</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyAdapter(HTTPAdapter):</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> init_poolmanager(<span class="va">self</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>        kwargs[<span class="st">'retries'</span>] <span class="op">=</span> Retry(total<span class="op">=</span><span class="dv">10</span>, backoff_factor<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(MyAdapter, <span class="va">self</span>).init_poolmanager(<span class="op">*</span>args, <span class="op">**</span>kwargs)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>session <span class="op">=</span> requests.Session()</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>session.mount(<span class="st">'https://'</span>, MyAdapter())</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> session.get(<span class="st">'https://api.example.com/data'</span>)</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion-1" class="level2" data-number="11.11">
+<h2 data-number="11.11" class="anchored" data-anchor-id="conclusion-1"><span class="header-section-number">11.11</span> Conclusion</h2>
+<p>The <code>requests</code> module is a powerful and flexible library for making HTTP requests in Python. This tutorial covered the basics of making requests, handling responses, customizing requests, and using advanced features like streaming downloads and file uploads. By mastering the <code>requests</code> module, you can easily interact with web services and APIs in your Python applications.</p>
+</section>
+</section>
+<section id="deep-dive-tutorial-on-the-json-python-module-for-interacting-with-apis" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Deep Dive Tutorial on the <code>json</code> Python Module for Interacting with APIs</h1>
+<p>The <code>json</code> module in Python provides powerful tools for parsing, serializing, and deserializing JSON data. JSON (JavaScript Object Notation) is a lightweight data interchange format that is easy for humans to read and write, and easy for machines to parse and generate. This deep dive tutorial will cover the fundamentals and advanced usage of the <code>json</code> module in the context of interacting with APIs.</p>
+<section id="table-of-contents-1" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="table-of-contents-1"><span class="header-section-number">12.1</span> Table of Contents</h2>
+<ol type="1">
+<li><a href="#introduction-to-json">Introduction to JSON</a></li>
+<li><a href="#installing-json">Installing <code>json</code></a></li>
+<li><a href="#basic-usage">Basic Usage</a>
+<ul>
+<li><a href="#parsing-json-data">Parsing JSON Data</a></li>
+<li><a href="#serializing-data-to-json">Serializing Data to JSON</a></li>
+</ul></li>
+<li><a href="#interacting-with-apis">Interacting with APIs</a>
+<ul>
+<li><a href="#sending-json-data">Sending JSON Data</a></li>
+<li><a href="#receiving-json-data">Receiving JSON Data</a></li>
+</ul></li>
+<li><a href="#advanced-usage">Advanced Usage</a>
+<ul>
+<li><a href="#custom-serialization">Custom Serialization</a></li>
+<li><a href="#custom-deserialization">Custom Deserialization</a></li>
+<li><a href="#working-with-complex-data-structures">Working with Complex Data Structures</a></li>
+</ul></li>
+<li><a href="#error-handling">Error Handling</a></li>
+<li><a href="#practical-examples">Practical Examples</a>
+<ul>
+<li><a href="#example-1-github-api">Example 1: GitHub API</a></li>
+<li><a href="#example-2-openweathermap-api">Example 2: OpenWeatherMap API</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+</section>
+<section id="introduction-to-json" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="introduction-to-json"><span class="header-section-number">12.2</span> Introduction to JSON</h2>
+<p>JSON (JavaScript Object Notation) is a lightweight data interchange format that is easy to read and write. It is used extensively in APIs to exchange data between servers and clients. JSON data consists of key-value pairs, arrays, and nested objects.</p>
+</section>
+<section id="installing-json" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="installing-json"><span class="header-section-number">12.3</span> Installing <code>json</code></h2>
+<p>The <code>json</code> module is included in Python’s standard library, so you don’t need to install it separately. You can start using it by simply importing it:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="basic-usage" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="basic-usage"><span class="header-section-number">12.4</span> Basic Usage</h2>
+<section id="parsing-json-data" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="parsing-json-data"><span class="header-section-number">12.4.1</span> Parsing JSON Data</h3>
+<p>To parse JSON data (convert JSON string to Python dictionary), use the <code>json.loads()</code> function:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>json_data <span class="op">=</span> <span class="st">'{"name": "John", "age": 30, "city": "New York"}'</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>parsed_data <span class="op">=</span> json.loads(json_data)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parsed_data)  <span class="co"># Output: {'name': 'John', 'age': 30, 'city': 'New York'}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can also parse JSON data from a file using the <code>json.load()</code> function:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'data.json'</span>, <span class="st">'r'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    parsed_data <span class="op">=</span> json.load(<span class="bu">file</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parsed_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="serializing-data-to-json" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="serializing-data-to-json"><span class="header-section-number">12.4.2</span> Serializing Data to JSON</h3>
+<p>To serialize Python data structures (like dictionaries and lists) to JSON, use the <code>json.dumps()</code> function:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"John"</span>, <span class="st">"age"</span>: <span class="dv">30</span>, <span class="st">"city"</span>: <span class="st">"New York"</span>}</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>json_data <span class="op">=</span> json.dumps(data)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json_data)  <span class="co"># Output: {"name": "John", "age": 30, "city": "New York"}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can also serialize data to a JSON file using the <code>json.dump()</code> function:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"John"</span>, <span class="st">"age"</span>: <span class="dv">30</span>, <span class="st">"city"</span>: <span class="st">"New York"</span>}</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'data.json'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    json.dump(data, <span class="bu">file</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="interacting-with-apis" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="interacting-with-apis"><span class="header-section-number">12.5</span> Interacting with APIs</h2>
+<section id="sending-json-data" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="sending-json-data"><span class="header-section-number">12.5.1</span> Sending JSON Data</h3>
+<p>When interacting with APIs, you often need to send JSON data in HTTP requests. This can be done using the <code>requests</code> module along with the <code>json</code> module:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://api.example.com/data'</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"John"</span>, <span class="st">"age"</span>: <span class="dv">30</span>}</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {<span class="st">'Content-Type'</span>: <span class="st">'application/json'</span>}</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(url, data<span class="op">=</span>json.dumps(data), headers<span class="op">=</span>headers)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.status_code)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Alternatively, the <code>requests</code> module provides a convenient <code>json</code> parameter to automatically handle JSON serialization:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://api.example.com/data'</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"John"</span>, <span class="st">"age"</span>: <span class="dv">30</span>}</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(url, json<span class="op">=</span>data)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.status_code)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="receiving-json-data" class="level3" data-number="12.5.2">
+<h3 data-number="12.5.2" class="anchored" data-anchor-id="receiving-json-data"><span class="header-section-number">12.5.2</span> Receiving JSON Data</h3>
+<p>When receiving JSON data from an API, you can parse the JSON response using the <code>json</code> method provided by the <code>requests</code> module:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://api.example.com/data'</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>parsed_data <span class="op">=</span> response.json()</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parsed_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="advanced-usage-1" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="advanced-usage-1"><span class="header-section-number">12.6</span> Advanced Usage</h2>
+<section id="custom-serialization" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="custom-serialization"><span class="header-section-number">12.6.1</span> Custom Serialization</h3>
+<p>Sometimes, you need to customize the serialization process, such as handling non-serializable objects. You can achieve this by defining a custom serialization function and passing it to the <code>json.dumps()</code> function using the <code>default</code> parameter:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> custom_serializer(obj):</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(obj, datetime):</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> obj.isoformat()</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"Type not serializable"</span>)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"John"</span>, <span class="st">"birthdate"</span>: datetime(<span class="dv">1990</span>, <span class="dv">5</span>, <span class="dv">6</span>)}</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>json_data <span class="op">=</span> json.dumps(data, default<span class="op">=</span>custom_serializer)</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="custom-deserialization" class="level3" data-number="12.6.2">
+<h3 data-number="12.6.2" class="anchored" data-anchor-id="custom-deserialization"><span class="header-section-number">12.6.2</span> Custom Deserialization</h3>
+<p>Similarly, you can customize the deserialization process by defining a custom deserialization function and passing it to the <code>json.loads()</code> function using the <code>object_hook</code> parameter:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datetime <span class="im">import</span> datetime</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> custom_deserializer(dct):</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'birthdate'</span> <span class="kw">in</span> dct:</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>        dct[<span class="st">'birthdate'</span>] <span class="op">=</span> datetime.fromisoformat(dct[<span class="st">'birthdate'</span>])</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> dct</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>json_data <span class="op">=</span> <span class="st">'{"name": "John", "birthdate": "1990-05-06T00:00:00"}'</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>parsed_data <span class="op">=</span> json.loads(json_data, object_hook<span class="op">=</span>custom_deserializer)</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parsed_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="working-with-complex-data-structures" class="level3" data-number="12.6.3">
+<h3 data-number="12.6.3" class="anchored" data-anchor-id="working-with-complex-data-structures"><span class="header-section-number">12.6.3</span> Working with Complex Data Structures</h3>
+<p>The <code>json</code> module can handle complex data structures, including nested dictionaries and lists. Here’s an example of serializing and deserializing a complex data structure:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"name"</span>: <span class="st">"John"</span>,</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"age"</span>: <span class="dv">30</span>,</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"address"</span>: {</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"street"</span>: <span class="st">"123 Main St"</span>,</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"city"</span>: <span class="st">"New York"</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    },</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"phones"</span>: [<span class="st">"123-456-7890"</span>, <span class="st">"987-654-3210"</span>]</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Serialize to JSON</span></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>json_data <span class="op">=</span> json.dumps(data, indent<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json_data)</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Deserialize from JSON</span></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>parsed_data <span class="op">=</span> json.loads(json_data)</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parsed_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="error-handling-2" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="error-handling-2"><span class="header-section-number">12.7</span> Error Handling</h2>
+<p>When working with JSON data, you may encounter various errors. The <code>json</code> module provides specific exceptions to handle these errors gracefully:</p>
+<ul>
+<li><code>json.JSONDecodeError</code>: Raised when there is an error decoding JSON data.</li>
+<li><code>TypeError</code>: Raised when there is an error serializing non-serializable data.</li>
+</ul>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Handling JSON decoding errors</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    json_data <span class="op">=</span> <span class="st">'{"name": "John", "age": 30'</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    parsed_data <span class="op">=</span> json.loads(json_data)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> json.JSONDecodeError <span class="im">as</span> e:</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Error decoding JSON: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Handling serialization errors</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"John"</span>, <span class="st">"age"</span>: <span class="dv">30</span>, <span class="st">"birthdate"</span>: <span class="bu">object</span>()}</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>    json_data <span class="op">=</span> json.dumps(data)</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">TypeError</span> <span class="im">as</span> e:</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Error serializing data: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="practical-examples" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="practical-examples"><span class="header-section-number">12.8</span> Practical Examples</h2>
+<section id="example-1-github-api" class="level3" data-number="12.8.1">
+<h3 data-number="12.8.1" class="anchored" data-anchor-id="example-1-github-api"><span class="header-section-number">12.8.1</span> Example 1: GitHub API</h3>
+<p>Let’s create a script that interacts with the GitHub API to fetch user information:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_github_user(username):</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f"https://api.github.com/users/</span><span class="sc">{</span>username<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>        user_data <span class="op">=</span> response.json()</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">"name"</span>: user_data[<span class="st">"name"</span>],</span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">"public_repos"</span>: user_data[<span class="st">"public_repos"</span>],</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">"followers"</span>: user_data[<span class="st">"followers"</span>]</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>username <span class="op">=</span> <span class="st">"octocat"</span></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>user_info <span class="op">=</span> get_github_user(username)</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(user_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-2-openweathermap-api" class="level3" data-number="12.8.2">
+<h3 data-number="12.8.2" class="anchored" data-anchor-id="example-2-openweathermap-api"><span class="header-section-number">12.8.2</span> Example 2: OpenWeatherMap API</h3>
+<p>Let’s create a script that interacts with the OpenWeatherMap API to fetch weather data for a city:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_weather(city, api_key):</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f"http://api.openweathermap.org/data/2.5/weather?q=</span><span class="sc">{</span>city<span class="sc">}</span><span class="ss">&amp;appid=</span><span class="sc">{</span>api_key<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.get(url)</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> response.status_code <span class="op">==</span> <span class="dv">200</span>:</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>        weather_data <span class="op">=</span> response.json()</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">"city"</span>: weather_data[<span class="st">"name"</span>],</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>            <span class="st">"temperature"</span>: weather_data[<span class="st">"main"</span>][<span class="st">"temp"</span>],</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>            <span class="st">"weather"</span>: weather_data[<span class="st">"weather"</span>][<span class="dv">0</span>][<span class="st">"description"</span>]</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>city <span class="op">=</span> <span class="st">"London"</span></span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>api_key <span class="op">=</span> <span class="st">"your_api_key"</span></span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>weather_info <span class="op">=</span> get_weather(city, api_key)</span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(weather_info)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion-2" class="level2" data-number="12.9">
+<h2 data-number="12.9" class="anchored" data-anchor-id="conclusion-2"><span class="header-section-number">12.9</span> Conclusion</h2>
+<p>The <code>json</code> module in Python is a powerful tool for working with JSON data. It provides simple functions for parsing and serializing JSON data, handling errors, and customizing the serialization and deserialization processes. This tutorial covered the basics and advanced usage of the <code>json</code> module, as well as practical examples of interacting with APIs. By mastering the <code>json</code> module, you can easily work with JSON data in your Python applications and effectively interact with web APIs.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

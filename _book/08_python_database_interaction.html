@@ -274,6 +274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./A2_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Using Docker</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -291,6 +297,125 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#interacting-with-sqlite-databases-using-sqlite3" id="toc-interacting-with-sqlite-databases-using-sqlite3" class="nav-link active" data-scroll-target="#interacting-with-sqlite-databases-using-sqlite3"><span class="header-section-number">9.0.1</span> Interacting with SQLite Databases using <code>sqlite3</code></a></li>
   <li><a href="#interacting-with-databases-using-sqlalchemy" id="toc-interacting-with-databases-using-sqlalchemy" class="nav-link" data-scroll-target="#interacting-with-databases-using-sqlalchemy"><span class="header-section-number">9.0.2</span> Interacting with Databases using SQLAlchemy</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">9.0.3</span> Conclusion</a></li>
+  <li><a href="#establishing-connectivity-with-sqlalchemy" id="toc-establishing-connectivity-with-sqlalchemy" class="nav-link" data-scroll-target="#establishing-connectivity-with-sqlalchemy"><span class="header-section-number">9.1</span> Establishing Connectivity with SQLAlchemy</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-sqlalchemy-engine" id="toc-introduction-to-sqlalchemy-engine" class="nav-link" data-scroll-target="#introduction-to-sqlalchemy-engine"><span class="header-section-number">9.1.1</span> Introduction to SQLAlchemy Engine</a></li>
+  <li><a href="#creating-the-engine" id="toc-creating-the-engine" class="nav-link" data-scroll-target="#creating-the-engine"><span class="header-section-number">9.1.2</span> Creating the Engine</a></li>
+  <li><a href="#understanding-the-url-string" id="toc-understanding-the-url-string" class="nav-link" data-scroll-target="#understanding-the-url-string"><span class="header-section-number">9.1.3</span> Understanding the URL String</a></li>
+  <li><a href="#lazy-connecting" id="toc-lazy-connecting" class="nav-link" data-scroll-target="#lazy-connecting"><span class="header-section-number">9.1.4</span> Lazy Connecting</a></li>
+  <li><a href="#enabling-sql-logging" id="toc-enabling-sql-logging" class="nav-link" data-scroll-target="#enabling-sql-logging"><span class="header-section-number">9.1.5</span> Enabling SQL Logging</a></li>
+  <li><a href="#example-connecting-to-an-in-memory-sqlite-database" id="toc-example-connecting-to-an-in-memory-sqlite-database" class="nav-link" data-scroll-target="#example-connecting-to-an-in-memory-sqlite-database"><span class="header-section-number">9.1.6</span> Example: Connecting to an In-Memory SQLite Database</a></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1"><span class="header-section-number">9.1.7</span> Conclusion</a></li>
+  </ul></li>
+  <li><a href="#working-with-transactions-and-the-dbapi-with-sqlalchemy" id="toc-working-with-transactions-and-the-dbapi-with-sqlalchemy" class="nav-link" data-scroll-target="#working-with-transactions-and-the-dbapi-with-sqlalchemy"><span class="header-section-number">9.2</span> Working with Transactions and the DBAPI with SQLAlchemy</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">9.2.1</span> Introduction</a></li>
+  <li><a href="#establishing-a-connection" id="toc-establishing-a-connection" class="nav-link" data-scroll-target="#establishing-a-connection"><span class="header-section-number">9.2.2</span> Establishing a Connection</a></li>
+  <li><a href="#transactions" id="toc-transactions" class="nav-link" data-scroll-target="#transactions"><span class="header-section-number">9.2.3</span> Transactions</a></li>
+  <li><a href="#statement-execution" id="toc-statement-execution" class="nav-link" data-scroll-target="#statement-execution"><span class="header-section-number">9.2.4</span> Statement Execution</a></li>
+  <li><a href="#parameterized-queries" id="toc-parameterized-queries" class="nav-link" data-scroll-target="#parameterized-queries"><span class="header-section-number">9.2.5</span> Parameterized Queries</a></li>
+  <li><a href="#sending-multiple-parameters" id="toc-sending-multiple-parameters" class="nav-link" data-scroll-target="#sending-multiple-parameters"><span class="header-section-number">9.2.6</span> Sending Multiple Parameters</a></li>
+  <li><a href="#using-orm-session" id="toc-using-orm-session" class="nav-link" data-scroll-target="#using-orm-session"><span class="header-section-number">9.2.7</span> Using ORM Session</a></li>
+  <li><a href="#conclusion-2" id="toc-conclusion-2" class="nav-link" data-scroll-target="#conclusion-2"><span class="header-section-number">9.2.8</span> Conclusion</a></li>
+  </ul></li>
+  <li><a href="#working-with-database-metadata-with-sqlalchemy" id="toc-working-with-database-metadata-with-sqlalchemy" class="nav-link" data-scroll-target="#working-with-database-metadata-with-sqlalchemy"><span class="header-section-number">9.3</span> Working with Database Metadata with SQLAlchemy</a>
+  <ul class="collapse">
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1"><span class="header-section-number">9.3.1</span> Introduction</a></li>
+  <li><a href="#setting-up-metadata-with-table-objects" id="toc-setting-up-metadata-with-table-objects" class="nav-link" data-scroll-target="#setting-up-metadata-with-table-objects"><span class="header-section-number">9.3.2</span> Setting Up Metadata with Table Objects</a></li>
+  <li><a href="#emitting-ddl-to-the-database" id="toc-emitting-ddl-to-the-database" class="nav-link" data-scroll-target="#emitting-ddl-to-the-database"><span class="header-section-number">9.3.3</span> Emitting DDL to the Database</a></li>
+  <li><a href="#working-with-constraints" id="toc-working-with-constraints" class="nav-link" data-scroll-target="#working-with-constraints"><span class="header-section-number">9.3.4</span> Working with Constraints</a></li>
+  <li><a href="#declaring-orm-mapped-classes" id="toc-declaring-orm-mapped-classes" class="nav-link" data-scroll-target="#declaring-orm-mapped-classes"><span class="header-section-number">9.3.5</span> Declaring ORM Mapped Classes</a></li>
+  <li><a href="#emitting-ddl-from-orm-mapped-classes" id="toc-emitting-ddl-from-orm-mapped-classes" class="nav-link" data-scroll-target="#emitting-ddl-from-orm-mapped-classes"><span class="header-section-number">9.3.6</span> Emitting DDL from ORM Mapped Classes</a></li>
+  <li><a href="#table-reflection" id="toc-table-reflection" class="nav-link" data-scroll-target="#table-reflection"><span class="header-section-number">9.3.7</span> Table Reflection</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps"><span class="header-section-number">9.3.8</span> Next Steps</a></li>
+  <li><a href="#conclusion-3" id="toc-conclusion-3" class="nav-link" data-scroll-target="#conclusion-3"><span class="header-section-number">9.3.9</span> Conclusion</a></li>
+  </ul></li>
+  <li><a href="#working-with-data-with-sqlalchemy" id="toc-working-with-data-with-sqlalchemy" class="nav-link" data-scroll-target="#working-with-data-with-sqlalchemy"><span class="header-section-number">9.4</span> Working with Data with SQLAlchemy</a>
+  <ul class="collapse">
+  <li><a href="#components-of-this-tutorial" id="toc-components-of-this-tutorial" class="nav-link" data-scroll-target="#components-of-this-tutorial"><span class="header-section-number">9.4.1</span> Components of this Tutorial</a></li>
+  <li><a href="#using-insert-statements" id="toc-using-insert-statements" class="nav-link" data-scroll-target="#using-insert-statements"><span class="header-section-number">9.4.2</span> Using INSERT Statements</a></li>
+  <li><a href="#using-select-statements" id="toc-using-select-statements" class="nav-link" data-scroll-target="#using-select-statements"><span class="header-section-number">9.4.3</span> Using SELECT Statements</a></li>
+  <li><a href="#using-update-and-delete-statements" id="toc-using-update-and-delete-statements" class="nav-link" data-scroll-target="#using-update-and-delete-statements"><span class="header-section-number">9.4.4</span> Using UPDATE and DELETE Statements</a></li>
+  <li><a href="#data-manipulation-with-orm" id="toc-data-manipulation-with-orm" class="nav-link" data-scroll-target="#data-manipulation-with-orm"><span class="header-section-number">9.4.5</span> Data Manipulation with ORM</a></li>
+  <li><a href="#conclusion-4" id="toc-conclusion-4" class="nav-link" data-scroll-target="#conclusion-4"><span class="header-section-number">9.4.6</span> Conclusion</a></li>
+  </ul></li>
+  <li><a href="#using-insert-statements-with-sqlalchemy" id="toc-using-insert-statements-with-sqlalchemy" class="nav-link" data-scroll-target="#using-insert-statements-with-sqlalchemy"><span class="header-section-number">9.5</span> Using INSERT Statements with SQLAlchemy</a>
+  <ul class="collapse">
+  <li><a href="#the-insert-sql-expression-construct" id="toc-the-insert-sql-expression-construct" class="nav-link" data-scroll-target="#the-insert-sql-expression-construct"><span class="header-section-number">9.5.1</span> The <code>insert()</code> SQL Expression Construct</a></li>
+  <li><a href="#executing-the-statement" id="toc-executing-the-statement" class="nav-link" data-scroll-target="#executing-the-statement"><span class="header-section-number">9.5.2</span> Executing the Statement</a></li>
+  <li><a href="#automatic-values-clause" id="toc-automatic-values-clause" class="nav-link" data-scroll-target="#automatic-values-clause"><span class="header-section-number">9.5.3</span> Automatic VALUES Clause</a></li>
+  <li><a href="#insert-with-subqueries" id="toc-insert-with-subqueries" class="nav-link" data-scroll-target="#insert-with-subqueries"><span class="header-section-number">9.5.4</span> INSERT with Subqueries</a></li>
+  <li><a href="#insert-with-returning" id="toc-insert-with-returning" class="nav-link" data-scroll-target="#insert-with-returning"><span class="header-section-number">9.5.5</span> INSERT with RETURNING</a></li>
+  <li><a href="#insert-from-select" id="toc-insert-from-select" class="nav-link" data-scroll-target="#insert-from-select"><span class="header-section-number">9.5.6</span> INSERT from SELECT</a></li>
+  <li><a href="#conclusion-5" id="toc-conclusion-5" class="nav-link" data-scroll-target="#conclusion-5"><span class="header-section-number">9.5.7</span> Conclusion</a></li>
+  </ul></li>
+  <li><a href="#using-select-statements-with-sqlalchemy" id="toc-using-select-statements-with-sqlalchemy" class="nav-link" data-scroll-target="#using-select-statements-with-sqlalchemy"><span class="header-section-number">9.6</span> Using SELECT Statements with SQLAlchemy</a>
+  <ul class="collapse">
+  <li><a href="#the-select-sql-expression-construct" id="toc-the-select-sql-expression-construct" class="nav-link" data-scroll-target="#the-select-sql-expression-construct"><span class="header-section-number">9.6.1</span> The <code>select()</code> SQL Expression Construct</a></li>
+  <li><a href="#setting-the-columns-and-from-clause" id="toc-setting-the-columns-and-from-clause" class="nav-link" data-scroll-target="#setting-the-columns-and-from-clause"><span class="header-section-number">9.6.2</span> Setting the COLUMNS and FROM Clause</a></li>
+  <li><a href="#selecting-orm-entities-and-columns" id="toc-selecting-orm-entities-and-columns" class="nav-link" data-scroll-target="#selecting-orm-entities-and-columns"><span class="header-section-number">9.6.3</span> Selecting ORM Entities and Columns</a></li>
+  <li><a href="#the-where-clause" id="toc-the-where-clause" class="nav-link" data-scroll-target="#the-where-clause"><span class="header-section-number">9.6.4</span> The WHERE Clause</a></li>
+  <li><a href="#explicit-from-clauses-and-joins" id="toc-explicit-from-clauses-and-joins" class="nav-link" data-scroll-target="#explicit-from-clauses-and-joins"><span class="header-section-number">9.6.5</span> Explicit FROM Clauses and JOINs</a></li>
+  <li><a href="#order-by-group-by-having" id="toc-order-by-group-by-having" class="nav-link" data-scroll-target="#order-by-group-by-having"><span class="header-section-number">9.6.6</span> ORDER BY, GROUP BY, HAVING</a></li>
+  <li><a href="#subqueries-and-ctes" id="toc-subqueries-and-ctes" class="nav-link" data-scroll-target="#subqueries-and-ctes"><span class="header-section-number">9.6.7</span> Subqueries and CTEs</a></li>
+  <li><a href="#exists-subqueries" id="toc-exists-subqueries" class="nav-link" data-scroll-target="#exists-subqueries"><span class="header-section-number">9.6.8</span> EXISTS Subqueries</a></li>
+  <li><a href="#working-with-sql-functions" id="toc-working-with-sql-functions" class="nav-link" data-scroll-target="#working-with-sql-functions"><span class="header-section-number">9.6.9</span> Working with SQL Functions</a></li>
+  <li><a href="#conclusion-6" id="toc-conclusion-6" class="nav-link" data-scroll-target="#conclusion-6"><span class="header-section-number">9.6.10</span> Conclusion</a></li>
+  </ul></li>
+  <li><a href="#using-update-and-delete-statements-with-sqlalchemy" id="toc-using-update-and-delete-statements-with-sqlalchemy" class="nav-link" data-scroll-target="#using-update-and-delete-statements-with-sqlalchemy"><span class="header-section-number">9.7</span> Using UPDATE and DELETE Statements with SQLAlchemy</a>
+  <ul class="collapse">
+  <li><a href="#the-update-sql-expression-construct" id="toc-the-update-sql-expression-construct" class="nav-link" data-scroll-target="#the-update-sql-expression-construct"><span class="header-section-number">9.7.1</span> The <code>update()</code> SQL Expression Construct</a></li>
+  <li><a href="#advanced-update-techniques" id="toc-advanced-update-techniques" class="nav-link" data-scroll-target="#advanced-update-techniques"><span class="header-section-number">9.7.2</span> Advanced UPDATE Techniques</a></li>
+  <li><a href="#the-delete-sql-expression-construct" id="toc-the-delete-sql-expression-construct" class="nav-link" data-scroll-target="#the-delete-sql-expression-construct"><span class="header-section-number">9.7.3</span> The <code>delete()</code> SQL Expression Construct</a></li>
+  <li><a href="#advanced-delete-techniques" id="toc-advanced-delete-techniques" class="nav-link" data-scroll-target="#advanced-delete-techniques"><span class="header-section-number">9.7.4</span> Advanced DELETE Techniques</a></li>
+  <li><a href="#getting-affected-row-count-from-update-delete" id="toc-getting-affected-row-count-from-update-delete" class="nav-link" data-scroll-target="#getting-affected-row-count-from-update-delete"><span class="header-section-number">9.7.5</span> Getting Affected Row Count from UPDATE, DELETE</a></li>
+  <li><a href="#using-returning-with-update-delete" id="toc-using-returning-with-update-delete" class="nav-link" data-scroll-target="#using-returning-with-update-delete"><span class="header-section-number">9.7.6</span> Using RETURNING with UPDATE, DELETE</a></li>
+  <li><a href="#further-reading-for-update-delete" id="toc-further-reading-for-update-delete" class="nav-link" data-scroll-target="#further-reading-for-update-delete"><span class="header-section-number">9.7.7</span> Further Reading for UPDATE, DELETE</a></li>
+  </ul></li>
+  <li><a href="#data-manipulation-with-the-orm-in-sqlalchemy" id="toc-data-manipulation-with-the-orm-in-sqlalchemy" class="nav-link" data-scroll-target="#data-manipulation-with-the-orm-in-sqlalchemy"><span class="header-section-number">10</span> Data Manipulation with the ORM in SQLAlchemy</a>
+  <ul class="collapse">
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites"><span class="header-section-number">10.1</span> Prerequisites</a></li>
+  <li><a href="#inserting-rows-using-the-orm-unit-of-work-pattern" id="toc-inserting-rows-using-the-orm-unit-of-work-pattern" class="nav-link" data-scroll-target="#inserting-rows-using-the-orm-unit-of-work-pattern"><span class="header-section-number">10.2</span> Inserting Rows Using the ORM Unit of Work Pattern</a>
+  <ul class="collapse">
+  <li><a href="#instances-of-classes-represent-rows" id="toc-instances-of-classes-represent-rows" class="nav-link" data-scroll-target="#instances-of-classes-represent-rows"><span class="header-section-number">10.2.1</span> Instances of Classes Represent Rows</a></li>
+  <li><a href="#adding-objects-to-a-session" id="toc-adding-objects-to-a-session" class="nav-link" data-scroll-target="#adding-objects-to-a-session"><span class="header-section-number">10.2.2</span> Adding Objects to a Session</a></li>
+  <li><a href="#flushing" id="toc-flushing" class="nav-link" data-scroll-target="#flushing"><span class="header-section-number">10.2.3</span> Flushing</a></li>
+  <li><a href="#autogenerated-primary-key-attributes" id="toc-autogenerated-primary-key-attributes" class="nav-link" data-scroll-target="#autogenerated-primary-key-attributes"><span class="header-section-number">10.2.4</span> Autogenerated Primary Key Attributes</a></li>
+  <li><a href="#committing" id="toc-committing" class="nav-link" data-scroll-target="#committing"><span class="header-section-number">10.2.5</span> Committing</a></li>
+  </ul></li>
+  <li><a href="#updating-orm-objects-using-the-unit-of-work-pattern" id="toc-updating-orm-objects-using-the-unit-of-work-pattern" class="nav-link" data-scroll-target="#updating-orm-objects-using-the-unit-of-work-pattern"><span class="header-section-number">10.3</span> Updating ORM Objects Using the Unit of Work Pattern</a></li>
+  <li><a href="#deleting-orm-objects-using-the-unit-of-work-pattern" id="toc-deleting-orm-objects-using-the-unit-of-work-pattern" class="nav-link" data-scroll-target="#deleting-orm-objects-using-the-unit-of-work-pattern"><span class="header-section-number">10.4</span> Deleting ORM Objects Using the Unit of Work Pattern</a>
+  <ul class="collapse">
+  <li><a href="#rolling-back" id="toc-rolling-back" class="nav-link" data-scroll-target="#rolling-back"><span class="header-section-number">10.4.1</span> Rolling Back</a></li>
+  <li><a href="#closing-a-session" id="toc-closing-a-session" class="nav-link" data-scroll-target="#closing-a-session"><span class="header-section-number">10.4.2</span> Closing a Session</a></li>
+  </ul></li>
+  <li><a href="#bulk-multi-row-insert-upsert-update-and-delete" id="toc-bulk-multi-row-insert-upsert-update-and-delete" class="nav-link" data-scroll-target="#bulk-multi-row-insert-upsert-update-and-delete"><span class="header-section-number">10.5</span> Bulk / Multi-Row INSERT, UPSERT, UPDATE, and DELETE</a></li>
+  <li><a href="#conclusion-7" id="toc-conclusion-7" class="nav-link" data-scroll-target="#conclusion-7"><span class="header-section-number">10.6</span> Conclusion</a></li>
+  </ul></li>
+  <li><a href="#working-with-orm-related-objects-with-sqlalchemy" id="toc-working-with-orm-related-objects-with-sqlalchemy" class="nav-link" data-scroll-target="#working-with-orm-related-objects-with-sqlalchemy"><span class="header-section-number">11</span> Working with ORM Related Objects with SQLAlchemy</a>
+  <ul class="collapse">
+  <li><a href="#declaring-relationships" id="toc-declaring-relationships" class="nav-link" data-scroll-target="#declaring-relationships"><span class="header-section-number">11.1</span> Declaring Relationships</a>
+  <ul class="collapse">
+  <li><a href="#basic-relationship-example" id="toc-basic-relationship-example" class="nav-link" data-scroll-target="#basic-relationship-example"><span class="header-section-number">11.1.1</span> Basic Relationship Example</a></li>
+  </ul></li>
+  <li><a href="#persisting-and-loading-relationships" id="toc-persisting-and-loading-relationships" class="nav-link" data-scroll-target="#persisting-and-loading-relationships"><span class="header-section-number">11.2</span> Persisting and Loading Relationships</a>
+  <ul class="collapse">
+  <li><a href="#creating-and-associating-objects" id="toc-creating-and-associating-objects" class="nav-link" data-scroll-target="#creating-and-associating-objects"><span class="header-section-number">11.2.1</span> Creating and Associating Objects</a></li>
+  <li><a href="#adding-to-a-session" id="toc-adding-to-a-session" class="nav-link" data-scroll-target="#adding-to-a-session"><span class="header-section-number">11.2.2</span> Adding to a Session</a></li>
+  <li><a href="#loading-relationships" id="toc-loading-relationships" class="nav-link" data-scroll-target="#loading-relationships"><span class="header-section-number">11.2.3</span> Loading Relationships</a></li>
+  </ul></li>
+  <li><a href="#using-relationships-in-queries" id="toc-using-relationships-in-queries" class="nav-link" data-scroll-target="#using-relationships-in-queries"><span class="header-section-number">11.3</span> Using Relationships in Queries</a>
+  <ul class="collapse">
+  <li><a href="#joining-related-tables" id="toc-joining-related-tables" class="nav-link" data-scroll-target="#joining-related-tables"><span class="header-section-number">11.3.1</span> Joining Related Tables</a></li>
+  <li><a href="#using-joinedload-and-selectinload" id="toc-using-joinedload-and-selectinload" class="nav-link" data-scroll-target="#using-joinedload-and-selectinload"><span class="header-section-number">11.3.2</span> Using <code>joinedload()</code> and <code>selectinload()</code></a></li>
+  </ul></li>
+  <li><a href="#loader-strategies" id="toc-loader-strategies" class="nav-link" data-scroll-target="#loader-strategies"><span class="header-section-number">11.4</span> Loader Strategies</a>
+  <ul class="collapse">
+  <li><a href="#configuring-loader-strategies" id="toc-configuring-loader-strategies" class="nav-link" data-scroll-target="#configuring-loader-strategies"><span class="header-section-number">11.4.1</span> Configuring Loader Strategies</a></li>
+  <li><a href="#using-raiseload" id="toc-using-raiseload" class="nav-link" data-scroll-target="#using-raiseload"><span class="header-section-number">11.4.2</span> Using <code>raiseload()</code></a></li>
+  </ul></li>
+  <li><a href="#conclusion-8" id="toc-conclusion-8" class="nav-link" data-scroll-target="#conclusion-8"><span class="header-section-number">11.5</span> Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -487,8 +612,1146 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="conclusion" class="level3" data-number="9.0.3">
 <h3 data-number="9.0.3" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">9.0.3</span> Conclusion</h3>
 <p>Interacting with databases is a fundamental skill for developing data-driven applications. Python provides powerful libraries like <code>sqlite3</code> for simple database interactions and <code>SQLAlchemy</code> for advanced ORM capabilities. By mastering these tools, you can efficiently manage database connections, perform CRUD operations, and build robust applications.</p>
+</section>
+<section id="establishing-connectivity-with-sqlalchemy" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="establishing-connectivity-with-sqlalchemy"><span class="header-section-number">9.1</span> Establishing Connectivity with SQLAlchemy</h2>
+<section id="introduction-to-sqlalchemy-engine" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="introduction-to-sqlalchemy-engine"><span class="header-section-number">9.1.1</span> Introduction to SQLAlchemy Engine</h3>
+<p>Every SQLAlchemy application that connects to a database needs to use an Engine. The Engine acts as a central source of connections to a particular database, providing both a factory and a holding space called a connection pool for these database connections. This tutorial will guide you through the process of establishing connectivity using the Engine, applicable to both ORM and Core users.</p>
+</section>
+<section id="creating-the-engine" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="creating-the-engine"><span class="header-section-number">9.1.2</span> Creating the Engine</h3>
+<p>The start of any SQLAlchemy application is an object called the Engine. The Engine is typically a global object created just once for a particular database server and is configured using a URL string that describes how it should connect to the database host or backend.</p>
+<p>For this tutorial, we will use an in-memory-only SQLite database. This is an easy way to test things without needing a pre-existing database setup. The Engine is created using the <code>create_engine()</code> function:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an in-memory SQLite database</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(<span class="st">"sqlite+pysqlite:///:memory:"</span>, echo<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="understanding-the-url-string" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="understanding-the-url-string"><span class="header-section-number">9.1.3</span> Understanding the URL String</h3>
+<p>The main argument to <code>create_engine</code> is a string URL, in this case, passed as the string <code>"sqlite+pysqlite:///:memory:"</code>. This string indicates three important facts to the Engine:</p>
+<ol type="1">
+<li><strong>Database Type</strong>: The type of database we are communicating with, specified by <code>sqlite</code> in the URL, links SQLAlchemy to an object known as the dialect.</li>
+<li><strong>DBAPI</strong>: The Python DBAPI used to interact with the database. Here, <code>pysqlite</code> indicates that we are using the <code>sqlite3</code> standard library interface for SQLite. If omitted, SQLAlchemy will use a default DBAPI for the selected database.</li>
+<li><strong>Database Location</strong>: The phrase <code>/:memory:</code> indicates that we are using an in-memory-only database. This is perfect for experimenting as it does not require any server or create any new files.</li>
+</ol>
+</section>
+<section id="lazy-connecting" class="level3" data-number="9.1.4">
+<h3 data-number="9.1.4" class="anchored" data-anchor-id="lazy-connecting"><span class="header-section-number">9.1.4</span> Lazy Connecting</h3>
+<p>The Engine, when first returned by <code>create_engine()</code>, has not actually tried to connect to the database yet; that happens only the first time it is asked to perform a task against the database. This design pattern is known as lazy initialization.</p>
+</section>
+<section id="enabling-sql-logging" class="level3" data-number="9.1.5">
+<h3 data-number="9.1.5" class="anchored" data-anchor-id="enabling-sql-logging"><span class="header-section-number">9.1.5</span> Enabling SQL Logging</h3>
+<p>We have also specified a parameter <code>echo=True</code> in <code>create_engine</code>, which instructs the Engine to log all the SQL it emits to a Python logger that writes to standard output. This flag is a shorthand way of setting up Python logging and is useful for experimentation in scripts. Many of the SQL examples will include this SQL logging output beneath a <code>[SQL]</code> link that, when clicked, will reveal the full SQL interaction.</p>
+</section>
+<section id="example-connecting-to-an-in-memory-sqlite-database" class="level3" data-number="9.1.6">
+<h3 data-number="9.1.6" class="anchored" data-anchor-id="example-connecting-to-an-in-memory-sqlite-database"><span class="header-section-number">9.1.6</span> Example: Connecting to an In-Memory SQLite Database</h3>
+<p>Here’s a complete example of how to create an Engine and connect to an in-memory SQLite database:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an in-memory SQLite database</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(<span class="st">"sqlite+pysqlite:///:memory:"</span>, echo<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform a simple database operation</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> connection:</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> connection.execute(<span class="st">"SELECT 'Hello, World!'"</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(result.fetchall())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="conclusion-1" class="level3" data-number="9.1.7">
+<h3 data-number="9.1.7" class="anchored" data-anchor-id="conclusion-1"><span class="header-section-number">9.1.7</span> Conclusion</h3>
+<p>In this tutorial, we have covered the basics of establishing connectivity with SQLAlchemy using the Engine. We created an Engine for an in-memory SQLite database, understood the components of the connection URL, and enabled SQL logging for better visibility into the SQL operations performed by SQLAlchemy. This foundational knowledge is essential for both ORM and Core users as it sets the stage for more advanced database interactions using SQLAlchemy.</p>
+</section>
+</section>
+<section id="working-with-transactions-and-the-dbapi-with-sqlalchemy" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="working-with-transactions-and-the-dbapi-with-sqlalchemy"><span class="header-section-number">9.2</span> Working with Transactions and the DBAPI with SQLAlchemy</h2>
+<section id="introduction" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">9.2.1</span> Introduction</h3>
+<p>With the Engine object ready, we can dive into the basic operation of an Engine and its primary interactive endpoints: the Connection and the Result. For ORM users, the Session object manages the Engine and emphasizes a transactional SQL execution pattern similar to the Connection. This tutorial will cover how to establish a connection, execute transactions, and work with results using both Core and ORM contexts in SQLAlchemy.</p>
+</section>
+<section id="establishing-a-connection" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="establishing-a-connection"><span class="header-section-number">9.2.2</span> Establishing a Connection</h3>
+<p>The primary purpose of the Engine object is to provide a unit of connectivity to the database called the Connection. When working with SQLAlchemy Core, the Connection object is the primary interface for interacting with the database.</p>
+<section id="creating-a-connection" class="level4" data-number="9.2.2.1">
+<h4 data-number="9.2.2.1" class="anchored" data-anchor-id="creating-a-connection"><span class="header-section-number">9.2.2.1</span> Creating a Connection</h4>
+<p>A Connection object can be created using the <code>engine.connect()</code> method. It’s best to use a context manager to ensure the connection is properly managed and closed.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine, text</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an in-memory SQLite database</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(<span class="st">"sqlite+pysqlite:///:memory:"</span>, echo<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Establishing a connection using a context manager</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> conn.execute(text(<span class="st">"SELECT 'hello world'"</span>))</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(result.<span class="bu">all</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="transactions" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="transactions"><span class="header-section-number">9.2.3</span> Transactions</h3>
+<p>Transactions are crucial for maintaining data integrity. By default, a transaction is always in progress, and a ROLLBACK is issued when the connection scope is released.</p>
+<section id="committing-changes" class="level4" data-number="9.2.3.1">
+<h4 data-number="9.2.3.1" class="anchored" data-anchor-id="committing-changes"><span class="header-section-number">9.2.3.1</span> Committing Changes</h4>
+<p>To commit changes, use the <code>Connection.commit()</code> method within the context block.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    conn.execute(text(<span class="st">"CREATE TABLE some_table (x int, y int)"</span>))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    conn.execute(</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        text(<span class="st">"INSERT INTO some_table (x, y) VALUES (:x, :y)"</span>),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        [{<span class="st">"x"</span>: <span class="dv">1</span>, <span class="st">"y"</span>: <span class="dv">1</span>}, {<span class="st">"x"</span>: <span class="dv">2</span>, <span class="st">"y"</span>: <span class="dv">4</span>}]</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    conn.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="begin-once-style" class="level4" data-number="9.2.3.2">
+<h4 data-number="9.2.3.2" class="anchored" data-anchor-id="begin-once-style"><span class="header-section-number">9.2.3.2</span> Begin Once Style</h4>
+<p>Alternatively, use <code>engine.begin()</code> to manage the connection and transaction scope automatically.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.begin() <span class="im">as</span> conn:</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    conn.execute(</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        text(<span class="st">"INSERT INTO some_table (x, y) VALUES (:x, :y)"</span>),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        [{<span class="st">"x"</span>: <span class="dv">6</span>, <span class="st">"y"</span>: <span class="dv">8</span>}, {<span class="st">"x"</span>: <span class="dv">9</span>, <span class="st">"y"</span>: <span class="dv">10</span>}]</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="statement-execution" class="level3" data-number="9.2.4">
+<h3 data-number="9.2.4" class="anchored" data-anchor-id="statement-execution"><span class="header-section-number">9.2.4</span> Statement Execution</h3>
+<p>SQL statements can be executed using the <code>Connection.execute()</code> method along with the <code>text()</code> construct.</p>
+<section id="fetching-rows" class="level4" data-number="9.2.4.1">
+<h4 data-number="9.2.4.1" class="anchored" data-anchor-id="fetching-rows"><span class="header-section-number">9.2.4.1</span> Fetching Rows</h4>
+<p>Results are fetched using the Result object, which supports various methods for accessing data.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> conn.execute(text(<span class="st">"SELECT x, y FROM some_table"</span>))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> result:</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"x: </span><span class="sc">{</span>row<span class="sc">.</span>x<span class="sc">}</span><span class="ss">  y: </span><span class="sc">{</span>row<span class="sc">.</span>y<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="parameterized-queries" class="level3" data-number="9.2.5">
+<h3 data-number="9.2.5" class="anchored" data-anchor-id="parameterized-queries"><span class="header-section-number">9.2.5</span> Parameterized Queries</h3>
+<p>Parameters can be passed to SQL statements using dictionaries, ensuring proper value sanitization and preventing SQL injection.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> conn.execute(text(<span class="st">"SELECT x, y FROM some_table WHERE y &gt; :y"</span>), {<span class="st">"y"</span>: <span class="dv">2</span>})</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> result:</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"x: </span><span class="sc">{</span>row<span class="sc">.</span>x<span class="sc">}</span><span class="ss">  y: </span><span class="sc">{</span>row<span class="sc">.</span>y<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="sending-multiple-parameters" class="level3" data-number="9.2.6">
+<h3 data-number="9.2.6" class="anchored" data-anchor-id="sending-multiple-parameters"><span class="header-section-number">9.2.6</span> Sending Multiple Parameters</h3>
+<p>Multiple parameter sets can be sent using a list of dictionaries, enabling efficient execution of multiple SQL statements.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    conn.execute(</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        text(<span class="st">"INSERT INTO some_table (x, y) VALUES (:x, :y)"</span>),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        [{<span class="st">"x"</span>: <span class="dv">11</span>, <span class="st">"y"</span>: <span class="dv">12</span>}, {<span class="st">"x"</span>: <span class="dv">13</span>, <span class="st">"y"</span>: <span class="dv">14</span>}]</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    conn.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="using-orm-session" class="level3" data-number="9.2.7">
+<h3 data-number="9.2.7" class="anchored" data-anchor-id="using-orm-session"><span class="header-section-number">9.2.7</span> Using ORM Session</h3>
+<p>The Session object in SQLAlchemy ORM provides a higher-level interface for managing database interactions.</p>
+<section id="executing-with-orm-session" class="level4" data-number="9.2.7.1">
+<h4 data-number="9.2.7.1" class="anchored" data-anchor-id="executing-with-orm-session"><span class="header-section-number">9.2.7.1</span> Executing with ORM Session</h4>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy.orm <span class="im">import</span> Session</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> text(<span class="st">"SELECT x, y FROM some_table WHERE y &gt; :y ORDER BY x, y"</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> Session(engine) <span class="im">as</span> session:</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> session.execute(stmt, {<span class="st">"y"</span>: <span class="dv">6</span>})</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> result:</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"x: </span><span class="sc">{</span>row<span class="sc">.</span>x<span class="sc">}</span><span class="ss">  y: </span><span class="sc">{</span>row<span class="sc">.</span>y<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="committing-changes-with-orm-session" class="level4" data-number="9.2.7.2">
+<h4 data-number="9.2.7.2" class="anchored" data-anchor-id="committing-changes-with-orm-session"><span class="header-section-number">9.2.7.2</span> Committing Changes with ORM Session</h4>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> Session(engine) <span class="im">as</span> session:</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    session.execute(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>        text(<span class="st">"UPDATE some_table SET y=:y WHERE x=:x"</span>),</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>        [{<span class="st">"x"</span>: <span class="dv">9</span>, <span class="st">"y"</span>: <span class="dv">11</span>}, {<span class="st">"x"</span>: <span class="dv">13</span>, <span class="st">"y"</span>: <span class="dv">15</span>}]</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    session.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion-2" class="level3" data-number="9.2.8">
+<h3 data-number="9.2.8" class="anchored" data-anchor-id="conclusion-2"><span class="header-section-number">9.2.8</span> Conclusion</h3>
+<p>This tutorial covered the basics of working with transactions and the DBAPI using SQLAlchemy. We demonstrated how to establish a connection, execute transactions, and work with results using both Core and ORM contexts. Understanding these foundational concepts will enable you to effectively manage database interactions in your SQLAlchemy applications.</p>
+</section>
+</section>
+<section id="working-with-database-metadata-with-sqlalchemy" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="working-with-database-metadata-with-sqlalchemy"><span class="header-section-number">9.3</span> Working with Database Metadata with SQLAlchemy</h2>
+<section id="introduction-1" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="introduction-1"><span class="header-section-number">9.3.1</span> Introduction</h3>
+<p>With the basics of engines and SQL execution covered, we can now delve into SQLAlchemy’s core strength: working with database metadata. Database metadata allows for fluent, composable construction of SQL queries using Python objects that represent database concepts like tables and columns. This tutorial will illustrate how to work with database metadata in both Core and ORM contexts.</p>
+</section>
+<section id="setting-up-metadata-with-table-objects" class="level3" data-number="9.3.2">
+<h3 data-number="9.3.2" class="anchored" data-anchor-id="setting-up-metadata-with-table-objects"><span class="header-section-number">9.3.2</span> Setting Up Metadata with Table Objects</h3>
+<p>In SQLAlchemy, the primary object representing a table is the <code>Table</code> object. To start using SQLAlchemy’s Expression Language, we need to construct <code>Table</code> objects that represent our database tables. This is done using the <code>MetaData</code> object, which acts as a collection for <code>Table</code> objects.</p>
+<section id="creating-a-metadata-object" class="level4" data-number="9.3.2.1">
+<h4 data-number="9.3.2.1" class="anchored" data-anchor-id="creating-a-metadata-object"><span class="header-section-number">9.3.2.1</span> Creating a MetaData Object</h4>
+<p>First, create a <code>MetaData</code> object:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> MetaData</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>metadata_obj <span class="op">=</span> MetaData()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="defining-table-objects" class="level4" data-number="9.3.2.2">
+<h4 data-number="9.3.2.2" class="anchored" data-anchor-id="defining-table-objects"><span class="header-section-number">9.3.2.2</span> Defining Table Objects</h4>
+<p>We can now define <code>Table</code> objects. For this tutorial, we will use a <code>user_account</code> table and an <code>address</code> table.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> Table, Column, Integer, String, ForeignKey</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the user_account table</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>user_table <span class="op">=</span> Table(</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"user_account"</span>,</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    metadata_obj,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"id"</span>, Integer, primary_key<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"name"</span>, String(<span class="dv">30</span>)),</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"fullname"</span>, String),</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the address table with a foreign key to user_account</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>address_table <span class="op">=</span> Table(</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"address"</span>,</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    metadata_obj,</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"id"</span>, Integer, primary_key<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"user_id"</span>, ForeignKey(<span class="st">"user_account.id"</span>), nullable<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"email_address"</span>, String, nullable<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="emitting-ddl-to-the-database" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="emitting-ddl-to-the-database"><span class="header-section-number">9.3.3</span> Emitting DDL to the Database</h3>
+<p>With our <code>Table</code> objects defined, we can create the actual tables in the database using the <code>MetaData.create_all()</code> method.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an in-memory SQLite database</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(<span class="st">"sqlite+pysqlite:///:memory:"</span>, echo<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the tables in the database</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>metadata_obj.create_all(engine)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="working-with-constraints" class="level3" data-number="9.3.4">
+<h3 data-number="9.3.4" class="anchored" data-anchor-id="working-with-constraints"><span class="header-section-number">9.3.4</span> Working with Constraints</h3>
+<p>Constraints such as primary keys and foreign keys can be defined using the <code>Column</code> object parameters and <code>ForeignKey</code> objects.</p>
+<section id="primary-key-constraint" class="level4" data-number="9.3.4.1">
+<h4 data-number="9.3.4.1" class="anchored" data-anchor-id="primary-key-constraint"><span class="header-section-number">9.3.4.1</span> Primary Key Constraint</h4>
+<p>The primary key is defined using the <code>primary_key</code> parameter in the <code>Column</code> definition.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Column(<span class="st">"id"</span>, Integer, primary_key<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="foreign-key-constraint" class="level4" data-number="9.3.4.2">
+<h4 data-number="9.3.4.2" class="anchored" data-anchor-id="foreign-key-constraint"><span class="header-section-number">9.3.4.2</span> Foreign Key Constraint</h4>
+<p>A foreign key constraint is defined using the <code>ForeignKey</code> object.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Column(<span class="st">"user_id"</span>, ForeignKey(<span class="st">"user_account.id"</span>), nullable<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="declaring-orm-mapped-classes" class="level3" data-number="9.3.5">
+<h3 data-number="9.3.5" class="anchored" data-anchor-id="declaring-orm-mapped-classes"><span class="header-section-number">9.3.5</span> Declaring ORM Mapped Classes</h3>
+<p>Using the ORM, we can define our tables and mapped classes using the <code>DeclarativeBase</code> class.</p>
+<section id="establishing-a-declarative-base" class="level4" data-number="9.3.5.1">
+<h4 data-number="9.3.5.1" class="anchored" data-anchor-id="establishing-a-declarative-base"><span class="header-section-number">9.3.5.1</span> Establishing a Declarative Base</h4>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy.orm <span class="im">import</span> DeclarativeBase</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Base(DeclarativeBase):</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="defining-mapped-classes" class="level4" data-number="9.3.5.2">
+<h4 data-number="9.3.5.2" class="anchored" data-anchor-id="defining-mapped-classes"><span class="header-section-number">9.3.5.2</span> Defining Mapped Classes</h4>
+<p>We can now define our ORM mapped classes <code>User</code> and <code>Address</code>.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> List, Optional</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy.orm <span class="im">import</span> Mapped, mapped_column, relationship</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> User(Base):</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    __tablename__ <span class="op">=</span> <span class="st">"user_account"</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span>: Mapped[<span class="bu">int</span>] <span class="op">=</span> mapped_column(primary_key<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    name: Mapped[<span class="bu">str</span>] <span class="op">=</span> mapped_column(String(<span class="dv">30</span>))</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>    fullname: Mapped[Optional[<span class="bu">str</span>]]</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    addresses: Mapped[List[<span class="st">"Address"</span>]] <span class="op">=</span> relationship(back_populates<span class="op">=</span><span class="st">"user"</span>)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"User(id=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">!r}</span><span class="ss">, name=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">!r}</span><span class="ss">, fullname=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>fullname<span class="sc">!r}</span><span class="ss">)"</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Address(Base):</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    __tablename__ <span class="op">=</span> <span class="st">"address"</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span>: Mapped[<span class="bu">int</span>] <span class="op">=</span> mapped_column(primary_key<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    email_address: Mapped[<span class="bu">str</span>]</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>    user_id <span class="op">=</span> mapped_column(ForeignKey(<span class="st">"user_account.id"</span>))</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    user: Mapped[User] <span class="op">=</span> relationship(back_populates<span class="op">=</span><span class="st">"addresses"</span>)</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="ss">f"Address(id=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span><span class="bu">id</span><span class="sc">!r}</span><span class="ss">, email_address=</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>email_address<span class="sc">!r}</span><span class="ss">)"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="emitting-ddl-from-orm-mapped-classes" class="level3" data-number="9.3.6">
+<h3 data-number="9.3.6" class="anchored" data-anchor-id="emitting-ddl-from-orm-mapped-classes"><span class="header-section-number">9.3.6</span> Emitting DDL from ORM Mapped Classes</h3>
+<p>To create tables from our ORM mapped classes, use the <code>Base.metadata.create_all()</code> method.</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the tables in the database</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>Base.metadata.create_all(engine)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="table-reflection" class="level3" data-number="9.3.7">
+<h3 data-number="9.3.7" class="anchored" data-anchor-id="table-reflection"><span class="header-section-number">9.3.7</span> Table Reflection</h3>
+<p>Table reflection generates <code>Table</code> objects from an existing database schema.</p>
+<section id="reflecting-tables" class="level4" data-number="9.3.7.1">
+<h4 data-number="9.3.7.1" class="anchored" data-anchor-id="reflecting-tables"><span class="header-section-number">9.3.7.1</span> Reflecting Tables</h4>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reflect the some_table from the existing database</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>some_table <span class="op">=</span> Table(<span class="st">"some_table"</span>, metadata_obj, autoload_with<span class="op">=</span>engine)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(some_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="next-steps" class="level3" data-number="9.3.8">
+<h3 data-number="9.3.8" class="anchored" data-anchor-id="next-steps"><span class="header-section-number">9.3.8</span> Next Steps</h3>
+<p>With our database schema defined and tables created, we can now proceed to create, manipulate, and select data using both Core and ORM constructs in SQLAlchemy.</p>
+</section>
+<section id="conclusion-3" class="level3" data-number="9.3.9">
+<h3 data-number="9.3.9" class="anchored" data-anchor-id="conclusion-3"><span class="header-section-number">9.3.9</span> Conclusion</h3>
+<p>This tutorial covered the basics of working with database metadata in SQLAlchemy, including defining tables, emitting DDL to the database, and using ORM mapped classes. Understanding these concepts is fundamental for effective database management and query construction in SQLAlchemy.</p>
+</section>
+</section>
+<section id="working-with-data-with-sqlalchemy" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="working-with-data-with-sqlalchemy"><span class="header-section-number">9.4</span> Working with Data with SQLAlchemy</h2>
+<p>In the previous tutorials, we covered interacting with the Python DBAPI and its transactional state, and representing database tables, columns, and constraints using SQLAlchemy’s MetaData and related objects. In this tutorial, we’ll combine these concepts to create, select, and manipulate data within a relational database. Interactions with the database are always within the context of a transaction, even if autocommit is used behind the scenes.</p>
+<section id="components-of-this-tutorial" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="components-of-this-tutorial"><span class="header-section-number">9.4.1</span> Components of this Tutorial</h3>
+<ol type="1">
+<li><strong>Using INSERT Statements</strong>: We’ll introduce and demonstrate the Core Insert construct to get data into the database.</li>
+<li><strong>Using SELECT Statements</strong>: We’ll describe the Select construct, which emits SELECT statements for both Core and ORM-centric applications.</li>
+<li><strong>Using UPDATE and DELETE Statements</strong>: We’ll cover the use of the Update and Delete constructs from a Core perspective.</li>
+</ol>
+</section>
+<section id="using-insert-statements" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="using-insert-statements"><span class="header-section-number">9.4.2</span> Using INSERT Statements</h3>
+<p>To insert data into the database, we use the Core Insert construct.</p>
+<section id="example-inserting-data-with-core" class="level4" data-number="9.4.2.1">
+<h4 data-number="9.4.2.1" class="anchored" data-anchor-id="example-inserting-data-with-core"><span class="header-section-number">9.4.2.1</span> Example: Inserting Data with Core</h4>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine, MetaData, Table, Column, Integer, String, insert</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an in-memory SQLite database</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(<span class="st">"sqlite+pysqlite:///:memory:"</span>, echo<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>metadata <span class="op">=</span> MetaData()</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a user_account table</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>user_table <span class="op">=</span> Table(</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"user_account"</span>, metadata,</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"id"</span>, Integer, primary_key<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"name"</span>, String(<span class="dv">30</span>)),</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"fullname"</span>, String)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the table in the database</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>metadata.create_all(engine)</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert data into the user_account table</span></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>    stmt <span class="op">=</span> insert(user_table).values(name<span class="op">=</span><span class="st">"john"</span>, fullname<span class="op">=</span><span class="st">"John Doe"</span>)</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>    conn.execute(stmt)</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>    conn.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="using-select-statements" class="level3" data-number="9.4.3">
+<h3 data-number="9.4.3" class="anchored" data-anchor-id="using-select-statements"><span class="header-section-number">9.4.3</span> Using SELECT Statements</h3>
+<p>The <code>Select</code> construct is the most commonly used object in SQLAlchemy, allowing us to query data from the database.</p>
+<section id="example-selecting-data-with-core" class="level4" data-number="9.4.3.1">
+<h4 data-number="9.4.3.1" class="anchored" data-anchor-id="example-selecting-data-with-core"><span class="header-section-number">9.4.3.1</span> Example: Selecting Data with Core</h4>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> select</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Select data from the user_account table</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    stmt <span class="op">=</span> select(user_table)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> conn.execute(stmt)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> result:</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-selecting-data-with-orm" class="level4" data-number="9.4.3.2">
+<h4 data-number="9.4.3.2" class="anchored" data-anchor-id="example-selecting-data-with-orm"><span class="header-section-number">9.4.3.2</span> Example: Selecting Data with ORM</h4>
+<p>For ORM users, the process is similar but uses the Session object.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy.orm <span class="im">import</span> Session</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a user model</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> User(Base):</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    __tablename__ <span class="op">=</span> <span class="st">"user_account"</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> <span class="op">=</span> Column(Integer, primary_key<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> Column(String(<span class="dv">30</span>))</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    fullname <span class="op">=</span> Column(String)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a session</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> Session(engine) <span class="im">as</span> session:</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    stmt <span class="op">=</span> select(User)</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> session.execute(stmt)</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> user <span class="kw">in</span> result.scalars():</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(user.name, user.fullname)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="using-update-and-delete-statements" class="level3" data-number="9.4.4">
+<h3 data-number="9.4.4" class="anchored" data-anchor-id="using-update-and-delete-statements"><span class="header-section-number">9.4.4</span> Using UPDATE and DELETE Statements</h3>
+<p>To update or delete data, we use the <code>Update</code> and <code>Delete</code> constructs.</p>
+<section id="example-updating-data-with-core" class="level4" data-number="9.4.4.1">
+<h4 data-number="9.4.4.1" class="anchored" data-anchor-id="example-updating-data-with-core"><span class="header-section-number">9.4.4.1</span> Example: Updating Data with Core</h4>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> update</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Update data in the user_account table</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    stmt <span class="op">=</span> update(user_table).where(user_table.c.name <span class="op">==</span> <span class="st">"john"</span>).values(fullname<span class="op">=</span><span class="st">"Jonathan Doe"</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    conn.execute(stmt)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    conn.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-deleting-data-with-core" class="level4" data-number="9.4.4.2">
+<h4 data-number="9.4.4.2" class="anchored" data-anchor-id="example-deleting-data-with-core"><span class="header-section-number">9.4.4.2</span> Example: Deleting Data with Core</h4>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> delete</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete data from the user_account table</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    stmt <span class="op">=</span> delete(user_table).where(user_table.c.name <span class="op">==</span> <span class="st">"john"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    conn.execute(stmt)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    conn.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="data-manipulation-with-orm" class="level3" data-number="9.4.5">
+<h3 data-number="9.4.5" class="anchored" data-anchor-id="data-manipulation-with-orm"><span class="header-section-number">9.4.5</span> Data Manipulation with ORM</h3>
+<p>For ORM-specific data manipulation, we use the Session object.</p>
+<section id="example-inserting-data-with-orm" class="level4" data-number="9.4.5.1">
+<h4 data-number="9.4.5.1" class="anchored" data-anchor-id="example-inserting-data-with-orm"><span class="header-section-number">9.4.5.1</span> Example: Inserting Data with ORM</h4>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert data using ORM</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> Session(engine) <span class="im">as</span> session:</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    new_user <span class="op">=</span> User(name<span class="op">=</span><span class="st">"sandy"</span>, fullname<span class="op">=</span><span class="st">"Sandy Cheeks"</span>)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    session.add(new_user)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    session.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-updating-data-with-orm" class="level4" data-number="9.4.5.2">
+<h4 data-number="9.4.5.2" class="anchored" data-anchor-id="example-updating-data-with-orm"><span class="header-section-number">9.4.5.2</span> Example: Updating Data with ORM</h4>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update data using ORM</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> Session(engine) <span class="im">as</span> session:</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    stmt <span class="op">=</span> update(User).where(User.name <span class="op">==</span> <span class="st">"sandy"</span>).values(fullname<span class="op">=</span><span class="st">"Sandra Cheeks"</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    session.execute(stmt)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    session.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-deleting-data-with-orm" class="level4" data-number="9.4.5.3">
+<h4 data-number="9.4.5.3" class="anchored" data-anchor-id="example-deleting-data-with-orm"><span class="header-section-number">9.4.5.3</span> Example: Deleting Data with ORM</h4>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete data using ORM</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> Session(engine) <span class="im">as</span> session:</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    stmt <span class="op">=</span> delete(User).where(User.name <span class="op">==</span> <span class="st">"sandy"</span>)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    session.execute(stmt)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>    session.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion-4" class="level3" data-number="9.4.6">
+<h3 data-number="9.4.6" class="anchored" data-anchor-id="conclusion-4"><span class="header-section-number">9.4.6</span> Conclusion</h3>
+<p>In this tutorial, we covered the basics of creating, selecting, and manipulating data using SQLAlchemy. We demonstrated how to use the Core Insert, Select, Update, and Delete constructs, as well as their ORM equivalents. Understanding these concepts allows you to effectively manage data within your SQLAlchemy applications.</p>
+</section>
+</section>
+<section id="using-insert-statements-with-sqlalchemy" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="using-insert-statements-with-sqlalchemy"><span class="header-section-number">9.5</span> Using INSERT Statements with SQLAlchemy</h2>
+<p>In SQLAlchemy, whether using Core or the ORM, a SQL INSERT statement is generated directly using the <code>insert()</code> function. This function generates a new instance of <code>Insert</code> which represents an INSERT statement in SQL, adding new data into a table. This tutorial will detail how to use the Core methods for generating SQL INSERT statements to add new rows to a table. Understanding this process is useful even when using the ORM, as the ORM automates many of these steps.</p>
+<section id="the-insert-sql-expression-construct" class="level3" data-number="9.5.1">
+<h3 data-number="9.5.1" class="anchored" data-anchor-id="the-insert-sql-expression-construct"><span class="header-section-number">9.5.1</span> The <code>insert()</code> SQL Expression Construct</h3>
+<p>The <code>insert()</code> function creates an instance of the <code>Insert</code> construct, which represents an INSERT statement in SQL. Here’s a simple example:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> create_engine, MetaData, Table, Column, Integer, String, insert</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an in-memory SQLite database</span></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> create_engine(<span class="st">"sqlite+pysqlite:///:memory:"</span>, echo<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>metadata <span class="op">=</span> MetaData()</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a user_account table</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>user_table <span class="op">=</span> Table(</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"user_account"</span>, metadata,</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"id"</span>, Integer, primary_key<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"name"</span>, String(<span class="dv">30</span>)),</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"fullname"</span>, String)</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the table in the database</span></span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a>metadata.create_all(engine)</span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an INSERT statement</span></span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> insert(user_table).values(name<span class="op">=</span><span class="st">"spongebob"</span>, fullname<span class="op">=</span><span class="st">"Spongebob Squarepants"</span>)</span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>INSERT INTO user_account (name, fullname) VALUES (:name, :fullname)</code></pre>
+<p>The <code>stmt</code> variable is an instance of <code>Insert</code>. The stringified form shows the general form of the SQL being produced. The statement is parameterized, meaning it uses placeholders for the values to be inserted.</p>
+</section>
+<section id="executing-the-statement" class="level3" data-number="9.5.2">
+<h3 data-number="9.5.2" class="anchored" data-anchor-id="executing-the-statement"><span class="header-section-number">9.5.2</span> Executing the Statement</h3>
+<p>To execute the statement and insert data into the <code>user_table</code>, we use a connection object:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> conn.execute(stmt)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    conn.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will insert the row into the <code>user_table</code>. The SQL and the parameters used will be logged:</p>
+<pre><code>BEGIN (implicit)
+INSERT INTO user_account (name, fullname) VALUES (?, ?)
+[...] ('spongebob', 'Spongebob Squarepants')
+COMMIT</code></pre>
+<p>To get the primary key of the inserted row:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result.inserted_primary_key)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>(1,)</code></pre>
+</section>
+<section id="automatic-values-clause" class="level3" data-number="9.5.3">
+<h3 data-number="9.5.3" class="anchored" data-anchor-id="automatic-values-clause"><span class="header-section-number">9.5.3</span> Automatic VALUES Clause</h3>
+<p>If we don’t use <code>Insert.values()</code> and just print an “empty” statement, it will include all columns in the table:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(insert(user_table))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>INSERT INTO user_account (id, name, fullname) VALUES (:id, :name, :fullname)</code></pre>
+<p>When executing an empty <code>Insert</code> construct, the actual columns used in the INSERT are determined by the parameters passed to the <code>Connection.execute()</code> method:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> conn.execute(</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>        insert(user_table),</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>        [</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"name"</span>: <span class="st">"sandy"</span>, <span class="st">"fullname"</span>: <span class="st">"Sandy Cheeks"</span>},</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"name"</span>: <span class="st">"patrick"</span>, <span class="st">"fullname"</span>: <span class="st">"Patrick Star"</span>}</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>    conn.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>BEGIN (implicit)
+INSERT INTO user_account (name, fullname) VALUES (?, ?)
+[...] [('sandy', 'Sandy Cheeks'), ('patrick', 'Patrick Star')]
+COMMIT</code></pre>
+</section>
+<section id="insert-with-subqueries" class="level3" data-number="9.5.4">
+<h3 data-number="9.5.4" class="anchored" data-anchor-id="insert-with-subqueries"><span class="header-section-number">9.5.4</span> INSERT with Subqueries</h3>
+<p>For more complex INSERTs, you can use subqueries. Here’s an example that uses a scalar subquery to insert data into the <code>address_table</code> based on data in the <code>user_table</code>:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> select, bindparam</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the address table</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>address_table <span class="op">=</span> Table(</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"address"</span>, metadata,</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"id"</span>, Integer, primary_key<span class="op">=</span><span class="va">True</span>),</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"user_id"</span>, ForeignKey(<span class="st">"user_account.id"</span>), nullable<span class="op">=</span><span class="va">False</span>),</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>    Column(<span class="st">"email_address"</span>, String, nullable<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the table in the database</span></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>metadata.create_all(engine)</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Scalar subquery</span></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>scalar_subq <span class="op">=</span> (</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>    select(user_table.c.<span class="bu">id</span>)</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a>    .where(user_table.c.name <span class="op">==</span> bindparam(<span class="st">"username"</span>))</span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>    .scalar_subquery()</span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert into address table using subquery</span></span>
+<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> conn.execute(</span>
+<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a>        insert(address_table).values(user_id<span class="op">=</span>scalar_subq),</span>
+<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a>        [</span>
+<span id="cb54-26"><a href="#cb54-26" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"username"</span>: <span class="st">"spongebob"</span>, <span class="st">"email_address"</span>: <span class="st">"spongebob@sqlalchemy.org"</span>},</span>
+<span id="cb54-27"><a href="#cb54-27" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"username"</span>: <span class="st">"sandy"</span>, <span class="st">"email_address"</span>: <span class="st">"sandy@sqlalchemy.org"</span>},</span>
+<span id="cb54-28"><a href="#cb54-28" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"username"</span>: <span class="st">"sandy"</span>, <span class="st">"email_address"</span>: <span class="st">"sandy@squirrelpower.org"</span>}</span>
+<span id="cb54-29"><a href="#cb54-29" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb54-30"><a href="#cb54-30" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb54-31"><a href="#cb54-31" aria-hidden="true" tabindex="-1"></a>    conn.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>BEGIN (implicit)
+INSERT INTO address (user_id, email_address) VALUES ((SELECT user_account.id FROM user_account WHERE user_account.name = ?), ?)
+[...] [('spongebob', 'spongebob@sqlalchemy.org'), ('sandy', 'sandy@sqlalchemy.org'), ('sandy', 'sandy@squirrelpower.org')]
+COMMIT</code></pre>
+</section>
+<section id="insert-with-returning" class="level3" data-number="9.5.5">
+<h3 data-number="9.5.5" class="anchored" data-anchor-id="insert-with-returning"><span class="header-section-number">9.5.5</span> INSERT with RETURNING</h3>
+<p>For databases that support the RETURNING clause, you can use it to return values from the inserted row:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>insert_stmt <span class="op">=</span> insert(address_table).returning(address_table.c.<span class="bu">id</span>, address_table.c.email_address)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(insert_stmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>INSERT INTO address (id, user_id, email_address) VALUES (:id, :user_id, :email_address) RETURNING address.id, address.email_address</code></pre>
+<p>To execute the statement and get the returned values:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> conn.execute(insert_stmt)</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> result:</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="insert-from-select" class="level3" data-number="9.5.6">
+<h3 data-number="9.5.6" class="anchored" data-anchor-id="insert-from-select"><span class="header-section-number">9.5.6</span> INSERT from SELECT</h3>
+<p>You can also insert rows based on a SELECT statement using the <code>Insert.from_select()</code> method:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>select_stmt <span class="op">=</span> select(user_table.c.<span class="bu">id</span>, user_table.c.name <span class="op">+</span> <span class="st">"@aol.com"</span>)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>insert_stmt <span class="op">=</span> insert(address_table).from_select([<span class="st">"user_id"</span>, <span class="st">"email_address"</span>], select_stmt)</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(insert_stmt)</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> conn.execute(insert_stmt)</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>    conn.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>INSERT INTO address (user_id, email_address) SELECT user_account.id, user_account.name || :name_1 AS anon_1 FROM user_account</code></pre>
+</section>
+<section id="conclusion-5" class="level3" data-number="9.5.7">
+<h3 data-number="9.5.7" class="anchored" data-anchor-id="conclusion-5"><span class="header-section-number">9.5.7</span> Conclusion</h3>
+<p>This tutorial covered the basics of using the <code>insert()</code> function in SQLAlchemy to create SQL INSERT statements and add data to tables. We explored various ways to insert data, including basic inserts, inserts with subqueries, using the RETURNING clause, and inserting data from a SELECT statement. Understanding these concepts is essential for effective data manipulation in SQLAlchemy applications.</p>
+</section>
+</section>
+<section id="using-select-statements-with-sqlalchemy" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="using-select-statements-with-sqlalchemy"><span class="header-section-number">9.6</span> Using SELECT Statements with SQLAlchemy</h2>
+<p>The <code>select()</code> function in SQLAlchemy generates a <code>Select</code> construct used for all SELECT queries. When passed to methods like <code>Connection.execute()</code> in Core and <code>Session.execute()</code> in ORM, a SELECT statement is emitted in the current transaction and the result rows are available via the returned <code>Result</code> object.</p>
+<section id="the-select-sql-expression-construct" class="level3" data-number="9.6.1">
+<h3 data-number="9.6.1" class="anchored" data-anchor-id="the-select-sql-expression-construct"><span class="header-section-number">9.6.1</span> The <code>select()</code> SQL Expression Construct</h3>
+<p>The <code>select()</code> construct builds a SELECT statement in a generative manner, where each method builds more state onto the object. It can be stringified to see the SQL being generated:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> select</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> select(user_table).where(user_table.c.name <span class="op">==</span> <span class="st">"spongebob"</span>)</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>SELECT user_account.id, user_account.name, user_account.fullname
+FROM user_account
+WHERE user_account.name = :name_1</code></pre>
+<p>To execute the statement and fetch the results:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> conn.execute(stmt):</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>BEGIN (implicit)
+SELECT user_account.id, user_account.name, user_account.fullname
+FROM user_account
+WHERE user_account.name = ?
+[...] ('spongebob',)
+(1, 'spongebob', 'Spongebob Squarepants')
+ROLLBACK</code></pre>
+<p>When using the ORM, a <code>select()</code> construct composed against ORM entities can be executed using the <code>Session.execute()</code> method on the <code>Session</code>:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> select(User).where(User.name <span class="op">==</span> <span class="st">"spongebob"</span>)</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> Session(engine) <span class="im">as</span> session:</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> row <span class="kw">in</span> session.execute(stmt):</span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>BEGIN (implicit)
+SELECT user_account.id, user_account.name, user_account.fullname
+FROM user_account
+WHERE user_account.name = ?
+[...] ('spongebob',)
+(User(id=1, name='spongebob', fullname='Spongebob Squarepants'),)
+ROLLBACK</code></pre>
+</section>
+<section id="setting-the-columns-and-from-clause" class="level3" data-number="9.6.2">
+<h3 data-number="9.6.2" class="anchored" data-anchor-id="setting-the-columns-and-from-clause"><span class="header-section-number">9.6.2</span> Setting the COLUMNS and FROM Clause</h3>
+<p>The <code>select()</code> function can accept positional elements representing any number of <code>Column</code> and/or <code>Table</code> expressions:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(select(user_table))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>SELECT user_account.id, user_account.name, user_account.fullname
+FROM user_account</code></pre>
+<p>Selecting specific columns:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(select(user_table.c.name, user_table.c.fullname))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>SELECT user_account.name, user_account.fullname
+FROM user_account</code></pre>
+</section>
+<section id="selecting-orm-entities-and-columns" class="level3" data-number="9.6.3">
+<h3 data-number="9.6.3" class="anchored" data-anchor-id="selecting-orm-entities-and-columns"><span class="header-section-number">9.6.3</span> Selecting ORM Entities and Columns</h3>
+<p>Selecting from ORM entities works similarly to selecting from tables. Here’s an example:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(select(User))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>SELECT user_account.id, user_account.name, user_account.fullname
+FROM user_account</code></pre>
+<p>When executing this statement with the ORM, the result rows contain instances of the <code>User</code> class:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>row <span class="op">=</span> session.execute(select(User)).first()</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(row)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>(User(id=1, name='spongebob', fullname='Spongebob Squarepants'),)</code></pre>
+<p>To get the first element directly:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>user <span class="op">=</span> session.scalars(select(User)).first()</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(user)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>User(id=1, name='spongebob', fullname='Spongebob Squarepants')</code></pre>
+</section>
+<section id="the-where-clause" class="level3" data-number="9.6.4">
+<h3 data-number="9.6.4" class="anchored" data-anchor-id="the-where-clause"><span class="header-section-number">9.6.4</span> The WHERE Clause</h3>
+<p>SQLAlchemy allows composing SQL expressions using standard Python operators:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(user_table.c.name <span class="op">==</span> <span class="st">"squidward"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>user_account.name = :name_1</code></pre>
+<p>Using these expressions in the <code>WHERE</code> clause:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(select(user_table).where(user_table.c.name <span class="op">==</span> <span class="st">"squidward"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>SELECT user_account.id, user_account.name, user_account.fullname
+FROM user_account
+WHERE user_account.name = :name_1</code></pre>
+<p>Combining multiple expressions with <code>AND</code>:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(select(address_table.c.email_address).where(user_table.c.name <span class="op">==</span> <span class="st">"squidward"</span>).where(address_table.c.user_id <span class="op">==</span> user_table.c.<span class="bu">id</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>SELECT address.email_address
+FROM address, user_account
+WHERE user_account.name = :name_1 AND address.user_id = user_account.id</code></pre>
+</section>
+<section id="explicit-from-clauses-and-joins" class="level3" data-number="9.6.5">
+<h3 data-number="9.6.5" class="anchored" data-anchor-id="explicit-from-clauses-and-joins"><span class="header-section-number">9.6.5</span> Explicit FROM Clauses and JOINs</h3>
+<p>The <code>FROM</code> clause can be inferred from the columns selected or set explicitly using <code>select_from()</code>:</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(select(user_table.c.name).select_from(user_table))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>SELECT user_account.name
+FROM user_account</code></pre>
+<p>Joining tables:</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(select(user_table.c.name, address_table.c.email_address).join(address_table))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>SELECT user_account.name, address.email_address
+FROM user_account JOIN address ON user_account.id = address.user_id</code></pre>
+</section>
+<section id="order-by-group-by-having" class="level3" data-number="9.6.6">
+<h3 data-number="9.6.6" class="anchored" data-anchor-id="order-by-group-by-having"><span class="header-section-number">9.6.6</span> ORDER BY, GROUP BY, HAVING</h3>
+<p>Ordering results:</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(select(user_table).order_by(user_table.c.name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>SELECT user_account.id, user_account.name, user_account.fullname
+FROM user_account
+ORDER BY user_account.name</code></pre>
+<p>Grouping results:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> select(User.name, func.count(Address.<span class="bu">id</span>).label(<span class="st">"count"</span>)).join(Address).group_by(User.name).having(func.count(Address.<span class="bu">id</span>) <span class="op">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> conn.execute(stmt)</span>
+<span id="cb89-4"><a href="#cb89-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(result.<span class="bu">all</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>BEGIN (implicit)
+SELECT user_account.name, count(address.id) AS count
+FROM user_account JOIN address ON user_account.id = address.user_id GROUP BY user_account.name
+HAVING count(address.id) &gt; ?
+[...] (1,)
+[('sandy', 2)]
+ROLLBACK</code></pre>
+</section>
+<section id="subqueries-and-ctes" class="level3" data-number="9.6.7">
+<h3 data-number="9.6.7" class="anchored" data-anchor-id="subqueries-and-ctes"><span class="header-section-number">9.6.7</span> Subqueries and CTEs</h3>
+<p>Creating and using subqueries:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>subq <span class="op">=</span> select(func.count(address_table.c.<span class="bu">id</span>).label(<span class="st">"count"</span>), address_table.c.user_id).group_by(address_table.c.user_id).subquery()</span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(subq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>SELECT count(address.id) AS count, address.user_id
+FROM address GROUP BY address.user_id</code></pre>
+<p>Using subqueries in a larger <code>SELECT</code>:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> select(user_table.c.name, user_table.c.fullname, subq.c.count).join_from(user_table, subq)</span>
+<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>SELECT user_account.name, user_account.fullname, anon_1.count
+FROM user_account JOIN (SELECT count(address.id) AS count, address.user_id
+FROM address GROUP BY address.user_id) AS anon_1 ON user_account.id = anon_1.user_id</code></pre>
+<p>Using CTEs (Common Table Expressions):</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>cte_obj <span class="op">=</span> select(func.count(address_table.c.<span class="bu">id</span>).label(<span class="st">"count"</span>), address_table.c.user_id).group_by(address_table.c.user_id).cte()</span>
+<span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> select(user_table.c.name, user_table.c.fullname, cte_obj.c.count).join_from(user_table, cte_obj)</span>
+<span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>WITH anon_1 AS
+(SELECT count(address.id) AS count, address.user_id AS user_id
+FROM address GROUP BY address.user_id)
+ SELECT user_account.name, user_account.fullname, anon_1.count
+FROM user_account JOIN anon_1 ON user_account.id = anon_1.user_id</code></pre>
+</section>
+<section id="exists-subqueries" class="level3" data-number="9.6.8">
+<h3 data-number="9.6.8" class="anchored" data-anchor-id="exists-subqueries"><span class="header-section-number">9.6.8</span> EXISTS Subqueries</h3>
+<p>Using EXISTS:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>subq <span class="op">=</span> select(func.count(address_table.c.<span class="bu">id</span>)).where(user_table.c.<span class="bu">id</span> <span class="op">==</span> address_table.c.user_id).group_by(address_table.c.user_id).having(func.count(address_table.c.<span class="bu">id</span>) <span class="op">&gt;</span> <span class="dv">1</span>).exists()</span>
+<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> conn.execute(select(user_table.c.name).where(subq))</span>
+<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(result.<span class="bu">all</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>BEGIN (implicit)
+SELECT user_account.name
+FROM user_account
+WHERE EXISTS (SELECT count(address.id) AS count_1
+FROM address
+WHERE user_account.id = address.user_id GROUP BY address.user_id
+HAVING count(address.id) &gt; ?)
+[...] (1,)
+[('sandy',)]
+ROLLBACK</code></pre>
+</section>
+<section id="working-with-sql-functions" class="level3" data-number="9.6.9">
+<h3 data-number="9.6.9" class="anchored" data-anchor-id="working-with-sql-functions"><span class="header-section-number">9.6.9</span> Working with SQL Functions</h3>
+<p>Using SQL functions:</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> func</span>
+<span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> select(func.count()).select_from(user_table)</span>
+<span id="cb99-4"><a href="#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.<span class="ex">connect</span>() <span class="im">as</span> conn:</span>
+<span id="cb99-5"><a href="#cb99-5" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> conn.execute(stmt)</span>
+<span id="cb99-6"><a href="#cb99-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(result.<span class="bu">all</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>BEGIN (implicit)
+SELECT count(*) AS count_1
+FROM user_account
+[...] ()
+[(3,)]
+ROLLBACK</code></pre>
+</section>
+<section id="conclusion-6" class="level3" data-number="9.6.10">
+<h3 data-number="9.6.10" class="anchored" data-anchor-id="conclusion-6"><span class="header-section-number">9.6.10</span> Conclusion</h3>
+<p>This tutorial covers the basics of using the <code>select()</code> function in SQLAlchemy to create SQL SELECT statements and retrieve data from tables. We explored various aspects such as setting columns, using WHERE clauses, performing joins, and using advanced features like subqueries, CTEs, and SQL functions. Understanding these concepts is essential for effective querying in SQLAlchemy applications.</p>
+</section>
+</section>
+<section id="using-update-and-delete-statements-with-sqlalchemy" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="using-update-and-delete-statements-with-sqlalchemy"><span class="header-section-number">9.7</span> Using UPDATE and DELETE Statements with SQLAlchemy</h2>
+<p>So far, we’ve covered <code>Insert</code> statements to get data into the database and <code>Select</code> statements to retrieve it. Now, we’ll cover the <code>Update</code> and <code>Delete</code> constructs, used to modify and delete existing rows in a table. This tutorial focuses on these constructs from a Core-centric perspective.</p>
+<section id="the-update-sql-expression-construct" class="level3" data-number="9.7.1">
+<h3 data-number="9.7.1" class="anchored" data-anchor-id="the-update-sql-expression-construct"><span class="header-section-number">9.7.1</span> The <code>update()</code> SQL Expression Construct</h3>
+<p>The <code>update()</code> function generates a new instance of <code>Update</code>, representing an SQL <code>UPDATE</code> statement to modify existing data in a table.</p>
+<p>A basic <code>UPDATE</code> statement:</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> update</span>
+<span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> (</span>
+<span id="cb101-4"><a href="#cb101-4" aria-hidden="true" tabindex="-1"></a>    update(user_table)</span>
+<span id="cb101-5"><a href="#cb101-5" aria-hidden="true" tabindex="-1"></a>    .where(user_table.c.name <span class="op">==</span> <span class="st">"patrick"</span>)</span>
+<span id="cb101-6"><a href="#cb101-6" aria-hidden="true" tabindex="-1"></a>    .values(fullname<span class="op">=</span><span class="st">"Patrick the Star"</span>)</span>
+<span id="cb101-7"><a href="#cb101-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb101-8"><a href="#cb101-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>UPDATE user_account SET fullname=:fullname WHERE user_account.name = :name_1</code></pre>
+<p>The <code>Update.values()</code> method controls the <code>SET</code> elements of the <code>UPDATE</code> statement. You can pass parameters using the column names as keyword arguments.</p>
+<section id="using-expressions-in-update" class="level4" data-number="9.7.1.1">
+<h4 data-number="9.7.1.1" class="anchored" data-anchor-id="using-expressions-in-update"><span class="header-section-number">9.7.1.1</span> Using Expressions in UPDATE</h4>
+<p>You can use column expressions within the <code>SET</code> clause:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> update(user_table).values(fullname<span class="op">=</span><span class="st">"Username: "</span> <span class="op">+</span> user_table.c.name)</span>
+<span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>UPDATE user_account SET fullname=(:name_1 || user_account.name)</code></pre>
+</section>
+<section id="executing-the-statement-with-multiple-parameter-sets" class="level4" data-number="9.7.1.2">
+<h4 data-number="9.7.1.2" class="anchored" data-anchor-id="executing-the-statement-with-multiple-parameter-sets"><span class="header-section-number">9.7.1.2</span> Executing the Statement with Multiple Parameter Sets</h4>
+<p>To support multiple parameter sets with the same statement, use the <code>bindparam()</code> construct:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> bindparam</span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> (</span>
+<span id="cb105-4"><a href="#cb105-4" aria-hidden="true" tabindex="-1"></a>    update(user_table)</span>
+<span id="cb105-5"><a href="#cb105-5" aria-hidden="true" tabindex="-1"></a>    .where(user_table.c.name <span class="op">==</span> bindparam(<span class="st">"oldname"</span>))</span>
+<span id="cb105-6"><a href="#cb105-6" aria-hidden="true" tabindex="-1"></a>    .values(name<span class="op">=</span>bindparam(<span class="st">"newname"</span>))</span>
+<span id="cb105-7"><a href="#cb105-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb105-8"><a href="#cb105-8" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.begin() <span class="im">as</span> conn:</span>
+<span id="cb105-9"><a href="#cb105-9" aria-hidden="true" tabindex="-1"></a>    conn.execute(</span>
+<span id="cb105-10"><a href="#cb105-10" aria-hidden="true" tabindex="-1"></a>        stmt,</span>
+<span id="cb105-11"><a href="#cb105-11" aria-hidden="true" tabindex="-1"></a>        [</span>
+<span id="cb105-12"><a href="#cb105-12" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"oldname"</span>: <span class="st">"jack"</span>, <span class="st">"newname"</span>: <span class="st">"ed"</span>},</span>
+<span id="cb105-13"><a href="#cb105-13" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"oldname"</span>: <span class="st">"wendy"</span>, <span class="st">"newname"</span>: <span class="st">"mary"</span>},</span>
+<span id="cb105-14"><a href="#cb105-14" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"oldname"</span>: <span class="st">"jim"</span>, <span class="st">"newname"</span>: <span class="st">"jake"</span>},</span>
+<span id="cb105-15"><a href="#cb105-15" aria-hidden="true" tabindex="-1"></a>        ],</span>
+<span id="cb105-16"><a href="#cb105-16" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>BEGIN (implicit)
+UPDATE user_account SET name=? WHERE user_account.name = ?
+[...] [('ed', 'jack'), ('mary', 'wendy'), ('jake', 'jim')]
+COMMIT</code></pre>
+</section>
+</section>
+<section id="advanced-update-techniques" class="level3" data-number="9.7.2">
+<h3 data-number="9.7.2" class="anchored" data-anchor-id="advanced-update-techniques"><span class="header-section-number">9.7.2</span> Advanced UPDATE Techniques</h3>
+<section id="correlated-updates" class="level4" data-number="9.7.2.1">
+<h4 data-number="9.7.2.1" class="anchored" data-anchor-id="correlated-updates"><span class="header-section-number">9.7.2.1</span> Correlated Updates</h4>
+<p>An <code>UPDATE</code> statement can use rows from other tables by employing a correlated subquery:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>scalar_subq <span class="op">=</span> (</span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>    select(address_table.c.email_address)</span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>    .where(address_table.c.user_id <span class="op">==</span> user_table.c.<span class="bu">id</span>)</span>
+<span id="cb107-4"><a href="#cb107-4" aria-hidden="true" tabindex="-1"></a>    .order_by(address_table.c.<span class="bu">id</span>)</span>
+<span id="cb107-5"><a href="#cb107-5" aria-hidden="true" tabindex="-1"></a>    .limit(<span class="dv">1</span>)</span>
+<span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a>    .scalar_subquery()</span>
+<span id="cb107-7"><a href="#cb107-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb107-8"><a href="#cb107-8" aria-hidden="true" tabindex="-1"></a>update_stmt <span class="op">=</span> update(user_table).values(fullname<span class="op">=</span>scalar_subq)</span>
+<span id="cb107-9"><a href="#cb107-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(update_stmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>UPDATE user_account SET fullname=(SELECT address.email_address
+FROM address
+WHERE address.user_id = user_account.id ORDER BY address.id
+LIMIT :param_1)</code></pre>
+</section>
+<section id="update..from-syntax" class="level4" data-number="9.7.2.2">
+<h4 data-number="9.7.2.2" class="anchored" data-anchor-id="update..from-syntax"><span class="header-section-number">9.7.2.2</span> UPDATE..FROM Syntax</h4>
+<p>Some databases support an <code>UPDATE FROM</code> syntax:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>update_stmt <span class="op">=</span> (</span>
+<span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>    update(user_table)</span>
+<span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a>    .where(user_table.c.<span class="bu">id</span> <span class="op">==</span> address_table.c.user_id)</span>
+<span id="cb109-4"><a href="#cb109-4" aria-hidden="true" tabindex="-1"></a>    .where(address_table.c.email_address <span class="op">==</span> <span class="st">"patrick@aol.com"</span>)</span>
+<span id="cb109-5"><a href="#cb109-5" aria-hidden="true" tabindex="-1"></a>    .values(fullname<span class="op">=</span><span class="st">"Pat"</span>)</span>
+<span id="cb109-6"><a href="#cb109-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb109-7"><a href="#cb109-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(update_stmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>UPDATE user_account SET fullname=:fullname FROM address
+WHERE user_account.id = address.user_id AND address.email_address = :email_address_1</code></pre>
+</section>
+</section>
+<section id="the-delete-sql-expression-construct" class="level3" data-number="9.7.3">
+<h3 data-number="9.7.3" class="anchored" data-anchor-id="the-delete-sql-expression-construct"><span class="header-section-number">9.7.3</span> The <code>delete()</code> SQL Expression Construct</h3>
+<p>The <code>delete()</code> function generates a new instance of <code>Delete</code>, representing an SQL <code>DELETE</code> statement to remove rows from a table.</p>
+<p>A basic <code>DELETE</code> statement:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy <span class="im">import</span> delete</span>
+<span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> delete(user_table).where(user_table.c.name <span class="op">==</span> <span class="st">"patrick"</span>)</span>
+<span id="cb111-4"><a href="#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>DELETE FROM user_account WHERE user_account.name = :name_1</code></pre>
+</section>
+<section id="advanced-delete-techniques" class="level3" data-number="9.7.4">
+<h3 data-number="9.7.4" class="anchored" data-anchor-id="advanced-delete-techniques"><span class="header-section-number">9.7.4</span> Advanced DELETE Techniques</h3>
+<section id="multiple-table-deletes" class="level4" data-number="9.7.4.1">
+<h4 data-number="9.7.4.1" class="anchored" data-anchor-id="multiple-table-deletes"><span class="header-section-number">9.7.4.1</span> Multiple Table Deletes</h4>
+<p>Like <code>Update</code>, <code>Delete</code> supports correlated subqueries and backend-specific multiple table syntaxes, such as <code>DELETE FROM..USING</code> on MySQL:</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>delete_stmt <span class="op">=</span> (</span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>    delete(user_table)</span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>    .where(user_table.c.<span class="bu">id</span> <span class="op">==</span> address_table.c.user_id)</span>
+<span id="cb113-4"><a href="#cb113-4" aria-hidden="true" tabindex="-1"></a>    .where(address_table.c.email_address <span class="op">==</span> <span class="st">"patrick@aol.com"</span>)</span>
+<span id="cb113-5"><a href="#cb113-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb113-6"><a href="#cb113-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy.dialects <span class="im">import</span> mysql</span>
+<span id="cb113-7"><a href="#cb113-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(delete_stmt.<span class="bu">compile</span>(dialect<span class="op">=</span>mysql.dialect()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>DELETE FROM user_account USING user_account, address
+WHERE user_account.id = address.user_id AND address.email_address = %s</code></pre>
+</section>
+</section>
+<section id="getting-affected-row-count-from-update-delete" class="level3" data-number="9.7.5">
+<h3 data-number="9.7.5" class="anchored" data-anchor-id="getting-affected-row-count-from-update-delete"><span class="header-section-number">9.7.5</span> Getting Affected Row Count from UPDATE, DELETE</h3>
+<p>Both <code>Update</code> and <code>Delete</code> support retrieving the number of rows matched after execution via the <code>CursorResult.rowcount</code> attribute:</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> engine.begin() <span class="im">as</span> conn:</span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> conn.execute(</span>
+<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>        update(user_table)</span>
+<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a>        .values(fullname<span class="op">=</span><span class="st">"Patrick McStar"</span>)</span>
+<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a>        .where(user_table.c.name <span class="op">==</span> <span class="st">"patrick"</span>)</span>
+<span id="cb115-6"><a href="#cb115-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb115-7"><a href="#cb115-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(result.rowcount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output:</p>
+<pre><code>BEGIN (implicit)
+UPDATE user_account SET fullname=? WHERE user_account.name = ?
+[...] ('Patrick McStar', 'patrick')
+1
+COMMIT</code></pre>
+</section>
+<section id="using-returning-with-update-delete" class="level3" data-number="9.7.6">
+<h3 data-number="9.7.6" class="anchored" data-anchor-id="using-returning-with-update-delete"><span class="header-section-number">9.7.6</span> Using RETURNING with UPDATE, DELETE</h3>
+<p>The <code>RETURNING</code> clause can be added using <code>Update.returning()</code> and <code>Delete.returning()</code> methods:</p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>update_stmt <span class="op">=</span> (</span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>    update(user_table)</span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>    .where(user_table.c.name <span class="op">==</span> <span class="st">"patrick"</span>)</span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a>    .values(fullname<span class="op">=</span><span class="st">"Patrick the Star"</span>)</span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a>    .returning(user_table.c.<span class="bu">id</span>, user_table.c.name)</span>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(update_stmt)</span>
+<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a>delete_stmt <span class="op">=</span> (</span>
+<span id="cb117-10"><a href="#cb117-10" aria-hidden="true" tabindex="-1"></a>    delete(user_table)</span>
+<span id="cb117-11"><a href="#cb117-11" aria-hidden="true" tabindex="-1"></a>    .where(user_table.c.name <span class="op">==</span> <span class="st">"patrick"</span>)</span>
+<span id="cb117-12"><a href="#cb117-12" aria-hidden="true" tabindex="-1"></a>    .returning(user_table.c.<span class="bu">id</span>, user_table.c.name)</span>
+<span id="cb117-13"><a href="#cb117-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb117-14"><a href="#cb117-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(delete_stmt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Output for <code>update_stmt</code>:</p>
+<pre><code>UPDATE user_account SET fullname=:fullname
+WHERE user_account.name = :name_1
+RETURNING user_account.id, user_account.name</code></pre>
+<p>Output for <code>delete_stmt</code>:</p>
+<pre><code>DELETE FROM user_account
+WHERE user_account.name = :name_1
+RETURNING user_account.id, user_account.name</code></pre>
+</section>
+<section id="further-reading-for-update-delete" class="level3" data-number="9.7.7">
+<h3 data-number="9.7.7" class="anchored" data-anchor-id="further-reading-for-update-delete"><span class="header-section-number">9.7.7</span> Further Reading for UPDATE, DELETE</h3>
+<p>See also:</p>
+<ul>
+<li><a href="https://docs.sqlalchemy.org/en/14/core/dml.html#sqlalchemy.sql.expression.Update">Update</a></li>
+<li><a href="https://docs.sqlalchemy.org/en/14/core/dml.html#sqlalchemy.sql.expression.Delete">Delete</a></li>
+<li><a href="https://docs.sqlalchemy.org/en/14/orm/query.html#orm-enabled-insert-update-and-delete">ORM-Enabled INSERT, UPDATE, and DELETE Statements</a></li>
+</ul>
+<p>Understanding these constructs is crucial for modifying and deleting data efficiently in your SQLAlchemy applications.</p>
+</section>
+</section>
+<section id="data-manipulation-with-the-orm-in-sqlalchemy" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Data Manipulation with the ORM in SQLAlchemy</h1>
+<p>This tutorial will guide you through data manipulation using the ORM (Object-Relational Mapping) approach in SQLAlchemy. The ORM focuses on the lifecycle of the <code>Session</code> and how it interacts with data manipulation constructs.</p>
+<section id="prerequisites" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="prerequisites"><span class="header-section-number">10.1</span> Prerequisites</h2>
+<p>Before diving into this section, make sure you have gone through the following:</p>
+<ol type="1">
+<li><strong>Executing with an ORM Session</strong>: Introduces creating an ORM <code>Session</code> object.</li>
+<li><strong>Using ORM Declarative Forms to Define Table Metadata</strong>: Sets up ORM mappings for entities like <code>User</code> and <code>Address</code>.</li>
+<li><strong>Selecting ORM Entities and Columns</strong>: Examples on running <code>SELECT</code> statements for ORM entities.</li>
+</ol>
+</section>
+<section id="inserting-rows-using-the-orm-unit-of-work-pattern" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="inserting-rows-using-the-orm-unit-of-work-pattern"><span class="header-section-number">10.2</span> Inserting Rows Using the ORM Unit of Work Pattern</h2>
+<section id="instances-of-classes-represent-rows" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="instances-of-classes-represent-rows"><span class="header-section-number">10.2.1</span> Instances of Classes Represent Rows</h3>
+<p>In the ORM, instances of your classes (e.g., <code>User</code>, <code>Address</code>) represent rows in the database. Here’s how to create new instances of <code>User</code>:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>squidward <span class="op">=</span> User(name<span class="op">=</span><span class="st">"squidward"</span>, fullname<span class="op">=</span><span class="st">"Squidward Tentacles"</span>)</span>
+<span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>krabs <span class="op">=</span> User(name<span class="op">=</span><span class="st">"ehkrabs"</span>, fullname<span class="op">=</span><span class="st">"Eugene H. Krabs"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>These objects are in a transient state, meaning they are not yet associated with any database.</p>
+</section>
+<section id="adding-objects-to-a-session" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="adding-objects-to-a-session"><span class="header-section-number">10.2.2</span> Adding Objects to a Session</h3>
+<p>To add these objects to the database, you must add them to a <code>Session</code>:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>session <span class="op">=</span> Session(engine)</span>
+<span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>session.add(squidward)</span>
+<span id="cb121-4"><a href="#cb121-4" aria-hidden="true" tabindex="-1"></a>session.add(krabs)</span>
+<span id="cb121-5"><a href="#cb121-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb121-6"><a href="#cb121-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(session.new)</span>
+<span id="cb121-7"><a href="#cb121-7" aria-hidden="true" tabindex="-1"></a><span class="co"># IdentitySet([User(id=None, name='squidward', fullname='Squidward Tentacles'), User(id=None, name='ehkrabs', fullname='Eugene H. Krabs')])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="flushing" class="level3" data-number="10.2.3">
+<h3 data-number="10.2.3" class="anchored" data-anchor-id="flushing"><span class="header-section-number">10.2.3</span> Flushing</h3>
+<p>The <code>Session</code> uses a pattern called unit of work to accumulate changes and then push them to the database. You can manually flush the session to see the pending SQL statements:</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>session.flush()</span>
+<span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Output will show the INSERT statements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="autogenerated-primary-key-attributes" class="level3" data-number="10.2.4">
+<h3 data-number="10.2.4" class="anchored" data-anchor-id="autogenerated-primary-key-attributes"><span class="header-section-number">10.2.4</span> Autogenerated Primary Key Attributes</h3>
+<p>Once the rows are inserted, the ORM retrieves the new primary key identifiers for each object:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(squidward.<span class="bu">id</span>)  <span class="co"># e.g., 4</span></span>
+<span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(krabs.<span class="bu">id</span>)  <span class="co"># e.g., 5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="committing" class="level3" data-number="10.2.5">
+<h3 data-number="10.2.5" class="anchored" data-anchor-id="committing"><span class="header-section-number">10.2.5</span> Committing</h3>
+<p>Commit the transaction to make the changes permanent:</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>session.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="updating-orm-objects-using-the-unit-of-work-pattern" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="updating-orm-objects-using-the-unit-of-work-pattern"><span class="header-section-number">10.3</span> Updating ORM Objects Using the Unit of Work Pattern</h2>
+<p>To update objects, load them into a transaction, modify their attributes, and let the <code>Session</code> handle the update during a flush:</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>sandy <span class="op">=</span> session.execute(select(User).filter_by(name<span class="op">=</span><span class="st">"sandy"</span>)).scalar_one()</span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>sandy.fullname <span class="op">=</span> <span class="st">"Sandy Squirrel"</span></span>
+<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-5"><a href="#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sandy <span class="kw">in</span> session.dirty)  <span class="co"># True</span></span>
+<span id="cb125-6"><a href="#cb125-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-7"><a href="#cb125-7" aria-hidden="true" tabindex="-1"></a>sandy_fullname <span class="op">=</span> session.execute(select(User.fullname).where(User.<span class="bu">id</span> <span class="op">==</span> <span class="dv">2</span>)).scalar_one()</span>
+<span id="cb125-8"><a href="#cb125-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sandy_fullname)  <span class="co"># "Sandy Squirrel"</span></span>
+<span id="cb125-9"><a href="#cb125-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb125-10"><a href="#cb125-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sandy <span class="kw">in</span> session.dirty)  <span class="co"># False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="deleting-orm-objects-using-the-unit-of-work-pattern" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="deleting-orm-objects-using-the-unit-of-work-pattern"><span class="header-section-number">10.4</span> Deleting ORM Objects Using the Unit of Work Pattern</h2>
+<p>To delete objects, mark them for deletion and let the <code>Session</code> handle the delete during a flush:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>patrick <span class="op">=</span> session.get(User, <span class="dv">3</span>)</span>
+<span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a>session.delete(patrick)</span>
+<span id="cb126-4"><a href="#cb126-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb126-5"><a href="#cb126-5" aria-hidden="true" tabindex="-1"></a>session.execute(select(User).where(User.name <span class="op">==</span> <span class="st">"patrick"</span>)).first()</span>
+<span id="cb126-6"><a href="#cb126-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Output will show the DELETE statement</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="rolling-back" class="level3" data-number="10.4.1">
+<h3 data-number="10.4.1" class="anchored" data-anchor-id="rolling-back"><span class="header-section-number">10.4.1</span> Rolling Back</h3>
+<p>Rollback the transaction to undo the changes:</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a>session.rollback()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="closing-a-session" class="level3" data-number="10.4.2">
+<h3 data-number="10.4.2" class="anchored" data-anchor-id="closing-a-session"><span class="header-section-number">10.4.2</span> Closing a Session</h3>
+<p>Close the session to release resources and detach objects:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a>session.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="bulk-multi-row-insert-upsert-update-and-delete" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="bulk-multi-row-insert-upsert-update-and-delete"><span class="header-section-number">10.5</span> Bulk / Multi-Row INSERT, UPSERT, UPDATE, and DELETE</h2>
+<p>For performance-intensive tasks involving large numbers of rows, use bulk operations. This mode is crucial when dealing with massive datasets without needing to construct and manipulate individual ORM objects.</p>
+<p>See the <a href="https://docs.sqlalchemy.org/en/14/orm/query.html#orm-enabled-insert-update-and-delete">ORM-Enabled INSERT, UPDATE, and DELETE Statements</a> in the ORM Querying Guide for more details.</p>
+</section>
+<section id="conclusion-7" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="conclusion-7"><span class="header-section-number">10.6</span> Conclusion</h2>
+<p>Understanding the <code>Session</code> and its unit of work pattern is crucial for efficient data manipulation with SQLAlchemy’s ORM. Use the techniques discussed to manage the lifecycle of your objects and perform CRUD operations seamlessly.</p>
+<p>For further reading:</p>
+<ul>
+<li><a href="https://docs.sqlalchemy.org/en/14/core/dml.html#sqlalchemy.sql.expression.Update">Update</a></li>
+<li><a href="https://docs.sqlalchemy.org/en/14/core/dml.html#sqlalchemy.sql.expression.Delete">Delete</a></li>
+<li><a href="https://docs.sqlalchemy.org/en/14/orm/query.html#orm-enabled-insert-update-and-delete">ORM-Enabled INSERT, UPDATE, and DELETE Statements</a></li>
+</ul>
+<p>These resources will help you dive deeper into the capabilities and best practices of using SQLAlchemy’s ORM for data manipulation.</p>
+</section>
+</section>
+<section id="working-with-orm-related-objects-with-sqlalchemy" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Working with ORM Related Objects with SQLAlchemy</h1>
+<p>In this section, we’ll explore how SQLAlchemy’s ORM handles relationships between mapped classes. Relationships are defined using the <code>relationship()</code> construct, allowing us to create associations between different classes or even within the same class (self-referential relationships). This tutorial will cover creating, persisting, loading, and querying related objects using the ORM.</p>
+<section id="declaring-relationships" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="declaring-relationships"><span class="header-section-number">11.1</span> Declaring Relationships</h2>
+<section id="basic-relationship-example" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="basic-relationship-example"><span class="header-section-number">11.1.1</span> Basic Relationship Example</h3>
+<p>Let’s start with a simple example of declaring relationships between two classes: <code>User</code> and <code>Address</code>.</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1"><a href="#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy.orm <span class="im">import</span> Mapped</span>
+<span id="cb129-2"><a href="#cb129-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy.orm <span class="im">import</span> relationship</span>
+<span id="cb129-3"><a href="#cb129-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy.ext.declarative <span class="im">import</span> declarative_base</span>
+<span id="cb129-4"><a href="#cb129-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-5"><a href="#cb129-5" aria-hidden="true" tabindex="-1"></a>Base <span class="op">=</span> declarative_base()</span>
+<span id="cb129-6"><a href="#cb129-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-7"><a href="#cb129-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> User(Base):</span>
+<span id="cb129-8"><a href="#cb129-8" aria-hidden="true" tabindex="-1"></a>    __tablename__ <span class="op">=</span> <span class="st">"user_account"</span></span>
+<span id="cb129-9"><a href="#cb129-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-10"><a href="#cb129-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> <span class="op">=</span> mapped_column(Integer, primary_key<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb129-11"><a href="#cb129-11" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> mapped_column(String(<span class="dv">50</span>))</span>
+<span id="cb129-12"><a href="#cb129-12" aria-hidden="true" tabindex="-1"></a>    fullname <span class="op">=</span> mapped_column(String(<span class="dv">100</span>))</span>
+<span id="cb129-13"><a href="#cb129-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb129-14"><a href="#cb129-14" aria-hidden="true" tabindex="-1"></a>    addresses: Mapped[List[<span class="st">"Address"</span>]] <span class="op">=</span> relationship(back_populates<span class="op">=</span><span class="st">"user"</span>)</span>
+<span id="cb129-15"><a href="#cb129-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-16"><a href="#cb129-16" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Address(Base):</span>
+<span id="cb129-17"><a href="#cb129-17" aria-hidden="true" tabindex="-1"></a>    __tablename__ <span class="op">=</span> <span class="st">"address"</span></span>
+<span id="cb129-18"><a href="#cb129-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb129-19"><a href="#cb129-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span> <span class="op">=</span> mapped_column(Integer, primary_key<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb129-20"><a href="#cb129-20" aria-hidden="true" tabindex="-1"></a>    email_address <span class="op">=</span> mapped_column(String(<span class="dv">100</span>))</span>
+<span id="cb129-21"><a href="#cb129-21" aria-hidden="true" tabindex="-1"></a>    user_id <span class="op">=</span> mapped_column(Integer, ForeignKey(<span class="st">"user_account.id"</span>))</span>
+<span id="cb129-22"><a href="#cb129-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb129-23"><a href="#cb129-23" aria-hidden="true" tabindex="-1"></a>    user: Mapped[<span class="st">"User"</span>] <span class="op">=</span> relationship(back_populates<span class="op">=</span><span class="st">"addresses"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, the <code>User</code> class has an <code>addresses</code> attribute, and the <code>Address</code> class has a <code>user</code> attribute. The <code>relationship()</code> construct links the two classes, and the <code>back_populates</code> parameter ensures bidirectional relationship management.</p>
+</section>
+</section>
+<section id="persisting-and-loading-relationships" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="persisting-and-loading-relationships"><span class="header-section-number">11.2</span> Persisting and Loading Relationships</h2>
+<section id="creating-and-associating-objects" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="creating-and-associating-objects"><span class="header-section-number">11.2.1</span> Creating and Associating Objects</h3>
+<p>Let’s create a new <code>User</code> object and associate it with <code>Address</code> objects:</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a>u1 <span class="op">=</span> User(name<span class="op">=</span><span class="st">"pkrabs"</span>, fullname<span class="op">=</span><span class="st">"Pearl Krabs"</span>)</span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(u1.addresses)  <span class="co"># Output: []</span></span>
+<span id="cb130-3"><a href="#cb130-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-4"><a href="#cb130-4" aria-hidden="true" tabindex="-1"></a>a1 <span class="op">=</span> Address(email_address<span class="op">=</span><span class="st">"pearl.krabs@gmail.com"</span>)</span>
+<span id="cb130-5"><a href="#cb130-5" aria-hidden="true" tabindex="-1"></a>u1.addresses.append(a1)</span>
+<span id="cb130-6"><a href="#cb130-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(u1.addresses)  <span class="co"># Output: [Address(id=None, email_address='pearl.krabs@gmail.com')]</span></span>
+<span id="cb130-7"><a href="#cb130-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-8"><a href="#cb130-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a1.user)  <span class="co"># Output: User(id=None, name='pkrabs', fullname='Pearl Krabs')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Adding an <code>Address</code> object to the <code>User.addresses</code> collection also updates the <code>Address.user</code> attribute automatically, thanks to the <code>back_populates</code> parameter.</p>
+</section>
+<section id="adding-to-a-session" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="adding-to-a-session"><span class="header-section-number">11.2.2</span> Adding to a Session</h3>
+<p>We need to add the objects to a session to persist them in the database:</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb131-1"><a href="#cb131-1" aria-hidden="true" tabindex="-1"></a>session.add(u1)</span>
+<span id="cb131-2"><a href="#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(u1 <span class="kw">in</span> session)  <span class="co"># Output: True</span></span>
+<span id="cb131-3"><a href="#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a1 <span class="kw">in</span> session)  <span class="co"># Output: True</span></span>
+<span id="cb131-4"><a href="#cb131-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb131-5"><a href="#cb131-5" aria-hidden="true" tabindex="-1"></a>session.commit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>After committing the session, the objects are stored in the database, and primary key values are assigned.</p>
+</section>
+<section id="loading-relationships" class="level3" data-number="11.2.3">
+<h3 data-number="11.2.3" class="anchored" data-anchor-id="loading-relationships"><span class="header-section-number">11.2.3</span> Loading Relationships</h3>
+<p>Accessing a relationship attribute triggers a lazy load if the related objects are not already loaded:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>u1 <span class="op">=</span> session.query(User).filter_by(name<span class="op">=</span><span class="st">"pkrabs"</span>).one()</span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(u1.addresses)  <span class="co"># Triggers a SELECT statement to load addresses</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="using-relationships-in-queries" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="using-relationships-in-queries"><span class="header-section-number">11.3</span> Using Relationships in Queries</h2>
+<section id="joining-related-tables" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="joining-related-tables"><span class="header-section-number">11.3.1</span> Joining Related Tables</h3>
+<p>You can use relationships to simplify joining related tables:</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> select(Address.email_address).select_from(User).join(User.addresses)</span>
+<span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stmt)</span>
+<span id="cb133-3"><a href="#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Output: SELECT address.email_address FROM user_account JOIN address ON user_account.id = address.user_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="using-joinedload-and-selectinload" class="level3" data-number="11.3.2">
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="using-joinedload-and-selectinload"><span class="header-section-number">11.3.2</span> Using <code>joinedload()</code> and <code>selectinload()</code></h3>
+<p>These methods help optimize query performance by loading related objects eagerly:</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sqlalchemy.orm <span class="im">import</span> selectinload, joinedload</span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Using selectinload</span></span>
+<span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> select(User).options(selectinload(User.addresses)).order_by(User.<span class="bu">id</span>)</span>
+<span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> session.execute(stmt):</span>
+<span id="cb134-6"><a href="#cb134-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>row<span class="sc">.</span>User<span class="sc">.</span>name<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(a.email_address <span class="cf">for</span> a <span class="kw">in</span> row.User.addresses)<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb134-7"><a href="#cb134-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb134-8"><a href="#cb134-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Using joinedload</span></span>
+<span id="cb134-9"><a href="#cb134-9" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> select(Address).options(joinedload(Address.user)).order_by(Address.<span class="bu">id</span>)</span>
+<span id="cb134-10"><a href="#cb134-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> row <span class="kw">in</span> session.execute(stmt):</span>
+<span id="cb134-11"><a href="#cb134-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>row<span class="sc">.</span>Address<span class="sc">.</span>email_address<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>row<span class="sc">.</span>Address<span class="sc">.</span>user<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="loader-strategies" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="loader-strategies"><span class="header-section-number">11.4</span> Loader Strategies</h2>
+<section id="configuring-loader-strategies" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="configuring-loader-strategies"><span class="header-section-number">11.4.1</span> Configuring Loader Strategies</h3>
+<p>You can set loader strategies at mapping time or query time to control how related objects are loaded:</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># At mapping time</span></span>
+<span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> User(Base):</span>
+<span id="cb135-3"><a href="#cb135-3" aria-hidden="true" tabindex="-1"></a>    __tablename__ <span class="op">=</span> <span class="st">"user_account"</span></span>
+<span id="cb135-4"><a href="#cb135-4" aria-hidden="true" tabindex="-1"></a>    addresses: Mapped[List[<span class="st">"Address"</span>]] <span class="op">=</span> relationship(back_populates<span class="op">=</span><span class="st">"user"</span>, lazy<span class="op">=</span><span class="st">"selectin"</span>)</span>
+<span id="cb135-5"><a href="#cb135-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb135-6"><a href="#cb135-6" aria-hidden="true" tabindex="-1"></a><span class="co"># At query time</span></span>
+<span id="cb135-7"><a href="#cb135-7" aria-hidden="true" tabindex="-1"></a>stmt <span class="op">=</span> select(User).options(selectinload(User.addresses)).order_by(User.<span class="bu">id</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="using-raiseload" class="level3" data-number="11.4.2">
+<h3 data-number="11.4.2" class="anchored" data-anchor-id="using-raiseload"><span class="header-section-number">11.4.2</span> Using <code>raiseload()</code></h3>
+<p>The <code>raiseload()</code> strategy raises an error when a lazy load is attempted, preventing unwanted lazy loads:</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> User(Base):</span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>    __tablename__ <span class="op">=</span> <span class="st">"user_account"</span></span>
+<span id="cb136-3"><a href="#cb136-3" aria-hidden="true" tabindex="-1"></a>    addresses: Mapped[List[<span class="st">"Address"</span>]] <span class="op">=</span> relationship(back_populates<span class="op">=</span><span class="st">"user"</span>, lazy<span class="op">=</span><span class="st">"raise_on_sql"</span>)</span>
+<span id="cb136-4"><a href="#cb136-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb136-5"><a href="#cb136-5" aria-hidden="true" tabindex="-1"></a>u1 <span class="op">=</span> session.query(User).first()</span>
+<span id="cb136-6"><a href="#cb136-6" aria-hidden="true" tabindex="-1"></a>u1.addresses  <span class="co"># Raises an InvalidRequestError</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion-8" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="conclusion-8"><span class="header-section-number">11.5</span> Conclusion</h2>
+<p>Understanding and using relationships in SQLAlchemy’s ORM allows you to efficiently manage and query related data. By defining relationships with <code>relationship()</code>, using the unit of work pattern, and employing appropriate loader strategies, you can optimize your database interactions and maintain clean, readable code. For more details, refer to SQLAlchemy’s <a href="https://docs.sqlalchemy.org/en/14/orm/loading_relationships.html">Relationship Loading Techniques</a> documentation.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

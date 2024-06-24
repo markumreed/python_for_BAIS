@@ -274,6 +274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./A2_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Using Docker</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -294,6 +300,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ipv4-and-ipv6-subnetting" id="toc-ipv4-and-ipv6-subnetting" class="nav-link" data-scroll-target="#ipv4-and-ipv6-subnetting"><span class="header-section-number">17.0.4</span> IPv4 and IPv6 Subnetting</a></li>
   <li><a href="#example-comprehensive-network-management-script" id="toc-example-comprehensive-network-management-script" class="nav-link" data-scroll-target="#example-comprehensive-network-management-script"><span class="header-section-number">17.0.5</span> Example: Comprehensive Network Management Script</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">17.0.6</span> Conclusion</a></li>
+  <li><a href="#deep-dive-tutorial-for-the-dnspython-module-for-implementing-dns-query-scripts" id="toc-deep-dive-tutorial-for-the-dnspython-module-for-implementing-dns-query-scripts" class="nav-link" data-scroll-target="#deep-dive-tutorial-for-the-dnspython-module-for-implementing-dns-query-scripts"><span class="header-section-number">18</span> Deep Dive Tutorial for the <code>dnspython</code> Module for Implementing DNS Query Scripts</a>
+  <ul class="collapse">
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents"><span class="header-section-number">18.1</span> Table of Contents</a></li>
+  <li><a href="#introduction-to-dnspython" id="toc-introduction-to-dnspython" class="nav-link" data-scroll-target="#introduction-to-dnspython"><span class="header-section-number">18.2</span> Introduction to <code>dnspython</code></a></li>
+  <li><a href="#installing-dnspython-1" id="toc-installing-dnspython-1" class="nav-link" data-scroll-target="#installing-dnspython-1"><span class="header-section-number">18.3</span> Installing <code>dnspython</code></a></li>
+  <li><a href="#basic-dns-queries" id="toc-basic-dns-queries" class="nav-link" data-scroll-target="#basic-dns-queries"><span class="header-section-number">18.4</span> Basic DNS Queries</a>
+  <ul class="collapse">
+  <li><a href="#querying-an-a-record" id="toc-querying-an-a-record" class="nav-link" data-scroll-target="#querying-an-a-record"><span class="header-section-number">18.4.1</span> Querying an A Record</a></li>
+  <li><a href="#querying-an-aaaa-record" id="toc-querying-an-aaaa-record" class="nav-link" data-scroll-target="#querying-an-aaaa-record"><span class="header-section-number">18.4.2</span> Querying an AAAA Record</a></li>
+  </ul></li>
+  <li><a href="#querying-different-types-of-dns-records" id="toc-querying-different-types-of-dns-records" class="nav-link" data-scroll-target="#querying-different-types-of-dns-records"><span class="header-section-number">18.5</span> Querying Different Types of DNS Records</a>
+  <ul class="collapse">
+  <li><a href="#querying-mx-records" id="toc-querying-mx-records" class="nav-link" data-scroll-target="#querying-mx-records"><span class="header-section-number">18.5.1</span> Querying MX Records</a></li>
+  <li><a href="#querying-ns-records" id="toc-querying-ns-records" class="nav-link" data-scroll-target="#querying-ns-records"><span class="header-section-number">18.5.2</span> Querying NS Records</a></li>
+  <li><a href="#querying-txt-records" id="toc-querying-txt-records" class="nav-link" data-scroll-target="#querying-txt-records"><span class="header-section-number">18.5.3</span> Querying TXT Records</a></li>
+  <li><a href="#querying-cname-records" id="toc-querying-cname-records" class="nav-link" data-scroll-target="#querying-cname-records"><span class="header-section-number">18.5.4</span> Querying CNAME Records</a></li>
+  <li><a href="#querying-soa-records" id="toc-querying-soa-records" class="nav-link" data-scroll-target="#querying-soa-records"><span class="header-section-number">18.5.5</span> Querying SOA Records</a></li>
+  </ul></li>
+  <li><a href="#reverse-dns-lookups" id="toc-reverse-dns-lookups" class="nav-link" data-scroll-target="#reverse-dns-lookups"><span class="header-section-number">18.6</span> Reverse DNS Lookups</a></li>
+  <li><a href="#advanced-dns-queries" id="toc-advanced-dns-queries" class="nav-link" data-scroll-target="#advanced-dns-queries"><span class="header-section-number">18.7</span> Advanced DNS Queries</a>
+  <ul class="collapse">
+  <li><a href="#specifying-a-dns-server" id="toc-specifying-a-dns-server" class="nav-link" data-scroll-target="#specifying-a-dns-server"><span class="header-section-number">18.7.1</span> Specifying a DNS Server</a></li>
+  <li><a href="#setting-timeout-and-retries" id="toc-setting-timeout-and-retries" class="nav-link" data-scroll-target="#setting-timeout-and-retries"><span class="header-section-number">18.7.2</span> Setting Timeout and Retries</a></li>
+  </ul></li>
+  <li><a href="#error-handling" id="toc-error-handling" class="nav-link" data-scroll-target="#error-handling"><span class="header-section-number">18.8</span> Error Handling</a></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1"><span class="header-section-number">18.9</span> Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -465,8 +498,205 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="conclusion" class="level3" data-number="17.0.6">
 <h3 data-number="17.0.6" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">17.0.6</span> Conclusion</h3>
 <p>Understanding network services and management, including DNS, DHCP, routing protocols, and subnetting, is essential for effective network design and administration. Python provides powerful tools like <code>dnspython</code> for DNS queries and the <code>ipaddress</code> module for subnet calculations. By mastering these tools and concepts, you can efficiently manage and troubleshoot networks, ensuring optimal performance and reliability.</p>
+</section>
+<section id="deep-dive-tutorial-for-the-dnspython-module-for-implementing-dns-query-scripts" class="level1" data-number="18">
+<h1 data-number="18"><span class="header-section-number">18</span> Deep Dive Tutorial for the <code>dnspython</code> Module for Implementing DNS Query Scripts</h1>
+<p>The <code>dnspython</code> module is a powerful tool for working with DNS (Domain Name System) in Python. It allows you to perform various DNS operations, such as querying DNS records, updating DNS records, and more. This tutorial will provide a comprehensive guide to using <code>dnspython</code> for implementing DNS query scripts.</p>
+<section id="table-of-contents" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="table-of-contents"><span class="header-section-number">18.1</span> Table of Contents</h2>
+<ol type="1">
+<li><a href="#introduction-to-dnspython">Introduction to <code>dnspython</code></a></li>
+<li><a href="#installing-dnspython">Installing <code>dnspython</code></a></li>
+<li><a href="#basic-dns-queries">Basic DNS Queries</a></li>
+<li><a href="#querying-different-types-of-dns-records">Querying Different Types of DNS Records</a></li>
+<li><a href="#reverse-dns-lookups">Reverse DNS Lookups</a></li>
+<li><a href="#advanced-dns-queries">Advanced DNS Queries</a></li>
+<li><a href="#error-handling">Error Handling</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+</section>
+<section id="introduction-to-dnspython" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="introduction-to-dnspython"><span class="header-section-number">18.2</span> Introduction to <code>dnspython</code></h2>
+<p><code>dnspython</code> is a DNS toolkit for Python. It supports almost all record types defined in the DNS standards and allows for both querying and updating DNS records. It is a versatile library suitable for various DNS-related tasks.</p>
+</section>
+<section id="installing-dnspython-1" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="installing-dnspython-1"><span class="header-section-number">18.3</span> Installing <code>dnspython</code></h2>
+<p>To install <code>dnspython</code>, you can use <code>pip</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install dnspython</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="basic-dns-queries" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="basic-dns-queries"><span class="header-section-number">18.4</span> Basic DNS Queries</h2>
+<section id="querying-an-a-record" class="level3" data-number="18.4.1">
+<h3 data-number="18.4.1" class="anchored" data-anchor-id="querying-an-a-record"><span class="header-section-number">18.4.1</span> Querying an A Record</h3>
+<p>An A record maps a domain name to its corresponding IPv4 address.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_a_record(domain):</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> dns.resolver.resolve(domain, <span class="st">'A'</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ipval <span class="kw">in</span> result:</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'A Record: </span><span class="sc">{</span>ipval<span class="sc">.</span>to_text()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    query_a_record(<span class="st">'example.com'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="querying-an-aaaa-record" class="level3" data-number="18.4.2">
+<h3 data-number="18.4.2" class="anchored" data-anchor-id="querying-an-aaaa-record"><span class="header-section-number">18.4.2</span> Querying an AAAA Record</h3>
+<p>An AAAA record maps a domain name to its corresponding IPv6 address.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_aaaa_record(domain):</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> dns.resolver.resolve(domain, <span class="st">'AAAA'</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ipval <span class="kw">in</span> result:</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'AAAA Record: </span><span class="sc">{</span>ipval<span class="sc">.</span>to_text()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    query_aaaa_record(<span class="st">'example.com'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="querying-different-types-of-dns-records" class="level2" data-number="18.5">
+<h2 data-number="18.5" class="anchored" data-anchor-id="querying-different-types-of-dns-records"><span class="header-section-number">18.5</span> Querying Different Types of DNS Records</h2>
+<section id="querying-mx-records" class="level3" data-number="18.5.1">
+<h3 data-number="18.5.1" class="anchored" data-anchor-id="querying-mx-records"><span class="header-section-number">18.5.1</span> Querying MX Records</h3>
+<p>MX (Mail Exchange) records specify the mail servers responsible for receiving email on behalf of a domain.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_mx_record(domain):</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> dns.resolver.resolve(domain, <span class="st">'MX'</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> mxval <span class="kw">in</span> result:</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'MX Record: </span><span class="sc">{</span>mxval<span class="sc">.</span>exchange<span class="sc">.</span>to_text()<span class="sc">}</span><span class="ss"> preference: </span><span class="sc">{</span>mxval<span class="sc">.</span>preference<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    query_mx_record(<span class="st">'example.com'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="querying-ns-records" class="level3" data-number="18.5.2">
+<h3 data-number="18.5.2" class="anchored" data-anchor-id="querying-ns-records"><span class="header-section-number">18.5.2</span> Querying NS Records</h3>
+<p>NS (Name Server) records specify the authoritative name servers for a domain.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_ns_record(domain):</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> dns.resolver.resolve(domain, <span class="st">'NS'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> nsval <span class="kw">in</span> result:</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'NS Record: </span><span class="sc">{</span>nsval<span class="sc">.</span>to_text()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    query_ns_record(<span class="st">'example.com'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="querying-txt-records" class="level3" data-number="18.5.3">
+<h3 data-number="18.5.3" class="anchored" data-anchor-id="querying-txt-records"><span class="header-section-number">18.5.3</span> Querying TXT Records</h3>
+<p>TXT (Text) records provide text information to sources outside your domain.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_txt_record(domain):</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> dns.resolver.resolve(domain, <span class="st">'TXT'</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> txtval <span class="kw">in</span> result:</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'TXT Record: </span><span class="sc">{</span>txtval<span class="sc">.</span>to_text()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    query_txt_record(<span class="st">'example.com'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="querying-cname-records" class="level3" data-number="18.5.4">
+<h3 data-number="18.5.4" class="anchored" data-anchor-id="querying-cname-records"><span class="header-section-number">18.5.4</span> Querying CNAME Records</h3>
+<p>CNAME (Canonical Name) records map an alias name to a true or canonical domain name.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_cname_record(domain):</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> dns.resolver.resolve(domain, <span class="st">'CNAME'</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> cnameval <span class="kw">in</span> result:</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'CNAME Record: </span><span class="sc">{</span>cnameval<span class="sc">.</span>to_text()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    query_cname_record(<span class="st">'www.example.com'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="querying-soa-records" class="level3" data-number="18.5.5">
+<h3 data-number="18.5.5" class="anchored" data-anchor-id="querying-soa-records"><span class="header-section-number">18.5.5</span> Querying SOA Records</h3>
+<p>SOA (Start of Authority) records provide information about the domain and the corresponding DNS zone.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_soa_record(domain):</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> dns.resolver.resolve(domain, <span class="st">'SOA'</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> soaval <span class="kw">in</span> result:</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'SOA Record: </span><span class="sc">{</span>soaval<span class="sc">.</span>mname<span class="sc">.</span>to_text()<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>soaval<span class="sc">.</span>rname<span class="sc">.</span>to_text()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    query_soa_record(<span class="st">'example.com'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="reverse-dns-lookups" class="level2" data-number="18.6">
+<h2 data-number="18.6" class="anchored" data-anchor-id="reverse-dns-lookups"><span class="header-section-number">18.6</span> Reverse DNS Lookups</h2>
+<p>Reverse DNS lookups find the domain name associated with an IP address.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.reversename</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reverse_dns_lookup(ip):</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    addr <span class="op">=</span> dns.reversename.from_address(ip)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> dns.resolver.resolve(addr, <span class="st">'PTR'</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ptrval <span class="kw">in</span> result:</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'Reverse DNS: </span><span class="sc">{</span>ptrval<span class="sc">.</span>to_text()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    reverse_dns_lookup(<span class="st">'8.8.8.8'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="advanced-dns-queries" class="level2" data-number="18.7">
+<h2 data-number="18.7" class="anchored" data-anchor-id="advanced-dns-queries"><span class="header-section-number">18.7</span> Advanced DNS Queries</h2>
+<section id="specifying-a-dns-server" class="level3" data-number="18.7.1">
+<h3 data-number="18.7.1" class="anchored" data-anchor-id="specifying-a-dns-server"><span class="header-section-number">18.7.1</span> Specifying a DNS Server</h3>
+<p>You can specify which DNS server to use for your queries.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_with_custom_dns(domain, dns_server):</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    resolver <span class="op">=</span> dns.resolver.Resolver()</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    resolver.nameservers <span class="op">=</span> [dns_server]</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> resolver.resolve(domain, <span class="st">'A'</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ipval <span class="kw">in</span> result:</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'A Record: </span><span class="sc">{</span>ipval<span class="sc">.</span>to_text()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    query_with_custom_dns(<span class="st">'example.com'</span>, <span class="st">'8.8.8.8'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="setting-timeout-and-retries" class="level3" data-number="18.7.2">
+<h3 data-number="18.7.2" class="anchored" data-anchor-id="setting-timeout-and-retries"><span class="header-section-number">18.7.2</span> Setting Timeout and Retries</h3>
+<p>You can control the timeout and number of retries for DNS queries.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query_with_timeout(domain, timeout, retries):</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    resolver <span class="op">=</span> dns.resolver.Resolver()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    resolver.timeout <span class="op">=</span> timeout</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    resolver.lifetime <span class="op">=</span> timeout <span class="op">*</span> retries</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> resolver.resolve(domain, <span class="st">'A'</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ipval <span class="kw">in</span> result:</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'A Record: </span><span class="sc">{</span>ipval<span class="sc">.</span>to_text()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    query_with_timeout(<span class="st">'example.com'</span>, <span class="dv">1</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="error-handling" class="level2" data-number="18.8">
+<h2 data-number="18.8" class="anchored" data-anchor-id="error-handling"><span class="header-section-number">18.8</span> Error Handling</h2>
+<p>Proper error handling is essential for robust DNS querying.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.resolver</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> dns.exception</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_dns_query(domain, record_type):</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> dns.resolver.resolve(domain, record_type)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> val <span class="kw">in</span> result:</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f'</span><span class="sc">{</span>record_type<span class="sc">}</span><span class="ss"> Record: </span><span class="sc">{</span>val<span class="sc">.</span>to_text()<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> dns.resolver.NXDOMAIN:</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'The domain </span><span class="sc">{</span>domain<span class="sc">}</span><span class="ss"> does not exist.'</span>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> dns.resolver.Timeout:</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'Timeout occurred while querying </span><span class="sc">{</span>domain<span class="sc">}</span><span class="ss">.'</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> dns.exception.DNSException <span class="im">as</span> e:</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'An error occurred: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    safe_dns_query(<span class="st">'example.com'</span>, <span class="st">'A'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="conclusion-1" class="level2" data-number="18.9">
+<h2 data-number="18.9" class="anchored" data-anchor-id="conclusion-1"><span class="header-section-number">18.9</span> Conclusion</h2>
+<p>This tutorial has provided a comprehensive guide to using the <code>dnspython</code> module for DNS querying. With <code>dnspython</code>, you can perform a wide range of DNS operations, from basic queries to advanced configurations. By understanding and utilizing this module, you can build powerful network tools and services that leverage DNS data.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -10,7 +10,7 @@ A function in Python is defined using the `def` keyword, followed by the functio
 
 ##### Example: Calculate Total Sales
 
-```python
+```{python}
 def calculate_total_sales(unit_price, quantity):
     total_sales = unit_price * quantity
     return total_sales
@@ -32,7 +32,7 @@ Positional arguments are the most common way to pass data to functions.
 
 ##### Example: Calculate Discounted Price
 
-```python
+```{python}
 def calculate_discounted_price(price, discount):
     discounted_price = price * (1 - discount)
     return discounted_price
@@ -50,7 +50,7 @@ Keyword arguments are passed to the function with their parameter names.
 
 ##### Example: Calculate Employee Bonus
 
-```python
+```{python}
 def calculate_bonus(salary, performance_rating):
     if performance_rating >= 4.5:
         bonus = salary * 0.2  # 20% bonus
@@ -71,7 +71,7 @@ Default parameters are used when the function is called without arguments.
 
 ##### Example: Calculate Monthly Salary
 
-```python
+```{python}
 def calculate_monthly_salary(annual_salary, months=12):
     monthly_salary = annual_salary / months
     return monthly_salary
@@ -93,7 +93,7 @@ Functions can accept an arbitrary number of arguments using `*args` for position
 
 ##### Example: Calculate Total Revenue
 
-```python
+```{python}
 def calculate_total_revenue(*revenues):
     total_revenue = sum(revenues)
     return total_revenue
@@ -107,7 +107,7 @@ print(f"Total revenue: ${total_revenue}")
 
 ##### Example: Create Employee Profile
 
-```python
+```{python}
 def create_employee_profile(**employee_details):
     profile = ""
     for key, value in employee_details.items():
@@ -126,7 +126,7 @@ Functions can return multiple values using tuples.
 
 ##### Example: Calculate Statistics
 
-```python
+```{python}
 def calculate_statistics(sales):
     total_sales = sum(sales)
     average_sales = total_sales / len(sales)
@@ -146,7 +146,7 @@ Lambda functions are small anonymous functions defined using the `lambda` keywor
 
 ##### Example: Calculate Tax
 
-```python
+```{python}
 calculate_tax = lambda amount, tax_rate: amount * tax_rate
 
 # Using the lambda function
@@ -179,7 +179,7 @@ Python comes with a rich standard library of modules.
 
 ##### Example: Using the `math` Module
 
-```python
+```{python}
 import math
 
 # Calculate the ceiling value of a product price
@@ -211,7 +211,7 @@ def calculate_roi(profit, investment):
 
 2. Use the `financial.py` module in another Python script:
 
-```python
+```{python}
 # main.py
 import financial
 
@@ -235,7 +235,7 @@ You can import specific functions or variables from a module using the `from` st
 
 #### Example: Import Specific Functions
 
-```python
+```{python}
 from financial import calculate_gross_profit, calculate_net_profit
 
 revenue = 80000
@@ -255,7 +255,7 @@ You can use aliases to give a module or a function a different name.
 
 #### Example: Using Aliases for Modules
 
-```python
+```{python}
 import financial as fin
 
 revenue = 120000
@@ -277,7 +277,7 @@ Python’s standard library includes many modules that can be very useful in bus
 
 The `datetime` module is useful for manipulating dates and times.
 
-```python
+```{python}
 import datetime
 
 # Calculate the number of days between two dates
@@ -305,7 +305,7 @@ pip install pandas
 
 2. Use `pandas` in your Python script:
 
-```python
+```{python}
 import pandas as pd
 
 # Create a DataFrame with sales data
@@ -357,7 +357,7 @@ Functions in Python are defined using the `def` keyword, followed by the functio
 
 **Example: Simple Function**
 
-```python
+```{python}
 def greet():
     print("Hello, welcome to the BAIS tutorial!")
 ```
@@ -368,7 +368,7 @@ To execute a function, you need to call it by its name followed by parentheses.
 
 **Example: Calling a Function**
 
-```python
+```{python}
 greet()
 ```
 
@@ -387,7 +387,7 @@ Positional arguments are the most common way to pass values to a function. The o
 
 **Example: Function with Positional Arguments**
 
-```python
+```{python}
 def calculate_profit(revenue, expenses):
     profit = revenue - expenses
     return profit
@@ -408,7 +408,7 @@ Keyword arguments allow you to specify arguments by their parameter name, making
 
 **Example: Function with Keyword Arguments**
 
-```python
+```{python}
 # Calling the function with keyword arguments
 profit = calculate_profit(expenses=50000, revenue=100000)
 print(f"Profit: {profit}")
@@ -420,7 +420,7 @@ Default arguments allow you to specify default values for parameters. If no valu
 
 **Example: Function with Default Arguments**
 
-```python
+```{python}
 def calculate_profit(revenue, expenses=40000):
     profit = revenue - expenses
     return profit
@@ -442,7 +442,7 @@ Variable-length arguments allow you to pass a variable number of arguments to a 
 
 **Example: Function with Variable-length Arguments**
 
-```python
+```{python}
 def print_sales(*args, **kwargs):
     for sale in args:
         print(f"Sale: {sale}")
@@ -468,7 +468,7 @@ The `return` statement is used to send a result back to the caller. A function c
 
 **Example: Function with Return Statement**
 
-```python
+```{python}
 def analyze_sales(sales):
     total_sales = sum(sales)
     average_sales = total_sales / len(sales)
@@ -490,7 +490,7 @@ Lambda functions are small anonymous functions defined using the `lambda` keywor
 
 **Example: Lambda Function for Sales Tax Calculation**
 
-```python
+```{python}
 # Lambda function to calculate sales tax
 calculate_tax = lambda price, tax_rate: price * tax_rate
 print(calculate_tax(100, 0.05))
@@ -507,7 +507,7 @@ Higher-order functions are functions that take other functions as arguments or r
 
 **Example: Higher-Order Function for Applying Discounts**
 
-```python
+```{python}
 def apply_discount(price, discount_function):
     return discount_function(price)
 
@@ -530,7 +530,7 @@ Docstrings provide a convenient way of associating documentation with Python mod
 
 **Example: Function with Docstring**
 
-```python
+```{python}
 def analyze_sales(sales):
     """
     Calculate the total and average sales.
@@ -552,7 +552,7 @@ Decorators are a powerful and flexible way to extend the behavior of functions o
 
 **Example: Logging Decorator**
 
-```python
+```{python}
 def log_function_call(func):
     def wrapper(*args, **kwargs):
         print(f"Calling function {func.__name__}")
@@ -582,7 +582,7 @@ Variables defined inside a function are local to that function and cannot be acc
 
 **Example: Variable Scope**
 
-```python
+```{python}
 def analyze_sales(sales):
     total_sales = sum(sales)
     return total_sales
@@ -603,7 +603,7 @@ Output:
 
 **Example: Calculate Sales Metrics**
 
-```python
+```{python}
 def calculate_sales_metrics(sales):
     """
     Calculate total, average, and highest sales.
@@ -638,7 +638,7 @@ Output:
 
 **Example: Remove Outliers from Sales Data**
 
-```python
+```{python}
 def remove_outliers(data, threshold=2):
     """
     Remove outliers from the data.
@@ -671,7 +671,7 @@ Output:
 
 **Example: Query Sales Data from Database**
 
-```python
+```{python}
 import sqlite3
 
 def query_sales_data(db_name):
@@ -694,8 +694,8 @@ def query_sales_data(db_name):
     return sales_data
 
 # Example usage
-# Make sure to have a database file named 'sales.db' with a 'sales' table
-sales_data = query_sales_data('sales.db')
+# Make sure to have a database file named 'sales_example.db' with a 'sales' table
+sales_data = query_sales_data('sales_example.db')
 print(sales_data)
 ```
 
@@ -731,9 +731,10 @@ A Python module is a file containing Python definitions and statements. Modules 
 
 Creating a module in Python is simple. Just save your code in a `.py` file.
 
-**Example: `math_operations.py`**
+**Example 1: `math_operations.py`**
 
 ```python
+# math_operations.py    
 def add(a, b):
     return a + b
 
@@ -748,14 +749,22 @@ def divide(a, b):
         raise ValueError("Cannot divide by zero.")
     return a / b
 ```
+**Example 2: `string_operations.py`**
+```python
+#string_operations.py
+def uppercase(text):
+    return text.upper()
 
+def lowercase(text):
+    return text.lower()
+```
 ## Importing a Module
 
 To use the functions and variables in a module, you need to import the module into your script.
 
 **Example: Importing `math_operations.py`**
 
-```python
+```{python}
 import math_operations
 
 print(math_operations.add(10, 5))
@@ -766,7 +775,7 @@ print(math_operations.divide(10, 5))
 
 You can also import specific functions or variables from a module.
 
-```python
+```{python}
 from math_operations import add, subtract
 
 print(add(10, 5))
@@ -790,7 +799,7 @@ if __name__ == "__main__":
 
 **Example: Importing `my_module.py`**
 
-```python
+```{python}
 import my_module
 
 # This will not print "This is the main function." because __name__ is not "__main__"
@@ -815,7 +824,7 @@ You can import modules from a package using the `import` statement.
 
 **Example: Importing from a Package**
 
-```python
+```{python}
 from my_package import math_operations
 
 print(math_operations.add(10, 5))
@@ -841,7 +850,7 @@ from .string_operations import uppercase, lowercase
 
 Now you can import directly from `my_package`:
 
-```python
+```{python}
 from my_package import add, uppercase
 
 print(add(10, 5))
@@ -870,7 +879,7 @@ def filter_data(data, column, value):
 
 **Usage:**
 
-```python
+```{python}
 import data_analysis as da
 
 data = pd.DataFrame({
@@ -909,7 +918,7 @@ def plot_bar_chart(data, labels):
 
 **Usage:**
 
-```python
+```{python}
 import data_visualization as dv
 
 sales_data = [100, 200, 150, 300, 250]
@@ -950,7 +959,7 @@ def query_data(conn, query):
 
 **Usage:**
 
-```python
+```{python}
 import database_interaction as db
 
 conn = db.create_connection("sales.db")

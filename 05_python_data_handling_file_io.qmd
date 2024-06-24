@@ -10,9 +10,9 @@ Text files are the most basic form of file handling in Python. You can use built
 
 To read a text file, you use the `open` function in read mode (`'r'`).
 
-```python
+```{python}
 # Read a text file
-with open('example.txt', 'r') as file:
+with open('sample.txt', 'r') as file:
     content = file.read()
     print(content)
 ```
@@ -21,9 +21,9 @@ with open('example.txt', 'r') as file:
 
 To write to a text file, you use the `open` function in write mode (`'w'`).
 
-```python
+```{python}
 # Write to a text file
-with open('example.txt', 'w') as file:
+with open('sample.txt', 'w') as file:
     file.write('Hello, World!')
 ```
 
@@ -35,7 +35,7 @@ CSV (Comma-Separated Values) files are commonly used to store tabular data. Pyth
 
 You can read a CSV file using the `csv.reader` function.
 
-```python
+```{python}
 import csv
 
 # Read a CSV file
@@ -49,7 +49,7 @@ with open('data.csv', 'r') as file:
 
 You can write to a CSV file using the `csv.writer` function.
 
-```python
+```{python}
 import csv
 
 # Write to a CSV file
@@ -68,7 +68,7 @@ JSON (JavaScript Object Notation) is a lightweight data-interchange format. Pyth
 
 You can read a JSON file using the `json.load` function.
 
-```python
+```{python}
 import json
 
 # Read a JSON file
@@ -81,7 +81,7 @@ with open('data.json', 'r') as file:
 
 You can write to a JSON file using the `json.dump` function.
 
-```python
+```{python}
 import json
 
 # Write to a JSON file
@@ -103,7 +103,7 @@ Pandas is a powerful data manipulation library in Python. It provides data struc
 
 You can read a CSV file into a DataFrame using `pandas.read_csv`.
 
-```python
+```{python}
 import pandas as pd
 
 # Read a CSV file into a DataFrame
@@ -115,7 +115,7 @@ print(df)
 
 You can write a DataFrame to a CSV file using `DataFrame.to_csv`.
 
-```python
+```{python}
 # Write a DataFrame to a CSV file
 df.to_csv('data_output.csv', index=False)
 ```
@@ -124,7 +124,7 @@ df.to_csv('data_output.csv', index=False)
 
 You can read a JSON file into a DataFrame using `pandas.read_json`.
 
-```python
+```{python}
 # Read a JSON file into a DataFrame
 df = pd.read_json('data.json')
 print(df)
@@ -134,7 +134,7 @@ print(df)
 
 You can write a DataFrame to a JSON file using `DataFrame.to_json`.
 
-```python
+```{python}
 # Write a DataFrame to a JSON file
 df.to_json('data_output.json', orient='records', indent=4)
 ```
@@ -145,7 +145,7 @@ Let's combine these concepts to read sales data from a CSV file, manipulate it u
 
 1. **Read Sales Data from a CSV File**
 
-```python
+```{python}
 import pandas as pd
 
 # Read sales data from a CSV file
@@ -157,7 +157,7 @@ print(sales_df)
 
 Calculate the total sales for each product.
 
-```python
+```{python}
 # Calculate total sales for each product
 sales_df['Total Sales'] = sales_df['Quantity'] * sales_df['Unit Price']
 print(sales_df)
@@ -165,7 +165,7 @@ print(sales_df)
 
 3. **Write the Results to a JSON File**
 
-```python
+```{python}
 # Write the results to a JSON file
 sales_df.to_json('sales_data_output.json', orient='records', indent=4)
 ```
@@ -203,7 +203,7 @@ Text files are the simplest form of file I/O in Python.
 
 ### Reading Text Files
 
-```python
+```{python}
 # Read entire file
 with open('data.txt', 'r') as file:
     data = file.read()
@@ -217,7 +217,7 @@ with open('data.txt', 'r') as file:
 
 ### Writing Text Files
 
-```python
+```{python}
 # Write to a file
 with open('output.txt', 'w') as file:
     file.write('This is a line of text.\n')
@@ -233,7 +233,7 @@ CSV (Comma-Separated Values) files are commonly used for data storage and exchan
 
 ### Reading CSV Files
 
-```python
+```{python}
 import csv
 
 # Read CSV file
@@ -251,7 +251,7 @@ with open('data.csv', 'r') as file:
 
 ### Writing CSV Files
 
-```python
+```{python}
 import csv
 
 # Write to a CSV file
@@ -276,7 +276,7 @@ Excel files are widely used in business analytics for data storage and manipulat
 
 ### Reading Excel Files
 
-```python
+```{python}
 import pandas as pd
 
 # Read Excel file
@@ -286,7 +286,7 @@ print(df)
 
 ### Writing Excel Files
 
-```python
+```{python}
 import pandas as pd
 
 # Write to Excel file
@@ -305,7 +305,7 @@ JSON (JavaScript Object Notation) is a lightweight data interchange format.
 
 ### Reading JSON Data
 
-```python
+```{python}
 import json
 
 # Read JSON file
@@ -316,7 +316,7 @@ with open('data.json', 'r') as file:
 
 ### Writing JSON Data
 
-```python
+```{python}
 import json
 
 # Write to JSON file
@@ -336,7 +336,7 @@ Interacting with databases is essential for managing and querying large datasets
 
 ### Connecting to a SQLite Database
 
-```python
+```{python}
 import sqlite3
 
 # Connect to database
@@ -368,7 +368,7 @@ Handling large datasets efficiently is crucial in business analytics. The `panda
 
 ### Reading Large CSV Files in Chunks
 
-```python
+```{python}
 import pandas as pd
 
 # Read CSV file in chunks
@@ -385,7 +385,7 @@ for chunk in chunks:
 
 **Example: Analyzing Sales Data**
 
-```python
+```{python}
 import pandas as pd
 
 # Read sales data from CSV
@@ -404,7 +404,7 @@ print(sales_by_region)
 
 **Example: Managing Customer Data**
 
-```python
+```{python}
 import json
 
 # Read customer data from JSON

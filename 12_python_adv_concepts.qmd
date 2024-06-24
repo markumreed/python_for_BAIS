@@ -12,7 +12,7 @@ Asynchronous programming allows your code to perform tasks concurrently, improvi
 
 ##### Example: Basic Asynchronous Function
 
-```python
+```{python}
 import asyncio
 
 async def say_hello():
@@ -30,7 +30,7 @@ You can run multiple asynchronous tasks concurrently using `asyncio.gather`.
 
 ##### Example: Concurrent Tasks
 
-```python
+```{python}
 import asyncio
 
 async def task1():
@@ -57,7 +57,7 @@ Decorators are a powerful tool for modifying the behavior of functions or classe
 
 ##### Example: Logging Decorator
 
-```python
+```{python}
 def logger(func):
     def wrapper(*args, **kwargs):
         print(f"Executing {func.__name__} with arguments {args} and {kwargs}")
@@ -81,7 +81,7 @@ Generators are a special type of iterator that allow you to iterate through a se
 
 ##### Example: Simple Generator
 
-```python
+```{python}
 def countdown(n):
     while n > 0:
         yield n
@@ -98,7 +98,7 @@ Generator expressions provide a concise way to create generators.
 
 ##### Example: Generator Expression
 
-```python
+```{python}
 # Generator expression to create a sequence of squares
 squares = (x * x for x in range(10))
 
@@ -117,7 +117,7 @@ The `contextlib` module provides utilities for working with context managers.
 
 ##### Example: Creating a Simple Context Manager
 
-```python
+```{python}
 from contextlib import contextmanager
 
 @contextmanager
@@ -139,7 +139,7 @@ Let's combine these advanced concepts into a single example to demonstrate their
 
 ##### Example: Asynchronous File Downloader with Logging and Context Management
 
-```python
+```{python}
 import asyncio
 from contextlib import contextmanager
 
@@ -209,7 +209,7 @@ Before diving into `asyncio`, it's important to understand some key concepts:
 
 Let's start with a simple example to understand how coroutines and the event loop work together:
 
-```python
+```{python}
 import asyncio
 
 async def say_hello():
@@ -229,7 +229,7 @@ In this example, `say_hello` is a coroutine that prints "Hello", waits for 1 sec
 
 You can create multiple coroutines and run them concurrently using `asyncio.gather`:
 
-```python
+```{python}
 import asyncio
 
 async def task1():
@@ -254,7 +254,7 @@ In this example, `task1` and `task2` are coroutines that run concurrently. `asyn
 
 You can create tasks explicitly using `asyncio.create_task`, and you can cancel tasks if needed:
 
-```python
+```{python}
 import asyncio
 
 async def task1():
@@ -290,7 +290,7 @@ In this example, `task1` is cancelled after 1 second, while `task2` completes no
 
 #### Example: Using a Lock
 
-```python
+```{python}
 import asyncio
 
 lock = asyncio.Lock()
@@ -321,7 +321,7 @@ In this example, `task1` and `task2` acquire and release the same lock. Only one
 
 You can perform asynchronous file I/O using the `aiofiles` library:
 
-```python
+```{python}
 import asyncio
 import aiofiles
 
@@ -349,7 +349,7 @@ In this example, `write_file` writes to a file asynchronously, and `read_file` r
 
 You can create an asynchronous HTTP server using the `aiohttp` library:
 
-```python
+```{python}
 from aiohttp import web
 import asyncio
 
@@ -398,7 +398,7 @@ A decorator is a function that takes another function and extends its behavior w
 
 ### Basic Decorator Example
 
-```python
+```{python}
 def my_decorator(func):
     def wrapper():
         print("Something is happening before the function is called.")
@@ -421,7 +421,7 @@ In this example, `my_decorator` is a decorator function that wraps the `say_hell
 
 A function decorator is a function that takes another function as an argument and returns a new function that adds some behavior.
 
-```python
+```{python}
 def decorator(func):
     def wrapper(*args, **kwargs):
         print("Before the function call")
@@ -441,7 +441,7 @@ greet("Alice")
 
 You can also create decorators that work with functions that have arguments.
 
-```python
+```{python}
 def decorator(func):
     def wrapper(*args, **kwargs):
         print(f"Arguments: {args} {kwargs}")
@@ -460,7 +460,7 @@ print(add(2, 3))
 
 You can pass arguments to decorators by adding an extra layer of wrapping.
 
-```python
+```{python}
 def repeat(num_times):
     def decorator(func):
         def wrapper(*args, **kwargs):
@@ -483,7 +483,7 @@ Class decorators are similar to function decorators but are used to modify class
 
 ### Basic Class Decorator
 
-```python
+```{python}
 def class_decorator(cls):
     class Wrapped(cls):
         def new_method(self):
@@ -505,7 +505,7 @@ obj.new_method()
 
 You can also use class decorators to modify class methods.
 
-```python
+```{python}
 def method_decorator(method):
     def wrapper(self, *args, **kwargs):
         print("Before method call")
@@ -531,7 +531,7 @@ obj.method()
 
 You can stack multiple decorators on a single function or method.
 
-```python
+```{python}
 def decorator1(func):
     def wrapper(*args, **kwargs):
         print("Decorator 1")
@@ -560,7 +560,7 @@ Python provides several built-in decorators, such as `@staticmethod`, `@classmet
 
 ### Static Method
 
-```python
+```{python}
 class MyClass:
     @staticmethod
     def static_method():
@@ -571,7 +571,7 @@ MyClass.static_method()
 
 ### Class Method
 
-```python
+```{python}
 class MyClass:
     @classmethod
     def class_method(cls):
@@ -582,7 +582,7 @@ MyClass.class_method()
 
 ### Property
 
-```python
+```{python}
 class MyClass:
     def __init__(self, value):
         self._value = value
@@ -609,7 +609,7 @@ print(obj.value)
 
 A logging decorator can be used to log function calls.
 
-```python
+```{python}
 import logging
 
 def log(func):
@@ -630,7 +630,7 @@ print(multiply(2, 3))
 
 A timing decorator can be used to measure the execution time of a function.
 
-```python
+```{python}
 import time
 
 def timing(func):
@@ -653,7 +653,7 @@ print(calculate_sum(1000000))
 
 1. **Use `functools.wraps`**: Use `functools.wraps` to preserve the original function’s metadata when writing decorators.
 
-```python
+```{python}
 from functools import wraps
 
 def decorator(func):
@@ -702,7 +702,7 @@ Generators provide a way to create iterators in Python. They are written like re
 
 A generator function is defined like a normal function but uses the `yield` statement instead of `return` to return a value. Here’s a simple example:
 
-```python
+```{python}
 def simple_generator():
     yield 1
     yield 2
@@ -719,7 +719,7 @@ print(next(gen))  # Output: 3
 
 Generator expressions provide an easy and concise way to create generators. They are similar to list comprehensions but use parentheses instead of square brackets.
 
-```python
+```{python}
 gen_exp = (x * x for x in range(5))
 
 print(next(gen_exp))  # Output: 0
@@ -731,7 +731,7 @@ print(next(gen_exp))  # Output: 4
 
 Generators can be iterated over using a `for` loop, which automatically handles the `StopIteration` exception.
 
-```python
+```{python}
 def countdown(n):
     while n > 0:
         yield n
@@ -747,7 +747,7 @@ The `yield` statement is used to produce a value from the generator and pause it
 
 ### Example: Fibonacci Sequence
 
-```python
+```{python}
 def fibonacci(limit):
     a, b = 0, 1
     while a < limit:
@@ -765,7 +765,7 @@ for num in fib:
 
 You can send values to a generator using the `send()` method. This can be useful for coroutines or advanced control flow.
 
-```python
+```{python}
 def echo():
     while True:
         received = yield
@@ -781,7 +781,7 @@ gen.send('World')  # Output: Received: World
 
 You can throw exceptions into a generator using the `throw()` method. This allows you to handle errors within the generator.
 
-```python
+```{python}
 def generator():
     try:
         yield 'Normal execution'
@@ -799,7 +799,7 @@ print(next(gen))  # Output: End
 
 You can close a generator using the `close()` method. This raises a `GeneratorExit` exception inside the generator to perform any cleanup.
 
-```python
+```{python}
 def generator():
     try:
         yield 'Running'
@@ -817,7 +817,7 @@ gen.close()  # Output: Closing generator
 
 Generators can be very useful when reading large files line by line, as they allow you to process each line without loading the entire file into memory.
 
-```python
+```{python}
 def read_large_file(file_path):
     with open(file_path) as file:
         for line in file:
@@ -831,7 +831,7 @@ for line in read_large_file('large_file.txt'):
 
 Generators can be used to create infinite sequences.
 
-```python
+```{python}
 def infinite_sequence():
     num = 0
     while True:
@@ -850,7 +850,7 @@ Generators are a simple way to create iterators. Unlike a regular iterator, whic
 
 ### Iterator Class Example
 
-```python
+```{python}
 class Counter:
     def __init__(self, low, high):
         self.current = low
@@ -873,7 +873,7 @@ for num in counter:
 
 ### Equivalent Generator Example
 
-```python
+```{python}
 def counter(low, high):
     current = low
     while current <= high:
@@ -931,7 +931,7 @@ A context manager is an object that defines the runtime context to be establishe
 
 ### Basic Example
 
-```python
+```{python}
 with open('example.txt', 'w') as file:
     file.write('Hello, world!')
 ```
@@ -948,7 +948,7 @@ The `contextmanager` decorator from the `contextlib` module allows you to create
 
 ### Example
 
-```python
+```{python}
 from contextlib import contextmanager
 
 @contextmanager
@@ -971,7 +971,7 @@ The `closing` function is a utility that ensures an object with a `close` method
 
 ### Example
 
-```python
+```{python}
 from contextlib import closing
 import urllib.request
 
@@ -988,7 +988,7 @@ The `suppress` function allows you to suppress specified exceptions within a `wi
 
 ### Example
 
-```python
+```{python}
 from contextlib import suppress
 
 with suppress(FileNotFoundError):
@@ -1005,7 +1005,7 @@ The `redirect_stdout` and `redirect_stderr` functions allow you to redirect the 
 
 ### Example
 
-```python
+```{python}
 from contextlib import redirect_stdout
 
 with open('output.txt', 'w') as f:
@@ -1023,7 +1023,7 @@ The `ExitStack` class allows you to dynamically manage a stack of context manage
 
 ### Example
 
-```python
+```{python}
 from contextlib import ExitStack
 
 with ExitStack() as stack:
@@ -1042,7 +1042,7 @@ You can use the `ExitStack` class to combine multiple context managers into a si
 
 ### Example
 
-```python
+```{python}
 from contextlib import ExitStack
 
 with ExitStack() as stack:
@@ -1059,7 +1059,7 @@ Here, both `file1` and `file2` are managed by the `ExitStack`, ensuring they are
 
 ### Creating a Temporary Directory
 
-```python
+```{python}
 import os
 import tempfile
 from contextlib import contextmanager
@@ -1078,7 +1078,7 @@ with temporary_directory() as tempdir:
 
 ### Timing Code Execution
 
-```python
+```{python}
 import time
 from contextlib import contextmanager
 

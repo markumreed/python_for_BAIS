@@ -41,7 +41,7 @@ A TCP server listens for incoming connections from clients and processes their r
 
 ##### Example: TCP Server
 
-```python
+```{python}
 import socket
 
 # Define the host and port
@@ -72,7 +72,7 @@ A TCP client connects to a server, sends data, and receives a response.
 
 ##### Example: TCP Client
 
-```python
+```{python}
 import socket
 
 # Define the host and port
@@ -94,7 +94,7 @@ A UDP server listens for incoming datagrams (packets) from clients and processes
 
 ##### Example: UDP Server
 
-```python
+```{python}
 import socket
 
 # Define the host and port
@@ -118,7 +118,7 @@ A UDP client sends datagrams to a server and receives responses.
 
 ##### Example: UDP Client
 
-```python
+```{python}
 import socket
 
 # Define the host and port
@@ -172,7 +172,7 @@ The `socket` module is part of Python's standard library, so you don't need to i
 
 To use the `socket` module, you need to import it:
 
-```python
+```{python}
 import socket
 ```
 
@@ -185,7 +185,7 @@ A socket can be created using the `socket.socket()` function. This function requ
 
 ### Example
 
-```python
+```{python}
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ```
 
@@ -195,7 +195,7 @@ For a server, you need to bind the socket to an address and port number using th
 
 ### Example
 
-```python
+```{python}
 s.bind(('localhost', 12345))
 ```
 
@@ -205,7 +205,7 @@ After binding, a server socket needs to listen for incoming connections using th
 
 ### Example
 
-```python
+```{python}
 s.listen(5)
 ```
 
@@ -215,7 +215,7 @@ To accept a connection, use the `accept()` method, which returns a new socket ob
 
 ### Example
 
-```python
+```{python}
 conn, addr = s.accept()
 ```
 
@@ -226,7 +226,7 @@ conn, addr = s.accept()
 
 ### Example
 
-```python
+```{python}
 conn.send(b'Hello, World!')
 data = conn.recv(1024)
 print(data)
@@ -236,7 +236,7 @@ print(data)
 
 Here is a complete example of a simple server that listens on a specified port and sends a message to any client that connects:
 
-```python
+```{python}
 import socket
 
 def simple_server():
@@ -259,7 +259,7 @@ if __name__ == "__main__":
 
 Here is a simple client that connects to the server and receives a message:
 
-```python
+```{python}
 import socket
 
 def simple_client():
@@ -279,7 +279,7 @@ In a real-world application, communication between the server and client involve
 
 ### Server
 
-```python
+```{python}
 import socket
 
 def chat_server():
@@ -307,7 +307,7 @@ if __name__ == "__main__":
 
 ### Client
 
-```python
+```{python}
 import socket
 
 def chat_client():
@@ -332,7 +332,7 @@ Non-blocking sockets allow your application to continue running while it waits f
 
 ### Example
 
-```python
+```{python}
 import socket
 
 def non_blocking_server():
@@ -370,7 +370,7 @@ To handle multiple connections efficiently, you can use the `select` module, whi
 
 ### Example
 
-```python
+```{python}
 import socket
 import select
 
@@ -408,7 +408,7 @@ if __name__ == "__main__":
 
 This example demonstrates how to create a simple HTTP server that responds to GET requests.
 
-```python
+```{python}
 import socket
 
 def http_server():
@@ -434,7 +434,7 @@ if __name__ == "__main__":
 
 This example demonstrates how to create an echo server with a timeout feature.
 
-```python
+```{python}
 import socket
 
 def echo_server_with_timeout():

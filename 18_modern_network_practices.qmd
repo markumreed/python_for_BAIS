@@ -91,7 +91,7 @@ pip install matplotlib
 
 **Example Visualization:**
 
-```python
+```{python}
 import matplotlib.pyplot as plt
 
 # Sample IT budget data
@@ -114,7 +114,7 @@ Wireless communication protocols like Wi-Fi and mobile networks are crucial for 
 
 **Example Simulation:**
 
-```python
+```{python}
 import subprocess
 
 def connect_to_wifi(ssid, password):
@@ -148,7 +148,7 @@ pip install flask
 
 **Example Flask API:**
 
-```python
+```{python}
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
@@ -267,7 +267,7 @@ The Ansible Python API allows you to interact with Ansible programmatically. Thi
 
 Ad-hoc commands allow you to run simple commands on your managed hosts without writing a playbook.
 
-```python
+```{python}
 from ansible.executor.task_queue_manager import TaskQueueManager
 from ansible.parsing.dataloader import DataLoader
 from ansible.inventory.manager import InventoryManager
@@ -317,7 +317,7 @@ finally:
 
 Playbooks are the core of Ansible's configuration, deployment, and orchestration language.
 
-```python
+```{python}
 from ansible.executor.playbook_executor import PlaybookExecutor
 
 playbooks = ['site.yml']  # your playbook file
@@ -339,7 +339,7 @@ executor.run()
 
 Managing inventory programmatically allows dynamic inventory generation and management.
 
-```python
+```{python}
 from ansible.inventory.manager import InventoryManager
 
 inventory = InventoryManager(loader=loader, sources='inventory')
@@ -351,7 +351,7 @@ inventory = InventoryManager(loader=loader, sources='inventory')
 
 Custom modules extend Ansible's functionality. Here is an example of creating a custom module.
 
-```python
+```{python}
 from ansible.module_utils.basic import AnsibleModule
 
 def run_module():
@@ -387,7 +387,7 @@ if __name__ == '__main__':
 
 Callbacks allow custom handling of events during the execution of playbooks and tasks.
 
-```python
+```{python}
 from ansible.plugins.callback import CallbackBase
 
 class ResultCallback(CallbackBase):
@@ -409,7 +409,7 @@ tqm = TaskQueueManager(
 
 Handling results allows you to capture and process the output of your tasks and playbooks.
 
-```python
+```{python}
 class ResultCallback(CallbackBase):
     def v2_runner_on_ok(self, result):
         host = result._host
@@ -716,7 +716,7 @@ pip install matplotlib
 
 For this tutorial, we will assume that IT budget data is stored in a CSV file. We'll use `pandas` to load and handle the data.
 
-```python
+```{python}
 import pandas as pd
 
 # Load the data
@@ -740,7 +740,7 @@ Year,Hardware,Software,Services,Personnel
 
 A line plot is useful for visualizing trends over time. Here, we'll plot the IT budget over the years.
 
-```python
+```{python}
 import matplotlib.pyplot as plt
 
 plt.figure(figsize=(10, 6))
@@ -761,7 +761,7 @@ plt.show()
 
 A bar chart can effectively show the budget distribution for different categories in a particular year.
 
-```python
+```{python}
 year = 2022
 budget_2022 = data[data['Year'] == year].iloc[0, 1:]
 
@@ -778,7 +778,7 @@ plt.show()
 
 A pie chart shows the proportional distribution of the IT budget across different categories.
 
-```python
+```{python}
 plt.figure(figsize=(8, 8))
 plt.pie(budget_2022.values, labels=budget_2022.index, autopct='%1.1f%%', startangle=140)
 
@@ -792,7 +792,7 @@ plt.show()
 
 A stacked bar chart can show the composition of the IT budget over the years.
 
-```python
+```{python}
 plt.figure(figsize=(12, 8))
 plt.bar(data['Year'], data['Hardware'], label='Hardware')
 plt.bar(data['Year'], data['Software'], bottom=data['Hardware'], label='Software')
@@ -810,7 +810,7 @@ plt.show()
 
 A box plot can show the distribution and outliers in the budget data for different categories.
 
-```python
+```{python}
 plt.figure(figsize=(12, 8))
 data.boxplot(column=['Hardware', 'Software', 'Services', 'Personnel'])
 
@@ -824,7 +824,7 @@ plt.show()
 
 A heatmap can show the correlation between different budget categories.
 
-```python
+```{python}
 import seaborn as sns
 
 plt.figure(figsize=(10, 8))
@@ -840,7 +840,7 @@ plt.show()
 
 Customizing titles and labels is crucial for making the plot more informative.
 
-```python
+```{python}
 plt.figure(figsize=(10, 6))
 plt.plot(data['Year'], data['Hardware'], label='Hardware')
 
@@ -856,7 +856,7 @@ plt.show()
 
 Legends help in identifying different data series in a plot.
 
-```python
+```{python}
 plt.figure(figsize=(10, 6))
 plt.plot(data['Year'], data['Hardware'], label='Hardware')
 plt.plot(data['Year'], data['Software'], label='Software')
@@ -872,7 +872,7 @@ plt.show()
 
 Annotations can highlight specific data points in a plot.
 
-```python
+```{python}
 plt.figure(figsize=(10, 6))
 plt.plot(data['Year'], data['Hardware'], label='Hardware')
 
@@ -893,7 +893,7 @@ plt.show()
 
 You can save the plots to files using the `savefig` method.
 
-```python
+```{python}
 plt.figure(figsize=(10, 6))
 plt.plot(data['Year'], data['Hardware'], label='Hardware')
 
@@ -969,7 +969,7 @@ Before starting, ensure you have Python installed on your system. You can downlo
 
 Create a new file named `app.py` and add the following code to create a basic Flask application:
 
-```python
+```{python}
 from flask import Flask
 
 app = Flask(__name__)
@@ -1004,7 +1004,7 @@ REST (Representational State Transfer) is an architectural style for designing n
 
 The GET method retrieves information from the server.
 
-```python
+```{python}
 @app.route('/items', methods=['GET'])
 def get_items():
     items = [{"id": 1, "name": "Item 1"}, {"id": 2, "name": "Item 2"}]
@@ -1015,7 +1015,7 @@ def get_items():
 
 The POST method sends data to the server to create a new resource.
 
-```python
+```{python}
 @app.route('/items', methods=['POST'])
 def create_item():
     data = request.get_json()
@@ -1027,7 +1027,7 @@ def create_item():
 
 The PUT method updates an existing resource.
 
-```python
+```{python}
 @app.route('/items/<int:item_id>', methods=['PUT'])
 def update_item(item_id):
     data = request.get_json()
@@ -1039,7 +1039,7 @@ def update_item(item_id):
 
 The DELETE method removes a resource from the server.
 
-```python
+```{python}
 @app.route('/items/<int:item_id>', methods=['DELETE'])
 def delete_item(item_id):
     return '', 204
@@ -1059,7 +1059,7 @@ Flask-SQLAlchemy simplifies the integration between Flask and SQLAlchemy, an ORM
 
 2. **Set up SQLAlchemy in your Flask application:**
 
-   ```python
+   ```{python}
    from flask import Flask, request, jsonify
    from flask_sqlalchemy import SQLAlchemy
 
@@ -1096,7 +1096,7 @@ Marshmallow is an object serialization/deserialization library.
 
 2. **Set up Marshmallow in your Flask application:**
 
-   ```python
+   ```{python}
    from flask_marshmallow import Marshmallow
 
    ma = Marshmallow(app)
@@ -1118,7 +1118,7 @@ Marshmallow is an object serialization/deserialization library.
 
 To handle errors gracefully, Flask provides an error handler decorator.
 
-```python
+```{python}
 @app.errorhandler(404)
 def resource_not_found(e):
     return jsonify(error=str(e)), 404
@@ -1140,7 +1140,7 @@ Use the `unittest` module to write tests for your API.
 
 2. **Create a test file `test_app.py`:**
 
-   ```python
+   ```{python}
    import unittest
    from app import app, db, Item
 
@@ -1176,7 +1176,7 @@ Flask-JWT-Extended is a popular extension for adding JSON Web Tokens (JWT) to yo
 
 2. **Set up JWT in your application:**
 
-   ```python
+   ```{python}
    from flask_jwt_extended import JWTManager, create_access_token, jwt_required
 
    app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'

@@ -21,7 +21,7 @@ A GET request is used to retrieve data from a server.
 
 ##### Example: Fetching Data from a Public API
 
-```python
+```{python}
 import requests
 
 # Define the API endpoint
@@ -45,7 +45,7 @@ Most APIs return data in JSON format. The `json` module in Python can parse JSON
 
 #### Example: Parsing JSON Response
 
-```python
+```{python}
 import requests
 import json
 
@@ -70,7 +70,7 @@ A POST request is used to send data to a server.
 
 #### Example: Sending Data to an API
 
-```python
+```{python}
 import requests
 
 # Define the API endpoint
@@ -100,7 +100,7 @@ Some APIs require authentication. The `requests` library supports various authen
 
 #### Example: Using an API Key
 
-```python
+```{python}
 import requests
 
 # Define the API endpoint and your API key
@@ -129,7 +129,7 @@ Proper error handling is essential when working with APIs to ensure your applica
 
 #### Example: Handling Errors in API Requests
 
-```python
+```{python}
 import requests
 
 # Define the API endpoint
@@ -156,7 +156,7 @@ except requests.exceptions.RequestException as err:
 
 Let's combine what we've learned to build a small application that fetches and displays the current exchange rates.
 
-```python
+```{python}
 import requests
 import json
 
@@ -238,7 +238,7 @@ The `requests` module supports all the major HTTP methods, such as GET, POST, PU
 
 A GET request is used to retrieve data from a server. Here's how to make a simple GET request:
 
-```python
+```{python}
 import requests
 
 response = requests.get('https://api.example.com/data')
@@ -250,7 +250,7 @@ print(response.text)
 
 A POST request is used to send data to a server. Here's an example:
 
-```python
+```{python}
 import requests
 
 data = {'key1': 'value1', 'key2': 'value2'}
@@ -263,7 +263,7 @@ print(response.text)
 
 A PUT request is used to update data on a server. Here's an example:
 
-```python
+```{python}
 import requests
 
 data = {'key1': 'new_value1', 'key2': 'new_value2'}
@@ -276,7 +276,7 @@ print(response.text)
 
 A DELETE request is used to delete data from a server. Here's an example:
 
-```python
+```{python}
 import requests
 
 response = requests.delete('https://api.example.com/data/1')
@@ -290,7 +290,7 @@ print(response.text)
 
 HTTP status codes indicate whether a specific HTTP request has been successfully completed. `requests` allows you to check the status code of the response:
 
-```python
+```{python}
 response = requests.get('https://api.example.com/data')
 print(response.status_code)
 if response.status_code == 200:
@@ -303,7 +303,7 @@ elif response.status_code == 404:
 
 The content of the response can be accessed in different ways:
 
-```python
+```{python}
 response = requests.get('https://api.example.com/data')
 print(response.text)  # Raw text content
 print(response.content)  # Raw binary content
@@ -314,7 +314,7 @@ print(response.json())  # JSON content (if applicable)
 
 If the response contains JSON data, you can directly decode it:
 
-```python
+```{python}
 response = requests.get('https://api.example.com/data')
 data = response.json()
 print(data)
@@ -326,7 +326,7 @@ print(data)
 
 You can customize the headers sent with your requests:
 
-```python
+```{python}
 headers = {'User-Agent': 'my-app/0.0.1'}
 response = requests.get('https://api.example.com/data', headers=headers)
 print(response.text)
@@ -336,7 +336,7 @@ print(response.text)
 
 You can add query parameters to your requests:
 
-```python
+```{python}
 params = {'param1': 'value1', 'param2': 'value2'}
 response = requests.get('https://api.example.com/data', params=params)
 print(response.url)
@@ -347,7 +347,7 @@ print(response.text)
 
 For POST and PUT requests, you can include data in the request body:
 
-```python
+```{python}
 data = {'key1': 'value1', 'key2': 'value2'}
 response = requests.post('https://api.example.com/data', data=data)
 print(response.text)
@@ -355,7 +355,7 @@ print(response.text)
 
 You can also send JSON data by using the `json` parameter:
 
-```python
+```{python}
 import json
 
 data = {'key1': 'value1', 'key2': 'value2'}
@@ -367,7 +367,7 @@ print(response.text)
 
 You can specify a timeout for your requests:
 
-```python
+```{python}
 response = requests.get('https://api.example.com/data', timeout=5)
 print(response.text)
 ```
@@ -376,7 +376,7 @@ print(response.text)
 
 A `Session` object allows you to persist certain parameters across requests. It also persists cookies across all requests made from the session instance.
 
-```python
+```{python}
 session = requests.Session()
 session.headers.update({'User-Agent': 'my-app/0.0.1'})
 
@@ -390,7 +390,7 @@ The `requests` module supports various types of authentication, such as Basic Au
 
 ### Basic Authentication
 
-```python
+```{python}
 from requests.auth import HTTPBasicAuth
 
 response = requests.get('https://api.example.com/data', auth=HTTPBasicAuth('user', 'pass'))
@@ -399,7 +399,7 @@ print(response.text)
 
 ### Bearer Token Authentication
 
-```python
+```{python}
 headers = {'Authorization': 'Bearer YOUR_ACCESS_TOKEN'}
 response = requests.get('https://api.example.com/data', headers=headers)
 print(response.text)
@@ -409,7 +409,7 @@ print(response.text)
 
 The `requests` module provides built-in exception handling for common HTTP errors.
 
-```python
+```{python}
 try:
     response = requests.get('https://api.example.com/data')
     response.raise_for_status()
@@ -429,7 +429,7 @@ except requests.exceptions.RequestException as err:
 
 For large files, you can stream the content to avoid loading it all into memory at once.
 
-```python
+```{python}
 url = 'https://example.com/largefile.zip'
 with requests.get(url, stream=True) as response:
     response.raise_for_status()
@@ -442,7 +442,7 @@ with requests.get(url, stream=True) as response:
 
 You can upload files using the `files` parameter.
 
-```python
+```{python}
 files = {'file': open('report.csv', 'rb')}
 response = requests.post('https://api.example.com/upload', files=files)
 print(response.text)
@@ -452,7 +452,7 @@ print(response.text)
 
 You can create custom transport adapters for specific needs.
 
-```python
+```{python}
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry
 
@@ -504,7 +504,7 @@ JSON (JavaScript Object Notation) is a lightweight data interchange format that 
 
 The `json` module is included in Python's standard library, so you don't need to install it separately. You can start using it by simply importing it:
 
-```python
+```{python}
 import json
 ```
 
@@ -514,7 +514,7 @@ import json
 
 To parse JSON data (convert JSON string to Python dictionary), use the `json.loads()` function:
 
-```python
+```{python}
 import json
 
 json_data = '{"name": "John", "age": 30, "city": "New York"}'
@@ -524,7 +524,7 @@ print(parsed_data)  # Output: {'name': 'John', 'age': 30, 'city': 'New York'}
 
 You can also parse JSON data from a file using the `json.load()` function:
 
-```python
+```{python}
 import json
 
 with open('data.json', 'r') as file:
@@ -536,7 +536,7 @@ print(parsed_data)
 
 To serialize Python data structures (like dictionaries and lists) to JSON, use the `json.dumps()` function:
 
-```python
+```{python}
 import json
 
 data = {"name": "John", "age": 30, "city": "New York"}
@@ -546,7 +546,7 @@ print(json_data)  # Output: {"name": "John", "age": 30, "city": "New York"}
 
 You can also serialize data to a JSON file using the `json.dump()` function:
 
-```python
+```{python}
 import json
 
 data = {"name": "John", "age": 30, "city": "New York"}
@@ -560,7 +560,7 @@ with open('data.json', 'w') as file:
 
 When interacting with APIs, you often need to send JSON data in HTTP requests. This can be done using the `requests` module along with the `json` module:
 
-```python
+```{python}
 import requests
 import json
 
@@ -575,7 +575,7 @@ print(response.text)
 
 Alternatively, the `requests` module provides a convenient `json` parameter to automatically handle JSON serialization:
 
-```python
+```{python}
 import requests
 
 url = 'https://api.example.com/data'
@@ -590,7 +590,7 @@ print(response.text)
 
 When receiving JSON data from an API, you can parse the JSON response using the `json` method provided by the `requests` module:
 
-```python
+```{python}
 import requests
 
 url = 'https://api.example.com/data'
@@ -605,7 +605,7 @@ print(parsed_data)
 
 Sometimes, you need to customize the serialization process, such as handling non-serializable objects. You can achieve this by defining a custom serialization function and passing it to the `json.dumps()` function using the `default` parameter:
 
-```python
+```{python}
 import json
 from datetime import datetime
 
@@ -623,7 +623,7 @@ print(json_data)
 
 Similarly, you can customize the deserialization process by defining a custom deserialization function and passing it to the `json.loads()` function using the `object_hook` parameter:
 
-```python
+```{python}
 import json
 from datetime import datetime
 
@@ -641,7 +641,7 @@ print(parsed_data)
 
 The `json` module can handle complex data structures, including nested dictionaries and lists. Here's an example of serializing and deserializing a complex data structure:
 
-```python
+```{python}
 import json
 
 data = {
@@ -670,7 +670,7 @@ When working with JSON data, you may encounter various errors. The `json` module
 - `json.JSONDecodeError`: Raised when there is an error decoding JSON data.
 - `TypeError`: Raised when there is an error serializing non-serializable data.
 
-```python
+```{python}
 import json
 
 # Handling JSON decoding errors
@@ -694,7 +694,7 @@ except TypeError as e:
 
 Let's create a script that interacts with the GitHub API to fetch user information:
 
-```python
+```{python}
 import requests
 
 def get_github_user(username):
@@ -720,7 +720,7 @@ print(user_info)
 
 Let's create a script that interacts with the OpenWeatherMap API to fetch weather data for a city:
 
-```python
+```{python}
 import requests
 
 def get_weather(city, api_key):

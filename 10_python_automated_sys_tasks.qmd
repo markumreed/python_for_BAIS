@@ -10,7 +10,7 @@ The `os` module provides a way to use operating system-dependent functionality, 
 
 ##### Example: Creating, Changing, and Removing Directories
 
-```python
+```{python}
 import os
 
 # Create a new directory
@@ -33,7 +33,7 @@ You can list files and directories in a specified directory using `os.listdir`.
 
 ##### Example: Listing Files
 
-```python
+```{python}
 import os
 
 # List files and directories in the current directory
@@ -47,7 +47,7 @@ Environment variables are used to store system-wide information.
 
 ##### Example: Accessing Environment Variables
 
-```python
+```{python}
 import os
 
 # Get the value of the 'HOME' environment variable
@@ -67,7 +67,7 @@ The `subprocess` module allows you to spawn new processes, connect to their inpu
 
 ##### Example: Running a Shell Command
 
-```python
+```{python}
 import subprocess
 
 # Run a simple command
@@ -79,7 +79,7 @@ print("Output:", result.stdout)
 
 ##### Example: Running a Command and Capturing Output
 
-```python
+```{python}
 import subprocess
 
 # Run a command and capture its output
@@ -95,7 +95,7 @@ The `shutil` module provides a higher-level interface for file operations, inclu
 
 ##### Example: Copying Files
 
-```python
+```{python}
 import shutil
 
 # Copy a file
@@ -104,7 +104,7 @@ shutil.copy('source_file.txt', 'destination_file.txt')
 
 ##### Example: Copying Directories
 
-```python
+```{python}
 import shutil
 
 # Copy a directory
@@ -115,7 +115,7 @@ shutil.copytree('source_directory', 'destination_directory')
 
 ##### Example: Moving Files
 
-```python
+```{python}
 import shutil
 
 # Move a file
@@ -124,7 +124,7 @@ shutil.move('source_file.txt', 'destination_directory/source_file.txt')
 
 ##### Example: Renaming Files
 
-```python
+```{python}
 import shutil
 
 # Rename a file
@@ -135,7 +135,7 @@ shutil.move('old_name.txt', 'new_name.txt')
 
 ##### Example: Removing Files
 
-```python
+```{python}
 import os
 
 # Remove a file
@@ -144,7 +144,7 @@ os.remove('file_to_remove.txt')
 
 ##### Example: Removing Directories
 
-```python
+```{python}
 import shutil
 
 # Remove a directory
@@ -155,7 +155,7 @@ shutil.rmtree('directory_to_remove')
 
 Let's combine what we've learned to automate a simple backup process. We'll create a script that copies files from a source directory to a backup directory, adding a timestamp to the backup directory name.
 
-```python
+```{python}
 import os
 import shutil
 import datetime
@@ -197,7 +197,7 @@ The `os` module in Python provides a way of using operating system-dependent fun
 
 To use the `os` module, you need to import it first:
 
-```python
+```{python}
 import os
 ```
 
@@ -209,7 +209,7 @@ import os
 
 You can get the current working directory using `os.getcwd()`:
 
-```python
+```{python}
 import os
 
 current_directory = os.getcwd()
@@ -220,7 +220,7 @@ print("Current Directory:", current_directory)
 
 You can change the current working directory using `os.chdir(path)`:
 
-```python
+```{python}
 os.chdir('/path/to/directory')
 print("Changed Directory:", os.getcwd())
 ```
@@ -229,7 +229,7 @@ print("Changed Directory:", os.getcwd())
 
 To list the contents of a directory, use `os.listdir(path)`:
 
-```python
+```{python}
 directory_contents = os.listdir('.')
 print("Directory Contents:", directory_contents)
 ```
@@ -238,7 +238,7 @@ print("Directory Contents:", directory_contents)
 
 You can create a new directory using `os.mkdir(path)`:
 
-```python
+```{python}
 os.mkdir('new_directory')
 print("New Directory Created:", os.listdir('.'))
 ```
@@ -247,7 +247,7 @@ print("New Directory Created:", os.listdir('.'))
 
 To create intermediate directories, use `os.makedirs(path)`:
 
-```python
+```{python}
 os.makedirs('parent_directory/child_directory')
 print("Directories Created:", os.listdir('parent_directory'))
 ```
@@ -256,14 +256,14 @@ print("Directories Created:", os.listdir('parent_directory'))
 
 To remove a directory, use `os.rmdir(path)`:
 
-```python
+```{python}
 os.rmdir('new_directory')
 print("Directory Removed:", os.listdir('.'))
 ```
 
 To remove intermediate directories, use `os.removedirs(path)`:
 
-```python
+```{python}
 os.removedirs('parent_directory/child_directory')
 print("Directories Removed:", os.listdir('.'))
 ```
@@ -274,7 +274,7 @@ print("Directories Removed:", os.listdir('.'))
 
 To create and write to a file, you can use standard file handling methods:
 
-```python
+```{python}
 with open('example.txt', 'w') as file:
     file.write('Hello, World!')
 print("File Created and Written to:", os.listdir('.'))
@@ -284,7 +284,7 @@ print("File Created and Written to:", os.listdir('.'))
 
 To remove a file, use `os.remove(path)`:
 
-```python
+```{python}
 os.remove('example.txt')
 print("File Removed:", os.listdir('.'))
 ```
@@ -293,7 +293,7 @@ print("File Removed:", os.listdir('.'))
 
 To rename a file, use `os.rename(src, dst)`:
 
-```python
+```{python}
 with open('old_name.txt', 'w') as file:
     file.write('Hello, World!')
 
@@ -305,7 +305,7 @@ print("File Renamed:", os.listdir('.'))
 
 To get the status of a file, use `os.stat(path)`:
 
-```python
+```{python}
 file_status = os.stat('new_name.txt')
 print("File Status:", file_status)
 ```
@@ -316,7 +316,7 @@ print("File Status:", file_status)
 
 To get the value of an environment variable, use `os.environ.get(key)`:
 
-```python
+```{python}
 home_directory = os.environ.get('HOME')
 print("Home Directory:", home_directory)
 ```
@@ -325,7 +325,7 @@ print("Home Directory:", home_directory)
 
 To set the value of an environment variable, use `os.environ[key] = value`:
 
-```python
+```{python}
 os.environ['MY_VARIABLE'] = 'my_value'
 print("Environment Variable Set:", os.environ.get('MY_VARIABLE'))
 ```
@@ -334,7 +334,7 @@ print("Environment Variable Set:", os.environ.get('MY_VARIABLE'))
 
 To delete an environment variable, use `os.environ.pop(key, default)`:
 
-```python
+```{python}
 os.environ.pop('MY_VARIABLE', None)
 print("Environment Variable Deleted:", os.environ.get('MY_VARIABLE'))
 ```
@@ -345,7 +345,7 @@ print("Environment Variable Deleted:", os.environ.get('MY_VARIABLE'))
 
 To get the current process ID, use `os.getpid()`:
 
-```python
+```{python}
 process_id = os.getpid()
 print("Process ID:", process_id)
 ```
@@ -354,7 +354,7 @@ print("Process ID:", process_id)
 
 To get the parent process ID, use `os.getppid()`:
 
-```python
+```{python}
 parent_process_id = os.getppid()
 print("Parent Process ID:", parent_process_id)
 ```
@@ -363,7 +363,7 @@ print("Parent Process ID:", parent_process_id)
 
 To fork a process (UNIX only), use `os.fork()`:
 
-```python
+```{python}
 try:
     pid = os.fork()
     if pid > 0:
@@ -380,7 +380,7 @@ except AttributeError:
 
 To replace the current process with a new one, use `os.exec*()` methods. For example, `os.execl(path, arg0, arg1, ...)`:
 
-```python
+```{python}
 import sys
 
 if len(sys.argv) == 1:
@@ -394,7 +394,7 @@ else:
 
 To wait for a child process to terminate, use `os.wait()`:
 
-```python
+```{python}
 pid = os.fork()
 if pid > 0:
     os.wait()
@@ -410,7 +410,7 @@ else:
 
 To get the name of the operating system, use `os.name`:
 
-```python
+```{python}
 os_name = os.name
 print("OS Name:", os_name)
 ```
@@ -419,7 +419,7 @@ print("OS Name:", os_name)
 
 To execute a system command, use `os.system(command)`:
 
-```python
+```{python}
 os.system('echo Hello, World!')
 ```
 
@@ -427,7 +427,7 @@ os.system('echo Hello, World!')
 
 To get more detailed system information, use `os.uname()` (UNIX only):
 
-```python
+```{python}
 try:
     system_info = os.uname()
     print("System Info:", system_info)
@@ -443,7 +443,7 @@ The `os.path` module provides utilities for manipulating file and directory path
 
 To join paths, use `os.path.join(path, *paths)`:
 
-```python
+```{python}
 full_path = os.path.join('parent_directory', 'child_directory', 'file.txt')
 print("Full Path:", full_path)
 ```
@@ -452,7 +452,7 @@ print("Full Path:", full_path)
 
 To split a path into the directory and file, use `os.path.split(path)`:
 
-```python
+```{python}
 directory, file_name = os.path.split('/path/to/file.txt')
 print("Directory:", directory)
 print("File Name:", file_name)
@@ -462,7 +462,7 @@ print("File Name:", file_name)
 
 To get the file extension, use `os.path.splitext(path)`:
 
-```python
+```{python}
 file_name, file_extension = os.path.splitext('file.txt')
 print("File Name:", file_name)
 print("File Extension:", file_extension)
@@ -472,7 +472,7 @@ print("File Extension:", file_extension)
 
 To check if a path exists, use `os.path.exists(path)`:
 
-```python
+```{python}
 path_exists = os.path.exists('/path/to/file.txt')
 print("Path Exists:", path_exists)
 ```
@@ -481,7 +481,7 @@ print("Path Exists:", path_exists)
 
 To check if a path is a file or directory, use `os.path.isfile(path)` and `os.path.isdir(path)`:
 
-```python
+```{python}
 is_file = os.path.isfile('/path/to/file.txt')
 is_directory = os.path.isdir('/path/to/directory')
 print("Is File:", is_file)
@@ -492,7 +492,7 @@ print("Is Directory:", is_directory)
 
 To get the absolute path, use `os.path.abspath(path)`:
 
-```python
+```{python}
 absolute_path = os.path.abspath('file.txt')
 print("Absolute Path:", absolute_path)
 ```
@@ -509,7 +509,7 @@ The `shutil` (shell utilities) module in Python provides a higher-level interfac
 
 To use the `shutil` module, you need to import it first:
 
-```python
+```{python}
 import shutil
 ```
 
@@ -519,7 +519,7 @@ import shutil
 
 To copy a file from one location to another, use `shutil.copy(src, dst)`. This function copies the content and permissions of the source file to the destination file.
 
-```python
+```{python}
 import shutil
 
 shutil.copy('source_file.txt', 'destination_file.txt')
@@ -530,7 +530,7 @@ print("File copied successfully")
 
 To copy a file along with its metadata (like permissions, last access time, etc.), use `shutil.copy2(src, dst)`:
 
-```python
+```{python}
 shutil.copy2('source_file.txt', 'destination_file_with_metadata.txt')
 print("File copied with metadata successfully")
 ```
@@ -539,7 +539,7 @@ print("File copied with metadata successfully")
 
 To copy an entire directory tree, use `shutil.copytree(src, dst)`. This function recursively copies an entire directory tree rooted at `src` to a directory named `dst`.
 
-```python
+```{python}
 shutil.copytree('source_directory', 'destination_directory')
 print("Directory copied successfully")
 ```
@@ -548,7 +548,7 @@ print("Directory copied successfully")
 
 To copy only the directory structure without files, you can use the `ignore` parameter of `shutil.copytree`:
 
-```python
+```{python}
 def ignore_files(dir, files):
     return [f for f in files if os.path.isfile(os.path.join(dir, f))]
 
@@ -560,14 +560,14 @@ print("Directory structure copied successfully")
 
 To move a file or directory from one location to another, use `shutil.move(src, dst)`:
 
-```python
+```{python}
 shutil.move('source_file.txt', 'destination_file.txt')
 print("File moved successfully")
 ```
 
 You can also move entire directories:
 
-```python
+```{python}
 shutil.move('source_directory', 'destination_directory')
 print("Directory moved successfully")
 ```
@@ -578,7 +578,7 @@ print("Directory moved successfully")
 
 To delete a file, use `os.remove(path)` from the `os` module:
 
-```python
+```{python}
 import os
 
 os.remove('file_to_delete.txt')
@@ -589,7 +589,7 @@ print("File deleted successfully")
 
 To delete a directory tree, use `shutil.rmtree(path)`:
 
-```python
+```{python}
 shutil.rmtree('directory_to_delete')
 print("Directory deleted successfully")
 ```
@@ -600,7 +600,7 @@ print("Directory deleted successfully")
 
 To change the mode (permissions) of a file, use `os.chmod(path, mode)` from the `os` module:
 
-```python
+```{python}
 import os
 
 os.chmod('file.txt', 0o755)  # Sets file permissions to rwxr-xr-x
@@ -611,7 +611,7 @@ print("File permissions changed successfully")
 
 To copy the permissions of one file to another, use `shutil.copymode(src, dst)`:
 
-```python
+```{python}
 shutil.copymode('source_file.txt', 'destination_file.txt')
 print("File permissions copied successfully")
 ```
@@ -620,7 +620,7 @@ print("File permissions copied successfully")
 
 To copy the metadata of one file to another, use `shutil.copystat(src, dst)`:
 
-```python
+```{python}
 shutil.copystat('source_file.txt', 'destination_file.txt')
 print("File metadata copied successfully")
 ```
@@ -631,7 +631,7 @@ print("File metadata copied successfully")
 
 To create an archive file (like .zip or .tar), use `shutil.make_archive(base_name, format, root_dir)`:
 
-```python
+```{python}
 shutil.make_archive('archive_name', 'zip', 'directory_to_archive')
 print("Archive created successfully")
 ```
@@ -642,7 +642,7 @@ You can create archives in different formats like 'zip', 'tar', 'gztar', 'bztar'
 
 To extract an archive file, use the `tarfile` or `zipfile` module. For example, to extract a .zip file:
 
-```python
+```{python}
 import zipfile
 
 with zipfile.ZipFile('archive_name.zip', 'r') as zip_ref:
@@ -656,7 +656,7 @@ print("Archive extracted successfully")
 
 To get disk usage statistics, use `shutil.disk_usage(path)`. This function returns a named tuple with attributes `total`, `used`, and `free`, which are the total, used, and free space on the disk, respectively.
 
-```python
+```{python}
 disk_usage = shutil.disk_usage('/')
 print("Total:", disk_usage.total)
 print("Used:", disk_usage.used)
@@ -669,7 +669,7 @@ print("Free:", disk_usage.free)
 
 To create temporary files and directories, use the `tempfile` module. For example, to create a temporary file:
 
-```python
+```{python}
 import tempfile
 
 with tempfile.NamedTemporaryFile(delete=False) as temp_file:
@@ -679,7 +679,7 @@ with tempfile.NamedTemporaryFile(delete=False) as temp_file:
 
 To create a temporary directory:
 
-```python
+```{python}
 with tempfile.TemporaryDirectory() as temp_dir:
     print("Temporary directory created:", temp_dir)
 ```
@@ -688,7 +688,7 @@ with tempfile.TemporaryDirectory() as temp_dir:
 
 ### Example 1: Backup a Directory
 
-```python
+```{python}
 import shutil
 import os
 import time
@@ -706,7 +706,7 @@ print("Backup created successfully at", backup_dir)
 
 ### Example 2: Clean Up Old Backups
 
-```python
+```{python}
 import shutil
 import os
 import time

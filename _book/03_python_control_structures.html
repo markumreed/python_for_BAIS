@@ -274,6 +274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./A2_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Using Docker</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -292,6 +298,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops"><span class="header-section-number">4.0.2</span> Loops</a></li>
   <li><a href="#nested-control-structures" id="toc-nested-control-structures" class="nav-link" data-scroll-target="#nested-control-structures"><span class="header-section-number">4.0.3</span> Nested Control Structures</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">4.0.4</span> Conclusion</a></li>
+  <li><a href="#deep-dive-tutorial-into-python-control-structures-with-business-analytics-and-information-systems-examples" id="toc-deep-dive-tutorial-into-python-control-structures-with-business-analytics-and-information-systems-examples" class="nav-link" data-scroll-target="#deep-dive-tutorial-into-python-control-structures-with-business-analytics-and-information-systems-examples"><span class="header-section-number">5</span> Deep Dive Tutorial into Python Control Structures with Business Analytics and Information Systems Examples</a>
+  <ul class="collapse">
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents"><span class="header-section-number">5.1</span> Table of Contents</a></li>
+  <li><a href="#conditional-statements-1" id="toc-conditional-statements-1" class="nav-link" data-scroll-target="#conditional-statements-1"><span class="header-section-number">5.2</span> Conditional Statements</a>
+  <ul class="collapse">
+  <li><a href="#if-statement" id="toc-if-statement" class="nav-link" data-scroll-target="#if-statement"><span class="header-section-number">5.2.1</span> if Statement</a></li>
+  <li><a href="#else-statement" id="toc-else-statement" class="nav-link" data-scroll-target="#else-statement"><span class="header-section-number">5.2.2</span> else Statement</a></li>
+  <li><a href="#elif-statement" id="toc-elif-statement" class="nav-link" data-scroll-target="#elif-statement"><span class="header-section-number">5.2.3</span> elif Statement</a></li>
+  <li><a href="#nested-if-statements" id="toc-nested-if-statements" class="nav-link" data-scroll-target="#nested-if-statements"><span class="header-section-number">5.2.4</span> Nested If Statements</a></li>
+  </ul></li>
+  <li><a href="#loops-1" id="toc-loops-1" class="nav-link" data-scroll-target="#loops-1"><span class="header-section-number">5.3</span> Loops</a>
+  <ul class="collapse">
+  <li><a href="#for-loop" id="toc-for-loop" class="nav-link" data-scroll-target="#for-loop"><span class="header-section-number">5.3.1</span> for Loop</a></li>
+  <li><a href="#while-loop" id="toc-while-loop" class="nav-link" data-scroll-target="#while-loop"><span class="header-section-number">5.3.2</span> while Loop</a></li>
+  <li><a href="#nested-loops" id="toc-nested-loops" class="nav-link" data-scroll-target="#nested-loops"><span class="header-section-number">5.3.3</span> Nested Loops</a></li>
+  </ul></li>
+  <li><a href="#control-flow-tools" id="toc-control-flow-tools" class="nav-link" data-scroll-target="#control-flow-tools"><span class="header-section-number">5.4</span> Control Flow Tools</a>
+  <ul class="collapse">
+  <li><a href="#break-statement" id="toc-break-statement" class="nav-link" data-scroll-target="#break-statement"><span class="header-section-number">5.4.1</span> break Statement</a></li>
+  <li><a href="#continue-statement" id="toc-continue-statement" class="nav-link" data-scroll-target="#continue-statement"><span class="header-section-number">5.4.2</span> continue Statement</a></li>
+  <li><a href="#pass-statement" id="toc-pass-statement" class="nav-link" data-scroll-target="#pass-statement"><span class="header-section-number">5.4.3</span> pass Statement</a></li>
+  <li><a href="#else-clause-in-loops" id="toc-else-clause-in-loops" class="nav-link" data-scroll-target="#else-clause-in-loops"><span class="header-section-number">5.4.4</span> else Clause in Loops</a></li>
+  </ul></li>
+  <li><a href="#list-comprehensions" id="toc-list-comprehensions" class="nav-link" data-scroll-target="#list-comprehensions"><span class="header-section-number">5.5</span> List Comprehensions</a></li>
+  <li><a href="#exception-handling" id="toc-exception-handling" class="nav-link" data-scroll-target="#exception-handling"><span class="header-section-number">5.6</span> Exception Handling</a></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1"><span class="header-section-number">5.7</span> Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -327,7 +360,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="example-discount-calculation" class="level5" data-number="4.0.1.1.1">
 <h5 data-number="4.0.1.1.1" class="anchored" data-anchor-id="example-discount-calculation"><span class="header-section-number">4.0.1.1.1</span> Example: Discount Calculation</h5>
 <p>Let’s say you want to apply a discount to a product based on the purchase quantity.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>quantity <span class="op">=</span> <span class="dv">15</span></span>
+<div id="c3038bc2" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>quantity <span class="op">=</span> <span class="dv">15</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>unit_price <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>total_cost <span class="op">=</span> quantity <span class="op">*</span> unit_price</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -336,6 +370,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    total_cost <span class="op">*=</span> (<span class="dv">1</span> <span class="op">-</span> discount)</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total cost after discount: $</span><span class="sc">{</span>total_cost<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total cost after discount: $1350.00</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="if-else-statements" class="level4" data-number="4.0.1.2">
@@ -343,15 +381,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>If-else statements provide an alternative block of code to execute if the condition is false.</p>
 <section id="example-determine-employee-bonus-eligibility" class="level5" data-number="4.0.1.2.1">
 <h5 data-number="4.0.1.2.1" class="anchored" data-anchor-id="example-determine-employee-bonus-eligibility"><span class="header-section-number">4.0.1.2.1</span> Example: Determine Employee Bonus Eligibility</h5>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>employee_performance <span class="op">=</span> <span class="st">"Excellent"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>bonus <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> employee_performance <span class="op">==</span> <span class="st">"Excellent"</span>:</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    bonus <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    bonus <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Employee bonus: $</span><span class="sc">{</span>bonus<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="96ea90dd" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>employee_performance <span class="op">=</span> <span class="st">"Excellent"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>bonus <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> employee_performance <span class="op">==</span> <span class="st">"Excellent"</span>:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    bonus <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    bonus <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Employee bonus: $</span><span class="sc">{</span>bonus<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Employee bonus: $1000</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="elif-statements" class="level4" data-number="4.0.1.3">
@@ -359,18 +402,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Elif statements are used to check multiple conditions.</p>
 <section id="example-categorize-sales-performance" class="level5" data-number="4.0.1.3.1">
 <h5 data-number="4.0.1.3.1" class="anchored" data-anchor-id="example-categorize-sales-performance"><span class="header-section-number">4.0.1.3.1</span> Example: Categorize Sales Performance</h5>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>monthly_sales <span class="op">=</span> <span class="dv">75000</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> monthly_sales <span class="op">&gt;=</span> <span class="dv">100000</span>:</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    performance_category <span class="op">=</span> <span class="st">"Outstanding"</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> monthly_sales <span class="op">&gt;=</span> <span class="dv">75000</span>:</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    performance_category <span class="op">=</span> <span class="st">"Good"</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> monthly_sales <span class="op">&gt;=</span> <span class="dv">50000</span>:</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    performance_category <span class="op">=</span> <span class="st">"Average"</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    performance_category <span class="op">=</span> <span class="st">"Needs Improvement"</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Sales performance: </span><span class="sc">{</span>performance_category<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="4eba2e55" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>monthly_sales <span class="op">=</span> <span class="dv">75000</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> monthly_sales <span class="op">&gt;=</span> <span class="dv">100000</span>:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    performance_category <span class="op">=</span> <span class="st">"Outstanding"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> monthly_sales <span class="op">&gt;=</span> <span class="dv">75000</span>:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    performance_category <span class="op">=</span> <span class="st">"Good"</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> monthly_sales <span class="op">&gt;=</span> <span class="dv">50000</span>:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    performance_category <span class="op">=</span> <span class="st">"Average"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    performance_category <span class="op">=</span> <span class="st">"Needs Improvement"</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Sales performance: </span><span class="sc">{</span>performance_category<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sales performance: Good</code></pre>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -382,25 +430,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For loops are used to iterate over a sequence (such as a list, tuple, or range).</p>
 <section id="example-calculate-total-revenue-from-sales-data" class="level5" data-number="4.0.2.1.1">
 <h5 data-number="4.0.2.1.1" class="anchored" data-anchor-id="example-calculate-total-revenue-from-sales-data"><span class="header-section-number">4.0.2.1.1</span> Example: Calculate Total Revenue from Sales Data</h5>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sales_data <span class="op">=</span> [<span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">1500</span>, <span class="dv">3000</span>, <span class="dv">2500</span>]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>total_revenue <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sale <span class="kw">in</span> sales_data:</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    total_revenue <span class="op">+=</span> sale</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total revenue: $</span><span class="sc">{</span>total_revenue<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="761ce0d1" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sales_data <span class="op">=</span> [<span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">1500</span>, <span class="dv">3000</span>, <span class="dv">2500</span>]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>total_revenue <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sale <span class="kw">in</span> sales_data:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    total_revenue <span class="op">+=</span> sale</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total revenue: $</span><span class="sc">{</span>total_revenue<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total revenue: $10000</code></pre>
+</div>
+</div>
 </section>
 <section id="example-generate-quarterly-sales-report" class="level5" data-number="4.0.2.1.2">
 <h5 data-number="4.0.2.1.2" class="anchored" data-anchor-id="example-generate-quarterly-sales-report"><span class="header-section-number">4.0.2.1.2</span> Example: Generate Quarterly Sales Report</h5>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>quarterly_sales <span class="op">=</span> {</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Q1"</span>: <span class="dv">20000</span>,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Q2"</span>: <span class="dv">25000</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Q3"</span>: <span class="dv">30000</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Q4"</span>: <span class="dv">35000</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> quarter, sales <span class="kw">in</span> quarterly_sales.items():</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>quarter<span class="sc">}</span><span class="ss"> sales: $</span><span class="sc">{</span>sales<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="34f4a435" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>quarterly_sales <span class="op">=</span> {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Q1"</span>: <span class="dv">20000</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Q2"</span>: <span class="dv">25000</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Q3"</span>: <span class="dv">30000</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Q4"</span>: <span class="dv">35000</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> quarter, sales <span class="kw">in</span> quarterly_sales.items():</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>quarter<span class="sc">}</span><span class="ss"> sales: $</span><span class="sc">{</span>sales<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Q1 sales: $20000
+Q2 sales: $25000
+Q3 sales: $30000
+Q4 sales: $35000</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="while-loops" class="level4" data-number="4.0.2.2">
@@ -408,24 +469,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>While loops are used to execute a block of code as long as a specified condition is true.</p>
 <section id="example-track-inventory-levels" class="level5" data-number="4.0.2.2.1">
 <h5 data-number="4.0.2.2.1" class="anchored" data-anchor-id="example-track-inventory-levels"><span class="header-section-number">4.0.2.2.1</span> Example: Track Inventory Levels</h5>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>inventory <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> inventory <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Inventory level: </span><span class="sc">{</span>inventory<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    inventory <span class="op">-=</span> <span class="dv">10</span>  <span class="co"># Selling 10 units</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Inventory depleted"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1be6192a" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>inventory <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> inventory <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Inventory level: </span><span class="sc">{</span>inventory<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    inventory <span class="op">-=</span> <span class="dv">10</span>  <span class="co"># Selling 10 units</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Inventory depleted"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Inventory level: 100
+Inventory level: 90
+Inventory level: 80
+Inventory level: 70
+Inventory level: 60
+Inventory level: 50
+Inventory level: 40
+Inventory level: 30
+Inventory level: 20
+Inventory level: 10
+Inventory depleted</code></pre>
+</div>
+</div>
 </section>
 <section id="example-customer-payment-processing" class="level5" data-number="4.0.2.2.2">
 <h5 data-number="4.0.2.2.2" class="anchored" data-anchor-id="example-customer-payment-processing"><span class="header-section-number">4.0.2.2.2</span> Example: Customer Payment Processing</h5>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>balance_due <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> balance_due <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    payment <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Enter payment amount: $"</span>))</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    balance_due <span class="op">-=</span> payment</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Remaining balance: $</span><span class="sc">{</span>balance_due<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Payment complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>balance_due <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> balance_due <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    payment <span class="op">=</span> <span class="bu">float</span>(<span class="bu">input</span>(<span class="st">"Enter payment amount: $"</span>))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    balance_due <span class="op">-=</span> payment</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Remaining balance: $</span><span class="sc">{</span>balance_due<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Payment complete"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 </section>
@@ -434,32 +510,356 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can nest control structures within each other to handle more complex logic.</p>
 <section id="example-approve-loan-application" class="level5" data-number="4.0.3.0.1">
 <h5 data-number="4.0.3.0.1" class="anchored" data-anchor-id="example-approve-loan-application"><span class="header-section-number">4.0.3.0.1</span> Example: Approve Loan Application</h5>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>credit_score <span class="op">=</span> <span class="dv">720</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>annual_income <span class="op">=</span> <span class="dv">50000</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>loan_amount <span class="op">=</span> <span class="dv">20000</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> credit_score <span class="op">&gt;=</span> <span class="dv">700</span>:</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> annual_income <span class="op">&gt;=</span> <span class="dv">40000</span>:</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> loan_amount <span class="op">&lt;=</span> <span class="dv">25000</span>:</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>            loan_approved <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>            loan_approved <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        loan_approved <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    loan_approved <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> loan_approved:</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Loan application approved"</span>)</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Loan application denied"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f252ea35" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>credit_score <span class="op">=</span> <span class="dv">720</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>annual_income <span class="op">=</span> <span class="dv">50000</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>loan_amount <span class="op">=</span> <span class="dv">20000</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> credit_score <span class="op">&gt;=</span> <span class="dv">700</span>:</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> annual_income <span class="op">&gt;=</span> <span class="dv">40000</span>:</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> loan_amount <span class="op">&lt;=</span> <span class="dv">25000</span>:</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>            loan_approved <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>            loan_approved <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        loan_approved <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    loan_approved <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> loan_approved:</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Loan application approved"</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Loan application denied"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Loan application approved</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="conclusion" class="level3" data-number="4.0.4">
 <h3 data-number="4.0.4" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">4.0.4</span> Conclusion</h3>
 <p>Control structures are essential for managing the flow of your programs based on conditions and repetitions. By using if statements, for loops, and while loops, you can create efficient and effective business applications. These examples demonstrate how to apply these concepts to common business scenarios, helping you to develop practical and functional Python programs.</p>
+</section>
+<section id="deep-dive-tutorial-into-python-control-structures-with-business-analytics-and-information-systems-examples" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Deep Dive Tutorial into Python Control Structures with Business Analytics and Information Systems Examples</h1>
+<p>Control structures in Python allow you to control the flow of execution based on certain conditions or repetitive tasks. These structures include conditional statements, loops, and control flow tools like break, continue, and pass statements. Understanding these structures is crucial for writing efficient and effective Python programs. This tutorial provides a comprehensive overview of Python control structures with practical examples in business analytics and information systems (BAIS).</p>
+<section id="table-of-contents" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="table-of-contents"><span class="header-section-number">5.1</span> Table of Contents</h2>
+<ol type="1">
+<li><a href="#conditional-statements">Conditional Statements</a>
+<ul>
+<li><a href="#if-statement">if Statement</a></li>
+<li><a href="#else-statement">else Statement</a></li>
+<li><a href="#elif-statement">elif Statement</a></li>
+</ul></li>
+<li><a href="#loops">Loops</a>
+<ul>
+<li><a href="#for-loop">for Loop</a></li>
+<li><a href="#while-loop">while Loop</a></li>
+<li><a href="#nested-loops">Nested Loops</a></li>
+</ul></li>
+<li><a href="#control-flow-tools">Control Flow Tools</a>
+<ul>
+<li><a href="#break-statement">break Statement</a></li>
+<li><a href="#continue-statement">continue Statement</a></li>
+<li><a href="#pass-statement">pass Statement</a></li>
+<li><a href="#else-clause-in-loops">else Clause in Loops</a></li>
+</ul></li>
+<li><a href="#list-comprehensions">List Comprehensions</a></li>
+<li><a href="#exception-handling">Exception Handling</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+</section>
+<section id="conditional-statements-1" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="conditional-statements-1"><span class="header-section-number">5.2</span> Conditional Statements</h2>
+<p>Conditional statements allow you to execute certain blocks of code based on specific conditions. Python provides <code>if</code>, <code>elif</code>, and <code>else</code> statements to handle conditional execution.</p>
+<section id="if-statement" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="if-statement"><span class="header-section-number">5.2.1</span> if Statement</h3>
+<p>The <code>if</code> statement is used to test a condition. If the condition evaluates to <code>True</code>, the block of code inside the <code>if</code> statement is executed.</p>
+<p><strong>Example: Analyzing Sales Data</strong></p>
+<div id="53b681c6" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Check if sales exceed a target</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>sales <span class="op">=</span> <span class="dv">12000</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> sales <span class="op">&gt;</span> target:</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Sales target exceeded"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sales target exceeded</code></pre>
+</div>
+</div>
+</section>
+<section id="else-statement" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="else-statement"><span class="header-section-number">5.2.2</span> else Statement</h3>
+<p>The <code>else</code> statement follows an <code>if</code> statement and is executed if the <code>if</code> condition evaluates to <code>False</code>.</p>
+<p><strong>Example: Analyzing Sales Data</strong></p>
+<div id="6971f1c7" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Check if sales exceed a target</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sales <span class="op">=</span> <span class="dv">8000</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> sales <span class="op">&gt;</span> target:</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Sales target exceeded"</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Sales target not met"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sales target not met</code></pre>
+</div>
+</div>
+</section>
+<section id="elif-statement" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="elif-statement"><span class="header-section-number">5.2.3</span> elif Statement</h3>
+<p>The <code>elif</code> statement stands for “else if” and allows you to check multiple conditions. If the <code>if</code> condition is <code>False</code>, the <code>elif</code> condition is checked. If it is <code>True</code>, the corresponding block of code is executed.</p>
+<p><strong>Example: Categorizing Sales Performance</strong></p>
+<div id="1ee69b50" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Categorizing sales performance</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sales <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> sales <span class="op">&gt;</span> target:</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Sales target exceeded"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> sales <span class="op">==</span> target:</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Sales target met exactly"</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Sales target not met"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sales target met exactly</code></pre>
+</div>
+</div>
+</section>
+<section id="nested-if-statements" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="nested-if-statements"><span class="header-section-number">5.2.4</span> Nested If Statements</h3>
+<p>You can nest <code>if</code>, <code>elif</code>, and <code>else</code> statements to create complex conditional logic.</p>
+<p><strong>Example: Advanced Sales Analysis</strong></p>
+<div id="acd28d92" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Advanced sales analysis</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sales <span class="op">=</span> <span class="dv">15000</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>region <span class="op">=</span> <span class="st">"North"</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> sales <span class="op">&gt;</span> target:</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Sales target exceeded"</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> region <span class="op">==</span> <span class="st">"North"</span>:</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Great performance in the North region!"</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Consider boosting sales in other regions."</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Sales target not met"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sales target exceeded
+Great performance in the North region!</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="loops-1" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="loops-1"><span class="header-section-number">5.3</span> Loops</h2>
+<p>Loops are used to execute a block of code repeatedly. Python provides <code>for</code> and <code>while</code> loops to handle iterative execution.</p>
+<section id="for-loop" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="for-loop"><span class="header-section-number">5.3.1</span> for Loop</h3>
+<p>The <code>for</code> loop is used to iterate over a sequence (e.g., list, tuple, dictionary, set, or string).</p>
+<p><strong>Example: Analyzing Multiple Sales Records</strong></p>
+<div id="53a06755" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Analyzing multiple sales records</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>sales_records <span class="op">=</span> [<span class="dv">12000</span>, <span class="dv">8000</span>, <span class="dv">15000</span>, <span class="dv">9000</span>, <span class="dv">13000</span>]</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sales <span class="kw">in</span> sales_records:</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> sales <span class="op">&gt;</span> <span class="dv">10000</span>:</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Sales target exceeded with </span><span class="sc">{</span>sales<span class="sc">}</span><span class="ss"> in sales"</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Sales target not met with </span><span class="sc">{</span>sales<span class="sc">}</span><span class="ss"> in sales"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sales target exceeded with 12000 in sales
+Sales target not met with 8000 in sales
+Sales target exceeded with 15000 in sales
+Sales target not met with 9000 in sales
+Sales target exceeded with 13000 in sales</code></pre>
+</div>
+</div>
+<p>The <code>range()</code> function is often used with the <code>for</code> loop to generate a sequence of numbers.</p>
+<p><strong>Example: Monthly Sales Analysis</strong></p>
+<div id="f67edbd3" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Monthly sales analysis</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> month <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">13</span>):</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Analyzing sales data for month </span><span class="sc">{</span>month<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analyzing sales data for month 1
+Analyzing sales data for month 2
+Analyzing sales data for month 3
+Analyzing sales data for month 4
+Analyzing sales data for month 5
+Analyzing sales data for month 6
+Analyzing sales data for month 7
+Analyzing sales data for month 8
+Analyzing sales data for month 9
+Analyzing sales data for month 10
+Analyzing sales data for month 11
+Analyzing sales data for month 12</code></pre>
+</div>
+</div>
+</section>
+<section id="while-loop" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="while-loop"><span class="header-section-number">5.3.2</span> while Loop</h3>
+<p>The <code>while</code> loop is used to execute a block of code as long as the condition is <code>True</code>.</p>
+<p><strong>Example: Simulating Sales Until Target Met</strong></p>
+<div id="4394bdd2" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Simulating sales until target met</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>sales <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> <span class="dv">50000</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>increment <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> sales <span class="op">&lt;</span> target:</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    sales <span class="op">+=</span> increment</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Current sales: </span><span class="sc">{</span>sales<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Current sales: 10000
+Current sales: 20000
+Current sales: 30000
+Current sales: 40000
+Current sales: 50000</code></pre>
+</div>
+</div>
+</section>
+<section id="nested-loops" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="nested-loops"><span class="header-section-number">5.3.3</span> Nested Loops</h3>
+<p>You can nest loops to perform more complex iterative tasks.</p>
+<p><strong>Example: Comparing Sales Across Regions and Months</strong></p>
+<div id="e5d46f37" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Comparing sales across regions and months</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>regions <span class="op">=</span> [<span class="st">"North"</span>, <span class="st">"South"</span>, <span class="st">"East"</span>, <span class="st">"West"</span>]</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>months <span class="op">=</span> [<span class="st">"January"</span>, <span class="st">"February"</span>, <span class="st">"March"</span>]</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> region <span class="kw">in</span> regions:</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> month <span class="kw">in</span> months:</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Analyzing sales data for </span><span class="sc">{</span>region<span class="sc">}</span><span class="ss"> region in </span><span class="sc">{</span>month<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analyzing sales data for North region in January
+Analyzing sales data for North region in February
+Analyzing sales data for North region in March
+Analyzing sales data for South region in January
+Analyzing sales data for South region in February
+Analyzing sales data for South region in March
+Analyzing sales data for East region in January
+Analyzing sales data for East region in February
+Analyzing sales data for East region in March
+Analyzing sales data for West region in January
+Analyzing sales data for West region in February
+Analyzing sales data for West region in March</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="control-flow-tools" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="control-flow-tools"><span class="header-section-number">5.4</span> Control Flow Tools</h2>
+<p>Control flow tools like <code>break</code>, <code>continue</code>, and <code>pass</code> provide additional control over the execution of loops and conditional statements.</p>
+<section id="break-statement" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="break-statement"><span class="header-section-number">5.4.1</span> break Statement</h3>
+<p>The <code>break</code> statement is used to exit a loop prematurely.</p>
+<p><strong>Example: Stop Analysis When Target Achieved</strong></p>
+<div id="6f8eaa52" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Stop analysis when target achieved</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>sales_records <span class="op">=</span> [<span class="dv">8000</span>, <span class="dv">9000</span>, <span class="dv">15000</span>, <span class="dv">7000</span>, <span class="dv">12000</span>]</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sales <span class="kw">in</span> sales_records:</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> sales <span class="op">&gt;</span> <span class="dv">10000</span>:</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Sales target exceeded with </span><span class="sc">{</span>sales<span class="sc">}</span><span class="ss"> in sales"</span>)</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Sales target not met with </span><span class="sc">{</span>sales<span class="sc">}</span><span class="ss"> in sales"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sales target not met with 8000 in sales
+Sales target not met with 9000 in sales
+Sales target exceeded with 15000 in sales</code></pre>
+</div>
+</div>
+</section>
+<section id="continue-statement" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="continue-statement"><span class="header-section-number">5.4.2</span> continue Statement</h3>
+<p>The <code>continue</code> statement is used to skip the rest of the code inside the loop for the current iteration and move to the next iteration.</p>
+<p><strong>Example: Skip Underperforming Sales Data</strong></p>
+<div id="7fc8699a" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Skip underperforming sales data</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>sales_records <span class="op">=</span> [<span class="dv">8000</span>, <span class="dv">9000</span>, <span class="dv">15000</span>, <span class="dv">7000</span>, <span class="dv">12000</span>]</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sales <span class="kw">in</span> sales_records:</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> sales <span class="op">&lt;</span> <span class="dv">10000</span>:</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Sales target exceeded with </span><span class="sc">{</span>sales<span class="sc">}</span><span class="ss"> in sales"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sales target exceeded with 15000 in sales
+Sales target exceeded with 12000 in sales</code></pre>
+</div>
+</div>
+</section>
+<section id="pass-statement" class="level3" data-number="5.4.3">
+<h3 data-number="5.4.3" class="anchored" data-anchor-id="pass-statement"><span class="header-section-number">5.4.3</span> pass Statement</h3>
+<p>The <code>pass</code> statement is a null operation; nothing happens when it executes. It can be used as a placeholder.</p>
+<p><strong>Example: Placeholder for Future Code</strong></p>
+<div id="ce6dba4a" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Placeholder for future code</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sales <span class="kw">in</span> sales_records:</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> sales <span class="op">&lt;</span> <span class="dv">10000</span>:</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span>  <span class="co"># </span><span class="al">TODO</span><span class="co">: Handle underperforming sales data later</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Sales target exceeded with </span><span class="sc">{</span>sales<span class="sc">}</span><span class="ss"> in sales"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sales target exceeded with 15000 in sales
+Sales target exceeded with 12000 in sales</code></pre>
+</div>
+</div>
+</section>
+<section id="else-clause-in-loops" class="level3" data-number="5.4.4">
+<h3 data-number="5.4.4" class="anchored" data-anchor-id="else-clause-in-loops"><span class="header-section-number">5.4.4</span> else Clause in Loops</h3>
+<p>The <code>else</code> clause can be used with loops. It is executed when the loop terminates naturally (i.e., not terminated by a <code>break</code> statement).</p>
+<p><strong>Example: Verify All Sales Records Analyzed</strong></p>
+<div id="380276e7" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Verify all sales records analyzed</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>sales_records <span class="op">=</span> [<span class="dv">8000</span>, <span class="dv">9000</span>, <span class="dv">15000</span>, <span class="dv">7000</span>, <span class="dv">12000</span>]</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> sales <span class="kw">in</span> sales_records:</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> sales <span class="op">&gt;</span> <span class="dv">10000</span>:</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Sales target exceeded with </span><span class="sc">{</span>sales<span class="sc">}</span><span class="ss"> in sales"</span>)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"All sales records analyzed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sales target exceeded with 15000 in sales
+Sales target exceeded with 12000 in sales
+All sales records analyzed</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="list-comprehensions" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="list-comprehensions"><span class="header-section-number">5.5</span> List Comprehensions</h2>
+<p>List comprehensions provide a concise way to create lists. They consist of brackets containing an expression followed by a <code>for</code> clause and can have optional <code>if</code> clauses.</p>
+<p><strong>Example: Filter Sales Data</strong></p>
+<div id="47e1975e" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Filter sales data</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sales_records <span class="op">=</span> [<span class="dv">8000</span>, <span class="dv">9000</span>, <span class="dv">15000</span>, <span class="dv">7000</span>, <span class="dv">12000</span>]</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>high_sales <span class="op">=</span> [sales <span class="cf">for</span> sales <span class="kw">in</span> sales_records <span class="cf">if</span> sales <span class="op">&gt;</span> <span class="dv">10000</span>]</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(high_sales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[15000, 12000]</code></pre>
+</div>
+</div>
+</section>
+<section id="exception-handling" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="exception-handling"><span class="header-section-number">5.6</span> Exception Handling</h2>
+<p>Exception handling allows you to handle runtime errors gracefully. The <code>try</code> block lets you test a block of code for errors, the <code>except</code> block lets you handle the error, and the <code>finally</code> block lets you execute code regardless of the result.</p>
+<p><strong>Example: Handle Division by Zero in Financial Calculations</strong></p>
+<div id="84859fd0" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Handle division by zero in financial calculations</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    revenue <span class="op">=</span> <span class="dv">100000</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    expenses <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    profit_margin <span class="op">=</span> revenue <span class="op">/</span> expenses</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ZeroDivisionError</span>:</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Expenses cannot be zero when calculating profit margin"</span>)</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="cf">finally</span>:</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Financial calculation completed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Expenses cannot be zero when calculating profit margin
+Financial calculation completed</code></pre>
+</div>
+</div>
+</section>
+<section id="conclusion-1" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="conclusion-1"><span class="header-section-number">5.7</span> Conclusion</h2>
+<p>This deep dive tutorial covered the fundamentals of Python control structures, including conditional statements, loops, control flow tools, list comprehensions, and exception handling, with examples tailored to business analytics and information systems (BAIS). By mastering these concepts, you can write more efficient and readable Python code, handle complex logic, and manage errors effectively. Understanding and utilizing control structures is essential for any Python programmer, as they form the backbone of decision-making and iterative processes in your programs.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

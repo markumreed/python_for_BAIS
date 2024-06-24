@@ -31,14 +31,14 @@
 1. **Create a new file**: File > New File.
 2. **Save the file**: Save the file with a `.py` extension, e.g., `hello.py`.
 3. **Write some Python code**:
-   ```python
+   ```{python}
    print("Hello, world!")
    ```
 4. **Run the program**: Right-click in the editor window and select "Run Python File in Terminal", or press `Ctrl+F5` to run without debugging.
 
 ### Basic Python Programming
 - **Variables**: Storing data values.
-  ```python
+  ```{python}
   x = 5
   y = "Hello"
   ```

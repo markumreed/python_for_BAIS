@@ -31,7 +31,7 @@ cd docker-python-app
 
 Create a file named `app.py` with the following content:
 
-```python
+```{python}
 # app.py
 from flask import Flask
 
@@ -192,7 +192,7 @@ cd docker-python-app
 
 Create a file named `app.py` with the following content:
 
-```python
+```{python}
 # app.py
 from flask import Flask
 

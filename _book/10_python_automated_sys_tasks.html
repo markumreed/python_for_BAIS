@@ -274,6 +274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./A2_docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Using Docker</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
@@ -293,6 +299,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#high-level-file-operations-using-shutil" id="toc-high-level-file-operations-using-shutil" class="nav-link" data-scroll-target="#high-level-file-operations-using-shutil"><span class="header-section-number">11.0.3</span> High-Level File Operations using <code>shutil</code></a></li>
   <li><a href="#example-automating-a-backup-process" id="toc-example-automating-a-backup-process" class="nav-link" data-scroll-target="#example-automating-a-backup-process"><span class="header-section-number">11.0.4</span> Example: Automating a Backup Process</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">11.0.5</span> Conclusion</a></li>
+  <li><a href="#deep-dive-into-the-os-module-in-python" id="toc-deep-dive-into-the-os-module-in-python" class="nav-link" data-scroll-target="#deep-dive-into-the-os-module-in-python"><span class="header-section-number">12</span> Deep Dive into the <code>os</code> Module in Python</a>
+  <ul class="collapse">
+  <li><a href="#importing-the-os-module" id="toc-importing-the-os-module" class="nav-link" data-scroll-target="#importing-the-os-module"><span class="header-section-number">12.1</span> Importing the <code>os</code> Module</a></li>
+  <li><a href="#file-and-directory-operations" id="toc-file-and-directory-operations" class="nav-link" data-scroll-target="#file-and-directory-operations"><span class="header-section-number">12.2</span> File and Directory Operations</a>
+  <ul class="collapse">
+  <li><a href="#working-with-directories-1" id="toc-working-with-directories-1" class="nav-link" data-scroll-target="#working-with-directories-1"><span class="header-section-number">12.2.1</span> Working with Directories</a></li>
+  <li><a href="#working-with-files" id="toc-working-with-files" class="nav-link" data-scroll-target="#working-with-files"><span class="header-section-number">12.2.2</span> Working with Files</a></li>
+  </ul></li>
+  <li><a href="#environment-variables" id="toc-environment-variables" class="nav-link" data-scroll-target="#environment-variables"><span class="header-section-number">12.3</span> Environment Variables</a>
+  <ul class="collapse">
+  <li><a href="#get-environment-variables" id="toc-get-environment-variables" class="nav-link" data-scroll-target="#get-environment-variables"><span class="header-section-number">12.3.1</span> Get Environment Variables</a></li>
+  <li><a href="#set-environment-variables" id="toc-set-environment-variables" class="nav-link" data-scroll-target="#set-environment-variables"><span class="header-section-number">12.3.2</span> Set Environment Variables</a></li>
+  <li><a href="#delete-environment-variables" id="toc-delete-environment-variables" class="nav-link" data-scroll-target="#delete-environment-variables"><span class="header-section-number">12.3.3</span> Delete Environment Variables</a></li>
+  </ul></li>
+  <li><a href="#process-management" id="toc-process-management" class="nav-link" data-scroll-target="#process-management"><span class="header-section-number">12.4</span> Process Management</a>
+  <ul class="collapse">
+  <li><a href="#get-process-id" id="toc-get-process-id" class="nav-link" data-scroll-target="#get-process-id"><span class="header-section-number">12.4.1</span> Get Process ID</a></li>
+  <li><a href="#get-parent-process-id" id="toc-get-parent-process-id" class="nav-link" data-scroll-target="#get-parent-process-id"><span class="header-section-number">12.4.2</span> Get Parent Process ID</a></li>
+  <li><a href="#fork-a-process" id="toc-fork-a-process" class="nav-link" data-scroll-target="#fork-a-process"><span class="header-section-number">12.4.3</span> Fork a Process</a></li>
+  <li><a href="#execute-a-program" id="toc-execute-a-program" class="nav-link" data-scroll-target="#execute-a-program"><span class="header-section-number">12.4.4</span> Execute a Program</a></li>
+  <li><a href="#wait-for-a-child-process" id="toc-wait-for-a-child-process" class="nav-link" data-scroll-target="#wait-for-a-child-process"><span class="header-section-number">12.4.5</span> Wait for a Child Process</a></li>
+  </ul></li>
+  <li><a href="#miscellaneous-os-operations" id="toc-miscellaneous-os-operations" class="nav-link" data-scroll-target="#miscellaneous-os-operations"><span class="header-section-number">12.5</span> Miscellaneous OS Operations</a>
+  <ul class="collapse">
+  <li><a href="#get-os-name" id="toc-get-os-name" class="nav-link" data-scroll-target="#get-os-name"><span class="header-section-number">12.5.1</span> Get OS Name</a></li>
+  <li><a href="#execute-a-system-command" id="toc-execute-a-system-command" class="nav-link" data-scroll-target="#execute-a-system-command"><span class="header-section-number">12.5.2</span> Execute a System Command</a></li>
+  <li><a href="#get-system-information" id="toc-get-system-information" class="nav-link" data-scroll-target="#get-system-information"><span class="header-section-number">12.5.3</span> Get System Information</a></li>
+  </ul></li>
+  <li><a href="#path-manipulations" id="toc-path-manipulations" class="nav-link" data-scroll-target="#path-manipulations"><span class="header-section-number">12.6</span> Path Manipulations</a>
+  <ul class="collapse">
+  <li><a href="#join-paths" id="toc-join-paths" class="nav-link" data-scroll-target="#join-paths"><span class="header-section-number">12.6.1</span> Join Paths</a></li>
+  <li><a href="#split-paths" id="toc-split-paths" class="nav-link" data-scroll-target="#split-paths"><span class="header-section-number">12.6.2</span> Split Paths</a></li>
+  <li><a href="#get-file-extension" id="toc-get-file-extension" class="nav-link" data-scroll-target="#get-file-extension"><span class="header-section-number">12.6.3</span> Get File Extension</a></li>
+  <li><a href="#check-path-existence" id="toc-check-path-existence" class="nav-link" data-scroll-target="#check-path-existence"><span class="header-section-number">12.6.4</span> Check Path Existence</a></li>
+  <li><a href="#check-if-path-is-a-file-or-directory" id="toc-check-if-path-is-a-file-or-directory" class="nav-link" data-scroll-target="#check-if-path-is-a-file-or-directory"><span class="header-section-number">12.6.5</span> Check if Path is a File or Directory</a></li>
+  <li><a href="#get-absolute-path" id="toc-get-absolute-path" class="nav-link" data-scroll-target="#get-absolute-path"><span class="header-section-number">12.6.6</span> Get Absolute Path</a></li>
+  </ul></li>
+  <li><a href="#conclusion-1" id="toc-conclusion-1" class="nav-link" data-scroll-target="#conclusion-1"><span class="header-section-number">12.7</span> Conclusion</a></li>
+  </ul></li>
+  <li><a href="#deep-dive-into-the-shutil-module-in-python" id="toc-deep-dive-into-the-shutil-module-in-python" class="nav-link" data-scroll-target="#deep-dive-into-the-shutil-module-in-python"><span class="header-section-number">13</span> Deep Dive into the <code>shutil</code> Module in Python</a>
+  <ul class="collapse">
+  <li><a href="#importing-the-shutil-module" id="toc-importing-the-shutil-module" class="nav-link" data-scroll-target="#importing-the-shutil-module"><span class="header-section-number">13.1</span> Importing the <code>shutil</code> Module</a></li>
+  <li><a href="#copying-files-and-directories-1" id="toc-copying-files-and-directories-1" class="nav-link" data-scroll-target="#copying-files-and-directories-1"><span class="header-section-number">13.2</span> Copying Files and Directories</a>
+  <ul class="collapse">
+  <li><a href="#copy-a-file" id="toc-copy-a-file" class="nav-link" data-scroll-target="#copy-a-file"><span class="header-section-number">13.2.1</span> Copy a File</a></li>
+  <li><a href="#copy-a-file-with-metadata" id="toc-copy-a-file-with-metadata" class="nav-link" data-scroll-target="#copy-a-file-with-metadata"><span class="header-section-number">13.2.2</span> Copy a File with Metadata</a></li>
+  <li><a href="#copy-a-directory" id="toc-copy-a-directory" class="nav-link" data-scroll-target="#copy-a-directory"><span class="header-section-number">13.2.3</span> Copy a Directory</a></li>
+  <li><a href="#copy-only-directory-structure" id="toc-copy-only-directory-structure" class="nav-link" data-scroll-target="#copy-only-directory-structure"><span class="header-section-number">13.2.4</span> Copy Only Directory Structure</a></li>
+  </ul></li>
+  <li><a href="#moving-files-and-directories" id="toc-moving-files-and-directories" class="nav-link" data-scroll-target="#moving-files-and-directories"><span class="header-section-number">13.3</span> Moving Files and Directories</a></li>
+  <li><a href="#deleting-files-and-directories" id="toc-deleting-files-and-directories" class="nav-link" data-scroll-target="#deleting-files-and-directories"><span class="header-section-number">13.4</span> Deleting Files and Directories</a>
+  <ul class="collapse">
+  <li><a href="#delete-a-file" id="toc-delete-a-file" class="nav-link" data-scroll-target="#delete-a-file"><span class="header-section-number">13.4.1</span> Delete a File</a></li>
+  <li><a href="#delete-a-directory" id="toc-delete-a-directory" class="nav-link" data-scroll-target="#delete-a-directory"><span class="header-section-number">13.4.2</span> Delete a Directory</a></li>
+  </ul></li>
+  <li><a href="#file-permissions" id="toc-file-permissions" class="nav-link" data-scroll-target="#file-permissions"><span class="header-section-number">13.5</span> File Permissions</a>
+  <ul class="collapse">
+  <li><a href="#change-file-permissions" id="toc-change-file-permissions" class="nav-link" data-scroll-target="#change-file-permissions"><span class="header-section-number">13.5.1</span> Change File Permissions</a></li>
+  <li><a href="#copy-file-permissions" id="toc-copy-file-permissions" class="nav-link" data-scroll-target="#copy-file-permissions"><span class="header-section-number">13.5.2</span> Copy File Permissions</a></li>
+  <li><a href="#copy-file-metadata" id="toc-copy-file-metadata" class="nav-link" data-scroll-target="#copy-file-metadata"><span class="header-section-number">13.5.3</span> Copy File Metadata</a></li>
+  </ul></li>
+  <li><a href="#archiving-operations" id="toc-archiving-operations" class="nav-link" data-scroll-target="#archiving-operations"><span class="header-section-number">13.6</span> Archiving Operations</a>
+  <ul class="collapse">
+  <li><a href="#create-archive-files" id="toc-create-archive-files" class="nav-link" data-scroll-target="#create-archive-files"><span class="header-section-number">13.6.1</span> Create Archive Files</a></li>
+  <li><a href="#extract-archive-files" id="toc-extract-archive-files" class="nav-link" data-scroll-target="#extract-archive-files"><span class="header-section-number">13.6.2</span> Extract Archive Files</a></li>
+  </ul></li>
+  <li><a href="#disk-usage" id="toc-disk-usage" class="nav-link" data-scroll-target="#disk-usage"><span class="header-section-number">13.7</span> Disk Usage</a>
+  <ul class="collapse">
+  <li><a href="#get-disk-usage-statistics" id="toc-get-disk-usage-statistics" class="nav-link" data-scroll-target="#get-disk-usage-statistics"><span class="header-section-number">13.7.1</span> Get Disk Usage Statistics</a></li>
+  </ul></li>
+  <li><a href="#temporary-files-and-directories" id="toc-temporary-files-and-directories" class="nav-link" data-scroll-target="#temporary-files-and-directories"><span class="header-section-number">13.8</span> Temporary Files and Directories</a>
+  <ul class="collapse">
+  <li><a href="#create-temporary-files-and-directories" id="toc-create-temporary-files-and-directories" class="nav-link" data-scroll-target="#create-temporary-files-and-directories"><span class="header-section-number">13.8.1</span> Create Temporary Files and Directories</a></li>
+  </ul></li>
+  <li><a href="#example-use-cases" id="toc-example-use-cases" class="nav-link" data-scroll-target="#example-use-cases"><span class="header-section-number">13.9</span> Example Use Cases</a>
+  <ul class="collapse">
+  <li><a href="#example-1-backup-a-directory" id="toc-example-1-backup-a-directory" class="nav-link" data-scroll-target="#example-1-backup-a-directory"><span class="header-section-number">13.9.1</span> Example 1: Backup a Directory</a></li>
+  <li><a href="#example-2-clean-up-old-backups" id="toc-example-2-clean-up-old-backups" class="nav-link" data-scroll-target="#example-2-clean-up-old-backups"><span class="header-section-number">13.9.2</span> Example 2: Clean Up Old Backups</a></li>
+  </ul></li>
+  <li><a href="#conclusion-2" id="toc-conclusion-2" class="nav-link" data-scroll-target="#conclusion-2"><span class="header-section-number">13.10</span> Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -486,8 +573,414 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="conclusion" class="level3" data-number="11.0.5">
 <h3 data-number="11.0.5" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">11.0.5</span> Conclusion</h3>
 <p>Automating system tasks with Python can save time and reduce errors by performing repetitive tasks programmatically. The <code>os</code>, <code>subprocess</code>, and <code>shutil</code> libraries provide powerful tools for interacting with the operating system, running external processes, and handling files and directories. By mastering these libraries, you can automate a wide range of system tasks, enhancing your efficiency and productivity.</p>
+</section>
+<section id="deep-dive-into-the-os-module-in-python" class="level1" data-number="12">
+<h1 data-number="12"><span class="header-section-number">12</span> Deep Dive into the <code>os</code> Module in Python</h1>
+<p>The <code>os</code> module in Python provides a way of using operating system-dependent functionality like reading or writing to the file system. The <code>os</code> module also allows you to interface with the underlying operating system that Python is running on, whether it’s Windows, Mac, or Linux. Let’s explore the <code>os</code> module in detail.</p>
+<section id="importing-the-os-module" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="importing-the-os-module"><span class="header-section-number">12.1</span> Importing the <code>os</code> Module</h2>
+<p>To use the <code>os</code> module, you need to import it first:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="file-and-directory-operations" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="file-and-directory-operations"><span class="header-section-number">12.2</span> File and Directory Operations</h2>
+<section id="working-with-directories-1" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="working-with-directories-1"><span class="header-section-number">12.2.1</span> Working with Directories</h3>
+<section id="get-current-working-directory" class="level4" data-number="12.2.1.1">
+<h4 data-number="12.2.1.1" class="anchored" data-anchor-id="get-current-working-directory"><span class="header-section-number">12.2.1.1</span> Get Current Working Directory</h4>
+<p>You can get the current working directory using <code>os.getcwd()</code>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>current_directory <span class="op">=</span> os.getcwd()</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Current Directory:"</span>, current_directory)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="change-directory" class="level4" data-number="12.2.1.2">
+<h4 data-number="12.2.1.2" class="anchored" data-anchor-id="change-directory"><span class="header-section-number">12.2.1.2</span> Change Directory</h4>
+<p>You can change the current working directory using <code>os.chdir(path)</code>:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">'/path/to/directory'</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Changed Directory:"</span>, os.getcwd())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="list-directory-contents" class="level4" data-number="12.2.1.3">
+<h4 data-number="12.2.1.3" class="anchored" data-anchor-id="list-directory-contents"><span class="header-section-number">12.2.1.3</span> List Directory Contents</h4>
+<p>To list the contents of a directory, use <code>os.listdir(path)</code>:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>directory_contents <span class="op">=</span> os.listdir(<span class="st">'.'</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Directory Contents:"</span>, directory_contents)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="create-a-directory" class="level4" data-number="12.2.1.4">
+<h4 data-number="12.2.1.4" class="anchored" data-anchor-id="create-a-directory"><span class="header-section-number">12.2.1.4</span> Create a Directory</h4>
+<p>You can create a new directory using <code>os.mkdir(path)</code>:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>os.mkdir(<span class="st">'new_directory'</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"New Directory Created:"</span>, os.listdir(<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="create-intermediate-directories" class="level4" data-number="12.2.1.5">
+<h4 data-number="12.2.1.5" class="anchored" data-anchor-id="create-intermediate-directories"><span class="header-section-number">12.2.1.5</span> Create Intermediate Directories</h4>
+<p>To create intermediate directories, use <code>os.makedirs(path)</code>:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>os.makedirs(<span class="st">'parent_directory/child_directory'</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Directories Created:"</span>, os.listdir(<span class="st">'parent_directory'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="remove-a-directory" class="level4" data-number="12.2.1.6">
+<h4 data-number="12.2.1.6" class="anchored" data-anchor-id="remove-a-directory"><span class="header-section-number">12.2.1.6</span> Remove a Directory</h4>
+<p>To remove a directory, use <code>os.rmdir(path)</code>:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>os.rmdir(<span class="st">'new_directory'</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Directory Removed:"</span>, os.listdir(<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To remove intermediate directories, use <code>os.removedirs(path)</code>:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>os.removedirs(<span class="st">'parent_directory/child_directory'</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Directories Removed:"</span>, os.listdir(<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="working-with-files" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="working-with-files"><span class="header-section-number">12.2.2</span> Working with Files</h3>
+<section id="create-and-write-to-a-file" class="level4" data-number="12.2.2.1">
+<h4 data-number="12.2.2.1" class="anchored" data-anchor-id="create-and-write-to-a-file"><span class="header-section-number">12.2.2.1</span> Create and Write to a File</h4>
+<p>To create and write to a file, you can use standard file handling methods:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'example.txt'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">'Hello, World!'</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File Created and Written to:"</span>, os.listdir(<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="remove-a-file" class="level4" data-number="12.2.2.2">
+<h4 data-number="12.2.2.2" class="anchored" data-anchor-id="remove-a-file"><span class="header-section-number">12.2.2.2</span> Remove a File</h4>
+<p>To remove a file, use <code>os.remove(path)</code>:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>os.remove(<span class="st">'example.txt'</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File Removed:"</span>, os.listdir(<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="rename-a-file" class="level4" data-number="12.2.2.3">
+<h4 data-number="12.2.2.3" class="anchored" data-anchor-id="rename-a-file"><span class="header-section-number">12.2.2.3</span> Rename a File</h4>
+<p>To rename a file, use <code>os.rename(src, dst)</code>:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'old_name.txt'</span>, <span class="st">'w'</span>) <span class="im">as</span> <span class="bu">file</span>:</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span>.write(<span class="st">'Hello, World!'</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>os.rename(<span class="st">'old_name.txt'</span>, <span class="st">'new_name.txt'</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File Renamed:"</span>, os.listdir(<span class="st">'.'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="get-file-status" class="level4" data-number="12.2.2.4">
+<h4 data-number="12.2.2.4" class="anchored" data-anchor-id="get-file-status"><span class="header-section-number">12.2.2.4</span> Get File Status</h4>
+<p>To get the status of a file, use <code>os.stat(path)</code>:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>file_status <span class="op">=</span> os.stat(<span class="st">'new_name.txt'</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File Status:"</span>, file_status)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="environment-variables" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="environment-variables"><span class="header-section-number">12.3</span> Environment Variables</h2>
+<section id="get-environment-variables" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="get-environment-variables"><span class="header-section-number">12.3.1</span> Get Environment Variables</h3>
+<p>To get the value of an environment variable, use <code>os.environ.get(key)</code>:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>home_directory <span class="op">=</span> os.environ.get(<span class="st">'HOME'</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Home Directory:"</span>, home_directory)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="set-environment-variables" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="set-environment-variables"><span class="header-section-number">12.3.2</span> Set Environment Variables</h3>
+<p>To set the value of an environment variable, use <code>os.environ[key] = value</code>:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'MY_VARIABLE'</span>] <span class="op">=</span> <span class="st">'my_value'</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Environment Variable Set:"</span>, os.environ.get(<span class="st">'MY_VARIABLE'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="delete-environment-variables" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="delete-environment-variables"><span class="header-section-number">12.3.3</span> Delete Environment Variables</h3>
+<p>To delete an environment variable, use <code>os.environ.pop(key, default)</code>:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>os.environ.pop(<span class="st">'MY_VARIABLE'</span>, <span class="va">None</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Environment Variable Deleted:"</span>, os.environ.get(<span class="st">'MY_VARIABLE'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="process-management" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="process-management"><span class="header-section-number">12.4</span> Process Management</h2>
+<section id="get-process-id" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="get-process-id"><span class="header-section-number">12.4.1</span> Get Process ID</h3>
+<p>To get the current process ID, use <code>os.getpid()</code>:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>process_id <span class="op">=</span> os.getpid()</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Process ID:"</span>, process_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="get-parent-process-id" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="get-parent-process-id"><span class="header-section-number">12.4.2</span> Get Parent Process ID</h3>
+<p>To get the parent process ID, use <code>os.getppid()</code>:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>parent_process_id <span class="op">=</span> os.getppid()</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Parent Process ID:"</span>, parent_process_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="fork-a-process" class="level3" data-number="12.4.3">
+<h3 data-number="12.4.3" class="anchored" data-anchor-id="fork-a-process"><span class="header-section-number">12.4.3</span> Fork a Process</h3>
+<p>To fork a process (UNIX only), use <code>os.fork()</code>:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    pid <span class="op">=</span> os.fork()</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pid <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Parent process ID:"</span>, os.getpid())</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Child process ID:"</span>, pid)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Child process ID:"</span>, os.getpid())</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Parent process ID:"</span>, os.getppid())</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Fork not available on this operating system"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="execute-a-program" class="level3" data-number="12.4.4">
+<h3 data-number="12.4.4" class="anchored" data-anchor-id="execute-a-program"><span class="header-section-number">12.4.4</span> Execute a Program</h3>
+<p>To replace the current process with a new one, use <code>os.exec*()</code> methods. For example, <code>os.execl(path, arg0, arg1, ...)</code>:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(sys.argv) <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Starting new process"</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    os.execl(sys.executable, sys.executable, <span class="op">*</span>sys.argv, <span class="st">'child'</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Running in child process"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="wait-for-a-child-process" class="level3" data-number="12.4.5">
+<h3 data-number="12.4.5" class="anchored" data-anchor-id="wait-for-a-child-process"><span class="header-section-number">12.4.5</span> Wait for a Child Process</h3>
+<p>To wait for a child process to terminate, use <code>os.wait()</code>:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pid <span class="op">=</span> os.fork()</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> pid <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    os.wait()</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Child process terminated"</span>)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"In child process"</span>)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    sys.exit(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="miscellaneous-os-operations" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="miscellaneous-os-operations"><span class="header-section-number">12.5</span> Miscellaneous OS Operations</h2>
+<section id="get-os-name" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="get-os-name"><span class="header-section-number">12.5.1</span> Get OS Name</h3>
+<p>To get the name of the operating system, use <code>os.name</code>:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>os_name <span class="op">=</span> os.name</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"OS Name:"</span>, os_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="execute-a-system-command" class="level3" data-number="12.5.2">
+<h3 data-number="12.5.2" class="anchored" data-anchor-id="execute-a-system-command"><span class="header-section-number">12.5.2</span> Execute a System Command</h3>
+<p>To execute a system command, use <code>os.system(command)</code>:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>os.system(<span class="st">'echo Hello, World!'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="get-system-information" class="level3" data-number="12.5.3">
+<h3 data-number="12.5.3" class="anchored" data-anchor-id="get-system-information"><span class="header-section-number">12.5.3</span> Get System Information</h3>
+<p>To get more detailed system information, use <code>os.uname()</code> (UNIX only):</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    system_info <span class="op">=</span> os.uname()</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"System Info:"</span>, system_info)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">AttributeError</span>:</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"os.uname() not available on this operating system"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="path-manipulations" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="path-manipulations"><span class="header-section-number">12.6</span> Path Manipulations</h2>
+<p>The <code>os.path</code> module provides utilities for manipulating file and directory paths.</p>
+<section id="join-paths" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="join-paths"><span class="header-section-number">12.6.1</span> Join Paths</h3>
+<p>To join paths, use <code>os.path.join(path, *paths)</code>:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>full_path <span class="op">=</span> os.path.join(<span class="st">'parent_directory'</span>, <span class="st">'child_directory'</span>, <span class="st">'file.txt'</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Full Path:"</span>, full_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="split-paths" class="level3" data-number="12.6.2">
+<h3 data-number="12.6.2" class="anchored" data-anchor-id="split-paths"><span class="header-section-number">12.6.2</span> Split Paths</h3>
+<p>To split a path into the directory and file, use <code>os.path.split(path)</code>:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>directory, file_name <span class="op">=</span> os.path.split(<span class="st">'/path/to/file.txt'</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Directory:"</span>, directory)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File Name:"</span>, file_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="get-file-extension" class="level3" data-number="12.6.3">
+<h3 data-number="12.6.3" class="anchored" data-anchor-id="get-file-extension"><span class="header-section-number">12.6.3</span> Get File Extension</h3>
+<p>To get the file extension, use <code>os.path.splitext(path)</code>:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>file_name, file_extension <span class="op">=</span> os.path.splitext(<span class="st">'file.txt'</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File Name:"</span>, file_name)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File Extension:"</span>, file_extension)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="check-path-existence" class="level3" data-number="12.6.4">
+<h3 data-number="12.6.4" class="anchored" data-anchor-id="check-path-existence"><span class="header-section-number">12.6.4</span> Check Path Existence</h3>
+<p>To check if a path exists, use <code>os.path.exists(path)</code>:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>path_exists <span class="op">=</span> os.path.exists(<span class="st">'/path/to/file.txt'</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Path Exists:"</span>, path_exists)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="check-if-path-is-a-file-or-directory" class="level3" data-number="12.6.5">
+<h3 data-number="12.6.5" class="anchored" data-anchor-id="check-if-path-is-a-file-or-directory"><span class="header-section-number">12.6.5</span> Check if Path is a File or Directory</h3>
+<p>To check if a path is a file or directory, use <code>os.path.isfile(path)</code> and <code>os.path.isdir(path)</code>:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>is_file <span class="op">=</span> os.path.isfile(<span class="st">'/path/to/file.txt'</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>is_directory <span class="op">=</span> os.path.isdir(<span class="st">'/path/to/directory'</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Is File:"</span>, is_file)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Is Directory:"</span>, is_directory)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="get-absolute-path" class="level3" data-number="12.6.6">
+<h3 data-number="12.6.6" class="anchored" data-anchor-id="get-absolute-path"><span class="header-section-number">12.6.6</span> Get Absolute Path</h3>
+<p>To get the absolute path, use <code>os.path.abspath(path)</code>:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>absolute_path <span class="op">=</span> os.path.abspath(<span class="st">'file.txt'</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Absolute Path:"</span>, absolute_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion-1" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="conclusion-1"><span class="header-section-number">12.7</span> Conclusion</h2>
+<p>The <code>os</code> module in Python provides a wide range of functionalities for interacting with the operating system. Whether you need to manage files and directories, work with environment variables, manage processes, or manipulate paths, the <code>os</code> module has you covered. Understanding and utilizing these functions can significantly enhance your ability to create robust and versatile Python programs.</p>
+</section>
+</section>
+<section id="deep-dive-into-the-shutil-module-in-python" class="level1" data-number="13">
+<h1 data-number="13"><span class="header-section-number">13</span> Deep Dive into the <code>shutil</code> Module in Python</h1>
+<p>The <code>shutil</code> (shell utilities) module in Python provides a higher-level interface for file operations than the <code>os</code> module. It is designed to handle operations like copying and moving files and directories, managing file permissions, and creating archive files. Let’s explore the <code>shutil</code> module in detail.</p>
+<section id="importing-the-shutil-module" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="importing-the-shutil-module"><span class="header-section-number">13.1</span> Importing the <code>shutil</code> Module</h2>
+<p>To use the <code>shutil</code> module, you need to import it first:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="copying-files-and-directories-1" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="copying-files-and-directories-1"><span class="header-section-number">13.2</span> Copying Files and Directories</h2>
+<section id="copy-a-file" class="level3" data-number="13.2.1">
+<h3 data-number="13.2.1" class="anchored" data-anchor-id="copy-a-file"><span class="header-section-number">13.2.1</span> Copy a File</h3>
+<p>To copy a file from one location to another, use <code>shutil.copy(src, dst)</code>. This function copies the content and permissions of the source file to the destination file.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>shutil.copy(<span class="st">'source_file.txt'</span>, <span class="st">'destination_file.txt'</span>)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File copied successfully"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="copy-a-file-with-metadata" class="level3" data-number="13.2.2">
+<h3 data-number="13.2.2" class="anchored" data-anchor-id="copy-a-file-with-metadata"><span class="header-section-number">13.2.2</span> Copy a File with Metadata</h3>
+<p>To copy a file along with its metadata (like permissions, last access time, etc.), use <code>shutil.copy2(src, dst)</code>:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>shutil.copy2(<span class="st">'source_file.txt'</span>, <span class="st">'destination_file_with_metadata.txt'</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File copied with metadata successfully"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="copy-a-directory" class="level3" data-number="13.2.3">
+<h3 data-number="13.2.3" class="anchored" data-anchor-id="copy-a-directory"><span class="header-section-number">13.2.3</span> Copy a Directory</h3>
+<p>To copy an entire directory tree, use <code>shutil.copytree(src, dst)</code>. This function recursively copies an entire directory tree rooted at <code>src</code> to a directory named <code>dst</code>.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>shutil.copytree(<span class="st">'source_directory'</span>, <span class="st">'destination_directory'</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Directory copied successfully"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="copy-only-directory-structure" class="level3" data-number="13.2.4">
+<h3 data-number="13.2.4" class="anchored" data-anchor-id="copy-only-directory-structure"><span class="header-section-number">13.2.4</span> Copy Only Directory Structure</h3>
+<p>To copy only the directory structure without files, you can use the <code>ignore</code> parameter of <code>shutil.copytree</code>:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ignore_files(<span class="bu">dir</span>, files):</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [f <span class="cf">for</span> f <span class="kw">in</span> files <span class="cf">if</span> os.path.isfile(os.path.join(<span class="bu">dir</span>, f))]</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>shutil.copytree(<span class="st">'source_directory'</span>, <span class="st">'destination_directory_structure'</span>, ignore<span class="op">=</span>ignore_files)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Directory structure copied successfully"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="moving-files-and-directories" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="moving-files-and-directories"><span class="header-section-number">13.3</span> Moving Files and Directories</h2>
+<p>To move a file or directory from one location to another, use <code>shutil.move(src, dst)</code>:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>shutil.move(<span class="st">'source_file.txt'</span>, <span class="st">'destination_file.txt'</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File moved successfully"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can also move entire directories:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>shutil.move(<span class="st">'source_directory'</span>, <span class="st">'destination_directory'</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Directory moved successfully"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="deleting-files-and-directories" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="deleting-files-and-directories"><span class="header-section-number">13.4</span> Deleting Files and Directories</h2>
+<section id="delete-a-file" class="level3" data-number="13.4.1">
+<h3 data-number="13.4.1" class="anchored" data-anchor-id="delete-a-file"><span class="header-section-number">13.4.1</span> Delete a File</h3>
+<p>To delete a file, use <code>os.remove(path)</code> from the <code>os</code> module:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>os.remove(<span class="st">'file_to_delete.txt'</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File deleted successfully"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="delete-a-directory" class="level3" data-number="13.4.2">
+<h3 data-number="13.4.2" class="anchored" data-anchor-id="delete-a-directory"><span class="header-section-number">13.4.2</span> Delete a Directory</h3>
+<p>To delete a directory tree, use <code>shutil.rmtree(path)</code>:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>shutil.rmtree(<span class="st">'directory_to_delete'</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Directory deleted successfully"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="file-permissions" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="file-permissions"><span class="header-section-number">13.5</span> File Permissions</h2>
+<section id="change-file-permissions" class="level3" data-number="13.5.1">
+<h3 data-number="13.5.1" class="anchored" data-anchor-id="change-file-permissions"><span class="header-section-number">13.5.1</span> Change File Permissions</h3>
+<p>To change the mode (permissions) of a file, use <code>os.chmod(path, mode)</code> from the <code>os</code> module:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>os.chmod(<span class="st">'file.txt'</span>, <span class="bn">0o755</span>)  <span class="co"># Sets file permissions to rwxr-xr-x</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File permissions changed successfully"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="copy-file-permissions" class="level3" data-number="13.5.2">
+<h3 data-number="13.5.2" class="anchored" data-anchor-id="copy-file-permissions"><span class="header-section-number">13.5.2</span> Copy File Permissions</h3>
+<p>To copy the permissions of one file to another, use <code>shutil.copymode(src, dst)</code>:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>shutil.copymode(<span class="st">'source_file.txt'</span>, <span class="st">'destination_file.txt'</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File permissions copied successfully"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="copy-file-metadata" class="level3" data-number="13.5.3">
+<h3 data-number="13.5.3" class="anchored" data-anchor-id="copy-file-metadata"><span class="header-section-number">13.5.3</span> Copy File Metadata</h3>
+<p>To copy the metadata of one file to another, use <code>shutil.copystat(src, dst)</code>:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>shutil.copystat(<span class="st">'source_file.txt'</span>, <span class="st">'destination_file.txt'</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"File metadata copied successfully"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="archiving-operations" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="archiving-operations"><span class="header-section-number">13.6</span> Archiving Operations</h2>
+<section id="create-archive-files" class="level3" data-number="13.6.1">
+<h3 data-number="13.6.1" class="anchored" data-anchor-id="create-archive-files"><span class="header-section-number">13.6.1</span> Create Archive Files</h3>
+<p>To create an archive file (like .zip or .tar), use <code>shutil.make_archive(base_name, format, root_dir)</code>:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>shutil.make_archive(<span class="st">'archive_name'</span>, <span class="st">'zip'</span>, <span class="st">'directory_to_archive'</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Archive created successfully"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can create archives in different formats like ‘zip’, ‘tar’, ‘gztar’, ‘bztar’, or ‘xztar’.</p>
+</section>
+<section id="extract-archive-files" class="level3" data-number="13.6.2">
+<h3 data-number="13.6.2" class="anchored" data-anchor-id="extract-archive-files"><span class="header-section-number">13.6.2</span> Extract Archive Files</h3>
+<p>To extract an archive file, use the <code>tarfile</code> or <code>zipfile</code> module. For example, to extract a .zip file:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> zipfile</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> zipfile.ZipFile(<span class="st">'archive_name.zip'</span>, <span class="st">'r'</span>) <span class="im">as</span> zip_ref:</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>    zip_ref.extractall(<span class="st">'extracted_directory'</span>)</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Archive extracted successfully"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="disk-usage" class="level2" data-number="13.7">
+<h2 data-number="13.7" class="anchored" data-anchor-id="disk-usage"><span class="header-section-number">13.7</span> Disk Usage</h2>
+<section id="get-disk-usage-statistics" class="level3" data-number="13.7.1">
+<h3 data-number="13.7.1" class="anchored" data-anchor-id="get-disk-usage-statistics"><span class="header-section-number">13.7.1</span> Get Disk Usage Statistics</h3>
+<p>To get disk usage statistics, use <code>shutil.disk_usage(path)</code>. This function returns a named tuple with attributes <code>total</code>, <code>used</code>, and <code>free</code>, which are the total, used, and free space on the disk, respectively.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>disk_usage <span class="op">=</span> shutil.disk_usage(<span class="st">'/'</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Total:"</span>, disk_usage.total)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Used:"</span>, disk_usage.used)</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Free:"</span>, disk_usage.free)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="temporary-files-and-directories" class="level2" data-number="13.8">
+<h2 data-number="13.8" class="anchored" data-anchor-id="temporary-files-and-directories"><span class="header-section-number">13.8</span> Temporary Files and Directories</h2>
+<section id="create-temporary-files-and-directories" class="level3" data-number="13.8.1">
+<h3 data-number="13.8.1" class="anchored" data-anchor-id="create-temporary-files-and-directories"><span class="header-section-number">13.8.1</span> Create Temporary Files and Directories</h3>
+<p>To create temporary files and directories, use the <code>tempfile</code> module. For example, to create a temporary file:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tempfile</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> tempfile.NamedTemporaryFile(delete<span class="op">=</span><span class="va">False</span>) <span class="im">as</span> temp_file:</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    temp_file.write(<span class="st">b'Hello, World!'</span>)</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Temporary file created:"</span>, temp_file.name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To create a temporary directory:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> tempfile.TemporaryDirectory() <span class="im">as</span> temp_dir:</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Temporary directory created:"</span>, temp_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="example-use-cases" class="level2" data-number="13.9">
+<h2 data-number="13.9" class="anchored" data-anchor-id="example-use-cases"><span class="header-section-number">13.9</span> Example Use Cases</h2>
+<section id="example-1-backup-a-directory" class="level3" data-number="13.9.1">
+<h3 data-number="13.9.1" class="anchored" data-anchor-id="example-1-backup-a-directory"><span class="header-section-number">13.9.1</span> Example 1: Backup a Directory</h3>
+<div class="sourceCode" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Source and backup directories</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>source_dir <span class="op">=</span> <span class="st">'source_directory'</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>backup_dir <span class="op">=</span> <span class="st">'backup_directory'</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a backup directory with a timestamp</span></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>timestamp <span class="op">=</span> time.strftime(<span class="st">'%Y%m</span><span class="sc">%d</span><span class="st">%H%M%S'</span>)</span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>backup_dir <span class="op">=</span> os.path.join(backup_dir, timestamp)</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>shutil.copytree(source_dir, backup_dir)</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Backup created successfully at"</span>, backup_dir)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="example-2-clean-up-old-backups" class="level3" data-number="13.9.2">
+<h3 data-number="13.9.2" class="anchored" data-anchor-id="example-2-clean-up-old-backups"><span class="header-section-number">13.9.2</span> Example 2: Clean Up Old Backups</h3>
+<div class="sourceCode" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shutil</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>backup_dir <span class="op">=</span> <span class="st">'backup_directory'</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>days_to_keep <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>now <span class="op">=</span> time.time()</span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> filename <span class="kw">in</span> os.listdir(backup_dir):</span>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>    file_path <span class="op">=</span> os.path.join(backup_dir, filename)</span>
+<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> os.path.isdir(file_path):</span>
+<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a>        file_creation_time <span class="op">=</span> os.path.getctime(file_path)</span>
+<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (now <span class="op">-</span> file_creation_time) <span class="op">//</span> (<span class="dv">24</span> <span class="op">*</span> <span class="dv">3600</span>) <span class="op">&gt;=</span> days_to_keep:</span>
+<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a>            shutil.rmtree(file_path)</span>
+<span id="cb60-15"><a href="#cb60-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Deleted old backup:"</span>, file_path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="conclusion-2" class="level2" data-number="13.10">
+<h2 data-number="13.10" class="anchored" data-anchor-id="conclusion-2"><span class="header-section-number">13.10</span> Conclusion</h2>
+<p>The <code>shutil</code> module in Python provides a powerful and convenient way to handle high-level file operations. Whether you need to copy, move, or delete files and directories, manage file permissions, or create and extract archives, the <code>shutil</code> module has you covered. Understanding and utilizing these functions can significantly simplify your file management tasks in Python.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

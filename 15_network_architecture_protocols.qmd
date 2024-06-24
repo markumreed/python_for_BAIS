@@ -10,7 +10,7 @@ IP addressing is the method by which devices on a network are identified. IPv4 a
 
 ##### Example: Displaying Local IP Address
 
-```python
+```{python}
 import socket
 
 hostname = socket.gethostname()
@@ -24,7 +24,7 @@ Subnetting divides a network into smaller sub-networks (subnets) to improve mana
 
 ##### Example: Calculating Subnet Information
 
-```python
+```{python}
 import ipaddress
 
 network = ipaddress.ip_network('192.168.1.0/24')
@@ -48,7 +48,7 @@ TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are key tra
 
 **TCP Server:**
 
-```python
+```{python}
 import socket
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -69,7 +69,7 @@ while True:
 
 **TCP Client:**
 
-```python
+```{python}
 import socket
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -83,7 +83,7 @@ print(f"Received: {data.decode()}")
 
 **UDP Server:**
 
-```python
+```{python}
 import socket
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -99,7 +99,7 @@ while True:
 
 **UDP Client:**
 
-```python
+```{python}
 import socket
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -120,7 +120,7 @@ HTTP is the foundation of data communication on the web.
 
 ##### Example: Simple HTTP GET Request using `socket`
 
-```python
+```{python}
 import socket
 
 request = "GET / HTTP/1.1\r\nHost: www.example.com\r\n\r\n"
@@ -137,7 +137,7 @@ FTP is used for transferring files between a client and server.
 
 ##### Example: Simple FTP Interaction using `ftplib`
 
-```python
+```{python}
 from ftplib import FTP
 
 ftp = FTP('ftp.dlptest.com')
@@ -154,7 +154,7 @@ SMTP is used for sending emails.
 
 ##### Example: Sending Email using `smtplib`
 
-```python
+```{python}
 import smtplib
 from email.mime.text import MIMEText
 
@@ -180,7 +180,7 @@ pip install scapy
 
 #### Example: Capturing and Analyzing Packets
 
-```python
+```{python}
 from scapy.all import sniff
 
 def packet_callback(packet):
@@ -231,7 +231,7 @@ You may also need to install additional system dependencies, such as `libpcap` a
 
 To use `scapy`, you need to import it:
 
-```python
+```{python}
 from scapy.all import *
 ```
 
@@ -241,7 +241,7 @@ from scapy.all import *
 
 ### Example
 
-```python
+```{python}
 ether = Ether()
 ip = IP()
 tcp = TCP()
@@ -256,7 +256,7 @@ Packets can be created by instantiating layer objects and stacking them together
 
 ### Example
 
-```python
+```{python}
 packet = Ether() / IP(dst="192.168.1.1") / TCP(dport=80)
 ```
 
@@ -266,7 +266,7 @@ To send packets, use the `send()` function for layer 3 packets (IP) and `sendp()
 
 ### Example
 
-```python
+```{python}
 send(packet)
 ```
 
@@ -276,7 +276,7 @@ You can send multiple packets in a loop or use the `sendp()` function with a lis
 
 ### Example
 
-```python
+```{python}
 packets = [Ether() / IP(dst="192.168.1.1") / TCP(dport=80) for _ in range(10)]
 sendp(packets)
 ```
@@ -289,7 +289,7 @@ sendp(packets)
 
 ### Example
 
-```python
+```{python}
 def packet_callback(packet):
     print(packet.summary())
 
@@ -302,7 +302,7 @@ You can filter packets using BPF (Berkeley Packet Filter) syntax.
 
 ### Example
 
-```python
+```{python}
 sniff(filter="tcp and port 80", prn=packet_callback, count=10)
 ```
 
@@ -314,7 +314,7 @@ Once you have captured packets, you can dissect and analyze them using various `
 
 ### Example
 
-```python
+```{python}
 packet = sniff(count=1)[0]
 print(packet.show())
 ```
@@ -325,7 +325,7 @@ You can access specific fields within a packet by treating it like a dictionary.
 
 ### Example
 
-```python
+```{python}
 packet = sniff(count=1)[0]
 print(packet[IP].src)
 print(packet[IP].dst)
@@ -337,7 +337,7 @@ You can access different layers of a packet using indexing.
 
 ### Example
 
-```python
+```{python}
 packet = sniff(count=1)[0]
 print(packet[Ether].src)
 print(packet[IP].src)
@@ -352,7 +352,7 @@ You can create custom packets by defining your own layers.
 
 ### Example
 
-```python
+```{python}
 class Custom(Packet):
     name = "Custom"
     fields_desc = [ShortField("field1", 1), IntField("field2", 2)]
@@ -367,7 +367,7 @@ You can manipulate packets by modifying their fields.
 
 ### Example
 
-```python
+```{python}
 packet = IP(dst="192.168.1.1") / TCP(dport=80)
 packet[IP].dst = "192.168.1.2"
 send(packet)
@@ -379,7 +379,7 @@ send(packet)
 
 ### Example
 
-```python
+```{python}
 packet = sniff(count=1)[0]
 if packet.haslayer(DNS):
     print(packet[DNS].summary())
@@ -391,7 +391,7 @@ if packet.haslayer(DNS):
 
 This example demonstrates how to perform a ping sweep to discover live hosts on a network.
 
-```python
+```{python}
 def ping_sweep(network):
     ans, unans = sr(IP(dst=network)/ICMP(), timeout=2)
     for snd, rcv in ans:
@@ -404,7 +404,7 @@ ping_sweep("192.168.1.0/24")
 
 This example demonstrates how to perform ARP spoofing to intercept network traffic.
 
-```python
+```{python}
 def arp_spoof(target_ip, spoof_ip):
     packet = ARP(op=2, pdst=target_ip, hwdst="ff:ff:ff:ff:ff:ff", psrc=spoof_ip)
     send(packet, verbose=False)
@@ -416,7 +416,7 @@ arp_spoof("192.168.1.100", "192.168.1.1")
 
 This example demonstrates how to perform DNS spoofing to redirect DNS requests.
 
-```python
+```{python}
 def dns_spoof(pkt):
     if pkt.haslayer(DNS) and pkt.getlayer(DNS).qr == 0:
         spoofed_pkt = IP(dst=pkt[IP].src, src=pkt[IP].dst) / \
@@ -462,7 +462,7 @@ The `socket` module provides access to the BSD socket interface. It supports var
 
 ### Importing the Module
 
-```python
+```{python}
 import socket
 ```
 
@@ -476,7 +476,7 @@ A socket can be created using the `socket.socket()` function, which takes two pa
 
 ### Example
 
-```python
+```{python}
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 ```
 
@@ -486,7 +486,7 @@ To bind a socket to an IP address and port, use the `bind()` method.
 
 ### Example
 
-```python
+```{python}
 s.bind(('localhost', 8080))
 ```
 
@@ -496,7 +496,7 @@ To listen for incoming connections on a TCP server, use the `listen()` method.
 
 ### Example
 
-```python
+```{python}
 s.listen(5)  # 5 is the maximum number of queued connections
 ```
 
@@ -506,7 +506,7 @@ To accept an incoming connection, use the `accept()` method, which returns a new
 
 ### Example
 
-```python
+```{python}
 client_socket, client_address = s.accept()
 ```
 
@@ -527,7 +527,7 @@ client_socket, client_address = s.accept()
 
 ### Example TCP Server
 
-```python
+```{python}
 import socket
 
 def tcp_server():
@@ -564,7 +564,7 @@ if __name__ == "__main__":
 
 ### Example TCP Client
 
-```python
+```{python}
 import socket
 
 def tcp_client():
@@ -594,7 +594,7 @@ if __name__ == "__main__":
 
 ### Example UDP Server
 
-```python
+```{python}
 import socket
 
 def udp_server():
@@ -622,7 +622,7 @@ if __name__ == "__main__":
 
 ### Example UDP Client
 
-```python
+```{python}
 import socket
 
 def udp_client():
@@ -648,7 +648,7 @@ Proper error handling is crucial for robust network applications. Use try-except
 
 ### Example
 
-```python
+```{python}
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(('localhost', 8080))
