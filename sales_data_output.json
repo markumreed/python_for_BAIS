@@ -1,0 +1,72 @@
+[
+    {
+        "Quantity":37,
+        "Unit Price":78.7676524805,
+        "Sales":484.8104021533,
+        "Region":"East",
+        "Total Sales":2914.4031417771
+    },
+    {
+        "Quantity":59,
+        "Unit Price":60.4054505014,
+        "Sales":610.3522704905,
+        "Region":"South",
+        "Total Sales":3563.9215795803
+    },
+    {
+        "Quantity":11,
+        "Unit Price":31.794697562,
+        "Sales":568.0279715743,
+        "Region":"North",
+        "Total Sales":349.7416731815
+    },
+    {
+        "Quantity":43,
+        "Unit Price":66.2981296102,
+        "Sales":995.4214702723,
+        "Region":"East",
+        "Total Sales":2850.8195732372
+    },
+    {
+        "Quantity":91,
+        "Unit Price":10.3811921855,
+        "Sales":180.7715752305,
+        "Region":"North",
+        "Total Sales":944.6884888798
+    },
+    {
+        "Quantity":12,
+        "Unit Price":79.2073814385,
+        "Sales":724.5953754718,
+        "Region":"West",
+        "Total Sales":950.4885772625
+    },
+    {
+        "Quantity":65,
+        "Unit Price":46.2563770894,
+        "Sales":337.4558835152,
+        "Region":"West",
+        "Total Sales":3006.6645108115
+    },
+    {
+        "Quantity":71,
+        "Unit Price":70.7592044591,
+        "Sales":540.4558843802,
+        "Region":"West",
+        "Total Sales":5023.9035165995
+    },
+    {
+        "Quantity":40,
+        "Unit Price":66.5876618662,
+        "Sales":260.2513575152,
+        "Region":"South",
+        "Total Sales":2663.5064746487
+    },
+    {
+        "Quantity":27,
+        "Unit Price":29.1520805026,
+        "Sales":135.4744609971,
+        "Region":"West",
+        "Total Sales":787.1061735697
+    }
+]

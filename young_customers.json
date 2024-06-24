@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Gregory Gonzalez",
+        "address": "56015 Anthony Terrace\nAdkinsborough, MN 09947",
+        "email": "samuelreed@gmail.com",
+        "phone_number": "(349)055-2445x308",
+        "date_of_birth": "1983-07-28",
+        "age": 17
+    },
+    {
+        "name": "Heather Hansen",
+        "address": "503 Jenny Garden\nNorth Stephanie, NV 89247",
+        "email": "christinecampbell@sanchez-clark.biz",
+        "phone_number": "001-281-660-3125",
+        "date_of_birth": "1991-12-26",
+        "age": 29
+    },
+    {
+        "name": "Kimberly Clarke",
+        "address": "640 Torres Skyway Apt. 175\nEmilyside, HI 95695",
+        "email": "staceyreynolds@yahoo.com",
+        "phone_number": "215.990.7578x196",
+        "date_of_birth": "1979-05-11",
+        "age": 29
+    },
+    {
+        "name": "Daniel Vaughn",
+        "address": "630 Vargas Tunnel\nLake Rebeccaside, HI 03481",
+        "email": "cliffordrosario@hahn.biz",
+        "phone_number": "9857234414",
+        "date_of_birth": "2018-08-09",
+        "age": -3
+    },
+    {
+        "name": "Heather Gonzalez",
+        "address": "03205 Manuel Stravenue\nNew Corey, OH 82410",
+        "email": "egonzalez@yahoo.com",
+        "phone_number": "+1-785-146-1714x79345",
+        "date_of_birth": "1986-01-30",
+        "age": 25
+    }
+]

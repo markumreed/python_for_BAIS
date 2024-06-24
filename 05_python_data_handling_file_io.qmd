@@ -85,11 +85,11 @@ You can write to a JSON file using the `json.dump` function.
 import json
 
 # Write to a JSON file
-data = {
+data = [{
     'name': 'John Doe',
     'age': 30,
     'department': 'Finance'
-}
+}]
 
 with open('data.json', 'w') as file:
     json.dump(data, file, indent=4)
@@ -124,9 +124,9 @@ df.to_csv('data_output.csv', index=False)
 
 You can read a JSON file into a DataFrame using `pandas.read_json`.
 
+
 ```{python}
-# Read a JSON file into a DataFrame
-df = pd.read_json('data.json')
+df=pd.read_json("data.json")
 print(df)
 ```
 
@@ -368,7 +368,7 @@ Handling large datasets efficiently is crucial in business analytics. The `panda
 
 ### Reading Large CSV Files in Chunks
 
-```{python}
+```python
 import pandas as pd
 
 # Read CSV file in chunks

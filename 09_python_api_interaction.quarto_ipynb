@@ -1,0 +1,1201 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Introduction to API Interactions with Python\n",
+        "\n",
+        "APIs (Application Programming Interfaces) allow applications to communicate with external services and data sources over the web. Python provides robust libraries for making HTTP requests and handling JSON data, enabling you to integrate external data and services into your applications seamlessly. This tutorial will cover making requests to web APIs and handling responses using Python.\n",
+        "\n",
+        "### Libraries/Tools\n",
+        "\n",
+        "- `requests`: A popular library for making HTTP requests.\n",
+        "- `json`: A standard library module for handling JSON data.\n",
+        "\n",
+        "### Making HTTP Requests with `requests`\n",
+        "\n",
+        "The `requests` library makes it easy to send HTTP requests and handle responses. First, you need to install the `requests` library if you haven't already:\n",
+        "\n",
+        "```bash\n",
+        "pip install requests\n",
+        "```\n",
+        "\n",
+        "#### Basic GET Request\n",
+        "\n",
+        "A GET request is used to retrieve data from a server.\n",
+        "\n",
+        "##### Example: Fetching Data from a Public API\n"
+      ],
+      "id": "d6beedd4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "\n",
+        "# Define the API endpoint\n",
+        "url = 'https://api.exchangerate-api.com/v4/latest/USD'\n",
+        "\n",
+        "# Make a GET request to the API\n",
+        "response = requests.get(url)\n",
+        "\n",
+        "# Check the status code of the response\n",
+        "if response.status_code == 200:\n",
+        "    # Parse the JSON data\n",
+        "    data = response.json()\n",
+        "    print(data)\n",
+        "else:\n",
+        "    print(f\"Failed to retrieve data: {response.status_code}\")"
+      ],
+      "id": "44eb7a9d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Handling JSON Data\n",
+        "\n",
+        "Most APIs return data in JSON format. The `json` module in Python can parse JSON data and convert it into Python objects.\n",
+        "\n",
+        "#### Example: Parsing JSON Response\n"
+      ],
+      "id": "908e35b4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "import json\n",
+        "\n",
+        "# Define the API endpoint\n",
+        "url = 'https://api.exchangerate-api.com/v4/latest/USD'\n",
+        "\n",
+        "# Make a GET request to the API\n",
+        "response = requests.get(url)\n",
+        "\n",
+        "if response.status_code == 200:\n",
+        "    # Parse the JSON data\n",
+        "    data = response.json()\n",
+        "    # Pretty print the JSON data\n",
+        "    print(json.dumps(data, indent=4))\n",
+        "else:\n",
+        "    print(f\"Failed to retrieve data: {response.status_code}\")"
+      ],
+      "id": "fc7d8e6a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Making POST Requests\n",
+        "\n",
+        "A POST request is used to send data to a server.\n",
+        "\n",
+        "#### Example: Sending Data to an API\n"
+      ],
+      "id": "2b1b943d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "\n",
+        "# Define the API endpoint\n",
+        "url = 'https://jsonplaceholder.typicode.com/posts'\n",
+        "\n",
+        "# Define the data to be sent\n",
+        "data = {\n",
+        "    \"title\": \"foo\",\n",
+        "    \"body\": \"bar\",\n",
+        "    \"userId\": 1\n",
+        "}\n",
+        "\n",
+        "# Make a POST request to the API\n",
+        "response = requests.post(url, json=data)\n",
+        "\n",
+        "if response.status_code == 201:\n",
+        "    # Parse the JSON response\n",
+        "    response_data = response.json()\n",
+        "    print(response_data)\n",
+        "else:\n",
+        "    print(f\"Failed to send data: {response.status_code}\")"
+      ],
+      "id": "743cce60",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Handling API Authentication\n",
+        "\n",
+        "Some APIs require authentication. The `requests` library supports various authentication methods, including API keys and OAuth.\n",
+        "\n",
+        "#### Example: Using an API Key\n"
+      ],
+      "id": "210f3e2c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "\n",
+        "# Define the API endpoint and your API key\n",
+        "url = 'https://api.example.com/data'\n",
+        "api_key = 'your_api_key_here'\n",
+        "\n",
+        "# Set the headers with the API key\n",
+        "headers = {\n",
+        "    'Authorization': f'Bearer {api_key}'\n",
+        "}\n",
+        "\n",
+        "# Make a GET request to the API\n",
+        "response = requests.get(url, headers=headers)\n",
+        "\n",
+        "if response.status_code == 200:\n",
+        "    # Parse the JSON data\n",
+        "    data = response.json()\n",
+        "    print(data)\n",
+        "else:\n",
+        "    print(f\"Failed to retrieve data: {response.status_code}\")"
+      ],
+      "id": "7955a578",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Error Handling\n",
+        "\n",
+        "Proper error handling is essential when working with APIs to ensure your application can gracefully handle unexpected responses.\n",
+        "\n",
+        "#### Example: Handling Errors in API Requests\n"
+      ],
+      "id": "9ed70676"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "\n",
+        "# Define the API endpoint\n",
+        "url = 'https://api.exchangerate-api.com/v4/latest/INVALID'\n",
+        "\n",
+        "# Make a GET request to the API\n",
+        "response = requests.get(url)\n",
+        "\n",
+        "try:\n",
+        "    response.raise_for_status()\n",
+        "    data = response.json()\n",
+        "    print(data)\n",
+        "except requests.exceptions.HTTPError as errh:\n",
+        "    print(f\"HTTP Error: {errh}\")\n",
+        "except requests.exceptions.ConnectionError as errc:\n",
+        "    print(f\"Error Connecting: {errc}\")\n",
+        "except requests.exceptions.Timeout as errt:\n",
+        "    print(f\"Timeout Error: {errt}\")\n",
+        "except requests.exceptions.RequestException as err:\n",
+        "    print(f\"OOps: Something Else {err}\")"
+      ],
+      "id": "f7a84feb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Example: Integrating External Data into Your Application\n",
+        "\n",
+        "Let's combine what we've learned to build a small application that fetches and displays the current exchange rates.\n"
+      ],
+      "id": "73a933fe"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "import json\n",
+        "\n",
+        "def fetch_exchange_rates(base_currency):\n",
+        "    url = f'https://api.exchangerate-api.com/v4/latest/{base_currency}'\n",
+        "    response = requests.get(url)\n",
+        "    \n",
+        "    if response.status_code == 200:\n",
+        "        data = response.json()\n",
+        "        return data['rates']\n",
+        "    else:\n",
+        "        return None\n",
+        "\n",
+        "def display_exchange_rates(rates):\n",
+        "    if rates:\n",
+        "        print(\"Exchange Rates:\")\n",
+        "        for currency, rate in rates.items():\n",
+        "            print(f\"{currency}: {rate}\")\n",
+        "    else:\n",
+        "        print(\"Failed to retrieve exchange rates\")\n",
+        "\n",
+        "# Fetch and display exchange rates for USD\n",
+        "rates = fetch_exchange_rates('USD')\n",
+        "display_exchange_rates(rates)"
+      ],
+      "id": "c67d6ae5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Conclusion\n",
+        "\n",
+        "Interacting with web APIs is a powerful way to integrate external data and services into your Python applications. By using the `requests` library to make HTTP requests and the `json` module to handle JSON data, you can efficiently fetch, send, and process data from various APIs. Proper error handling and understanding of authentication methods are crucial for robust API interactions.\n",
+        "\n",
+        "# Deep Dive Tutorial on the `requests` Python Module for Interacting with APIs\n",
+        "\n",
+        "The `requests` module is a simple and elegant HTTP library for Python. It is designed to be user-friendly and easy to use for making HTTP requests to interact with APIs. This deep dive tutorial will cover the fundamentals and advanced usage of the `requests` module.\n",
+        "\n",
+        "## Table of Contents\n",
+        "\n",
+        "1. [Introduction to `requests`](#introduction-to-requests)\n",
+        "2. [Installing `requests`](#installing-requests)\n",
+        "3. [Making HTTP Requests](#making-http-requests)\n",
+        "    - [GET Request](#get-request)\n",
+        "    - [POST Request](#post-request)\n",
+        "    - [PUT Request](#put-request)\n",
+        "    - [DELETE Request](#delete-request)\n",
+        "4. [Handling Responses](#handling-responses)\n",
+        "    - [Status Codes](#status-codes)\n",
+        "    - [Response Content](#response-content)\n",
+        "    - [JSON Responses](#json-responses)\n",
+        "5. [Customizing Requests](#customizing-requests)\n",
+        "    - [Headers](#headers)\n",
+        "    - [Query Parameters](#query-parameters)\n",
+        "    - [Request Body](#request-body)\n",
+        "    - [Timeouts](#timeouts)\n",
+        "6. [Session Objects](#session-objects)\n",
+        "7. [Handling Authentication](#handling-authentication)\n",
+        "8. [Error Handling](#error-handling)\n",
+        "9. [Advanced Usage](#advanced-usage)\n",
+        "    - [Streaming Downloads](#streaming-downloads)\n",
+        "    - [Uploading Files](#uploading-files)\n",
+        "    - [Custom Transport Adapters](#custom-transport-adapters)\n",
+        "10. [Conclusion](#conclusion)\n",
+        "\n",
+        "## Introduction to `requests`\n",
+        "\n",
+        "The `requests` module allows you to send HTTP requests using Python. It abstracts the complexities of making requests behind a simple API, allowing you to send HTTP requests to interact with web resources like REST APIs.\n",
+        "\n",
+        "## Installing `requests`\n",
+        "\n",
+        "To install the `requests` module, you can use pip:\n",
+        "\n",
+        "```sh\n",
+        "pip install requests\n",
+        "```\n",
+        "\n",
+        "## Making HTTP Requests\n",
+        "\n",
+        "The `requests` module supports all the major HTTP methods, such as GET, POST, PUT, DELETE, etc. Each method corresponds to a function within the module.\n",
+        "\n",
+        "### GET Request\n",
+        "\n",
+        "A GET request is used to retrieve data from a server. Here's how to make a simple GET request:\n"
+      ],
+      "id": "7fcf5bb4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "\n",
+        "response = requests.get('https://api.example.com/data')\n",
+        "print(response.status_code)\n",
+        "print(response.text)"
+      ],
+      "id": "aef750a4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### POST Request\n",
+        "\n",
+        "A POST request is used to send data to a server. Here's an example:\n"
+      ],
+      "id": "5eb4e0a7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "\n",
+        "data = {'key1': 'value1', 'key2': 'value2'}\n",
+        "response = requests.post('https://api.example.com/data', data=data)\n",
+        "print(response.status_code)\n",
+        "print(response.text)"
+      ],
+      "id": "92212993",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### PUT Request\n",
+        "\n",
+        "A PUT request is used to update data on a server. Here's an example:\n"
+      ],
+      "id": "cb131ca7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "\n",
+        "data = {'key1': 'new_value1', 'key2': 'new_value2'}\n",
+        "response = requests.put('https://api.example.com/data/1', data=data)\n",
+        "print(response.status_code)\n",
+        "print(response.text)"
+      ],
+      "id": "0f56bfb2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### DELETE Request\n",
+        "\n",
+        "A DELETE request is used to delete data from a server. Here's an example:\n"
+      ],
+      "id": "c2acbef0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "\n",
+        "response = requests.delete('https://api.example.com/data/1')\n",
+        "print(response.status_code)\n",
+        "print(response.text)"
+      ],
+      "id": "58770a7d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Handling Responses\n",
+        "\n",
+        "### Status Codes\n",
+        "\n",
+        "HTTP status codes indicate whether a specific HTTP request has been successfully completed. `requests` allows you to check the status code of the response:\n"
+      ],
+      "id": "a6f4caf6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "response = requests.get('https://api.example.com/data')\n",
+        "print(response.status_code)\n",
+        "if response.status_code == 200:\n",
+        "    print(\"Success!\")\n",
+        "elif response.status_code == 404:\n",
+        "    print(\"Not Found.\")"
+      ],
+      "id": "8f61a3cb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Response Content\n",
+        "\n",
+        "The content of the response can be accessed in different ways:\n"
+      ],
+      "id": "8962e6e4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "response = requests.get('https://api.example.com/data')\n",
+        "print(response.text)  # Raw text content\n",
+        "print(response.content)  # Raw binary content\n",
+        "print(response.json())  # JSON content (if applicable)"
+      ],
+      "id": "719d7560",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### JSON Responses\n",
+        "\n",
+        "If the response contains JSON data, you can directly decode it:\n"
+      ],
+      "id": "f64202b2"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "response = requests.get('https://api.example.com/data')\n",
+        "data = response.json()\n",
+        "print(data)"
+      ],
+      "id": "190b49a1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Customizing Requests\n",
+        "\n",
+        "### Headers\n",
+        "\n",
+        "You can customize the headers sent with your requests:\n"
+      ],
+      "id": "70bc0a6e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "headers = {'User-Agent': 'my-app/0.0.1'}\n",
+        "response = requests.get('https://api.example.com/data', headers=headers)\n",
+        "print(response.text)"
+      ],
+      "id": "127f90ca",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Query Parameters\n",
+        "\n",
+        "You can add query parameters to your requests:\n"
+      ],
+      "id": "6fc27a8e"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "params = {'param1': 'value1', 'param2': 'value2'}\n",
+        "response = requests.get('https://api.example.com/data', params=params)\n",
+        "print(response.url)\n",
+        "print(response.text)"
+      ],
+      "id": "2dcd8f06",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Request Body\n",
+        "\n",
+        "For POST and PUT requests, you can include data in the request body:\n"
+      ],
+      "id": "6655da8f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "data = {'key1': 'value1', 'key2': 'value2'}\n",
+        "response = requests.post('https://api.example.com/data', data=data)\n",
+        "print(response.text)"
+      ],
+      "id": "840b0087",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "You can also send JSON data by using the `json` parameter:\n"
+      ],
+      "id": "63bd7e9a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import json\n",
+        "\n",
+        "data = {'key1': 'value1', 'key2': 'value2'}\n",
+        "response = requests.post('https://api.example.com/data', json=data)\n",
+        "print(response.text)"
+      ],
+      "id": "735d6d59",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Timeouts\n",
+        "\n",
+        "You can specify a timeout for your requests:\n"
+      ],
+      "id": "0f79e9f0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "response = requests.get('https://api.example.com/data', timeout=5)\n",
+        "print(response.text)"
+      ],
+      "id": "c10e7a30",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Session Objects\n",
+        "\n",
+        "A `Session` object allows you to persist certain parameters across requests. It also persists cookies across all requests made from the session instance.\n"
+      ],
+      "id": "b54768f9"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "session = requests.Session()\n",
+        "session.headers.update({'User-Agent': 'my-app/0.0.1'})\n",
+        "\n",
+        "response = session.get('https://api.example.com/data')\n",
+        "print(response.text)"
+      ],
+      "id": "3e596fc5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Handling Authentication\n",
+        "\n",
+        "The `requests` module supports various types of authentication, such as Basic Auth, Digest Auth, OAuth, etc.\n",
+        "\n",
+        "### Basic Authentication\n"
+      ],
+      "id": "39250645"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from requests.auth import HTTPBasicAuth\n",
+        "\n",
+        "response = requests.get('https://api.example.com/data', auth=HTTPBasicAuth('user', 'pass'))\n",
+        "print(response.text)"
+      ],
+      "id": "551439c1",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Bearer Token Authentication\n"
+      ],
+      "id": "e0456770"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "headers = {'Authorization': 'Bearer YOUR_ACCESS_TOKEN'}\n",
+        "response = requests.get('https://api.example.com/data', headers=headers)\n",
+        "print(response.text)"
+      ],
+      "id": "abc510b5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Error Handling\n",
+        "\n",
+        "The `requests` module provides built-in exception handling for common HTTP errors.\n"
+      ],
+      "id": "75da4160"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "try:\n",
+        "    response = requests.get('https://api.example.com/data')\n",
+        "    response.raise_for_status()\n",
+        "except requests.exceptions.HTTPError as err:\n",
+        "    print(f'HTTP error occurred: {err}')\n",
+        "except requests.exceptions.ConnectionError as err:\n",
+        "    print(f'Connection error occurred: {err}')\n",
+        "except requests.exceptions.Timeout as err:\n",
+        "    print(f'Timeout error occurred: {err}')\n",
+        "except requests.exceptions.RequestException as err:\n",
+        "    print(f'An error occurred: {err}')"
+      ],
+      "id": "9d2cb471",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Advanced Usage\n",
+        "\n",
+        "### Streaming Downloads\n",
+        "\n",
+        "For large files, you can stream the content to avoid loading it all into memory at once.\n"
+      ],
+      "id": "bc1ba4f6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "url = 'https://example.com/largefile.zip'\n",
+        "with requests.get(url, stream=True) as response:\n",
+        "    response.raise_for_status()\n",
+        "    with open('largefile.zip', 'wb') as f:\n",
+        "        for chunk in response.iter_content(chunk_size=8192):\n",
+        "            f.write(chunk)"
+      ],
+      "id": "0951f3f5",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Uploading Files\n",
+        "\n",
+        "You can upload files using the `files` parameter.\n"
+      ],
+      "id": "a8ba006f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "files = {'file': open('report.csv', 'rb')}\n",
+        "response = requests.post('https://api.example.com/upload', files=files)\n",
+        "print(response.text)"
+      ],
+      "id": "ad2d818a",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Custom Transport Adapters\n",
+        "\n",
+        "You can create custom transport adapters for specific needs.\n"
+      ],
+      "id": "e5c968d8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from requests.adapters import HTTPAdapter\n",
+        "from requests.packages.urllib3.util.retry import Retry\n",
+        "\n",
+        "class MyAdapter(HTTPAdapter):\n",
+        "    def init_poolmanager(self, *args, **kwargs):\n",
+        "        kwargs['retries'] = Retry(total=10, backoff_factor=0.1)\n",
+        "        super(MyAdapter, self).init_poolmanager(*args, **kwargs)\n",
+        "\n",
+        "session = requests.Session()\n",
+        "session.mount('https://', MyAdapter())\n",
+        "\n",
+        "response = session.get('https://api.example.com/data')\n",
+        "print(response.text)"
+      ],
+      "id": "f30af73b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Conclusion\n",
+        "\n",
+        "The `requests` module is a powerful and flexible library for making HTTP requests in Python. This tutorial covered the basics of making requests, handling responses, customizing requests, and using advanced features like streaming downloads and file uploads. By mastering the `requests` module, you can easily interact with web services and APIs in your Python applications.\n",
+        "\n",
+        "# Deep Dive Tutorial on the `json` Python Module for Interacting with APIs\n",
+        "\n",
+        "The `json` module in Python provides powerful tools for parsing, serializing, and deserializing JSON data. JSON (JavaScript Object Notation) is a lightweight data interchange format that is easy for humans to read and write, and easy for machines to parse and generate. This deep dive tutorial will cover the fundamentals and advanced usage of the `json` module in the context of interacting with APIs.\n",
+        "\n",
+        "## Table of Contents\n",
+        "\n",
+        "1. [Introduction to JSON](#introduction-to-json)\n",
+        "2. [Installing `json`](#installing-json)\n",
+        "3. [Basic Usage](#basic-usage)\n",
+        "    - [Parsing JSON Data](#parsing-json-data)\n",
+        "    - [Serializing Data to JSON](#serializing-data-to-json)\n",
+        "4. [Interacting with APIs](#interacting-with-apis)\n",
+        "    - [Sending JSON Data](#sending-json-data)\n",
+        "    - [Receiving JSON Data](#receiving-json-data)\n",
+        "5. [Advanced Usage](#advanced-usage)\n",
+        "    - [Custom Serialization](#custom-serialization)\n",
+        "    - [Custom Deserialization](#custom-deserialization)\n",
+        "    - [Working with Complex Data Structures](#working-with-complex-data-structures)\n",
+        "6. [Error Handling](#error-handling)\n",
+        "7. [Practical Examples](#practical-examples)\n",
+        "    - [Example 1: GitHub API](#example-1-github-api)\n",
+        "    - [Example 2: OpenWeatherMap API](#example-2-openweathermap-api)\n",
+        "8. [Conclusion](#conclusion)\n",
+        "\n",
+        "## Introduction to JSON\n",
+        "\n",
+        "JSON (JavaScript Object Notation) is a lightweight data interchange format that is easy to read and write. It is used extensively in APIs to exchange data between servers and clients. JSON data consists of key-value pairs, arrays, and nested objects.\n",
+        "\n",
+        "## Installing `json`\n",
+        "\n",
+        "The `json` module is included in Python's standard library, so you don't need to install it separately. You can start using it by simply importing it:\n"
+      ],
+      "id": "f52c30bc"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import json"
+      ],
+      "id": "494bc538",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Basic Usage\n",
+        "\n",
+        "### Parsing JSON Data\n",
+        "\n",
+        "To parse JSON data (convert JSON string to Python dictionary), use the `json.loads()` function:\n"
+      ],
+      "id": "9c3d439f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import json\n",
+        "\n",
+        "json_data = '{\"name\": \"John\", \"age\": 30, \"city\": \"New York\"}'\n",
+        "parsed_data = json.loads(json_data)\n",
+        "print(parsed_data)  # Output: {'name': 'John', 'age': 30, 'city': 'New York'}"
+      ],
+      "id": "33acd494",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "You can also parse JSON data from a file using the `json.load()` function:\n"
+      ],
+      "id": "1ca6c432"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import json\n",
+        "\n",
+        "with open('data.json', 'r') as file:\n",
+        "    parsed_data = json.load(file)\n",
+        "print(parsed_data)"
+      ],
+      "id": "a5fbbae8",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Serializing Data to JSON\n",
+        "\n",
+        "To serialize Python data structures (like dictionaries and lists) to JSON, use the `json.dumps()` function:\n"
+      ],
+      "id": "cb9fb8e5"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import json\n",
+        "\n",
+        "data = {\"name\": \"John\", \"age\": 30, \"city\": \"New York\"}\n",
+        "json_data = json.dumps(data)\n",
+        "print(json_data)  # Output: {\"name\": \"John\", \"age\": 30, \"city\": \"New York\"}"
+      ],
+      "id": "db83a17b",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "You can also serialize data to a JSON file using the `json.dump()` function:\n"
+      ],
+      "id": "c217b141"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import json\n",
+        "\n",
+        "data = {\"name\": \"John\", \"age\": 30, \"city\": \"New York\"}\n",
+        "with open('data.json', 'w') as file:\n",
+        "    json.dump(data, file)"
+      ],
+      "id": "455ac3bc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Interacting with APIs\n",
+        "\n",
+        "### Sending JSON Data\n",
+        "\n",
+        "When interacting with APIs, you often need to send JSON data in HTTP requests. This can be done using the `requests` module along with the `json` module:\n",
+        "\n",
+        "```python\n",
+        "import requests\n",
+        "import json\n",
+        "\n",
+        "url = 'https://api.example.com/data'\n",
+        "data = {\"name\": \"John\", \"age\": 30}\n",
+        "headers = {'Content-Type': 'application/json'}\n",
+        "\n",
+        "response = requests.post(url, data=json.dumps(data), headers=headers)\n",
+        "print(response.status_code)\n",
+        "print(response.text)\n",
+        "```\n",
+        "\n",
+        "Alternatively, the `requests` module provides a convenient `json` parameter to automatically handle JSON serialization:\n",
+        "\n",
+        "```python\n",
+        "import requests\n",
+        "\n",
+        "url = 'https://api.example.com/data'\n",
+        "data = {\"name\": \"John\", \"age\": 30}\n",
+        "\n",
+        "response = requests.post(url, json=data)\n",
+        "print(response.status_code)\n",
+        "print(response.text)\n",
+        "```\n",
+        "\n",
+        "### Receiving JSON Data\n",
+        "\n",
+        "When receiving JSON data from an API, you can parse the JSON response using the `json` method provided by the `requests` module:\n",
+        "\n",
+        "```python\n",
+        "import requests\n",
+        "\n",
+        "url = 'https://api.example.com/data'\n",
+        "response = requests.get(url)\n",
+        "parsed_data = response.json()\n",
+        "print(parsed_data)\n",
+        "```\n",
+        "\n",
+        "## Advanced Usage\n",
+        "\n",
+        "### Custom Serialization\n",
+        "\n",
+        "Sometimes, you need to customize the serialization process, such as handling non-serializable objects. You can achieve this by defining a custom serialization function and passing it to the `json.dumps()` function using the `default` parameter:\n"
+      ],
+      "id": "f7d0e6c7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import json\n",
+        "from datetime import datetime\n",
+        "\n",
+        "def custom_serializer(obj):\n",
+        "    if isinstance(obj, datetime):\n",
+        "        return obj.isoformat()\n",
+        "    raise TypeError(\"Type not serializable\")\n",
+        "\n",
+        "data = {\"name\": \"John\", \"birthdate\": datetime(1990, 5, 6)}\n",
+        "json_data = json.dumps(data, default=custom_serializer)\n",
+        "print(json_data)"
+      ],
+      "id": "4635e4df",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Custom Deserialization\n",
+        "\n",
+        "Similarly, you can customize the deserialization process by defining a custom deserialization function and passing it to the `json.loads()` function using the `object_hook` parameter:\n"
+      ],
+      "id": "3e5cb421"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import json\n",
+        "from datetime import datetime\n",
+        "\n",
+        "def custom_deserializer(dct):\n",
+        "    if 'birthdate' in dct:\n",
+        "        dct['birthdate'] = datetime.fromisoformat(dct['birthdate'])\n",
+        "    return dct\n",
+        "\n",
+        "json_data = '{\"name\": \"John\", \"birthdate\": \"1990-05-06T00:00:00\"}'\n",
+        "parsed_data = json.loads(json_data, object_hook=custom_deserializer)\n",
+        "print(parsed_data)"
+      ],
+      "id": "1820cfd9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Working with Complex Data Structures\n",
+        "\n",
+        "The `json` module can handle complex data structures, including nested dictionaries and lists. Here's an example of serializing and deserializing a complex data structure:\n"
+      ],
+      "id": "bb919a06"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import json\n",
+        "\n",
+        "data = {\n",
+        "    \"name\": \"John\",\n",
+        "    \"age\": 30,\n",
+        "    \"address\": {\n",
+        "        \"street\": \"123 Main St\",\n",
+        "        \"city\": \"New York\"\n",
+        "    },\n",
+        "    \"phones\": [\"123-456-7890\", \"987-654-3210\"]\n",
+        "}\n",
+        "\n",
+        "# Serialize to JSON\n",
+        "json_data = json.dumps(data, indent=4)\n",
+        "print(json_data)\n",
+        "\n",
+        "# Deserialize from JSON\n",
+        "parsed_data = json.loads(json_data)\n",
+        "print(parsed_data)"
+      ],
+      "id": "a9cf97c9",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Error Handling\n",
+        "\n",
+        "When working with JSON data, you may encounter various errors. The `json` module provides specific exceptions to handle these errors gracefully:\n",
+        "\n",
+        "- `json.JSONDecodeError`: Raised when there is an error decoding JSON data.\n",
+        "- `TypeError`: Raised when there is an error serializing non-serializable data.\n"
+      ],
+      "id": "7126a50b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import json\n",
+        "\n",
+        "# Handling JSON decoding errors\n",
+        "try:\n",
+        "    json_data = '{\"name\": \"John\", \"age\": 30'\n",
+        "    parsed_data = json.loads(json_data)\n",
+        "except json.JSONDecodeError as e:\n",
+        "    print(f\"Error decoding JSON: {e}\")\n",
+        "\n",
+        "# Handling serialization errors\n",
+        "try:\n",
+        "    data = {\"name\": \"John\", \"age\": 30, \"birthdate\": object()}\n",
+        "    json_data = json.dumps(data)\n",
+        "except TypeError as e:\n",
+        "    print(f\"Error serializing data: {e}\")"
+      ],
+      "id": "509fbdd2",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Practical Examples\n",
+        "\n",
+        "### Example 1: GitHub API\n",
+        "\n",
+        "Let's create a script that interacts with the GitHub API to fetch user information:\n"
+      ],
+      "id": "d06caf3c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "\n",
+        "def get_github_user(username):\n",
+        "    url = f\"https://api.github.com/users/{username}\"\n",
+        "    response = requests.get(url)\n",
+        "    \n",
+        "    if response.status_code == 200:\n",
+        "        user_data = response.json()\n",
+        "        return {\n",
+        "            \"name\": user_data[\"name\"],\n",
+        "            \"public_repos\": user_data[\"public_repos\"],\n",
+        "            \"followers\": user_data[\"followers\"]\n",
+        "        }\n",
+        "    else:\n",
+        "        return None\n",
+        "\n",
+        "username = \"octocat\"\n",
+        "user_info = get_github_user(username)\n",
+        "print(user_info)"
+      ],
+      "id": "fe1c3c70",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### Example 2: OpenWeatherMap API\n",
+        "\n",
+        "Let's create a script that interacts with the OpenWeatherMap API to fetch weather data for a city:\n"
+      ],
+      "id": "c5180a3a"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import requests\n",
+        "\n",
+        "def get_weather(city, api_key):\n",
+        "    url = f\"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}\"\n",
+        "    response = requests.get(url)\n",
+        "    \n",
+        "    if response.status_code == 200:\n",
+        "        weather_data = response.json()\n",
+        "        return {\n",
+        "            \"city\": weather_data[\"name\"],\n",
+        "            \"temperature\": weather_data[\"main\"][\"temp\"],\n",
+        "            \"weather\": weather_data[\"weather\"][0][\"description\"]\n",
+        "        }\n",
+        "    else:\n",
+        "        return None\n",
+        "\n",
+        "city = \"London\"\n",
+        "api_key = \"your_api_key\"\n",
+        "weather_info = get_weather(city, api_key)\n",
+        "print(weather_info)"
+      ],
+      "id": "0e223304",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Conclusion\n",
+        "\n",
+        "The `json` module in Python is a powerful tool for working with JSON data. It provides simple functions for parsing and serializing JSON data, handling errors, and customizing the serialization and deserialization processes. This tutorial covered the basics and advanced usage of the `json` module, as well as practical examples of interacting with APIs. By mastering the `json` module, you can easily work with JSON data in your Python applications and effectively interact with web APIs."
+      ],
+      "id": "9306e86b"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/markumreed/Documents/BAIS_program_updates/python_for_BAIS/venv/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Gregory Gonzalez",
+        "address": "56015 Anthony Terrace\nAdkinsborough, MN 09947",
+        "email": "samuelreed@gmail.com",
+        "phone_number": "(349)055-2445x308",
+        "date_of_birth": "1983-07-28",
+        "age": 17
+    },
+    {
+        "name": "Kathryn Best",
+        "address": "44171 Jacobs Vista Apt. 866\nChristinashire, NM 40363",
+        "email": "erinreynolds@powell-anthony.net",
+        "phone_number": "001-242-210-9466",
+        "date_of_birth": "1978-03-25",
+        "age": 37
+    },
+    {
+        "name": "Matthew Rodgers",
+        "address": "9442 Campbell Oval Suite 003\nWest Williamfurt, WI 37366",
+        "email": "wanda24@sullivan.com",
+        "phone_number": "721.472.9613",
+        "date_of_birth": "1908-11-27",
+        "age": 108
+    },
+    {
+        "name": "Heather Hansen",
+        "address": "503 Jenny Garden\nNorth Stephanie, NV 89247",
+        "email": "christinecampbell@sanchez-clark.biz",
+        "phone_number": "001-281-660-3125",
+        "date_of_birth": "1991-12-26",
+        "age": 29
+    },
+    {
+        "name": "Lori Schaefer",
+        "address": "43111 Petty Road Suite 463\nNorth Catherine, PA 90103",
+        "email": "freemanjessica@gmail.com",
+        "phone_number": "+1-917-889-8807x4855",
+        "date_of_birth": "1917-01-24",
+        "age": 87
+    },
+    {
+        "name": "Kimberly Clarke",
+        "address": "640 Torres Skyway Apt. 175\nEmilyside, HI 95695",
+        "email": "staceyreynolds@yahoo.com",
+        "phone_number": "215.990.7578x196",
+        "date_of_birth": "1979-05-11",
+        "age": 29
+    },
+    {
+        "name": "Tara Freeman",
+        "address": "9112 Thomas Roads\nTaraville, WY 84745",
+        "email": "njohnson@hotmail.com",
+        "phone_number": "791.109.2734x525",
+        "date_of_birth": "1936-08-16",
+        "age": 74
+    },
+    {
+        "name": "Daniel Vaughn",
+        "address": "630 Vargas Tunnel\nLake Rebeccaside, HI 03481",
+        "email": "cliffordrosario@hahn.biz",
+        "phone_number": "9857234414",
+        "date_of_birth": "2018-08-09",
+        "age": -3
+    },
+    {
+        "name": "Steven Martin",
+        "address": "28443 Phillips Estate Suite 185\nPenaburgh, TX 53958",
+        "email": "louis92@mills.info",
+        "phone_number": "(885)992-8125",
+        "date_of_birth": "1927-04-23",
+        "age": 93
+    },
+    {
+        "name": "Heather Gonzalez",
+        "address": "03205 Manuel Stravenue\nNew Corey, OH 82410",
+        "email": "egonzalez@yahoo.com",
+        "phone_number": "+1-785-146-1714x79345",
+        "date_of_birth": "1986-01-30",
+        "age": 25
+    }
+]
