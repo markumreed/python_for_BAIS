@@ -101,7 +101,7 @@ Python's built-in `pdb` module provides an interactive debugger that allows you 
 
 ##### Example: Using `pdb` for Debugging
 
-```{python}
+```python
 import pdb
 
 def calculate_total_price(price, quantity):
