@@ -12,7 +12,7 @@ The `try` block lets you test a block of code for errors, and the `except` block
 
 ##### Example: Handling Division by Zero
 
-```{python}
+```python
 def divide(a, b):
     try:
         result = a / b
@@ -32,7 +32,7 @@ You can catch multiple exceptions by specifying different `except` blocks for ea
 
 ##### Example: Handling Different Errors
 
-```{python}
+```python
 def read_file(filename):
     try:
         with open(filename, 'r') as file:
@@ -56,7 +56,7 @@ The `else` block can be used to execute code if no exceptions are raised, and th
 
 ##### Example: Else and Finally Blocks
 
-```{python}
+```python
 def process_file(filename):
     try:
         with open(filename, 'r') as file:
@@ -84,7 +84,7 @@ One of the simplest debugging techniques is using print statements to track the 
 
 ##### Example: Using Print Statements
 
-```{python}
+```python
 def calculate_total_price(price, quantity):
     print(f"Price: {price}, Quantity: {quantity}")
     total = price * quantity
@@ -146,7 +146,7 @@ Visual Studio Code (VS Code) is a popular IDE that provides powerful debugging t
 2. Set a breakpoint in the `calculate_total_price` function.
 3. Start the debugger and inspect the variables when the breakpoint is hit.
 
-```{python}
+```python
 def calculate_total_price(price, quantity):
     total = price * quantity
     return total
@@ -190,7 +190,7 @@ The `try` block lets you test a block of code for errors. The `except` block let
 
 ### Basic Syntax
 
-```{python}
+```python
 try:
     # Code that may raise an exception
     result = 10 / 0
@@ -201,7 +201,7 @@ except ZeroDivisionError:
 
 ### Example
 
-```{python}
+```python
 try:
     number = int(input("Enter a number: "))
     result = 100 / number
@@ -218,7 +218,7 @@ You can handle multiple exceptions by specifying multiple `except` blocks.
 
 ### Example
 
-```{python}
+```python
 try:
     file = open("data.txt", "r")
     number = int(file.readline())
@@ -237,7 +237,7 @@ The `else` block executes if no exceptions were raised in the `try` block.
 
 ### Example
 
-```{python}
+```python
 try:
     number = int(input("Enter a number: "))
     result = 100 / number
@@ -255,7 +255,7 @@ The `finally` block lets you execute code, regardless of whether an exception wa
 
 ### Example
 
-```{python}
+```python
 try:
     number = int(input("Enter a number: "))
     result = 100 / number
@@ -275,7 +275,7 @@ You can use the `raise` statement to generate an exception if a condition occurs
 
 ### Example
 
-```{python}
+```python
 def check_positive(number):
     if number < 0:
         raise ValueError("The number must be positive")
@@ -293,7 +293,7 @@ You can define custom exceptions by creating a new class that inherits from the 
 
 ### Example
 
-```{python}
+```python
 class NegativeNumberError(Exception):
     pass
 
@@ -323,7 +323,7 @@ The `pdb` module allows you to set breakpoints, step through code, inspect varia
 
 ### Example
 
-```{python}
+```python
 import pdb
 
 def divide(a, b):
@@ -348,7 +348,7 @@ except ZeroDivisionError as e:
 
 ### Example 1: File Operations
 
-```{python}
+```python
 import pdb
 
 def read_file(file_path):
@@ -368,7 +368,7 @@ print(file_content)
 
 ### Example 2: Network Operations
 
-```{python}
+```python
 import requests
 import pdb
 
@@ -457,7 +457,7 @@ Create a new Python project or open an existing one.
 
 Add some sample Python code to `app.py`:
 
-```{python}
+```python
 def divide(a, b):
     return a / b
 
@@ -565,7 +565,7 @@ VSCode will create a `.vscode` folder in your project directory with a `launch.j
 
 Create a simple web scraper using `requests` and `BeautifulSoup`.
 
-```{python}
+```python
 import requests
 from bs4 import BeautifulSoup
 
@@ -598,7 +598,7 @@ Set breakpoints and use the debugger to inspect the `html` and `title` variables
 
 Create a data analysis script using `pandas`.
 
-```{python}
+```python
 import pandas as pd
 
 def load_data(file_path):

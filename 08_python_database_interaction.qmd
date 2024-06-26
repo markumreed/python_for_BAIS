@@ -1,2492 +1,513 @@
-## Introduction to Database Interaction with Python
+# Deep Dive Tutorial on SQLite3 for Interacting with SQLite Databases in Python
 
-Interacting with databases is a crucial aspect of many applications. Python provides robust libraries for connecting to databases, performing CRUD (Create, Read, Update, Delete) operations, and managing database connections. This tutorial will cover connecting to and interacting with databases using Python, focusing on `sqlite3` for SQLite databases and `SQLAlchemy` for Object Relational Mapping (ORM).
+SQLite is a lightweight, disk-based database that doesn’t require a separate server process. Python’s built-in `sqlite3` module provides an interface for interacting with SQLite databases. In this tutorial, we'll cover the following topics with complete working examples:
 
-### Interacting with SQLite Databases using `sqlite3`
+1. **Setting up the SQLite Database**
+2. **Inserting Data**
+3. **Querying Data**
+4. **Updating Data**
+5. **Deleting Data**
+6. **Exporting Data to CSV**
+7. **Importing Data from CSV**
+8. **Handling Errors**
 
-SQLite is a C library that provides a lightweight, disk-based database. It doesn't require a separate server process, making it an excellent choice for embedded systems and small applications.
+## 1. Setting up the SQLite Database
 
-#### Connecting to a Database
+First, let's create a SQLite database and a table for our data. We'll create an `employees` table with columns for `id`, `name`, `position`, `salary`, and `hire_date`.
 
-You can connect to an SQLite database using the `sqlite3` module. If the database does not exist, it will be created.
-
-```{python}
+```python
 import sqlite3
+import datetime
 
-# Connect to SQLite database
-connection = sqlite3.connect('example.db')
+# Connect to the database (or create it if it doesn't exist)
+conn = sqlite3.connect('example.db')
 
 # Create a cursor object
-cursor = connection.cursor()
-```
+cursor = conn.cursor()
 
-#### Creating a Table
+# Drop the table if it exists to recreate it with the correct schema
+cursor.execute("DROP TABLE IF EXISTS employees")
 
-You can create a table using the `CREATE TABLE` SQL statement.
+# Create a table with a date column
+cursor.execute('''CREATE TABLE employees
+                  (id INTEGER PRIMARY KEY, name TEXT, position TEXT, salary REAL, hire_date TEXT)''')
 
-```{python}
-# Create a table
-cursor.execute('''
-CREATE TABLE IF NOT EXISTS employees (
-    id INTEGER PRIMARY KEY,
-    name TEXT NOT NULL,
-    age INTEGER,
-    department TEXT
-)
-''')
+# Insert a date
+now = datetime.datetime.now().isoformat()
+cursor.execute("INSERT INTO employees (name, position, salary, hire_date) VALUES (?, ?, ?, ?)",
+               ('Bob', 'Developer', 65000, now))
+conn.commit()
 
-# Commit the changes
-connection.commit()
-```
-
-#### Inserting Data
-
-You can insert data into the table using the `INSERT INTO` SQL statement.
-
-```{python}
-# Insert data into the table
-cursor.execute('''
-INSERT INTO employees (name, age, department)
-VALUES ('John Doe', 30, 'Finance')
-''')
-
-# Commit the changes
-connection.commit()
-```
-
-#### Reading Data
-
-You can read data from the table using the `SELECT` SQL statement.
-
-```{python}
-# Read data from the table
-cursor.execute('SELECT * FROM employees')
+# Query dates
+cursor.execute("SELECT name, hire_date FROM employees")
 rows = cursor.fetchall()
-
 for row in rows:
     print(row)
+
+conn.close()
 ```
 
-#### Updating Data
+## 2. Inserting Data
 
-You can update data in the table using the `UPDATE` SQL statement.
+Next, we will insert some rows into our `employees` table.
 
-```{python}
-# Update data in the table
-cursor.execute('''
-UPDATE employees
-SET age = 31
-WHERE name = 'John Doe'
-''')
+```python
+import sqlite3
+import datetime
+
+conn = sqlite3.connect('example.db')
+cursor = conn.cursor()
+
+# Insert a row of data
+cursor.execute("INSERT INTO employees (name, position, salary, hire_date) VALUES (?, ?, ?, ?)",
+               ('John Doe', 'Software Engineer', 75000, datetime.datetime.now().isoformat()))
+cursor.execute("INSERT INTO employees (name, position, salary, hire_date) VALUES (?, ?, ?, ?)",
+               ('Jane Doe', 'Project Manager', 90000, datetime.datetime.now().isoformat()))
 
 # Commit the changes
-connection.commit()
+conn.commit()
+conn.close()
 ```
 
-#### Deleting Data
+## 3. Querying Data
 
-You can delete data from the table using the `DELETE` SQL statement.
+Let's query all rows from our `employees` table.
 
-```{python}
-# Delete data from the table
-cursor.execute('''
-DELETE FROM employees
-WHERE name = 'John Doe'
-''')
+```python
+import sqlite3
+
+conn = sqlite3.connect('example.db')
+cursor = conn.cursor()
+
+# Query all rows
+cursor.execute("SELECT * FROM employees")
+rows = cursor.fetchall()
+
+# Print each row
+for row in rows:
+    print(row)
+
+conn.close()
+```
+
+## 4. Updating Data
+
+We can update existing rows in our `employees` table.
+
+```python
+import sqlite3
+
+conn = sqlite3.connect('example.db')
+cursor = conn.cursor()
+
+# Update a row of data
+cursor.execute("UPDATE employees SET salary = 80000 WHERE name = 'John Doe'")
 
 # Commit the changes
-connection.commit()
+conn.commit()
+conn.close()
 ```
 
-#### Closing the Connection
+## 5. Deleting Data
 
-Always close the connection when you're done interacting with the database.
+We can also delete rows from our `employees` table.
 
-```{python}
-# Close the connection
-connection.close()
+```python
+import sqlite3
+
+conn = sqlite3.connect('example.db')
+cursor = conn.cursor()
+
+# Delete a row of data
+cursor.execute("DELETE FROM employees WHERE name = 'John Doe'")
+
+# Commit the changes
+conn.commit()
+conn.close()
 ```
 
-### Interacting with Databases using SQLAlchemy
+## 6. Exporting Data to CSV
 
-SQLAlchemy is a powerful ORM library that provides a high-level interface for interacting with databases in Python.
+We can export data from our `employees` table to a CSV file.
 
-#### Installing SQLAlchemy
+```python
+import sqlite3
+import csv
 
-First, install SQLAlchemy using pip:
+conn = sqlite3.connect('example.db')
+cursor = conn.cursor()
+
+# Export data to CSV
+with open('employees.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    cursor.execute("SELECT * FROM employees")
+    rows = cursor.fetchall()
+    writer.writerow([i[0] for i in cursor.description])
+    writer.writerows(rows)
+
+conn.close()
+```
+
+## 7. Importing Data from CSV
+
+We can import data from a CSV file into our `employees` table.
+
+```python
+import sqlite3
+import csv
+
+conn = sqlite3.connect('example.db')
+cursor = conn.cursor()
+
+# Create a table
+cursor.execute("DROP TABLE IF EXISTS employees")
+cursor.execute('''CREATE TABLE employees
+                  (id INTEGER PRIMARY KEY, name TEXT, position TEXT, salary REAL, hire_date TEXT)''')
+
+# Import data from CSV
+with open('employees.csv', 'r') as f:
+    reader = csv.reader(f)
+    next(reader)  # Skip header row
+    for row in reader:
+        cursor.execute("INSERT INTO employees VALUES (?, ?, ?, ?, ?)", row)
+conn.commit()
+
+conn.close()
+```
+
+## 8. Handling Errors
+
+Finally, let's handle potential errors that might occur during database operations.
+
+```python
+import sqlite3
+
+conn = sqlite3.connect('example.db')
+cursor = conn.cursor()
+
+try:
+    cursor.execute("INSERT INTO employees (name, position, salary) VALUES ('Invalid Data')")
+    conn.commit()
+except sqlite3.Error as e:
+    print("An error occurred:", e)
+
+conn.close()
+```
+
+This tutorial provides a comprehensive guide to using the `sqlite3` module in Python for various database operations. You can adapt these examples to suit your specific needs in business analytics and information systems applications.
+
+Sure! Here's a comprehensive deep dive tutorial on using SQLAlchemy for interacting with databases in Python, combining the setup and all CRUD operations including proper handling of sessions and relationships:
+
+Here's the complete and fixed deep dive tutorial on SQLAlchemy for interacting with databases in Python, incorporating the necessary corrections to ensure the `department_id` column issue is resolved.
+
+---
+
+# Deep Dive Tutorial on SQLAlchemy for Interacting with Databases in Python
+
+SQLAlchemy is a powerful SQL toolkit and Object-Relational Mapping (ORM) library for Python. This tutorial will take you through the steps of using SQLAlchemy to interact with databases, focusing on creating tables, performing CRUD (Create, Read, Update, Delete) operations, and establishing relationships between tables. 
+
+## Setting Up the Environment
+
+First, install SQLAlchemy if you haven't already:
 
 ```bash
 pip install sqlalchemy
 ```
 
-#### Connecting to a Database
+## Creating the Engine and Base
 
-You can connect to a database using SQLAlchemy's `create_engine` function.
+The engine is the starting point for any SQLAlchemy application. It represents the core interface to the database. The base class is used to define our classes.
 
-```{python}
+```python
 from sqlalchemy import create_engine
-
-# Create an engine
-engine = create_engine('sqlite:///example.db')
-```
-
-#### Defining a Model
-
-You define models using Python classes and SQLAlchemy's ORM features.
-
-```{python}
-from sqlalchemy.orm import declarative_base
-from sqlalchemy import Column, Integer, String, create_engine
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-Base = declarative_base()
+# Create the engine
+engine = create_engine('sqlite:///example.db', echo=True)
 
+# Define the base class
+Base = declarative_base()
+```
+
+## Defining Models
+
+We'll define two models, `Department` and `Employee`, to represent our tables.
+
+```python
+from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey
+from sqlalchemy.orm import relationship
+import datetime
+
+# Define the Department class
+class Department(Base):
+    __tablename__ = 'departments'
+    
+    id = Column(Integer, primary_key=True)
+    name = Column(String, unique=True)
+    employees = relationship('Employee', back_populates='department')
+
+# Define the Employee class
 class Employee(Base):
     __tablename__ = 'employees'
-
+    
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
-    age = Column(Integer)
-    department = Column(String)
-
-    def __repr__(self):
-        return f"<Employee(name={self.name}, age={self.age}, department={self.department})>"
-
-# Database setup
-DATABASE_URL = "sqlite:///example.db"  # Replace with your database URL
-engine = create_engine(DATABASE_URL)
-
-# Create tables
-Base.metadata.create_all(engine)
-
-# Session setup
-Session = sessionmaker(bind=engine)
-session = Session()
-
-# Example usage
-new_employee = Employee(name="John Doe", age=30, department="Finance")
-session.add(new_employee)
-session.commit()
-
-# Query the database
-for employee in session.query(Employee).all():
-    print(employee)
-
+    name = Column(String)
+    position = Column(String)
+    salary = Column(Float)
+    hire_date = Column(DateTime, default=datetime.datetime.utcnow)
+    department_id = Column(Integer, ForeignKey('departments.id'))
+    department = relationship('Department', back_populates='employees')
 ```
 
-#### Creating a Table
+## Creating Tables
 
-You can create tables in the database using the `create_all` method.
+Drop existing tables and create new ones to ensure a clean state.
 
-```{python}
-# Create tables
+```python
+# Drop all tables (for a clean start, especially during development)
+Base.metadata.drop_all(engine)
+
+# Create all tables
 Base.metadata.create_all(engine)
 ```
 
-#### Creating a Session
+## Creating a Session
 
-You need a session to interact with the database.
+A session is used to interact with the database.
 
-```{python}
-from sqlalchemy.orm import sessionmaker
-
+```python
 # Create a session
 Session = sessionmaker(bind=engine)
 session = Session()
 ```
 
-#### Inserting Data
+## Inserting Data
 
-You can insert data into the database by creating instances of the model and adding them to the session.
+Create a department and add employees to it.
 
-```{python}
-# Insert data
-new_employee = Employee(name='Jane Doe', age=28, department='Marketing')
-session.add(new_employee)
+```python
+# Create a new department
+it_department = Department(name='IT')
+
+# Add the department to the session and commit to get the department ID
+session.add(it_department)
+session.commit()
+
+# Create new employees
+employee1 = Employee(name='John Doe', position='Software Engineer', salary=70000, department=it_department)
+employee2 = Employee(name='Jane Smith', position='Data Scientist', salary=90000, department=it_department)
+
+# Add the employees to the session
+session.add(employee1)
+session.add(employee2)
+
+# Commit the changes to the database
 session.commit()
 ```
 
-#### Reading Data
+## Querying Data
 
-You can read data from the database using the session's `query` method.
+Retrieve data from the database.
 
-```{python}
-# Read data
+```python
+# Query all employees
 employees = session.query(Employee).all()
 for employee in employees:
-    print(employee)
+    print(f'{employee.name} works as a {employee.position} in the {employee.department.name} department.')
+
+# Query specific employee by name
+employee = session.query(Employee).filter_by(name='John Doe').first()
+print(f'{employee.name} was hired on {employee.hire_date}')
 ```
 
-#### Updating Data
+## Updating Data
 
-You can update data in the database by modifying the attributes of the model instance and committing the session.
+Update an employee's salary.
 
-```{python}
-# Update data
-employee = session.query(Employee).filter_by(name='Jane Doe').first()
-employee.age = 29
+```python
+# Update an employee's salary
+employee = session.query(Employee).filter_by(name='John Doe').first()
+employee.salary = 75000
 session.commit()
 ```
 
-#### Deleting Data
+## Deleting Data
 
-You can delete data from the database by deleting the model instance from the session.
+Delete an employee from the database.
 
-```{python}
-# Delete data
-employee = session.query(Employee).filter_by(name='Jane Doe').first()
+```python
+# Delete an employee
+employee = session.query(Employee).filter_by(name='John Doe').first()
 session.delete(employee)
 session.commit()
 ```
 
-### Conclusion
+## Querying Relationships
 
-Interacting with databases is a fundamental skill for developing data-driven applications. Python provides powerful libraries like `sqlite3` for simple database interactions and `SQLAlchemy` for advanced ORM capabilities. By mastering these tools, you can efficiently manage database connections, perform CRUD operations, and build robust applications.
+Query employees by department.
 
-## Establishing Connectivity with SQLAlchemy
-
-### Introduction to SQLAlchemy Engine
-
-Every SQLAlchemy application that connects to a database needs to use an Engine. The Engine acts as a central source of connections to a particular database, providing both a factory and a holding space called a connection pool for these database connections. This tutorial will guide you through the process of establishing connectivity using the Engine, applicable to both ORM and Core users.
-
-### Creating the Engine
-
-The start of any SQLAlchemy application is an object called the Engine. The Engine is typically a global object created just once for a particular database server and is configured using a URL string that describes how it should connect to the database host or backend.
-
-For this tutorial, we will use an in-memory-only SQLite database. This is an easy way to test things without needing a pre-existing database setup. The Engine is created using the `create_engine()` function:
-
-```{python}
-from sqlalchemy import create_engine
-
-# Create an in-memory SQLite database
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-```
-
-### Understanding the URL String
-
-The main argument to `create_engine` is a string URL, in this case, passed as the string `"sqlite+pysqlite:///:memory:"`. This string indicates three important facts to the Engine:
-
-1. **Database Type**: The type of database we are communicating with, specified by `sqlite` in the URL, links SQLAlchemy to an object known as the dialect.
-2. **DBAPI**: The Python DBAPI used to interact with the database. Here, `pysqlite` indicates that we are using the `sqlite3` standard library interface for SQLite. If omitted, SQLAlchemy will use a default DBAPI for the selected database.
-3. **Database Location**: The phrase `/:memory:` indicates that we are using an in-memory-only database. This is perfect for experimenting as it does not require any server or create any new files.
-
-### Lazy Connecting
-
-The Engine, when first returned by `create_engine()`, has not actually tried to connect to the database yet; that happens only the first time it is asked to perform a task against the database. This design pattern is known as lazy initialization.
-
-### Enabling SQL Logging
-
-We have also specified a parameter `echo=True` in `create_engine`, which instructs the Engine to log all the SQL it emits to a Python logger that writes to standard output. This flag is a shorthand way of setting up Python logging and is useful for experimentation in scripts. Many of the SQL examples will include this SQL logging output beneath a `[SQL]` link that, when clicked, will reveal the full SQL interaction.
-
-### Example: Connecting to an In-Memory SQLite Database
-
-Here’s a complete example of how to create an Engine and connect to an in-memory SQLite database. The example includes a discussion of each part of the code.
-
-```{python}
-from sqlalchemy import create_engine, text
-
-# Create an in-memory SQLite database
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-
-# Perform a simple database operation
-with engine.connect() as connection:
-    result = connection.execute(text("SELECT 'Hello, World!'"))
-    print(result.fetchall())
-```
-
-### Discussion
-
-#### Importing Required Modules
 ```python
-from sqlalchemy import create_engine, text
+# Query employees by department
+department = session.query(Department).filter_by(name='IT').first()
+for employee in department.employees:
+    print(f'{employee.name} works in the IT department.')
 ```
-- **`create_engine`**: This function from SQLAlchemy is used to create a new SQLAlchemy Engine instance, which is the starting point for any SQLAlchemy application. It establishes a connection to the database.
-- **`text`**: This function from SQLAlchemy is used to safely execute raw SQL queries. It ensures that SQLAlchemy can properly parse and handle the query.
-
-#### Creating an In-Memory SQLite Database
-```python
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-```
-- **`create_engine("sqlite+pysqlite:///:memory:")`**: This line creates an Engine instance that connects to an in-memory SQLite database. The database resides in memory and will be discarded when the program ends.
-  - **`sqlite+pysqlite:///:memory:`**: This is the database URL. `sqlite+pysqlite` specifies the use of the SQLite database with the pysqlite driver, and `:memory:` indicates that the database is in-memory.
-- **`echo=True`**: This argument enables logging of all the SQL statements issued to the database, which is useful for debugging and understanding the interactions with the database.
-
-#### Performing a Simple Database Operation
-```python
-with engine.connect() as connection:
-    result = connection.execute(text("SELECT 'Hello, World!'"))
-    print(result.fetchall())
-```
-- **`with engine.connect() as connection:`**: This line establishes a connection to the database using a context manager. The context manager ensures that the connection is properly closed after the block of code is executed.
-- **`connection.execute(text("SELECT 'Hello, World!'"))`**: This line executes a raw SQL query. The `text` function wraps the raw SQL query string to ensure SQLAlchemy can handle it correctly.
-- **`result.fetchall()`**: This method retrieves all rows of the query result. In this example, it fetches the result of the `SELECT 'Hello, World!'` query, which is a single row containing the string "Hello, World!".
-
-By using `text` to wrap the raw SQL query and ensuring the use of the correct driver and database URL, this code creates an in-memory SQLite database, executes a simple query, and prints the result without encountering errors.
-### Conclusion
-
-In this tutorial, we have covered the basics of establishing connectivity with SQLAlchemy using the Engine. We created an Engine for an in-memory SQLite database, understood the components of the connection URL, and enabled SQL logging for better visibility into the SQL operations performed by SQLAlchemy. This foundational knowledge is essential for both ORM and Core users as it sets the stage for more advanced database interactions using SQLAlchemy.
-
-## Working with Transactions and the DBAPI with SQLAlchemy
-
-### Introduction
-
-With the Engine object ready, we can dive into the basic operation of an Engine and its primary interactive endpoints: the Connection and the Result. For ORM users, the Session object manages the Engine and emphasizes a transactional SQL execution pattern similar to the Connection. This tutorial will cover how to establish a connection, execute transactions, and work with results using both Core and ORM contexts in SQLAlchemy.
-
-### Establishing a Connection
-
-The primary purpose of the Engine object is to provide a unit of connectivity to the database called the Connection. When working with SQLAlchemy Core, the Connection object is the primary interface for interacting with the database.
-
-#### Creating a Connection
-
-A Connection object can be created using the `engine.connect()` method. It's best to use a context manager to ensure the connection is properly managed and closed.
-
-```{python}
-from sqlalchemy import create_engine, text
-
-# Create an in-memory SQLite database
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-
-# Establishing a connection using a context manager
-with engine.connect() as conn:
-    result = conn.execute(text("SELECT 'hello world'"))
-    print(result.all())
-```
-
-### Transactions
-
-Transactions are crucial for maintaining data integrity. By default, a transaction is always in progress, and a ROLLBACK is issued when the connection scope is released.
-
-#### Committing Changes
-
-To commit changes, use the `Connection.commit()` method within the context block.
-
-```{python}
-with engine.connect() as conn:
-    conn.execute(text("CREATE TABLE some_table (x int, y int)"))
-    conn.execute(
-        text("INSERT INTO some_table (x, y) VALUES (:x, :y)"),
-        [{"x": 1, "y": 1}, {"x": 2, "y": 4}]
-    )
-    conn.commit()
-```
-
-#### Begin Once Style
-
-Alternatively, use `engine.begin()` to manage the connection and transaction scope automatically.
-
-```{python}
-with engine.begin() as conn:
-    conn.execute(
-        text("INSERT INTO some_table (x, y) VALUES (:x, :y)"),
-        [{"x": 6, "y": 8}, {"x": 9, "y": 10}]
-    )
-```
-
-### Statement Execution
-
-SQL statements can be executed using the `Connection.execute()` method along with the `text()` construct.
-
-#### Fetching Rows
-
-Results are fetched using the Result object, which supports various methods for accessing data.
-
-```{python}
-with engine.connect() as conn:
-    result = conn.execute(text("SELECT x, y FROM some_table"))
-    for row in result:
-        print(f"x: {row.x}  y: {row.y}")
-```
-
-### Parameterized Queries
-
-Parameters can be passed to SQL statements using dictionaries, ensuring proper value sanitization and preventing SQL injection.
-
-```{python}
-with engine.connect() as conn:
-    result = conn.execute(text("SELECT x, y FROM some_table WHERE y > :y"), {"y": 2})
-    for row in result:
-        print(f"x: {row.x}  y: {row.y}")
-```
-
-### Sending Multiple Parameters
-
-Multiple parameter sets can be sent using a list of dictionaries, enabling efficient execution of multiple SQL statements.
-
-```{python}
-with engine.connect() as conn:
-    conn.execute(
-        text("INSERT INTO some_table (x, y) VALUES (:x, :y)"),
-        [{"x": 11, "y": 12}, {"x": 13, "y": 14}]
-    )
-    conn.commit()
-```
-
-### Using ORM Session
-
-The Session object in SQLAlchemy ORM provides a higher-level interface for managing database interactions.
-
-#### Executing with ORM Session
-
-```{python}
-from sqlalchemy.orm import Session
-
-stmt = text("SELECT x, y FROM some_table WHERE y > :y ORDER BY x, y")
-with Session(engine) as session:
-    result = session.execute(stmt, {"y": 6})
-    for row in result:
-        print(f"x: {row.x}  y: {row.y}")
-```
-
-#### Committing Changes with ORM Session
-
-```{python}
-with Session(engine) as session:
-    session.execute(
-        text("UPDATE some_table SET y=:y WHERE x=:x"),
-        [{"x": 9, "y": 11}, {"x": 13, "y": 15}]
-    )
-    session.commit()
-```
-
-### Conclusion
-
-This tutorial covered the basics of working with transactions and the DBAPI using SQLAlchemy. We demonstrated how to establish a connection, execute transactions, and work with results using both Core and ORM contexts. Understanding these foundational concepts will enable you to effectively manage database interactions in your SQLAlchemy applications.
-
-## Working with Database Metadata with SQLAlchemy
-
-### Introduction
-
-With the basics of engines and SQL execution covered, we can now delve into SQLAlchemy's core strength: working with database metadata. Database metadata allows for fluent, composable construction of SQL queries using Python objects that represent database concepts like tables and columns. This tutorial will illustrate how to work with database metadata in both Core and ORM contexts.
-
-### Setting Up Metadata with Table Objects
-
-In SQLAlchemy, the primary object representing a table is the `Table` object. To start using SQLAlchemy's Expression Language, we need to construct `Table` objects that represent our database tables. This is done using the `MetaData` object, which acts as a collection for `Table` objects.
-
-#### Creating a MetaData Object
-
-First, create a `MetaData` object:
-
-```{python}
-from sqlalchemy import MetaData
-
-metadata_obj = MetaData()
-```
-
-#### Defining Table Objects
-
-We can now define `Table` objects. For this tutorial, we will use a `user_account` table and an `address` table.
-
-```{python}
-from sqlalchemy import Table, Column, Integer, String, ForeignKey
-
-# Define the user_account table
-user_table = Table(
-    "user_account",
-    metadata_obj,
-    Column("id", Integer, primary_key=True),
-    Column("name", String(30)),
-    Column("fullname", String),
-)
-
-# Define the address table with a foreign key to user_account
-address_table = Table(
-    "address",
-    metadata_obj,
-    Column("id", Integer, primary_key=True),
-    Column("user_id", ForeignKey("user_account.id"), nullable=False),
-    Column("email_address", String, nullable=False),
-)
-```
-
-### Emitting DDL to the Database
-
-With our `Table` objects defined, we can create the actual tables in the database using the `MetaData.create_all()` method.
-
-```{python}
-from sqlalchemy import create_engine
-
-# Create an in-memory SQLite database
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-
-# Create the tables in the database
-metadata_obj.create_all(engine)
-```
-
-### Working with Constraints
-
-Constraints such as primary keys and foreign keys can be defined using the `Column` object parameters and `ForeignKey` objects.
-
-#### Primary Key Constraint
-
-The primary key is defined using the `primary_key` parameter in the `Column` definition.
-
-```{python}
-Column("id", Integer, primary_key=True)
-```
-
-#### Foreign Key Constraint
-
-A foreign key constraint is defined using the `ForeignKey` object.
-
-```{python}
-Column("user_id", ForeignKey("user_account.id"), nullable=False)
-```
-
-### Declaring ORM Mapped Classes
-
-Using the ORM, we can define our tables and mapped classes using the `DeclarativeBase` class.
-
-#### Establishing a Declarative Base
-
-```{python}
-from sqlalchemy.orm import DeclarativeBase
-
-class Base(DeclarativeBase):
-    pass
-```
-
-#### Defining Mapped Classes
-
-We can now define our ORM mapped classes `User` and `Address`.
-
-```{python}
-from typing import List, Optional
-from sqlalchemy.orm import Mapped, mapped_column, relationship
-
-class User(Base):
-    __tablename__ = "user_account"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str] = mapped_column(String(30))
-    fullname: Mapped[Optional[str]]
-
-    addresses: Mapped[List["Address"]] = relationship(back_populates="user")
-
-    def __repr__(self) -> str:
-        return f"User(id={self.id!r}, name={self.name!r}, fullname={self.fullname!r})"
-
-class Address(Base):
-    __tablename__ = "address"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    email_address: Mapped[str]
-    user_id = mapped_column(ForeignKey("user_account.id"))
-
-    user: Mapped[User] = relationship(back_populates="addresses")
-
-    def __repr__(self) -> str:
-        return f"Address(id={self.id!r}, email_address={self.email_address!r})"
-```
-
-### Emitting DDL from ORM Mapped Classes
-
-To create tables from our ORM mapped classes, use the `Base.metadata.create_all()` method.
-
-```{python}
-# Create the tables in the database
-Base.metadata.create_all(engine)
-```
-
-### Table Reflection
-
-Table reflection generates `Table` objects from an existing database schema.
-
-To create a table that works with the reflection example, we need to first define the table schema and create it in the database. Then we can use SQLAlchemy's reflection capabilities to reflect the table.
-
-### Step-by-Step Guide
-
-1. **Define and create the table in the database.**
-2. **Use SQLAlchemy's reflection to reflect the table schema.**
-
-### Complete Example
-
-```{python}
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, text
-
-# Step 1: Create an Engine and an in-memory SQLite database
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-
-# Step 2: Create the table schema and create the table in the database
-metadata_obj = MetaData()
-
-# Define the table schema
-some_table = Table(
-    "some_table", metadata_obj,
-    Column("id", Integer, primary_key=True),
-    Column("name", String, nullable=False),
-    Column("value", Integer)
-)
-
-# Create the table in the database
-metadata_obj.create_all(engine)
-
-# Step 3: Reflect the table from the existing database
-reflected_metadata = MetaData()
-reflected_some_table = Table("some_table", reflected_metadata, autoload_with=engine)
-
-# Print the reflected table schema
-print(reflected_some_table)
-
-# Perform a simple insert and query to verify the table
-with engine.connect() as connection:
-    # Insert data
-    connection.execute(some_table.insert().values(name="Test Name", value=42))
-
-    # Query data
-    result = connection.execute(text("SELECT * FROM some_table"))
-    for row in result:
-        print(row)
-```
-
-### Discussion
-
-#### Importing Required Modules
-```{python}
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, text
-```
-- **`create_engine`**: Used to create a new SQLAlchemy Engine instance.
-- **`MetaData`**: A container object that keeps together many different features of a database (or multiple databases) being described.
-- **`Table`**: Represents a table in a database.
-- **`Column`**: Represents a column in a database table.
-- **`Integer`, `String`**: Column data types.
-- **`text`**: Used to execute raw SQL queries.
-
-#### Creating an In-Memory SQLite Database
-```python
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-```
-- **`sqlite+pysqlite:///:memory:`**: Database URL for an in-memory SQLite database.
-- **`echo=True`**: Enables logging of SQL statements for debugging.
-
-#### Defining and Creating the Table
-```python
-metadata_obj = MetaData()
-
-some_table = Table(
-    "some_table", metadata_obj,
-    Column("id", Integer, primary_key=True),
-    Column("name", String, nullable=False),
-    Column("value", Integer)
-)
-
-metadata_obj.create_all(engine)
-```
-- **`MetaData()`**: Creates a new MetaData object.
-- **`Table`**: Defines the table schema.
-- **`create_all(engine)`**: Creates the table in the database.
-
-#### Reflecting the Table
-```python
-reflected_metadata = MetaData()
-reflected_some_table = Table("some_table", reflected_metadata, autoload_with=engine)
-print(reflected_some_table)
-```
-- **`MetaData()`**: Creates a new MetaData object for reflection.
-- **`Table("some_table", reflected_metadata, autoload_with=engine)`**: Reflects the table schema from the database.
-- **`print(reflected_some_table)`**: Prints the reflected table schema.
-
-#### Verifying the Table
-```python
-with engine.connect() as connection:
-    # Insert data
-    connection.execute(some_table.insert().values(name="Test Name", value=42))
-
-    # Query data
-    result = connection.execute(text("SELECT * FROM some_table"))
-    for row in result:
-        print(row)
-```
-- **`with engine.connect() as connection`**: Establishes a connection to the database.
-- **`connection.execute(some_table.insert().values(...))`**: Inserts data into the table.
-- **`connection.execute(text("SELECT * FROM some_table"))`**: Executes a raw SQL query to retrieve data.
-- **`print(row)`**: Prints the result of the query.
-
-### Next Steps
-
-With our database schema defined and tables created, we can now proceed to create, manipulate, and select data using both Core and ORM constructs in SQLAlchemy.
-
-### Conclusion
-
-This tutorial covered the basics of working with database metadata in SQLAlchemy, including defining tables, emitting DDL to the database, and using ORM mapped classes. Understanding these concepts is fundamental for effective database management and query construction in SQLAlchemy.
-
-## Working with Data with SQLAlchemy
-
-In the previous tutorials, we covered interacting with the Python DBAPI and its transactional state, and representing database tables, columns, and constraints using SQLAlchemy's MetaData and related objects. In this tutorial, we'll combine these concepts to create, select, and manipulate data within a relational database. Interactions with the database are always within the context of a transaction, even if autocommit is used behind the scenes.
-
-### Components of this Tutorial
-
-1. **Using INSERT Statements**: We'll introduce and demonstrate the Core Insert construct to get data into the database.
-2. **Using SELECT Statements**: We'll describe the Select construct, which emits SELECT statements for both Core and ORM-centric applications.
-3. **Using UPDATE and DELETE Statements**: We'll cover the use of the Update and Delete constructs from a Core perspective.
-
-### Using INSERT Statements
-
-To insert data into the database, we use the Core Insert construct.
-
-#### Example: Inserting Data with Core
-
-```{python}
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, insert
-
-# Create an in-memory SQLite database
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-metadata = MetaData()
-
-# Define a user_account table
-user_table = Table(
-    "user_account", metadata,
-    Column("id", Integer, primary_key=True),
-    Column("name", String(30)),
-    Column("fullname", String)
-)
-
-# Create the table in the database
-metadata.create_all(engine)
-
-# Insert data into the user_account table
-with engine.connect() as conn:
-    stmt = insert(user_table).values(name="john", fullname="John Doe")
-    conn.execute(stmt)
-    conn.commit()
-```
-
-### Using SELECT Statements
-
-The `Select` construct is the most commonly used object in SQLAlchemy, allowing us to query data from the database.
-
-#### Example: Selecting Data with Core
-
-```{python}
-from sqlalchemy import select
-
-# Select data from the user_account table
-with engine.connect() as conn:
-    stmt = select(user_table)
-    result = conn.execute(stmt)
-    for row in result:
-        print(row)
-```
-
-Here’s a complete example of selecting data with ORM using SQLAlchemy, ensuring it works correctly:
-
-### Example: Selecting Data with ORM
-
-```{python}
-from sqlalchemy import create_engine, Column, Integer, String, select
-from sqlalchemy.orm import declarative_base, sessionmaker, relationship, Session
-from sqlalchemy.orm import Mapped
-from typing import List
-
-Base = declarative_base()
-
-# Define the User model
-class User(Base):
-    __tablename__ = "user_account"
-    id = Column(Integer, primary_key=True)
-    name = Column(String(30))
-    fullname = Column(String)
-
-# Define the Address model to maintain consistency
-class Address(Base):
-    __tablename__ = "address"
-    id = Column(Integer, primary_key=True)
-    email_address = Column(String(100))
-    user_id = Column(Integer, ForeignKey("user_account.id"))
-    user: Mapped["User"] = relationship("User", back_populates="addresses")
-
-User.addresses = relationship("Address", back_populates="user")
-
-# Create an in-memory SQLite database
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-
-# Create tables in the database
-Base.metadata.create_all(engine)
-
-# Create a session factory
-SessionLocal = sessionmaker(bind=engine)
-
-# Add sample data
-with SessionLocal() as session:
-    new_user = User(name="John", fullname="John Doe")
-    session.add(new_user)
-    session.commit()
-
-# Select data using ORM
-with Session(engine) as session:
-    stmt = select(User)
-    result = session.execute(stmt)
-    for user in result.scalars():
-        print(user.name, user.fullname)
-```
-
-### Discussion:
-
-1. **Imports and Base Declaration:**
-    ```python
-    from sqlalchemy import create_engine, Column, Integer, String, select
-    from sqlalchemy.orm import declarative_base, sessionmaker, relationship, Session
-    from sqlalchemy.orm import Mapped
-    from typing import List
-
-    Base = declarative_base()
-    ```
-    - These imports include necessary modules and functions from SQLAlchemy and the `typing` module for type annotations.
-
-2. **Defining the User Model:**
-    ```python
-    class User(Base):
-        __tablename__ = "user_account"
-        id = Column(Integer, primary_key=True)
-        name = Column(String(30))
-        fullname = Column(String)
-    ```
-    - Defines the `User` class with columns `id`, `name`, and `fullname`.
-
-3. **Defining the Address Model:**
-    ```python
-    class Address(Base):
-        __tablename__ = "address"
-        id = Column(Integer, primary_key=True)
-        email_address = Column(String(100))
-        user_id = Column(Integer, ForeignKey("user_account.id"))
-        user: Mapped["User"] = relationship("User", back_populates="addresses")
-    
-    User.addresses = relationship("Address", back_populates="user")
-    ```
-    - Defines the `Address` class to maintain consistency and relationship with `User`.
-
-4. **Creating the Database and Tables:**
-    ```python
-    engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-    Base.metadata.create_all(engine)
-    ```
-    - Creates an in-memory SQLite database and the tables defined by the models.
-
-5. **Creating a Session Factory:**
-    ```python
-    SessionLocal = sessionmaker(bind=engine)
-    ```
-    - Creates a session factory for interacting with the database.
-
-6. **Adding Sample Data:**
-    ```python
-    with SessionLocal() as session:
-        new_user = User(name="John", fullname="John Doe")
-        session.add(new_user)
-        session.commit()
-    ```
-    - Adds a sample user to the database and commits the transaction.
-
-7. **Selecting Data Using ORM:**
-    ```python
-    with Session(engine) as session:
-        stmt = select(User)
-        result = session.execute(stmt)
-        for user in result.scalars():
-            print(user.name, user.fullname)
-    ```
-    - Creates a session to select data from the `User` table.
-    - Executes a `select` statement and iterates over the result to print each user's name and fullname.
-
-### Using UPDATE and DELETE Statements
-
-To update or delete data, we use the `Update` and `Delete` constructs.
-
-#### Example: Updating Data with Core
-
-```{python}
-from sqlalchemy import update
-
-# Update data in the user_account table
-with engine.connect() as conn:
-    stmt = update(user_table).where(user_table.c.name == "john").values(fullname="Jonathan Doe")
-    conn.execute(stmt)
-    conn.commit()
-```
-
-#### Example: Deleting Data with Core
-
-```{python}
-from sqlalchemy import delete
-
-# Delete data from the user_account table
-with engine.connect() as conn:
-    stmt = delete(user_table).where(user_table.c.name == "john")
-    conn.execute(stmt)
-    conn.commit()
-```
-
-### Data Manipulation with ORM
-
-For ORM-specific data manipulation, we use the Session object.
-
-#### Example: Inserting Data with ORM
-
-```{python}
-# Insert data using ORM
-with Session(engine) as session:
-    new_user = User(name="sandy", fullname="Sandy Cheeks")
-    session.add(new_user)
-    session.commit()
-```
-
-#### Example: Updating Data with ORM
-
-```{python}
-# Update data using ORM
-with Session(engine) as session:
-    stmt = update(User).where(User.name == "sandy").values(fullname="Sandra Cheeks")
-    session.execute(stmt)
-    session.commit()
-```
-
-#### Example: Deleting Data with ORM
-
-```{python}
-# Delete data using ORM
-with Session(engine) as session:
-    stmt = delete(User).where(User.name == "sandy")
-    session.execute(stmt)
-    session.commit()
-```
-
-### Conclusion
-
-In this tutorial, we covered the basics of creating, selecting, and manipulating data using SQLAlchemy. We demonstrated how to use the Core Insert, Select, Update, and Delete constructs, as well as their ORM equivalents. Understanding these concepts allows you to effectively manage data within your SQLAlchemy applications.
-
-## Using INSERT Statements with SQLAlchemy
-
-In SQLAlchemy, whether using Core or the ORM, a SQL INSERT statement is generated directly using the `insert()` function. This function generates a new instance of `Insert` which represents an INSERT statement in SQL, adding new data into a table. This tutorial will detail how to use the Core methods for generating SQL INSERT statements to add new rows to a table. Understanding this process is useful even when using the ORM, as the ORM automates many of these steps.
-
-### The `insert()` SQL Expression Construct
-
-The `insert()` function creates an instance of the `Insert` construct, which represents an INSERT statement in SQL. Here’s a simple example:
-
-```{python}
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, insert
-
-# Create an in-memory SQLite database
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-metadata = MetaData()
-
-# Define a user_account table
-user_table = Table(
-    "user_account", metadata,
-    Column("id", Integer, primary_key=True),
-    Column("name", String(30)),
-    Column("fullname", String)
-)
-
-# Create the table in the database
-metadata.create_all(engine)
-
-# Create an INSERT statement
-stmt = insert(user_table).values(name="spongebob", fullname="Spongebob Squarepants")
-print(stmt)
-```
-
-
-
-The `stmt` variable is an instance of `Insert`. The stringified form shows the general form of the SQL being produced. The statement is parameterized, meaning it uses placeholders for the values to be inserted.
-
-### Executing the Statement
-
-To execute the statement and insert data into the `user_table`, we use a connection object:
-
-```{python}
-with engine.connect() as conn:
-    result = conn.execute(stmt)
-    conn.commit()
-```
-
-This will insert the row into the `user_table`. The SQL and the parameters used will be logged:
-
-```
-BEGIN (implicit)
-INSERT INTO user_account (name, fullname) VALUES (?, ?)
-[...] ('spongebob', 'Spongebob Squarepants')
-COMMIT
-```
-
-To get the primary key of the inserted row:
-
-```{python}
-print(result.inserted_primary_key)
-```
-
-
-
-### Automatic VALUES Clause
-
-If we don’t use `Insert.values()` and just print an "empty" statement, it will include all columns in the table:
-
-```{python}
-print(insert(user_table))
-```
-
-
-
-When executing an empty `Insert` construct, the actual columns used in the INSERT are determined by the parameters passed to the `Connection.execute()` method:
-
-```{python}
-with engine.connect() as conn:
-    result = conn.execute(
-        insert(user_table),
-        [
-            {"name": "sandy", "fullname": "Sandy Cheeks"},
-            {"name": "patrick", "fullname": "Patrick Star"}
-        ]
-    )
-    conn.commit()
-```
-
-
-
-### INSERT with Subqueries
-
-For more complex INSERTs, you can use subqueries. Here's an example that uses a scalar subquery to insert data into the `address_table` based on data in the `user_table`:
-
-```{python}
-from sqlalchemy import select, bindparam
-
-# Define the address table
-address_table = Table(
-    "address", metadata,
-    Column("id", Integer, primary_key=True),
-    Column("user_id", ForeignKey("user_account.id"), nullable=False),
-    Column("email_address", String, nullable=False)
-)
-
-# Create the table in the database
-metadata.create_all(engine)
-
-# Scalar subquery
-scalar_subq = (
-    select(user_table.c.id)
-    .where(user_table.c.name == bindparam("username"))
-    .scalar_subquery()
-)
-
-# Insert into address table using subquery
-with engine.connect() as conn:
-    result = conn.execute(
-        insert(address_table).values(user_id=scalar_subq),
-        [
-            {"username": "spongebob", "email_address": "spongebob@sqlalchemy.org"},
-            {"username": "sandy", "email_address": "sandy@sqlalchemy.org"},
-            {"username": "sandy", "email_address": "sandy@squirrelpower.org"}
-        ]
-    )
-    conn.commit()
-```
-
-
-
-Here's how you can use the `RETURNING` clause with an `INSERT` statement in SQLAlchemy to return values from the inserted row. This example includes the necessary setup and a working implementation of inserting a row into the `address` table and returning specific columns.
-
-### Complete Example: INSERT with RETURNING
-
-```{python}
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, insert, Table, MetaData
-from sqlalchemy.orm import declarative_base, sessionmaker, relationship, Session
-from sqlalchemy.orm import Mapped
-from typing import List
-
-Base = declarative_base()
-metadata = MetaData()
-
-# Define the User model
-class User(Base):
-    __tablename__ = "user_account"
-    id = Column(Integer, primary_key=True)
-    name = Column(String(30))
-    fullname = Column(String)
-
-# Define the Address model
-class Address(Base):
-    __tablename__ = "address"
-    id = Column(Integer, primary_key=True)
-    email_address = Column(String(100))
-    user_id = Column(Integer, ForeignKey("user_account.id"))
-    user: Mapped["User"] = relationship("User", back_populates="addresses")
-
-User.addresses = relationship("Address", back_populates="user")
-
-# Create an in-memory SQLite database
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-
-# Create tables in the database
-Base.metadata.create_all(engine)
-
-# Create a session factory
-SessionLocal = sessionmaker(bind=engine)
-
-# Add sample data to User table
-with SessionLocal() as session:
-    new_user = User(name="John", fullname="John Doe")
-    session.add(new_user)
-    session.commit()
-
-# Reflect the address table from the existing database
-address_table = Address.__table__
-
-# Define the insert statement with returning clause
-insert_stmt = insert(address_table).values(email_address="john.doe@example.com", user_id=1).returning(address_table.c.id, address_table.c.email_address)
-print(insert_stmt)
-
-# Execute the insert statement and get the returned values
-with engine.connect() as conn:
-    result = conn.execute(insert_stmt)
-    for row in result:
-        print(row)
-```
-
-### Explanation:
-
-1. **Imports and Base Declaration:**
-    ```python
-    from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, insert, Table, MetaData
-    from sqlalchemy.orm import declarative_base, sessionmaker, relationship, Session
-    from sqlalchemy.orm import Mapped
-    from typing import List
-
-    Base = declarative_base()
-    metadata = MetaData()
-    ```
-
-2. **Defining the User Model:**
-    ```python
-    class User(Base):
-        __tablename__ = "user_account"
-        id = Column(Integer, primary_key=True)
-        name = Column(String(30))
-        fullname = Column(String)
-    ```
-
-3. **Defining the Address Model:**
-    ```python
-    class Address(Base):
-        __tablename__ = "address"
-        id = Column(Integer, primary_key=True)
-        email_address = Column(String(100))
-        user_id = Column(Integer, ForeignKey("user_account.id"))
-        user: Mapped["User"] = relationship("User", back_populates="addresses")
-
-    User.addresses = relationship("Address", back_populates="user")
-    ```
-
-4. **Creating the Database and Tables:**
-    ```python
-    engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-    Base.metadata.create_all(engine)
-    ```
-
-5. **Creating a Session Factory and Adding Sample Data:**
-    ```python
-    SessionLocal = sessionmaker(bind=engine)
-
-    with SessionLocal() as session:
-        new_user = User(name="John", fullname="John Doe")
-        session.add(new_user)
-        session.commit()
-    ```
-
-6. **Reflecting the Address Table and Inserting Data with RETURNING Clause:**
-    ```python
-    address_table = Address.__table__
-
-    insert_stmt = insert(address_table).values(email_address="john.doe@example.com", user_id=1).returning(address_table.c.id, address_table.c.email_address)
-    print(insert_stmt)
-
-    with engine.connect() as conn:
-        result = conn.execute(insert_stmt)
-        for row in result:
-            print(row)
-    ```
-
-### Output:
-- The `insert_stmt` will print the generated SQL `INSERT` statement with the `RETURNING` clause.
-- The returned values from the executed statement will be printed, showing the `id` and `email_address` of the inserted row.
-
-This example demonstrates how to use the `RETURNING` clause with an `INSERT` statement in SQLAlchemy to return specific values from the inserted row.
-
-### INSERT from SELECT
-
-You can also insert rows based on a SELECT statement using the `Insert.from_select()` method:
-
-```{python}
-select_stmt = select(user_table.c.id, user_table.c.name + "@aol.com")
-insert_stmt = insert(address_table).from_select(["user_id", "email_address"], select_stmt)
-print(insert_stmt)
-
-with engine.connect() as conn:
-    result = conn.execute(insert_stmt)
-    conn.commit()
-```
-
-
-### Conclusion
-
-This tutorial covered the basics of using the `insert()` function in SQLAlchemy to create SQL INSERT statements and add data to tables. We explored various ways to insert data, including basic inserts, inserts with subqueries, using the RETURNING clause, and inserting data from a SELECT statement. Understanding these concepts is essential for effective data manipulation in SQLAlchemy applications.
-
-## Using SELECT Statements with SQLAlchemy
-
-The `select()` function in SQLAlchemy generates a `Select` construct used for all SELECT queries. When passed to methods like `Connection.execute()` in Core and `Session.execute()` in ORM, a SELECT statement is emitted in the current transaction and the result rows are available via the returned `Result` object.
-
-### The `select()` SQL Expression Construct
-
-The `select()` construct builds a SELECT statement in a generative manner, where each method builds more state onto the object. It can be stringified to see the SQL being generated:
-
-```{python}
-from sqlalchemy import select
-
-stmt = select(user_table).where(user_table.c.name == "spongebob")
-print(stmt)
-```
-
-
-
-To execute the statement and fetch the results:
-
-```{python}
-with engine.connect() as conn:
-    for row in conn.execute(stmt):
-        print(row)
-```
-
-
-
-When using the ORM, a `select()` construct composed against ORM entities can be executed using the `Session.execute()` method on the `Session`:
-
-```{python}
-stmt = select(User).where(User.name == "spongebob")
-with Session(engine) as session:
-    for row in session.execute(stmt):
-        print(row)
-```
-
-
-
-### Setting the COLUMNS and FROM Clause
-
-The `select()` function can accept positional elements representing any number of `Column` and/or `Table` expressions:
-
-```{python}
-print(select(user_table))
-```
-
-
-
-Selecting specific columns:
-
-```{python}
-print(select(user_table.c.name, user_table.c.fullname))
-```
-
-
-
-### Selecting ORM Entities and Columns
-
-Selecting from ORM entities works similarly to selecting from tables. Here’s an example:
-
-```{python}
-print(select(User))
-```
-
-
-
-When executing this statement with the ORM, the result rows contain instances of the `User` class:
-
-```{python}
-row = session.execute(select(User)).first()
-print(row)
-```
-
-
-
-To get the first element directly:
-
-```{python}
-user = session.scalars(select(User)).first()
-print(user)
-```
-
-
-
-### The WHERE Clause
-
-SQLAlchemy allows composing SQL expressions using standard Python operators:
-
-```{python}
-print(user_table.c.name == "squidward")
-```
-
-
-
-Using these expressions in the `WHERE` clause:
-
-```{python}
-print(select(user_table).where(user_table.c.name == "squidward"))
-```
-
-
-
-Combining multiple expressions with `AND`:
-
-```{python}
-print(select(address_table.c.email_address).where(user_table.c.name == "squidward").where(address_table.c.user_id == user_table.c.id))
-```
-
-
-
-The error message indicates that SQLAlchemy is unsure how to perform the join because the left side of the join and the ON clause are not explicitly defined. To fix this, you need to use the `.select_from()` method to specify the table from which to start the join and provide the explicit ON clause.
-
-Here's the corrected example:
-
-### Complete Example with Explicit Join
-
-```{python}
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, select, insert, Table, MetaData
-from sqlalchemy.orm import declarative_base, sessionmaker, relationship, Session
-from sqlalchemy.orm import Mapped
-from typing import List
-
-Base = declarative_base()
-metadata = MetaData()
-
-# Define the User model
-class User(Base):
-    __tablename__ = "user_account"
-    id = Column(Integer, primary_key=True)
-    name = Column(String(30))
-    fullname = Column(String)
-
-# Define the Address model
-class Address(Base):
-    __tablename__ = "address"
-    id = Column(Integer, primary_key=True)
-    email_address = Column(String(100))
-    user_id = Column(Integer, ForeignKey("user_account.id"))
-    user: Mapped["User"] = relationship("User", back_populates="addresses")
-
-User.addresses = relationship("Address", back_populates="user")
-
-# Create an in-memory SQLite database
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-
-# Create tables in the database
-Base.metadata.create_all(engine)
-
-# Create a session factory
-SessionLocal = sessionmaker(bind=engine)
-
-# Add sample data to User and Address tables
-with SessionLocal() as session:
-    new_user = User(name="John", fullname="John Doe")
-    session.add(new_user)
-    session.commit()
-    
-    new_address = Address(email_address="john.doe@example.com", user_id=new_user.id)
-    session.add(new_address)
-    session.commit()
-
-# Reflect the tables from the existing database
-user_table = User.__table__
-address_table = Address.__table__
-
-# Perform a join between the user and address tables using .select_from() to explicitly define the left side
-stmt = (
-    select(user_table.c.name, address_table.c.email_address)
-    .select_from(user_table.join(address_table, user_table.c.id == address_table.c.user_id))
-)
-print(stmt)
-
-# Execute the join statement and print the results
-with engine.connect() as conn:
-    result = conn.execute(stmt)
-    for row in result:
-        print(row)
-```
-
-### Explanation:
-
-1. **Imports and Base Declaration:**
-    ```python
-    from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, select, insert, Table, MetaData
-    from sqlalchemy.orm import declarative_base, sessionmaker, relationship, Session
-    from sqlalchemy.orm import Mapped
-    from typing import List
-
-    Base = declarative_base()
-    metadata = MetaData()
-    ```
-
-2. **Defining the User and Address Models:**
-    ```python
-    class User(Base):
-        __tablename__ = "user_account"
-        id = Column(Integer, primary_key=True)
-        name = Column(String(30))
-        fullname = Column(String)
-
-    class Address(Base):
-        __tablename__ = "address"
-        id = Column(Integer, primary_key=True)
-        email_address = Column(String(100))
-        user_id = Column(Integer, ForeignKey("user_account.id"))
-        user: Mapped["User"] = relationship("User", back_populates="addresses")
-
-    User.addresses = relationship("Address", back_populates="user")
-    ```
-
-3. **Creating the Database and Tables:**
-    ```python
-    engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-    Base.metadata.create_all(engine)
-    ```
-
-4. **Creating a Session Factory and Adding Sample Data:**
-    ```python
-    SessionLocal = sessionmaker(bind=engine)
-
-    with SessionLocal() as session:
-        new_user = User(name="John", fullname="John Doe")
-        session.add(new_user)
-        session.commit()
-        
-        new_address = Address(email_address="john.doe@example.com", user_id=new_user.id)
-        session.add(new_address)
-        session.commit()
-    ```
-
-5. **Reflecting the Tables:**
-    ```python
-    user_table = User.__table__
-    address_table = Address.__table__
-    ```
-
-6. **Performing a Join Between the Tables Using `.select_from()`:**
-    ```python
-    stmt = (
-        select(user_table.c.name, address_table.c.email_address)
-        .select_from(user_table.join(address_table, user_table.c.id == address_table.c.user_id))
-    )
-    print(stmt)
-    ```
-
-7. **Executing the Join Statement and Printing the Results:**
-    ```python
-    with engine.connect() as conn:
-        result = conn.execute(stmt)
-        for row in result:
-            print(row)
-    ```
-
-### Output:
-- The `stmt` will print the generated SQL `SELECT` statement with the join.
-- The returned values from the executed statement will be printed, showing the `name` and `email_address` of the joined rows.
-
-This example demonstrates how to perform a join between the `user` and `address` tables using SQLAlchemy's ORM with an explicit `select_from` and `join`, ensuring the join is correctly defined and executed.
-
-Let's address the issues in the provided code for ordering and grouping results. We'll make sure the necessary imports are included and the ORM relationships are correctly defined. We'll also ensure the examples are executed properly.
-
-### Complete Example with ORDER BY, GROUP BY, HAVING
-
-```{python}
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, select, func, Table, MetaData
-from sqlalchemy.orm import declarative_base, sessionmaker, relationship, Session
-from sqlalchemy.orm import Mapped
-from typing import List
-
-Base = declarative_base()
-metadata = MetaData()
-
-# Define the User model
-class User(Base):
-    __tablename__ = "user_account"
-    id = Column(Integer, primary_key=True)
-    name = Column(String(30))
-    fullname = Column(String)
-
-# Define the Address model
-class Address(Base):
-    __tablename__ = "address"
-    id = Column(Integer, primary_key=True)
-    email_address = Column(String(100))
-    user_id = Column(Integer, ForeignKey("user_account.id"))
-    user: Mapped["User"] = relationship("User", back_populates="addresses")
-
-User.addresses = relationship("Address", back_populates="user")
-
-# Create an in-memory SQLite database
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-
-# Create tables in the database
-Base.metadata.create_all(engine)
-
-# Create a session factory
-SessionLocal = sessionmaker(bind=engine)
-
-# Add sample data to User and Address tables
-with SessionLocal() as session:
-    user1 = User(name="John", fullname="John Doe")
-    user2 = User(name="Jane", fullname="Jane Doe")
-    session.add_all([user1, user2])
-    session.commit()
-    
-    addresses = [
-        Address(email_address="john.doe@example.com", user_id=user1.id),
-        Address(email_address="jane.doe@example.com", user_id=user2.id),
-        Address(email_address="john.doe2@example.com", user_id=user1.id)
-    ]
-    session.add_all(addresses)
-    session.commit()
-
-# Reflect the tables from the existing database
-user_table = User.__table__
-address_table = Address.__table__
-
-# Ordering results
-stmt_order_by = select(user_table).order_by(user_table.c.name)
-print(stmt_order_by)
-
-with engine.connect() as conn:
-    result = conn.execute(stmt_order_by)
-    for row in result:
-        print(row)
-
-# Grouping results
-stmt_group_by = (
-    select(User.name, func.count(Address.id).label("count"))
-    .join(Address)
-    .group_by(User.name)
-    .having(func.count(Address.id) > 1)
-)
-print(stmt_group_by)
-
-with engine.connect() as conn:
-    result = conn.execute(stmt_group_by)
-    print(result.all())
-```
-
-### Explanation:
-
-1. **Imports and Base Declaration:**
-    ```python
-    from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, select, func, Table, MetaData
-    from sqlalchemy.orm import declarative_base, sessionmaker, relationship, Session
-    from sqlalchemy.orm import Mapped
-    from typing import List
-
-    Base = declarative_base()
-    metadata = MetaData()
-    ```
-
-2. **Defining the User and Address Models:**
-    ```python
-    class User(Base):
-        __tablename__ = "user_account"
-        id = Column(Integer, primary_key=True)
-        name = Column(String(30))
-        fullname = Column(String)
-
-    class Address(Base):
-        __tablename__ = "address"
-        id = Column(Integer, primary_key=True)
-        email_address = Column(String(100))
-        user_id = Column(Integer, ForeignKey("user_account.id"))
-        user: Mapped["User"] = relationship("User", back_populates="addresses")
-
-    User.addresses = relationship("Address", back_populates="user")
-    ```
-
-3. **Creating the Database and Tables:**
-    ```python
-    engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-    Base.metadata.create_all(engine)
-    ```
-
-4. **Creating a Session Factory and Adding Sample Data:**
-    ```python
-    SessionLocal = sessionmaker(bind=engine)
-
-    with SessionLocal() as session:
-        user1 = User(name="John", fullname="John Doe")
-        user2 = User(name="Jane", fullname="Jane Doe")
-        session.add_all([user1, user2])
-        session.commit()
-        
-        addresses = [
-            Address(email_address="john.doe@example.com", user_id=user1.id),
-            Address(email_address="jane.doe@example.com", user_id=user2.id),
-            Address(email_address="john.doe2@example.com", user_id=user1.id)
-        ]
-        session.add_all(addresses)
-        session.commit()
-    ```
-
-5. **Reflecting the Tables:**
-    ```python
-    user_table = User.__table__
-    address_table = Address.__table__
-    ```
-
-6. **Ordering Results:**
-    ```python
-    stmt_order_by = select(user_table).order_by(user_table.c.name)
-    print(stmt_order_by)
-
-    with engine.connect() as conn:
-        result = conn.execute(stmt_order_by)
-        for row in result:
-            print(row)
-    ```
-
-7. **Grouping Results:**
-    ```python
-    stmt_group_by = (
-        select(User.name, func.count(Address.id).label("count"))
-        .join(Address)
-        .group_by(User.name)
-        .having(func.count(Address.id) > 1)
-    )
-    print(stmt_group_by)
-
-    with engine.connect() as conn:
-        result = conn.execute(stmt_group_by)
-        print(result.all())
-    ```
-
-### Output:
-- **Ordering Results**: The `stmt_order_by` will print the generated SQL `SELECT` statement with the `ORDER BY` clause. The results will be ordered by the `name` column.
-- **Grouping Results**: The `stmt_group_by` will print the generated SQL `SELECT` statement with the `GROUP BY` and `HAVING` clauses. The results will be grouped by the `name` column, and only groups with more than one address will be included in the results.
-
-This example demonstrates how to order and group results using SQLAlchemy's ORM, including adding sample data, performing the operations, and printing the results.
-
-### Subqueries and CTEs
-
-Creating and using subqueries:
-
-```{python}
-subq = select(func.count(address_table.c.id).label("count"), address_table.c.user_id).group_by(address_table.c.user_id).subquery()
-print(subq)
-```
-
-Output:
-
-```
-SELECT count(address.id) AS count, address.user_id
-FROM address GROUP BY address.user_id
-```
-
-Using subqueries in a larger `SELECT`:
-
-```{python}
-stmt = select(user_table.c.name, user_table.c.fullname, subq.c.count).join_from(user_table, subq)
-print(stmt)
-```
-
-Output:
-
-```
-SELECT user_account.name, user_account.fullname, anon_1.count
-FROM user_account JOIN (SELECT count(address.id) AS count, address.user_id
-FROM address GROUP BY address.user_id) AS anon_1 ON user_account.id = anon_1.user_id
-```
-
-Using CTEs (Common Table Expressions):
-
-```{python}
-cte_obj = select(func.count(address_table.c.id).label("count"), address_table.c.user_id).group_by(address_table.c.user_id).cte()
-stmt = select(user_table.c.name, user_table.c.fullname, cte_obj.c.count).join_from(user_table, cte_obj)
-print(stmt)
-```
-
-Output:
-
-```
-WITH anon_1 AS
-(SELECT count(address.id) AS count, address.user_id AS user_id
-FROM address GROUP BY address.user_id)
- SELECT user_account.name, user_account.fullname, anon_1.count
-FROM user_account JOIN anon_1 ON user_account.id = anon_1.user_id
-```
-
-### EXISTS Subqueries
-
-Using EXISTS:
-
-```{python}
-subq = select(func.count(address_table.c.id)).where(user_table.c.id == address_table.c.user_id).group_by(address_table.c.user_id).having(func.count(address_table.c.id) > 1).exists()
-with engine.connect() as conn:
-    result = conn.execute(select(user_table.c.name).where(subq))
-    print(result.all())
-```
-
-Output:
-
-```
-BEGIN (implicit)
-SELECT user_account.name
-FROM user_account
-WHERE EXISTS (SELECT count(address.id) AS count_1
-FROM address
-WHERE user_account.id = address.user_id GROUP BY address.user_id
-HAVING count(address.id) > ?)
-[...] (1,)
-[('sandy',)]
-ROLLBACK
-```
-
-### Working with SQL Functions
-
-Using SQL functions:
-
-```{python}
-from sqlalchemy import func
-
-stmt = select(func.count()).select_from(user_table)
-with engine.connect() as conn:
-    result = conn.execute(stmt)
-    print(result.all())
-```
-
-Output:
-
-```
-BEGIN (implicit)
-SELECT count(*) AS count_1
-FROM user_account
-[...] ()
-[(3,)]
-ROLLBACK
-```
-
-### Conclusion
-
-This tutorial covers the basics of using the `select()` function in SQLAlchemy to create SQL SELECT statements and retrieve data from tables. We explored various aspects such as setting columns, using WHERE clauses, performing joins, and using advanced features like subqueries, CTEs, and SQL functions. Understanding these concepts is essential for effective querying in SQLAlchemy applications.
-
-## Using UPDATE and DELETE Statements with SQLAlchemy
-
-So far, we've covered `Insert` statements to get data into the database and `Select` statements to retrieve it. Now, we'll cover the `Update` and `Delete` constructs, used to modify and delete existing rows in a table. This tutorial focuses on these constructs from a Core-centric perspective.
-
-### The `update()` SQL Expression Construct
-
-The `update()` function generates a new instance of `Update`, representing an SQL `UPDATE` statement to modify existing data in a table.
-
-A basic `UPDATE` statement:
-
-```{python}
-from sqlalchemy import update
-
-stmt = (
-    update(user_table)
-    .where(user_table.c.name == "patrick")
-    .values(fullname="Patrick the Star")
-)
-print(stmt)
-```
-
-Output:
-
-```
-UPDATE user_account SET fullname=:fullname WHERE user_account.name = :name_1
-```
-
-The `Update.values()` method controls the `SET` elements of the `UPDATE` statement. You can pass parameters using the column names as keyword arguments.
-
-#### Using Expressions in UPDATE
-
-You can use column expressions within the `SET` clause:
-
-```{python}
-stmt = update(user_table).values(fullname="Username: " + user_table.c.name)
-print(stmt)
-```
-
-Output:
-
-```
-UPDATE user_account SET fullname=(:name_1 || user_account.name)
-```
-
-#### Executing the Statement with Multiple Parameter Sets
-
-To support multiple parameter sets with the same statement, use the `bindparam()` construct:
-
-```{python}
-from sqlalchemy import bindparam
-
-stmt = (
-    update(user_table)
-    .where(user_table.c.name == bindparam("oldname"))
-    .values(name=bindparam("newname"))
-)
-with engine.begin() as conn:
-    conn.execute(
-        stmt,
-        [
-            {"oldname": "jack", "newname": "ed"},
-            {"oldname": "wendy", "newname": "mary"},
-            {"oldname": "jim", "newname": "jake"},
-        ],
-    )
-```
-
-Output:
-
-```
-BEGIN (implicit)
-UPDATE user_account SET name=? WHERE user_account.name = ?
-[...] [('ed', 'jack'), ('mary', 'wendy'), ('jake', 'jim')]
-COMMIT
-```
-
-### Advanced UPDATE Techniques
-
-#### Correlated Updates
-
-An `UPDATE` statement can use rows from other tables by employing a correlated subquery:
-
-```{python}
-scalar_subq = (
-    select(address_table.c.email_address)
-    .where(address_table.c.user_id == user_table.c.id)
-    .order_by(address_table.c.id)
-    .limit(1)
-    .scalar_subquery()
-)
-update_stmt = update(user_table).values(fullname=scalar_subq)
-print(update_stmt)
-```
-
-Output:
-
-```
-UPDATE user_account SET fullname=(SELECT address.email_address
-FROM address
-WHERE address.user_id = user_account.id ORDER BY address.id
-LIMIT :param_1)
-```
-
-#### UPDATE..FROM Syntax
-
-Some databases support an `UPDATE FROM` syntax:
-
-```{python}
-update_stmt = (
-    update(user_table)
-    .where(user_table.c.id == address_table.c.user_id)
-    .where(address_table.c.email_address == "patrick@aol.com")
-    .values(fullname="Pat")
-)
-print(update_stmt)
-```
-
-Output:
-
-```
-UPDATE user_account SET fullname=:fullname FROM address
-WHERE user_account.id = address.user_id AND address.email_address = :email_address_1
-```
-
-### The `delete()` SQL Expression Construct
-
-The `delete()` function generates a new instance of `Delete`, representing an SQL `DELETE` statement to remove rows from a table.
-
-A basic `DELETE` statement:
-
-```{python}
-from sqlalchemy import delete
-
-stmt = delete(user_table).where(user_table.c.name == "patrick")
-print(stmt)
-```
-
-Output:
-
-```
-DELETE FROM user_account WHERE user_account.name = :name_1
-```
-
-### Advanced DELETE Techniques
-
-#### Multiple Table Deletes
-
-Like `Update`, `Delete` supports correlated subqueries and backend-specific multiple table syntaxes, such as `DELETE FROM..USING` on MySQL:
-
-```{python}
-delete_stmt = (
-    delete(user_table)
-    .where(user_table.c.id == address_table.c.user_id)
-    .where(address_table.c.email_address == "patrick@aol.com")
-)
-from sqlalchemy.dialects import mysql
-print(delete_stmt.compile(dialect=mysql.dialect()))
-```
-
-Output:
-
-```
-DELETE FROM user_account USING user_account, address
-WHERE user_account.id = address.user_id AND address.email_address = %s
-```
-
-### Getting Affected Row Count from UPDATE, DELETE
-
-Both `Update` and `Delete` support retrieving the number of rows matched after execution via the `CursorResult.rowcount` attribute:
-
-```{python}
-with engine.begin() as conn:
-    result = conn.execute(
-        update(user_table)
-        .values(fullname="Patrick McStar")
-        .where(user_table.c.name == "patrick")
-    )
-    print(result.rowcount)
-```
-
-Output:
-
-```
-BEGIN (implicit)
-UPDATE user_account SET fullname=? WHERE user_account.name = ?
-[...] ('Patrick McStar', 'patrick')
-1
-COMMIT
-```
-
-### Using RETURNING with UPDATE, DELETE
-
-The `RETURNING` clause can be added using `Update.returning()` and `Delete.returning()` methods:
-
-```{python}
-update_stmt = (
-    update(user_table)
-    .where(user_table.c.name == "patrick")
-    .values(fullname="Patrick the Star")
-    .returning(user_table.c.id, user_table.c.name)
-)
-print(update_stmt)
-
-delete_stmt = (
-    delete(user_table)
-    .where(user_table.c.name == "patrick")
-    .returning(user_table.c.id, user_table.c.name)
-)
-print(delete_stmt)
-```
-
-Output for `update_stmt`:
-
-```
-UPDATE user_account SET fullname=:fullname
-WHERE user_account.name = :name_1
-RETURNING user_account.id, user_account.name
-```
-
-Output for `delete_stmt`:
-
-```
-DELETE FROM user_account
-WHERE user_account.name = :name_1
-RETURNING user_account.id, user_account.name
-```
-
-### Further Reading for UPDATE, DELETE
-
-See also:
-
-- [Update](https://docs.sqlalchemy.org/en/14/core/dml.html#sqlalchemy.sql.expression.Update)
-- [Delete](https://docs.sqlalchemy.org/en/14/core/dml.html#sqlalchemy.sql.expression.Delete)
-- [ORM-Enabled INSERT, UPDATE, and DELETE Statements](https://docs.sqlalchemy.org/en/14/orm/query.html#orm-enabled-insert-update-and-delete)
-
-Understanding these constructs is crucial for modifying and deleting data efficiently in your SQLAlchemy applications.
-
-# Data Manipulation with the ORM in SQLAlchemy
-
-This tutorial will guide you through data manipulation using the ORM (Object-Relational Mapping) approach in SQLAlchemy. The ORM focuses on the lifecycle of the `Session` and how it interacts with data manipulation constructs.
-
-## Prerequisites
-
-Before diving into this section, make sure you have gone through the following:
-
-1. **Executing with an ORM Session**: Introduces creating an ORM `Session` object.
-2. **Using ORM Declarative Forms to Define Table Metadata**: Sets up ORM mappings for entities like `User` and `Address`.
-3. **Selecting ORM Entities and Columns**: Examples on running `SELECT` statements for ORM entities.
-
-## Inserting Rows Using the ORM Unit of Work Pattern
-
-### Instances of Classes Represent Rows
-
-In the ORM, instances of your classes (e.g., `User`, `Address`) represent rows in the database. Here’s how to create new instances of `User`:
-
-```{python}
-squidward = User(name="squidward", fullname="Squidward Tentacles")
-krabs = User(name="ehkrabs", fullname="Eugene H. Krabs")
-```
-
-These objects are in a transient state, meaning they are not yet associated with any database.
-
-### Adding Objects to a Session
-
-To add these objects to the database, you must add them to a `Session`:
-
-```{python}
-session = Session(engine)
-
-session.add(squidward)
-session.add(krabs)
-
-print(session.new)
-# IdentitySet([User(id=None, name='squidward', fullname='Squidward Tentacles'), User(id=None, name='ehkrabs', fullname='Eugene H. Krabs')])
-```
-
-### Flushing
-
-The `Session` uses a pattern called unit of work to accumulate changes and then push them to the database. You can manually flush the session to see the pending SQL statements:
-
-```{python}
-session.flush()
-```
-
-### Autogenerated Primary Key Attributes
-
-Once the rows are inserted, the ORM retrieves the new primary key identifiers for each object:
-
-```{python}
-print(squidward.id)  # e.g., 4
-print(krabs.id)  # e.g., 5
-```
-
-### Committing
-
-Commit the transaction to make the changes permanent:
-
-```{python}
-session.commit()
-```
-
-To update ORM objects using the Unit of Work pattern in SQLAlchemy, you need to ensure that the session is properly created, the object is loaded, modified, and changes are committed. Here’s the complete code to update the object and handle the session correctly:
-
-### Complete Example with Updating ORM Objects
-
-```{python}
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, select, func
-from sqlalchemy.orm import declarative_base, sessionmaker, relationship, Session
-from sqlalchemy.orm import Mapped
-from typing import List
-
-Base = declarative_base()
-
-# Define the User model
-class User(Base):
-    __tablename__ = "user_account"
-    id = Column(Integer, primary_key=True)
-    name = Column(String(30))
-    fullname = Column(String)
-
-# Define the Address model for completeness
-class Address(Base):
-    __tablename__ = "address"
-    id = Column(Integer, primary_key=True)
-    email_address = Column(String(100))
-    user_id = Column(Integer, ForeignKey("user_account.id"))
-    user: Mapped["User"] = relationship("User", back_populates="addresses")
-
-User.addresses = relationship("Address", back_populates="user")
-
-# Create an in-memory SQLite database
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-
-# Create tables in the database
-Base.metadata.create_all(engine)
-
-# Create a session factory
-SessionLocal = sessionmaker(bind=engine)
-
-# Add sample data to User table
-with SessionLocal() as session:
-    user1 = User(name="John", fullname="John Doe")
-    user2 = User(name="Jane", fullname="Jane Doe")
-    user3 = User(name="sandy", fullname="Sandy Cheeks")
-    session.add_all([user1, user2, user3])
-    session.commit()
-
-# Perform the update operation
-with SessionLocal() as session:
-    # Load the object into the session
-    sandy = session.execute(select(User).filter_by(name="sandy")).scalar_one()
-
-    # Modify the object's attributes
-    sandy.fullname = "Sandy Squirrel"
-
-    # Check if the object is marked as dirty (has pending changes)
-    print(sandy in session.dirty)  # True
-
-    # Commit the transaction to save changes to the database
-    session.commit()
-
-    # Verify the update by querying the database again
-    sandy_fullname = session.execute(select(User.fullname).where(User.id == sandy.id)).scalar_one()
-    print(sandy_fullname)  # "Sandy Squirrel"
-
-    # Check if the object is still marked as dirty (should be False after commit)
-    print(sandy in session.dirty)  # False
-```
-
-### Explanation:
-
-1. **Imports and Base Declaration:**
-    ```python
-    from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, select, func
-    from sqlalchemy.orm import declarative_base, sessionmaker, relationship, Session
-    from sqlalchemy.orm import Mapped
-    from typing import List
-
-    Base = declarative_base()
-    ```
-
-2. **Defining the User and Address Models:**
-    ```python
-    class User(Base):
-        __tablename__ = "user_account"
-        id = Column(Integer, primary_key=True)
-        name = Column(String(30))
-        fullname = Column(String)
-
-    class Address(Base):
-        __tablename__ = "address"
-        id = Column(Integer, primary_key=True)
-        email_address = Column(String(100))
-        user_id = Column(Integer, ForeignKey("user_account.id"))
-        user: Mapped["User"] = relationship("User", back_populates="addresses")
-
-    User.addresses = relationship("Address", back_populates="user")
-    ```
-
-3. **Creating the Database and Tables:**
-    ```python
-    engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-    Base.metadata.create_all(engine)
-    ```
-
-4. **Creating a Session Factory and Adding Sample Data:**
-    ```python
-    SessionLocal = sessionmaker(bind=engine)
-
-    with SessionLocal() as session:
-        user1 = User(name="John", fullname="John Doe")
-        user2 = User(name="Jane", fullname="Jane Doe")
-        user3 = User(name="sandy", fullname="Sandy Cheeks")
-        session.add_all([user1, user2, user3])
-        session.commit()
-    ```
-
-5. **Updating ORM Objects Using the Unit of Work Pattern:**
-    ```python
-    with SessionLocal() as session:
-        # Load the object into the session
-        sandy = session.execute(select(User).filter_by(name="sandy")).scalar_one()
-
-        # Modify the object's attributes
-        sandy.fullname = "Sandy Squirrel"
-
-        # Check if the object is marked as dirty (has pending changes)
-        print(sandy in session.dirty)  # True
-
-        # Commit the transaction to save changes to the database
-        session.commit()
-
-        # Verify the update by querying the database again
-        sandy_fullname = session.execute(select(User.fullname).where(User.id == sandy.id)).scalar_one()
-        print(sandy_fullname)  # "Sandy Squirrel"
-
-        # Check if the object is still marked as dirty (should be False after commit)
-        print(sandy in session.dirty)  # False
-    ```
-
-### Output:
-- **Dirty Check Before Commit**: Prints `True` indicating the object has pending changes.
-- **Updated Fullname**: Prints `"Sandy Squirrel"` verifying the update.
-- **Dirty Check After Commit**: Prints `False` indicating the changes have been committed and the object is no longer dirty.
-
-This example demonstrates how to use the Unit of Work pattern in SQLAlchemy to update ORM objects, ensuring the session correctly tracks changes and commits them to the database.
-## Deleting ORM Objects Using the Unit of Work Pattern
-
-To delete objects, mark them for deletion and let the `Session` handle the delete during a flush:
-
-```{python}
-patrick = session.get(User, 3)
-
-session.delete(patrick)
-
-session.execute(select(User).where(User.name == "patrick")).first()
-# Output will show the DELETE statement
-```
-
-### Rolling Back
-
-Rollback the transaction to undo the changes:
-
-```{python}
-session.rollback()
-```
-
-### Closing a Session
-
-Close the session to release resources and detach objects:
-
-```{python}
-session.close()
-```
-
-## Bulk / Multi-Row INSERT, UPSERT, UPDATE, and DELETE
-
-For performance-intensive tasks involving large numbers of rows, use bulk operations. This mode is crucial when dealing with massive datasets without needing to construct and manipulate individual ORM objects.
-
-See the [ORM-Enabled INSERT, UPDATE, and DELETE Statements](https://docs.sqlalchemy.org/en/14/orm/query.html#orm-enabled-insert-update-and-delete) in the ORM Querying Guide for more details.
 
 ## Conclusion
 
-Understanding the `Session` and its unit of work pattern is crucial for efficient data manipulation with SQLAlchemy's ORM. Use the techniques discussed to manage the lifecycle of your objects and perform CRUD operations seamlessly.
+This tutorial covered the basics of using SQLAlchemy to interact with a database, including defining models, creating tables, inserting data, querying data, updating data, deleting data, and managing relationships between tables. By following these steps, you should be able to use SQLAlchemy to manage your database operations effectively.
 
-For further reading:
+Sure! Here’s a detailed, fully functional tutorial for using SQLAlchemy for Object-Relational Mapping (ORM) in Python. This tutorial will walk you through the process of setting up SQLAlchemy ORM, creating models, performing CRUD operations, and handling relationships between tables.
 
-- [Update](https://docs.sqlalchemy.org/en/14/core/dml.html#sqlalchemy.sql.expression.Update)
-- [Delete](https://docs.sqlalchemy.org/en/14/core/dml.html#sqlalchemy.sql.expression.Delete)
-- [ORM-Enabled INSERT, UPDATE, and DELETE Statements](https://docs.sqlalchemy.org/en/14/orm/query.html#orm-enabled-insert-update-and-delete)
+## Setting Up the Environment
 
-These resources will help you dive deeper into the capabilities and best practices of using SQLAlchemy's ORM for data manipulation.
+First, install SQLAlchemy if you haven't already:
 
-# Working with ORM Related Objects with SQLAlchemy
+```bash
+pip install sqlalchemy
+```
 
-In this section, we'll explore how SQLAlchemy's ORM handles relationships between mapped classes. Relationships are defined using the `relationship()` construct, allowing us to create associations between different classes or even within the same class (self-referential relationships). This tutorial will cover creating, persisting, loading, and querying related objects using the ORM.
+## Creating the Engine and Base
 
-## Declaring Relationships
-
-Here’s the corrected and complete example for declaring relationships between two classes, `User` and `Address`, ensuring it works as intended:
-
-### Basic Relationship Example
+The engine is the starting point for any SQLAlchemy application. It represents the core interface to the database. The base class is used to define our classes.
 
 ```python
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
-from sqlalchemy.orm import declarative_base, sessionmaker, relationship
-from sqlalchemy.orm import Mapped
-from typing import List
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
+# Create the engine
+engine = create_engine('sqlite:///orm_example.db', echo=True)
+
+# Define the base class
 Base = declarative_base()
+```
 
-class User(Base):
-    __tablename__ = "user_account"
-    __table_args__ = {'extend_existing': True}
+## Defining Models
 
-    id = Column(Integer, primary_key=True)
-    name = Column(String(50))
-    fullname = Column(String(100))
+We'll define two models, `Department` and `Employee`, to represent our tables.
+
+```python
+from sqlalchemy import Column, Integer, String, Float, DateTime, ForeignKey
+from sqlalchemy.orm import relationship
+import datetime
+
+# Define the Department class
+class Department(Base):
+    __tablename__ = 'departments'
     
-    addresses: Mapped[List["Address"]] = relationship("Address", back_populates="user")
-
-class Address(Base):
-    __tablename__ = "address"
-
     id = Column(Integer, primary_key=True)
-    email_address = Column(String(100))
-    user_id = Column(Integer, ForeignKey("user_account.id"))
+    name = Column(String, unique=True)
+    employees = relationship('Employee', back_populates='department')
+
+# Define the Employee class
+class Employee(Base):
+    __tablename__ = 'employees'
     
-    user: Mapped["User"] = relationship("User", back_populates="addresses")
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    position = Column(String)
+    salary = Column(Float)
+    hire_date = Column(DateTime, default=datetime.datetime.utcnow)
+    department_id = Column(Integer, ForeignKey('departments.id'))
+    department = relationship('Department', back_populates='employees')
+```
 
-# Create an in-memory SQLite database
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
+## Creating Tables
 
-# Create tables in the database
+Drop existing tables and create new ones to ensure a clean state.
+
+```python
+# Drop all tables (for a clean start, especially during development)
+Base.metadata.drop_all(engine)
+
+# Create all tables
 Base.metadata.create_all(engine)
+```
 
-# Session setup
+## Creating a Session
+
+A session is used to interact with the database.
+
+```python
+# Create a session
 Session = sessionmaker(bind=engine)
 session = Session()
+```
 
-# Example usage
-new_user = User(name="John", fullname="John Doe")
-session.add(new_user)
+## Inserting Data
+
+Create a department and add employees to it.
+
+```python
+# Create a new department
+it_department = Department(name='IT')
+
+# Add the department to the session and commit to get the department ID
+session.add(it_department)
 session.commit()
 
-# Query the database
-for user in session.query(User).all():
-    print(user)
-```
+# Create new employees
+employee1 = Employee(name='John Doe', position='Software Engineer', salary=70000, department=it_department)
+employee2 = Employee(name='Jane Smith', position='Data Scientist', salary=90000, department=it_department)
 
-### Discussion:
+# Add the employees to the session
+session.add(employee1)
+session.add(employee2)
 
-1. **Imports and Base Declaration:**
-    ```python
-    from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
-    from sqlalchemy.orm import declarative_base, sessionmaker, relationship
-    from sqlalchemy.orm import Mapped
-    from typing import List
-
-    Base = declarative_base()
-    ```
-    - These imports include necessary modules and functions from SQLAlchemy and the `typing` module for type annotations.
-
-2. **User Class Definition:**
-    ```python
-    class User(Base):
-        __tablename__ = "user_account"
-        __table_args__ = {'extend_existing': True}
-
-        id = Column(Integer, primary_key=True)
-        name = Column(String(50))
-        fullname = Column(String(100))
-
-        addresses: Mapped[List["Address"]] = relationship("Address", back_populates="user")
-    ```
-    - Defines the `User` class with columns `id`, `name`, and `fullname`.
-    - The `addresses` attribute establishes a relationship to the `Address` class, using `relationship` with `back_populates` to create a bidirectional relationship.
-
-3. **Address Class Definition:**
-    ```python
-    class Address(Base):
-        __tablename__ = "address"
-
-        id = Column(Integer, primary_key=True)
-        email_address = Column(String(100))
-        user_id = Column(Integer, ForeignKey("user_account.id"))
-
-        user: Mapped["User"] = relationship("User", back_populates="addresses")
-    ```
-    - Defines the `Address` class with columns `id`, `email_address`, and `user_id`.
-    - The `user` attribute establishes a relationship to the `User` class, using `relationship` with `back_populates`.
-
-4. **Creating the Database and Tables:**
-    ```python
-    engine = create_engine("sqlite+pysqlite:///:memory:", echo=True)
-    Base.metadata.create_all(engine)
-    ```
-    - Creates an in-memory SQLite database and creates the tables defined by the models.
-
-5. **Session Setup:**
-    ```python
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    ```
-    - Sets up a session to interact with the database.
-
-6. **Example Usage and Query:**
-    ```python
-    new_user = User(name="John", fullname="John Doe")
-    session.add(new_user)
-    session.commit()
-
-    for user in session.query(User).all():
-        print(user)
-    ```
-    - Adds a new user to the database and commits the transaction.
-    - Queries the database to retrieve and print all users.
-
-This example should work without errors and correctly demonstrate the declaration and usage of relationships between `User` and `Address` classes in SQLAlchemy.
-
-## Persisting and Loading Relationships
-
-### Creating and Associating Objects
-
-Let's create a new `User` object and associate it with `Address` objects:
-
-```{python}
-u1 = User(name="pkrabs", fullname="Pearl Krabs")
-print(u1.addresses)  
-
-a1 = Address(email_address="pearl.krabs@gmail.com")
-u1.addresses.append(a1)
-print(u1.addresses)  
-
-print(a1.user)  
-```
-
-Adding an `Address` object to the `User.addresses` collection also updates the `Address.user` attribute automatically, thanks to the `back_populates` parameter.
-
-### Adding to a Session
-
-We need to add the objects to a session to persist them in the database:
-
-```{python}
-session.add(u1)
-print(u1 in session)  # Output: True
-print(a1 in session)  # Output: True
-
+# Commit the changes to the database
 session.commit()
 ```
 
-After committing the session, the objects are stored in the database, and primary key values are assigned.
+## Querying Data
 
-### Loading Relationships
+Retrieve data from the database.
 
-Accessing a relationship attribute triggers a lazy load if the related objects are not already loaded:
+```python
+# Query all employees
+employees = session.query(Employee).all()
+for employee in employees:
+    print(f'{employee.name} works as a {employee.position} in the {employee.department.name} department.')
 
-```{python}
-u1 = session.query(User).filter_by(name="pkrabs").one()
-print(u1.addresses)  # Triggers a SELECT statement to load addresses
+# Query specific employee by name
+employee = session.query(Employee).filter_by(name='John Doe').first()
+print(f'{employee.name} was hired on {employee.hire_date}')
 ```
 
-## Using Relationships in Queries
+## Updating Data
 
-### Joining Related Tables
+Update an employee's salary.
 
-You can use relationships to simplify joining related tables:
-
-```{python}
-stmt = select(Address.email_address).select_from(User).join(User.addresses)
-print(stmt)
-# Output: SELECT address.email_address FROM user_account JOIN address ON user_account.id = address.user_id
+```python
+# Update an employee's salary
+employee = session.query(Employee).filter_by(name='John Doe').first()
+employee.salary = 75000
+session.commit()
 ```
 
-### Using `joinedload()` and `selectinload()`
+## Deleting Data
 
-These methods help optimize query performance by loading related objects eagerly:
+Delete an employee from the database.
 
-```{python}
-from sqlalchemy.orm import selectinload, joinedload
-
-# Using selectinload
-stmt = select(User).options(selectinload(User.addresses)).order_by(User.id)
-for row in session.execute(stmt):
-    print(f"{row.User.name} ({', '.join(a.email_address for a in row.User.addresses)})")
-
-# Using joinedload
-stmt = select(Address).options(joinedload(Address.user)).order_by(Address.id)
-for row in session.execute(stmt):
-    print(f"{row.Address.email_address} {row.Address.user.name}")
+```python
+# Delete an employee
+employee = session.query(Employee).filter_by(name='John Doe').first()
+session.delete(employee)
+session.commit()
 ```
 
-## Loader Strategies
+## Querying Relationships
 
-### Configuring Loader Strategies
+Query employees by department.
 
-You can set loader strategies at mapping time or query time to control how related objects are loaded:
-
-```{python}
-# At mapping time
-class User(Base):
-    __tablename__ = "user_account"
-    addresses: Mapped[List["Address"]] = relationship(back_populates="user", lazy="selectin")
-
-# At query time
-stmt = select(User).options(selectinload(User.addresses)).order_by(User.id)
-```
-
-### Using `raiseload()`
-
-The `raiseload()` strategy raises an error when a lazy load is attempted, preventing unwanted lazy loads:
-
-```{python}
-class User(Base):
-    __tablename__ = "user_account"
-    addresses: Mapped[List["Address"]] = relationship(back_populates="user", lazy="raise_on_sql")
-
-u1 = session.query(User).first()
-u1.addresses  # Raises an InvalidRequestError
+```python
+# Query employees by department
+department = session.query(Department).filter_by(name='IT').first()
+for employee in department.employees:
+    print(f'{employee.name} works in the IT department.')
 ```
 
 ## Conclusion
 
-Understanding and using relationships in SQLAlchemy's ORM allows you to efficiently manage and query related data. By defining relationships with `relationship()`, using the unit of work pattern, and employing appropriate loader strategies, you can optimize your database interactions and maintain clean, readable code. For more details, refer to SQLAlchemy's [Relationship Loading Techniques](https://docs.sqlalchemy.org/en/14/orm/loading_relationships.html) documentation.
+This tutorial covered the basics of using SQLAlchemy ORM to interact with a database, including defining models, creating tables, inserting data, querying data, updating data, deleting data, and managing relationships between tables. By following these steps, you should be able to use SQLAlchemy ORM to manage your database operations effectively.

@@ -1,726 +1,466 @@
-## Introduction to Testing in Python
+## Deep Dive into the `unittest` Module with Business Examples
 
-Testing is a crucial aspect of software development, ensuring that your code works as expected and helping to identify and fix bugs early in the development process. Python provides robust tools and frameworks for writing and running tests. This tutorial will introduce you to testing in Python using the `unittest` framework for basic unit testing and `pytest` for more advanced testing needs.
+The `unittest` module is a built-in Python library that provides tools for testing your code. This tutorial will guide you through writing and running tests for business analytics and information systems examples.
 
-### Unit Testing with `unittest`
+### Table of Contents
 
-`unittest` is Python's built-in library for writing and running tests. It supports test discovery, setup, teardown, and provides assertions for verifying the correctness of your code.
+1. Introduction to `unittest`
+2. Writing and Running Tests
+3. Using Test Fixtures
+4. Advanced Features
+    - Test Discovery
+    - Mocking
+    - Test Suites
+5. Conclusion
 
-#### Basic Structure of a Test Case
+### 1. Introduction to `unittest`
 
-A test case is a single unit of testing. It checks for a specific response to a particular set of inputs. To write a test case in `unittest`, you define a class that inherits from `unittest.TestCase`.
+The `unittest` module is included in Python’s standard library, so you do not need to install anything extra to use it. It allows you to define tests using a class-based approach.
 
-##### Example: Basic Test Case
+### 2. Writing and Running Tests
 
-```{python}
+#### Step 1: Create the Code to be Tested
+
+Let's create a simple module, `business_metrics.py`, which contains functions to calculate business metrics.
+
+```python
+# business_metrics.py
+
+def profit_margin(revenue, cost):
+    if revenue == 0:
+        raise ValueError("Revenue cannot be zero.")
+    return (revenue - cost) / revenue
+
+def roi(gain_from_investment, cost_of_investment):
+    if cost_of_investment == 0:
+        raise ValueError("Cost of investment cannot be zero.")
+    return (gain_from_investment - cost_of_investment) / cost_of_investment
+
+def clv(avg_purchase_value, purchase_frequency, customer_lifespan):
+    return avg_purchase_value * purchase_frequency * customer_lifespan
+```
+
+#### Step 2: Create the Test Case
+
+Create a new file, `test_business_metrics.py`, to write our unit tests.
+
+```python
+# test_business_metrics.py
+
 import unittest
+from business_metrics import profit_margin, roi, clv
 
-# The code to be tested
-def add(a, b):
-    return a + b
+class TestBusinessMetrics(unittest.TestCase):
 
-class TestMathOperations(unittest.TestCase):
+    def test_profit_margin(self):
+        self.assertAlmostEqual(profit_margin(1000, 400), 0.6)
+        self.assertAlmostEqual(profit_margin(500, 500), 0)
+        with self.assertRaises(ValueError):
+            profit_margin(0, 500)
 
-    def test_add(self):
-        self.assertEqual(add(1, 2), 3)
-        self.assertEqual(add(-1, 1), 0)
-        self.assertEqual(add(0, 0), 0)
+    def test_roi(self):
+        self.assertAlmostEqual(roi(1500, 1000), 0.5)
+        self.assertAlmostEqual(roi(1000, 1000), 0)
+        with self.assertRaises(ValueError):
+            roi(1500, 0)
+
+    def test_clv(self):
+        self.assertEqual(clv(100, 5, 10), 5000)
+        self.assertEqual(clv(200, 3, 7), 4200)
 
 if __name__ == '__main__':
     unittest.main()
 ```
 
-### Running Tests
+#### Step 3: Run the Tests
 
-You can run the tests by executing the script. The `unittest` framework will automatically discover and run the tests defined in the `TestMathOperations` class.
+You can run the tests using the following command in your terminal:
 
 ```bash
-python test_math_operations.py
+python test_business_metrics.py
 ```
 
-### Test Fixtures: Setup and Teardown
+You should see output similar to this:
 
-Test fixtures allow you to set up any state needed for your tests and clean up afterward. Use the `setUp` and `tearDown` methods for this purpose.
+```
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
 
-##### Example: Using Test Fixtures
+OK
+```
 
-```{python}
+This indicates that all the tests have passed successfully.
+
+### 3. Using Test Fixtures
+
+Test fixtures are used to provide a fixed baseline upon which tests can reliably and repeatedly execute. This includes setup methods to prepare the environment and teardown methods to clean up after the tests have run.
+
+#### Example with Fixtures
+
+Let's add some setup and teardown methods to our test case.
+
+```python
+# test_business_metrics.py
+
 import unittest
+from business_metrics import profit_margin, roi, clv
 
-class TestMathOperations(unittest.TestCase):
+class TestBusinessMetrics(unittest.TestCase):
 
     def setUp(self):
-        # Set up any necessary state
-        self.a = 1
-        self.b = 2
+        print("Setting up test environment...")
+        self.revenue = 1000
+        self.cost = 400
+        self.gain_from_investment = 1500
+        self.cost_of_investment = 1000
+        self.avg_purchase_value = 100
+        self.purchase_frequency = 5
+        self.customer_lifespan = 10
 
     def tearDown(self):
-        # Clean up any necessary state
-        pass
+        print("Tearing down test environment...")
 
-    def test_add(self):
-        self.assertEqual(add(self.a, self.b), 3)
+    def test_profit_margin(self):
+        self.assertAlmostEqual(profit_margin(self.revenue, self.cost), 0.6)
+        self.assertAlmostEqual(profit_margin(500, 500), 0)
+        with self.assertRaises(ValueError):
+            profit_margin(0, self.cost)
+
+    def test_roi(self):
+        self.assertAlmostEqual(roi(self.gain_from_investment, self.cost_of_investment), 0.5)
+        self.assertAlmostEqual(roi(1000, 1000), 0)
+        with self.assertRaises(ValueError):
+            roi(self.gain_from_investment, 0)
+
+    def test_clv(self):
+        self.assertEqual(clv(self.avg_purchase_value, self.purchase_frequency, self.customer_lifespan), 5000)
+        self.assertEqual(clv(200, 3, 7), 4200)
 
 if __name__ == '__main__':
     unittest.main()
 ```
 
-### Organizing Tests into Suites
+Run the tests again:
 
-A test suite is a collection of test cases, test suites, or both. You can use test suites to aggregate tests that should be executed together.
+```bash
+python test_business_metrics.py
+```
 
-##### Example: Creating a Test Suite
+Output:
 
-```{python}
+```
+Setting up test environment...
+.Tearing down test environment...
+Setting up test environment...
+.Tearing down test environment...
+Setting up test environment...
+.Tearing down test environment...
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
+```
+
+### 4. Advanced Features
+
+#### Test Discovery
+
+You can organize your tests in multiple files and use `unittest`'s test discovery feature to automatically find and run all tests.
+
+##### Directory Structure
+
+```
+project/
+    business_metrics.py
+    tests/
+        __init__.py
+        test_business_metrics.py
+        test_other.py
+```
+
+##### Run Test Discovery
+
+Run the following command to discover and run all tests in the `tests` directory:
+
+```bash
+python -m unittest discover -s tests
+```
+
+#### Mocking
+
+The `unittest.mock` module provides a powerful framework for mocking objects and functions in your tests.
+
+```python
+# test_business_metrics.py
+
+from unittest.mock import patch
+
+class TestBusinessMetrics(unittest.TestCase):
+
+    @patch('business_metrics.profit_margin')
+    def test_profit_margin_mock(self, mock_profit_margin):
+        mock_profit_margin.return_value = 0.75
+        self.assertEqual(profit_margin(1, 2), 0.75)
+        mock_profit_margin.assert_called_with(1, 2)
+```
+
+#### Test Suites
+
+You can create test suites to group multiple test cases together.
+
+```python
+# test_business_metrics.py
+
 import unittest
-
-class TestMathOperations(unittest.TestCase):
-
-    def test_add(self):
-        self.assertEqual(add(1, 2), 3)
-
-    def test_subtract(self):
-        self.assertEqual(subtract(2, 1), 1)
 
 def suite():
     suite = unittest.TestSuite()
-    suite.addTest(TestMathOperations('test_add'))
-    suite.addTest(TestMathOperations('test_subtract'))
+    suite.addTest(TestBusinessMetrics('test_profit_margin'))
+    suite.addTest(TestBusinessMetrics('test_roi'))
     return suite
 
 if __name__ == '__main__':
     runner = unittest.TextTestRunner()
     runner.run(suite())
-```
-
-### Advanced Testing with `pytest`
-
-`pytest` is a powerful testing framework that supports fixtures, parameterized testing, and a more flexible structure compared to `unittest`. It is highly recommended for more complex testing needs.
-
-#### Installing `pytest`
-
-You can install `pytest` using pip:
-
-```bash
-pip install pytest
-```
-
-#### Writing Tests with `pytest`
-
-Tests in `pytest` are simple functions. You can use `assert` statements to check for expected outcomes.
-
-##### Example: Basic `pytest` Test
-
-```{python}
-# test_math_operations.py
-
-def add(a, b):
-    return a + b
-
-def test_add():
-    assert add(1, 2) == 3
-    assert add(-1, 1) == 0
-    assert add(0, 0) == 0
-```
-
-#### Running `pytest` Tests
-
-Run the tests using the `pytest` command:
-
-```bash
-pytest test_math_operations.py
-```
-
-### Using Fixtures in `pytest`
-
-Fixtures in `pytest` provide a way to set up and clean up resources needed for tests.
-
-##### Example: Using Fixtures
-
-```{python}
-import pytest
-
-@pytest.fixture
-def numbers():
-    return 1, 2
-
-def test_add(numbers):
-    a, b = numbers
-    assert add(a, b) == 3
-```
-
-### Parameterized Tests in `pytest`
-
-Parameterized tests allow you to run a test function with different sets of parameters.
-
-##### Example: Parameterized Tests
-
-```{python}
-import pytest
-
-@pytest.mark.parametrize("a,b,expected", [
-    (1, 2, 3),
-    (-1, 1, 0),
-    (0, 0, 0),
-])
-def test_add(a, b, expected):
-    assert add(a, b) == expected
 ```
 
 ### Conclusion
 
-Testing is an essential part of software development that ensures your code works correctly and efficiently. By using `unittest` for basic unit testing and `pytest` for more advanced testing scenarios, you can create comprehensive test suites that cover various aspects of your application. Proper testing leads to more robust and reliable code, ultimately improving the quality of your software.
+This tutorial covered the basics of using the `unittest` module in Python to write and run tests, including using test fixtures, running tests, and some advanced features like test discovery, mocking, and test suites. By following these steps, you should be able to effectively use `unittest` to ensure your business analytics and information systems code works as expected.
 
-# Deep Dive into the `unittest` Module in Python
+This tutorial should provide a solid foundation for using `unittest` to test your Python code in business analytics and information systems scenarios. You can extend and adapt these examples to fit the specific needs of your projects.
 
-The `unittest` module in Python is a built-in library that provides a framework for creating and running tests. It supports test automation, sharing of setup and shutdown code for tests, aggregation of tests into collections, and independence of the tests from the reporting framework. In this tutorial, we will explore the `unittest` module in depth.
+Certainly! Let's create a deep dive tutorial on the `pytest` package with business analytics and information systems examples. We'll use the same `business_metrics` module as in the previous tutorial but write our tests using `pytest`.
 
-## Importing the `unittest` Module
+## Deep Dive into `pytest` with Business Examples
 
-To use the `unittest` module, you need to import it first:
+The `pytest` package is a powerful testing framework that makes it easy to write simple and scalable test cases. It offers features such as fixtures, parameterized testing, and a rich plugin architecture.
 
-```{python}
-import unittest
-```
+### Table of Contents
 
-## Basic Structure of a Test Case
+1. Introduction to `pytest`
+2. Writing and Running Tests
+3. Using Fixtures
+4. Parameterized Testing
+5. Advanced Features
+    - Test Discovery
+    - Mocking
+    - Plugins
+6. Conclusion
 
-A test case is created by subclassing `unittest.TestCase`. Each test is defined as a method within the class. Methods starting with the word "test" are recognized as test methods.
+### 1. Introduction to `pytest`
 
-### Example
+`pytest` is not included in Python’s standard library, so you'll need to install it. You can install `pytest` using `pip`:
 
-```{python}
-import unittest
-
-class TestStringMethods(unittest.TestCase):
-
-    def test_upper(self):
-        self.assertEqual('foo'.upper(), 'FOO')
-
-    def test_isupper(self):
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
-
-    def test_split(self):
-        s = 'hello world'
-        self.assertEqual(s.split(), ['hello', 'world'])
-        with self.assertRaises(TypeError):
-            s.split(2)
-
-if __name__ == '__main__':
-    unittest.main()
-```
-
-### Explanation
-
-- **Test Case**: A test case is created by subclassing `unittest.TestCase`.
-- **Test Methods**: Methods starting with `test_` are test cases. In the example, `test_upper`, `test_isupper`, and `test_split` are test methods.
-- **Assertions**: Assertions are used to check if a condition is true. If an assertion fails, the test fails.
-
-## Running Tests
-
-The simplest way to run tests is to include the following block at the bottom of your test file:
-
-```{python}
-if __name__ == '__main__':
-    unittest.main()
-```
-
-This will run all test methods in the file when the file is executed.
-
-## Common Assertions
-
-Here are some commonly used assertions provided by `unittest`:
-
-- `assertEqual(a, b)`: Check if `a == b`
-- `assertNotEqual(a, b)`: Check if `a != b`
-- `assertTrue(x)`: Check if `x` is `True`
-- `assertFalse(x)`: Check if `x` is `False`
-- `assertIs(a, b)`: Check if `a` is `b`
-- `assertIsNot(a, b)`: Check if `a` is not `b`
-- `assertIsNone(x)`: Check if `x` is `None`
-- `assertIsNotNone(x)`: Check if `x` is not `None`
-- `assertIn(a, b)`: Check if `a` is in `b`
-- `assertNotIn(a, b)`: Check if `a` is not in `b`
-- `assertIsInstance(a, b)`: Check if `a` is an instance of `b`
-- `assertNotIsInstance(a, b)`: Check if `a` is not an instance of `b`
-
-### Example
-
-```{python}
-class TestAssertions(unittest.TestCase):
-
-    def test_assertions(self):
-        self.assertEqual(1 + 1, 2)
-        self.assertTrue(1 == 1)
-        self.assertFalse(1 == 0)
-        self.assertIs(None, None)
-        self.assertIsNot(1, None)
-        self.assertIsNone(None)
-        self.assertIsNotNone(1)
-        self.assertIn(1, [1, 2, 3])
-        self.assertNotIn(4, [1, 2, 3])
-        self.assertIsInstance(1, int)
-        self.assertNotIsInstance(1, str)
-```
-
-## Test Fixtures
-
-Test fixtures are used to provide a fixed baseline upon which tests can run. This can include setting up databases, creating directories, or starting services.
-
-### Setup and Teardown
-
-- `setUp()`: This method is called before each test. It is used to set up any state specific to the test.
-- `tearDown()`: This method is called after each test. It is used to clean up any state that was set up in `setUp()`.
-
-### Example
-
-```{python}
-class TestWithFixtures(unittest.TestCase):
-
-    def setUp(self):
-        self.resource = "some setup resource"
-        print(f"Setup: {self.resource}")
-
-    def tearDown(self):
-        print(f"TearDown: {self.resource}")
-        self.resource = None
-
-    def test_something(self):
-        self.assertIsNotNone(self.resource)
-        print(f"Test: {self.resource}")
-
-if __name__ == '__main__':
-    unittest.main()
-```
-
-## Test Suites
-
-A test suite is a collection of test cases, test suites, or both. It is used to aggregate tests that should be executed together.
-
-### Example
-
-```{python}
-def suite():
-    suite = unittest.TestSuite()
-    suite.addTest(TestStringMethods('test_upper'))
-    suite.addTest(TestStringMethods('test_isupper'))
-    suite.addTest(TestStringMethods('test_split'))
-    return suite
-
-if __name__ == '__main__':
-    runner = unittest.TextTestRunner()
-    runner.run(suite())
-```
-
-## Skipping Tests
-
-Tests can be skipped using the `unittest.skip` decorator or methods like `unittest.skipIf` and `unittest.skipUnless`.
-
-### Example
-
-```{python}
-class TestSkipping(unittest.TestCase):
-
-    @unittest.skip("demonstrating skipping")
-    def test_skip(self):
-        self.fail("shouldn't happen")
-
-    @unittest.skipIf(1 == 1, "not testing")
-    def test_skip_if(self):
-        self.fail("shouldn't happen")
-
-    @unittest.skipUnless(1 == 1, "not testing")
-    def test_skip_unless(self):
-        self.assertTrue(True)
-
-if __name__ == '__main__':
-    unittest.main()
-```
-
-## Expected Failures
-
-Sometimes, a test is expected to fail. This can be indicated using the `unittest.expectedFailure` decorator.
-
-### Example
-
-```{python}
-class TestExpectedFailure(unittest.TestCase):
-
-    @unittest.expectedFailure
-    def test_expected_failure(self):
-        self.assertEqual(1, 0)
-
-if __name__ == '__main__':
-    unittest.main()
-```
-
-## Mocking
-
-The `unittest.mock` module allows you to replace parts of your system under test and make assertions about how they have been used.
-
-### Example
-
-```{python}
-from unittest.mock import MagicMock
-
-class TestMocking(unittest.TestCase):
-
-    def test_mocking(self):
-        mock = MagicMock()
-        mock.method.return_value = 'foo'
-        self.assertEqual(mock.method(), 'foo')
-        mock.method.assert_called_once()
-
-if __name__ == '__main__':
-    unittest.main()
-```
-
-## Parameterized Tests
-
-Parameterized tests allow you to run the same test with different inputs.
-
-### Example using `parameterized` package
-
-```{python}
-from parameterized import parameterized
-
-class TestParameterized(unittest.TestCase):
-
-    @parameterized.expand([
-        ("foo", "foo".upper(), "FOO"),
-        ("bar", "bar".upper(), "BAR"),
-        ("baz", "baz".upper(), "BAZ"),
-    ])
-    def test_upper(self, name, input, expected):
-        self.assertEqual(input, expected)
-
-if __name__ == '__main__':
-    unittest.main()
-```
-
-## Running Tests with `unittest` Command Line Interface
-
-You can run tests using the command line interface provided by `unittest`.
-
-```sh
-python -m unittest discover -s tests
-```
-
-- `-s`: Specifies the start directory for discovering tests.
-- `-p`: Specifies the pattern for test file discovery.
-
-## Conclusion
-
-The `unittest` module in Python is a powerful and flexible framework for testing. By understanding and utilizing its features, you can create robust and maintainable test suites for your applications. This tutorial covered the basics and some advanced features of `unittest`, including test cases, test fixtures, test suites, skipping tests, expected failures, mocking, and parameterized tests.
-
-# Deep Dive into the `pytest` Module in Python
-
-`pytest` is a powerful and flexible testing framework for Python. It is widely used for writing simple unit tests as well as complex functional tests. In this tutorial, we will explore `pytest` in depth, covering its installation, basic usage, advanced features, and best practices.
-
-## Installation
-
-To install `pytest`, you can use `pip`:
-
-```sh
+```bash
 pip install pytest
 ```
 
-## Basic Usage
+### 2. Writing and Running Tests
 
-### Writing Tests
+#### Step 1: Create the Code to be Tested
 
-`pytest` identifies test files and test functions based on specific naming conventions. By default, it looks for files matching `test_*.py` or `*_test.py` patterns.
+We'll use the same `business_metrics.py` module:
 
-### Example
+```python
+# business_metrics.py
 
-Create a file named `test_example.py`:
+def profit_margin(revenue, cost):
+    if revenue == 0:
+        raise ValueError("Revenue cannot be zero.")
+    return (revenue - cost) / revenue
 
-```{python}
-def test_addition():
-    assert 1 + 1 == 2
+def roi(gain_from_investment, cost_of_investment):
+    if cost_of_investment == 0:
+        raise ValueError("Cost of investment cannot be zero.")
+    return (gain_from_investment - cost_of_investment) / cost_of_investment
 
-def test_subtraction():
-    assert 1 - 1 == 0
+def clv(avg_purchase_value, purchase_frequency, customer_lifespan):
+    return avg_purchase_value * purchase_frequency * customer_lifespan
 ```
 
-### Running Tests
+#### Step 2: Create the Test Case
 
-To run the tests, simply use the `pytest` command in the terminal:
+Create a new file, `test_business_metrics.py`, to write our tests using `pytest`.
 
-```sh
+```python
+# test_business_metrics.py
+
+import pytest
+from business_metrics import profit_margin, roi, clv
+
+def test_profit_margin():
+    assert profit_margin(1000, 400) == pytest.approx(0.6)
+    assert profit_margin(500, 500) == pytest.approx(0)
+    with pytest.raises(ValueError):
+        profit_margin(0, 500)
+
+def test_roi():
+    assert roi(1500, 1000) == pytest.approx(0.5)
+    assert roi(1000, 1000) == pytest.approx(0)
+    with pytest.raises(ValueError):
+        roi(1500, 0)
+
+def test_clv():
+    assert clv(100, 5, 10) == 5000
+    assert clv(200, 3, 7) == 4200
+```
+
+#### Step 3: Run the Tests
+
+You can run the tests using the following command in your terminal:
+
+```bash
+pytest test_business_metrics.py
+```
+
+You should see output similar to this:
+
+```
+============================= test session starts ==============================
+platform linux -- Python 3.8.5, pytest-6.2.4, py-1.10.0, pluggy-0.13.1
+collected 3 items                                                              
+
+test_business_metrics.py ...                                              [100%]
+
+============================== 3 passed in 0.01s ===============================
+```
+
+### 3. Using Fixtures
+
+Fixtures provide a way to set up some context before tests run and clean up afterward. Fixtures are a great way to share setup and teardown code between tests.
+
+#### Example with Fixtures
+
+Let's add some setup fixtures to our test case.
+
+```python
+# test_business_metrics.py
+
+import pytest
+from business_metrics import profit_margin, roi, clv
+
+@pytest.fixture
+def metrics_data():
+    return {
+        'revenue': 1000,
+        'cost': 400,
+        'gain_from_investment': 1500,
+        'cost_of_investment': 1000,
+        'avg_purchase_value': 100,
+        'purchase_frequency': 5,
+        'customer_lifespan': 10
+    }
+
+def test_profit_margin(metrics_data):
+    assert profit_margin(metrics_data['revenue'], metrics_data['cost']) == pytest.approx(0.6)
+    assert profit_margin(500, 500) == pytest.approx(0)
+    with pytest.raises(ValueError):
+        profit_margin(0, metrics_data['cost'])
+
+def test_roi(metrics_data):
+    assert roi(metrics_data['gain_from_investment'], metrics_data['cost_of_investment']) == pytest.approx(0.5)
+    assert roi(1000, 1000) == pytest.approx(0)
+    with pytest.raises(ValueError):
+        roi(metrics_data['gain_from_investment'], 0)
+
+def test_clv(metrics_data):
+    assert clv(metrics_data['avg_purchase_value'], metrics_data['purchase_frequency'], metrics_data['customer_lifespan']) == 5000
+    assert clv(200, 3, 7) == 4200
+```
+
+### 4. Parameterized Testing
+
+Parameterized testing allows you to run the same test function with different sets of parameters.
+
+```python
+# test_business_metrics.py
+
+import pytest
+from business_metrics import profit_margin, roi, clv
+
+@pytest.mark.parametrize("revenue, cost, expected", [
+    (1000, 400, 0.6),
+    (500, 500, 0),
+])
+def test_profit_margin(revenue, cost, expected):
+    assert profit_margin(revenue, cost) == pytest.approx(expected)
+
+@pytest.mark.parametrize("gain, cost, expected", [
+    (1500, 1000, 0.5),
+    (1000, 1000, 0),
+])
+def test_roi(gain, cost, expected):
+    assert roi(gain, cost) == pytest.approx(expected)
+
+@pytest.mark.parametrize("avg_purchase_value, purchase_frequency, customer_lifespan, expected", [
+    (100, 5, 10, 5000),
+    (200, 3, 7, 4200),
+])
+def test_clv(avg_purchase_value, purchase_frequency, customer_lifespan, expected):
+    assert clv(avg_purchase_value, purchase_frequency, customer_lifespan) == expected
+```
+
+### 5. Advanced Features
+
+#### Test Discovery
+
+`pytest` automatically discovers all files matching the pattern `test_*.py` or `*_test.py`. You can organize your tests in multiple files.
+
+##### Directory Structure
+
+```
+project/
+    business_metrics.py
+    tests/
+        __init__.py
+        test_business_metrics.py
+        test_other.py
+```
+
+##### Run Test Discovery
+
+Run the following command to discover and run all tests in the `tests` directory:
+
+```bash
 pytest
 ```
 
-### Output
+#### Mocking
 
-When you run `pytest`, it will automatically discover and execute all the tests in the current directory and its subdirectories. The output will provide detailed information about the tests, including any failures or errors.
+The `pytest-mock` plugin integrates `pytest` with the `unittest.mock` module. You can install it using `pip`:
 
-## Assertions
-
-`pytest` uses standard Python `assert` statements for assertions. This makes the tests easy to write and understand.
-
-### Example
-
-```{python}
-def test_string_methods():
-    s = "hello"
-    assert s.upper() == "HELLO"
-    assert s.islower()
-    assert s.startswith("h")
+```bash
+pip install pytest-mock
 ```
 
-## Fixtures
+```python
+# test_business_metrics.py
 
-Fixtures are functions that provide a fixed baseline for tests. They are used to set up and clean up resources needed by tests. Fixtures are defined using the `@pytest.fixture` decorator.
-
-### Example
-
-```{python}
-import pytest
-
-@pytest.fixture
-def sample_data():
-    return {"name": "pytest", "version": "6.2.5"}
-
-def test_sample_data(sample_data):
-    assert sample_data["name"] == "pytest"
-    assert sample_data["version"] == "6.2.5"
+def test_profit_margin_mock(mocker):
+    mock_profit_margin = mocker.patch('business_metrics.profit_margin')
+    mock_profit_margin.return_value = 0.75
+    assert profit_margin(1, 2) == 0.75
+    mock_profit_margin.assert_called_with(1, 2)
 ```
 
-### Using Fixtures
+#### Plugins
 
-Fixtures can be used by including them as arguments in test functions. `pytest` will automatically recognize and provide the fixture data.
+`pytest` has a rich plugin architecture. You can install plugins to extend its functionality.
 
-## Parameterized Tests
-
-Parameterized tests allow you to run the same test with different inputs. This is useful for testing functions with multiple sets of inputs and expected outputs.
-
-### Example
-
-```{python}
-import pytest
-
-@pytest.mark.parametrize("x, y, result", [
-    (1, 2, 3),
-    (4, 5, 9),
-    (10, 11, 21),
-])
-def test_addition(x, y, result):
-    assert x + y == result
+```bash
+pip install pytest-cov
 ```
 
-## Grouping Tests
+Run the tests with coverage:
 
-You can group tests using classes. Test classes should not have an `__init__` method.
-
-### Example
-
-```{python}
-class TestMathOperations:
-
-    def test_addition(self):
-        assert 1 + 1 == 2
-
-    def test_subtraction(self):
-        assert 2 - 1 == 1
+```bash
+pytest --cov=business_metrics test_business_metrics.py
 ```
 
-## Markers
+### Conclusion
 
-Markers are used to label tests for specific purposes, such as grouping, skipping, or executing under certain conditions.
+This tutorial covered the basics of using the `pytest` module in Python to write and run tests, including using fixtures, parameterized testing, and some advanced features like test discovery, mocking, and plugins. By following these steps, you should be able to effectively use `pytest` to ensure your business analytics and information systems code works as expected.
 
-### Example
-
-```{python}
-import pytest
-
-@pytest.mark.slow
-def test_slow_operation():
-    import time
-    time.sleep(5)
-    assert True
-```
-
-### Running Marked Tests
-
-You can run tests with specific markers using the `-m` option:
-
-```sh
-pytest -m slow
-```
-
-### Skipping Tests
-
-You can skip tests using the `@pytest.mark.skip` decorator or conditionally with `@pytest.mark.skipif`.
-
-### Example
-
-```{python}
-@pytest.mark.skip(reason="Skipping this test for now")
-def test_skip():
-    assert False
-
-@pytest.mark.skipif(1 == 1, reason="Conditional skip")
-def test_conditional_skip():
-    assert False
-```
-
-## Expected Failures
-
-You can mark tests as expected to fail using the `@pytest.mark.xfail` decorator.
-
-### Example
-
-```{python}
-@pytest.mark.xfail
-def test_expected_failure():
-    assert False
-```
-
-## Plugins
-
-`pytest` has a rich ecosystem of plugins that extend its functionality. Some popular plugins include:
-
-- `pytest-cov`: For measuring code coverage.
-- `pytest-xdist`: For running tests in parallel.
-- `pytest-mock`: For mocking in tests.
-
-### Installing Plugins
-
-Plugins can be installed using `pip`:
-
-```sh
-pip install pytest-cov pytest-xdist pytest-mock
-```
-
-### Using Plugins
-
-Plugins are automatically recognized by `pytest` once installed. You can use their features by following the respective plugin documentation.
-
-### Example: Code Coverage with `pytest-cov`
-
-```sh
-pytest --cov=my_module tests/
-```
-
-## Customizing `pytest` Configuration
-
-You can customize `pytest` behavior using a configuration file named `pytest.ini`, `tox.ini`, or `setup.cfg`.
-
-### Example `pytest.ini`
-
-```ini
-[pytest]
-addopts = -ra -q
-markers =
-    slow: marks tests as slow (deselect with '-m "not slow"')
-    smoke: marks tests as smoke tests
-```
-
-### Explanation
-
-- `addopts`: Additional options to pass to `pytest`.
-- `markers`: Custom markers for organizing tests.
-
-## Capturing Output
-
-`pytest` captures output from `print` statements and logs during test execution. You can view this output by using the `-s` option.
-
-### Example
-
-```sh
-pytest -s
-```
-
-## Debugging Tests
-
-You can use the `--pdb` option to drop into the Python debugger (pdb) on test failures.
-
-### Example
-
-```sh
-pytest --pdb
-```
-
-## Integrating with Continuous Integration (CI) Systems
-
-`pytest` can be easily integrated with CI systems like Jenkins, Travis CI, CircleCI, and GitHub Actions.
-
-### Example: GitHub Actions
-
-Create a `.github/workflows/python-app.yml` file:
-
-```yaml
-name: Python application
-
-on: [push]
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pytest
-    - name: Run tests
-      run: |
-        pytest
-```
-
-## Advanced Features
-
-### Assertions with Custom Messages
-
-You can provide custom messages for assertions to make the output more informative.
-
-### Example
-
-```{python}
-def test_custom_message():
-    assert 1 + 1 == 3, "Expected result to be 3"
-```
-
-### Using `pytest.raises` for Exception Handling
-
-You can test for exceptions using the `pytest.raises` context manager.
-
-### Example
-
-```{python}
-def test_exception():
-    with pytest.raises(ZeroDivisionError):
-        1 / 0
-```
-
-### Using `pytest.approx` for Floating Point Comparisons
-
-You can use `pytest.approx` for comparing floating-point numbers.
-
-### Example
-
-```{python}
-def test_approx():
-    assert 0.1 + 0.2 == pytest.approx(0.3)
-```
-
-## Best Practices
-
-1. **Use Descriptive Test Names**: Use descriptive names for test functions and methods to make the test purpose clear.
-2. **Keep Tests Independent**: Ensure tests do not depend on each other. Each test should be able to run independently.
-3. **Use Fixtures Wisely**: Use fixtures to manage setup and teardown of resources.
-4. **Organize Tests**: Organize tests into directories and modules for better structure.
-5. **Use Markers**: Use markers to categorize and select tests.
-6. **Continuous Integration**: Integrate `pytest` with a CI system to automate testing.
-
-## Conclusion
-
-`pytest` is a powerful and flexible testing framework that makes it easy to write and run tests. Its simple syntax, extensive features, and rich ecosystem of plugins make it a popular choice for testing in Python. By understanding and utilizing the features of `pytest`, you can create robust and maintainable test suites for your applications.
+This tutorial should provide a solid foundation for using `pytest` to test your Python code in business analytics and information systems scenarios. You can extend and adapt these examples to fit the specific needs of your projects.

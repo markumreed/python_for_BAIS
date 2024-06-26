@@ -8,7 +8,7 @@ Object-Oriented Programming (OOP) is a programming paradigm that uses objects an
 
 A class is a blueprint for creating objects. It defines a set of attributes and methods that the created objects will have.
 
-```{python}
+```python
 class Employee:
     def __init__(self, name, age, position):
         self.name = name
@@ -23,7 +23,7 @@ class Employee:
 
 An object is an instance of a class. It has the properties and behaviors defined by the class.
 
-```{python}
+```python
 # Creating an object of the Employee class
 employee1 = Employee("John Doe", 30, "Software Engineer")
 employee1.display_info()  
@@ -35,7 +35,7 @@ employee1.display_info()
 
 Instance attributes are specific to each object. They are defined within the `__init__` method.
 
-```{python}
+```python
 class Product:
     def __init__(self, name, price, quantity):
         self.name = name
@@ -46,7 +46,7 @@ class Product:
         print(f"Product Name: {self.name}, Price: ${self.price}, Quantity: {self.quantity}")
 ```
 
-```{python}
+```python
 # Creating an object of the Product class
 product1 = Product("Laptop", 1200, 5)
 product1.display_info()  
@@ -56,7 +56,7 @@ product1.display_info()
 
 Class attributes are shared by all instances of the class.
 
-```{python}
+```python
 class Company:
     # Class attribute
     company_name = "Tech Solutions Inc."
@@ -80,7 +80,7 @@ Inheritance allows a class to inherit attributes and methods from another class.
 
 #### Example: Single Inheritance
 
-```{python}
+```python
 class Person:
     def __init__(self, name, age):
         self.name = name
@@ -111,7 +111,7 @@ Encapsulation is the concept of restricting access to certain attributes and met
 
 #### Example: Encapsulation with Private Attributes
 
-```{python}
+```python
 class BankAccount:
     def __init__(self, account_number, balance):
         self.account_number = account_number
@@ -141,7 +141,7 @@ Polymorphism allows objects of different classes to be treated as objects of a c
 
 #### Example: Polymorphism with Method Overriding
 
-```{python}
+```python
 class Animal:
     def make_sound(self):
         pass
@@ -202,7 +202,7 @@ OOP is centered around objects, which are instances of classes. A class defines 
 
 In Python, a class is defined using the `class` keyword.
 
-```{python}
+```python
 class Employee:
     pass
 ```
@@ -211,7 +211,7 @@ class Employee:
 
 An object is created by calling the class.
 
-```{python}
+```python
 emp1 = Employee()
 ```
 
@@ -221,7 +221,7 @@ emp1 = Employee()
 
 Attributes are variables that belong to an object.
 
-```{python}
+```python
 class Employee:
     def __init__(self, name, id):
         self.name = name
@@ -232,7 +232,7 @@ class Employee:
 
 Methods are functions defined inside a class.
 
-```{python}
+```python
 class Employee:
     def __init__(self, name, id):
         self.name = name
@@ -251,7 +251,7 @@ Encapsulation is the bundling of data and methods within a class. It restricts a
 
 ### Example
 
-```{python}
+```python
 class Employee:
     def __init__(self, name, id):
         self.__name = name  # Private attribute
@@ -278,7 +278,7 @@ Inheritance allows a class (child class) to inherit attributes and methods from 
 
 ### Example
 
-```{python}
+```python
 class Employee:
     def __init__(self, name, id):
         self.name = name
@@ -306,7 +306,7 @@ Polymorphism allows methods to be used in different ways, often by overriding th
 
 ### Example
 
-```{python}
+```python
 class Employee:
     def __init__(self, name, id):
         self.name = name
@@ -345,7 +345,7 @@ OOP can be used to model and manage complex data structures and processes in bus
 
 ### Example: Data Analysis Classes
 
-```{python}
+```python
 class DataSource:
     def __init__(self, data):
         self.data = data
@@ -383,7 +383,7 @@ report_gen.generate_report()
 
 ### Example 1: Customer Relationship Management (CRM)
 
-```{python}
+```python
 class Customer:
     def __init__(self, customer_id, name, email):
         self.customer_id = customer_id
@@ -411,7 +411,7 @@ order1.display_info()
 
 ### Example 2: Inventory Management System
 
-```{python}
+```python
 class Product:
     def __init__(self, product_id, name, price):
         self.product_id = product_id

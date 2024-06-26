@@ -20,7 +20,7 @@ You can use `dnspython` to perform various DNS queries such as A, MX, and NS rec
 
 ##### Example: Querying A Records
 
-```{python}
+```python
 import dns.resolver
 
 def query_a_record(domain):
@@ -33,7 +33,7 @@ query_a_record('example.com')
 
 ##### Example: Querying MX Records
 
-```{python}
+```python
 import dns.resolver
 
 def query_mx_record(domain):
@@ -74,7 +74,7 @@ IPv4 addresses are 32-bit numbers. Subnet masks define the network and host port
 
 ##### Example: Calculating Subnet Information for IPv4
 
-```{python}
+```python
 import ipaddress
 
 def ipv4_subnet_info(network):
@@ -93,7 +93,7 @@ IPv6 addresses are 128-bit numbers, providing a significantly larger address spa
 
 ##### Example: Calculating Subnet Information for IPv6
 
-```{python}
+```python
 import ipaddress
 
 def ipv6_subnet_info(network):
@@ -110,7 +110,7 @@ ipv6_subnet_info('2001:0db8::/32')
 
 This script combines DNS querying, subnet calculation, and basic routing protocol concepts.
 
-```{python}
+```python
 import dns.resolver
 import ipaddress
 
@@ -195,7 +195,7 @@ pip install dnspython
 
 An A record maps a domain name to its corresponding IPv4 address.
 
-```{python}
+```python
 import dns.resolver
 
 def query_a_record(domain):
@@ -211,7 +211,7 @@ if __name__ == "__main__":
 
 An AAAA record maps a domain name to its corresponding IPv6 address.
 
-```{python}
+```python
 import dns.resolver
 
 def query_aaaa_record(domain):
@@ -229,7 +229,7 @@ if __name__ == "__main__":
 
 MX (Mail Exchange) records specify the mail servers responsible for receiving email on behalf of a domain.
 
-```{python}
+```python
 import dns.resolver
 
 def query_mx_record(domain):
@@ -245,7 +245,7 @@ if __name__ == "__main__":
 
 NS (Name Server) records specify the authoritative name servers for a domain.
 
-```{python}
+```python
 import dns.resolver
 
 def query_ns_record(domain):
@@ -261,7 +261,7 @@ if __name__ == "__main__":
 
 TXT (Text) records provide text information to sources outside your domain.
 
-```{python}
+```python
 import dns.resolver
 
 def query_txt_record(domain):
@@ -277,7 +277,7 @@ if __name__ == "__main__":
 
 CNAME (Canonical Name) records map an alias name to a true or canonical domain name.
 
-```{python}
+```python
 import dns.resolver
 
 def query_cname_record(domain):
@@ -293,7 +293,7 @@ if __name__ == "__main__":
 
 SOA (Start of Authority) records provide information about the domain and the corresponding DNS zone.
 
-```{python}
+```python
 import dns.resolver
 
 def query_soa_record(domain):
@@ -309,7 +309,7 @@ if __name__ == "__main__":
 
 Reverse DNS lookups find the domain name associated with an IP address.
 
-```{python}
+```python
 import dns.resolver
 import dns.reversename
 
@@ -329,7 +329,7 @@ if __name__ == "__main__":
 
 You can specify which DNS server to use for your queries.
 
-```{python}
+```python
 import dns.resolver
 
 def query_with_custom_dns(domain, dns_server):
@@ -347,7 +347,7 @@ if __name__ == "__main__":
 
 You can control the timeout and number of retries for DNS queries.
 
-```{python}
+```python
 import dns.resolver
 
 def query_with_timeout(domain, timeout, retries):
@@ -366,7 +366,7 @@ if __name__ == "__main__":
 
 Proper error handling is essential for robust DNS querying.
 
-```{python}
+```python
 import dns.resolver
 import dns.exception
 

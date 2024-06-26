@@ -1,64 +1,349 @@
-## Advanced Python Concepts
+# Deep Dive into `asyncio` for Asynchronous Programming in Python
 
-Exploring advanced Python concepts can significantly enhance the functionality and efficiency of your code. This tutorial will cover asynchronous programming with `asyncio`, decorators, generators, and context managers using the `contextlib` library.
+The `asyncio` module in Python is a library to write concurrent code using the async/await syntax. It is used to build event-driven code, such as network servers, clients, and other asynchronous programs.
 
-### Asynchronous Programming with `asyncio`
+### Table of Contents
 
-Asynchronous programming allows your code to perform tasks concurrently, improving efficiency, especially in I/O-bound operations.
+1. Introduction to `asyncio`
+2. Basic Concepts
+   - `async` and `await`
+   - `asyncio.run()`
+3. Coroutines
+4. Tasks
+5. Futures
+6. Using Async/Await with HTTP Requests
+7. Event Loops
+8. Handling Timeouts
+9. Synchronization Primitives
+10. Conclusion
 
-#### Basics of `asyncio`
+### 1. Introduction to `asyncio`
 
-`asyncio` provides the necessary infrastructure for writing single-threaded concurrent code using `async` and `await` syntax.
+The `asyncio` module allows you to write code that runs concurrently, making it an essential tool for IO-bound and high-level structured network code.
 
-##### Example: Basic Asynchronous Function
+First, let's install the required libraries:
 
-```{python}
-import asyncio
-
-async def say_hello():
-    print("Hello")
-    await asyncio.sleep(1)
-    print("World")
-
-# Running the asynchronous function
-asyncio.run(say_hello())
+```bash
+pip install aiohttp
 ```
 
-#### Running Multiple Tasks Concurrently
+### 2. Basic Concepts
 
-You can run multiple asynchronous tasks concurrently using `asyncio.gather`.
+#### `async` and `await`
 
-##### Example: Concurrent Tasks
+To write asynchronous functions, use the `async` keyword to define a coroutine and `await` to call asynchronous functions.
 
-```{python}
+```python
 import asyncio
 
-async def task1():
-    print("Start Task 1")
-    await asyncio.sleep(2)
-    print("End Task 1")
-
-async def task2():
-    print("Start Task 2")
+async def main():
+    print('Hello')
     await asyncio.sleep(1)
-    print("End Task 2")
+    print('World')
+
+# Running the coroutine
+asyncio.run(main())
+```
+
+#### `asyncio.run()`
+
+`asyncio.run()` is a high-level function that runs the event loop until the specified coroutine is complete.
+
+### 3. Coroutines
+
+A coroutine is a function that can suspend its execution before reaching return, and it can indirectly pass control to another coroutine for some time.
+
+```python
+async def say_hello():
+    await asyncio.sleep(1)
+    print("Hello, World!")
 
 async def main():
-    await asyncio.gather(task1(), task2())
+    await say_hello()
 
 asyncio.run(main())
 ```
 
-### Decorators
+### 4. Tasks
 
-Decorators are a powerful tool for modifying the behavior of functions or classes. They allow you to wrap another function to extend its behavior without explicitly modifying it.
+Tasks are used to schedule coroutines concurrently.
 
-#### Creating a Simple Decorator
+```python
+async def say(message, delay):
+    await asyncio.sleep(delay)
+    print(message)
 
-##### Example: Logging Decorator
+async def main():
+    task1 = asyncio.create_task(say("Hello", 2))
+    task2 = asyncio.create_task(say("World", 1))
 
-```{python}
-def logger(func):
+    await task1
+    await task2
+
+asyncio.run(main())
+```
+
+### 5. Futures
+
+Futures represent a result that is not yet available. They are used to bridge low-level callback-based code with `async`/`await`.
+
+```python
+async def set_after(fut, delay, value):
+    await asyncio.sleep(delay)
+    fut.set_result(value)
+
+async def main():
+    loop = asyncio.get_running_loop()
+    fut = loop.create_future()
+
+    await loop.create_task(set_after(fut, 1, 'Future is done!'))
+    result = await fut
+    print(result)
+
+asyncio.run(main())
+```
+
+### 6. Using Async/Await with HTTP Requests
+
+Using `aiohttp` for asynchronous HTTP requests.
+
+```python
+import aiohttp
+import asyncio
+
+async def fetch(url):
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            return await response.text()
+
+async def main():
+    html = await fetch('http://example.com')
+    print(html)
+
+asyncio.run(main())
+```
+
+### 7. Event Loops
+
+The event loop is the core of every asyncio application. It runs asynchronous tasks and callbacks, performs network IO operations, and runs subprocesses.
+
+```python
+async def hello_world():
+    print('Hello')
+    await asyncio.sleep(1)
+    print('World')
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(hello_world())
+loop.close()
+```
+
+### 8. Handling Timeouts
+
+Using `asyncio.wait_for()` to handle timeouts.
+
+```python
+async def eternity():
+    await asyncio.sleep(3600)
+    print('Done sleeping!')
+
+async def main():
+    try:
+        await asyncio.wait_for(eternity(), timeout=1.0)
+    except asyncio.TimeoutError:
+        print('Timeout!')
+
+asyncio.run(main())
+```
+
+### 9. Synchronization Primitives
+
+Using locks to synchronize coroutines.
+
+```python
+import asyncio
+
+async def worker(lock):
+    print('Waiting for the lock')
+    async with lock:
+        print('Acquired the lock')
+        await asyncio.sleep(1)
+    print('Released the lock')
+
+async def main():
+    lock = asyncio.Lock()
+
+    await asyncio.gather(worker(lock), worker(lock))
+
+asyncio.run(main())
+```
+
+### 10. Conclusion
+
+This tutorial covered the basics and some advanced features of the `asyncio` module in Python. You learned how to define coroutines, create tasks, use futures, handle HTTP requests asynchronously, work with event loops, manage timeouts, and synchronize coroutines with locks.
+
+By leveraging these concepts, you can write efficient, concurrent Python code that is suitable for handling IO-bound tasks and high-performance network applications.
+
+This should give you a solid foundation to start using `asyncio` in your own projects. Feel free to extend these examples to fit your specific needs.
+
+Sure, let's focus on business-related examples for both decorators and generators. Here are comprehensive tutorials using examples from business analytics and information systems.
+
+---
+
+# Deep Dive Tutorial on Python Decorators for Business Applications
+
+Decorators are a powerful feature in Python that allows you to modify the behavior of a function or class. They are often used for logging, access control, instrumentation, caching, and more. In this tutorial, we'll use examples relevant to business applications.
+
+### Table of Contents
+
+1. Introduction to Decorators
+2. Function Decorators
+   - Basic Decorator
+   - Decorator with Arguments
+   - Stacking Decorators
+3. Class Decorators
+4. Practical Business Examples
+   - Logging Decorator
+   - Access Control Decorator
+   - Timing Decorator
+5. Conclusion
+
+### 1. Introduction to Decorators
+
+A decorator is a function that takes another function and extends its behavior without explicitly modifying it. In Python, decorators are denoted by the `@` symbol.
+
+### 2. Function Decorators
+
+#### Basic Decorator
+
+A simple decorator that logs the execution of a business function.
+
+```python
+def log_decorator(func):
+    def wrapper(*args, **kwargs):
+        print(f"Executing {func.__name__}")
+        result = func(*args, **kwargs)
+        print(f"Finished executing {func.__name__}")
+        return result
+    return wrapper
+
+@log_decorator
+def generate_report(report_name):
+    print(f"Generating report: {report_name}")
+
+generate_report("Sales Report")
+```
+
+Output:
+```
+Executing generate_report
+Generating report: Sales Report
+Finished executing generate_report
+```
+
+#### Decorator with Arguments
+
+A decorator that checks user roles before executing a function.
+
+```python
+def role_required(role):
+    def decorator(func):
+        def wrapper(user_role, *args, **kwargs):
+            if user_role == role:
+                return func(*args, **kwargs)
+            else:
+                print("Access denied")
+        return wrapper
+    return decorator
+
+@role_required("admin")
+def access_sensitive_data():
+    print("Accessing sensitive data")
+
+access_sensitive_data("admin")  # Access granted
+access_sensitive_data("user")   # Access denied
+```
+
+Output:
+```
+Accessing sensitive data
+Access denied
+```
+
+#### Stacking Decorators
+
+Combining multiple decorators for a business function.
+
+```python
+def log_decorator(func):
+    def wrapper(*args, **kwargs):
+        print(f"Executing {func.__name__}")
+        result = func(*args, **kwargs)
+        print(f"Finished executing {func.__name__}")
+        return result
+    return wrapper
+
+def role_required(role):
+    def decorator(func):
+        def wrapper(user_role, *args, **kwargs):
+            if user_role == role:
+                return func(*args, **kwargs)
+            else:
+                print("Access denied")
+        return wrapper
+    return decorator
+
+@log_decorator
+@role_required("manager")
+def approve_budget(user_role):
+    print("Budget approved")
+
+approve_budget("manager")
+```
+
+Output:
+```
+Executing approve_budget
+Budget approved
+Finished executing approve_budget
+```
+
+### 3. Class Decorators
+
+Class decorators can be used to add or modify methods in business-related classes.
+
+```python
+def add_method(cls):
+    cls.new_method = lambda self: print("New method added")
+    return cls
+
+@add_method
+class BusinessProcess:
+    def existing_method(self):
+        print("Existing method")
+
+process = BusinessProcess()
+process.existing_method()
+process.new_method()
+```
+
+Output:
+```
+Existing method
+New method added
+```
+
+### 4. Practical Business Examples
+
+#### Logging Decorator
+
+A decorator that logs function calls with arguments.
+
+```python
+import functools
+
+def logging_decorator(func):
+    @functools.wraps(func)
     def wrapper(*args, **kwargs):
         print(f"Executing {func.__name__} with arguments {args} and {kwargs}")
         result = func(*args, **kwargs)
@@ -66,1040 +351,371 @@ def logger(func):
         return result
     return wrapper
 
-@logger
-def add(a, b):
-    return a + b
+@logging_decorator
+def calculate_profit(revenue, cost):
+    return revenue - cost
 
-print(add(2, 3))
+calculate_profit(10000, 5000)
 ```
 
-### Generators
-
-Generators are a special type of iterator that allow you to iterate through a sequence of values lazily, meaning they generate values on the fly and only when needed.
-
-#### Creating Generators with `yield`
-
-##### Example: Simple Generator
-
-```{python}
-def countdown(n):
-    while n > 0:
-        yield n
-        n -= 1
-
-# Using the generator
-for number in countdown(5):
-    print(number)
+Output:
+```
+Executing calculate_profit with arguments (10000, 5000) and {}
+calculate_profit returned 5000
 ```
 
-#### Generator Expressions
+#### Access Control Decorator
 
-Generator expressions provide a concise way to create generators.
+A decorator to control access to sensitive business functions.
 
-##### Example: Generator Expression
-
-```{python}
-# Generator expression to create a sequence of squares
-squares = (x * x for x in range(10))
-
-# Using the generator
-for square in squares:
-    print(square)
-```
-
-### Context Managers
-
-Context managers are used to properly manage resources, ensuring that they are properly cleaned up after use. The `with` statement is used to wrap the execution of a block of code within methods defined by a context manager.
-
-#### Using `contextlib` to Create Context Managers
-
-The `contextlib` module provides utilities for working with context managers.
-
-##### Example: Creating a Simple Context Manager
-
-```{python}
-from contextlib import contextmanager
-
-@contextmanager
-def open_file(file, mode):
-    f = open(file, mode)
-    try:
-        yield f
-    finally:
-        f.close()
-
-# Using the context manager
-with open_file('test.txt', 'w') as f:
-    f.write('Hello, World!')
-```
-
-### Putting It All Together
-
-Let's combine these advanced concepts into a single example to demonstrate their power and utility.
-
-##### Example: Asynchronous File Downloader with Logging and Context Management
-
-```{python}
-import asyncio
-from contextlib import contextmanager
-
-# Context manager for logging
-@contextmanager
-def logger(func_name):
-    print(f"Starting {func_name}")
-    yield
-    print(f"Finished {func_name}")
-
-# Asynchronous function to simulate file download
-async def download_file(file):
-    async with logger(f"download_file({file})"):
-        print(f"Downloading {file}...")
-        await asyncio.sleep(2)
-        print(f"Downloaded {file}")
-
-# Main asynchronous function to download multiple files
-async def main(files):
-    await asyncio.gather(*(download_file(file) for file in files))
-
-# Running the main function
-files = ["file1.txt", "file2.txt", "file3.txt"]
-asyncio.run(main(files))
-```
-
-### Conclusion
-
-Advanced Python concepts such as asynchronous programming, decorators, generators, and context managers can greatly enhance the functionality and efficiency of your code. By mastering these techniques, you can write more powerful, flexible, and maintainable Python programs. Use these tools to take your Python skills to the next level and tackle more complex problems with ease.
-
-# Deep Dive into the `asyncio` Module in Python
-
-The `asyncio` module in Python provides a framework for writing asynchronous, concurrent code using the `async` and `await` keywords. It is part of Python's standard library and is used to manage asynchronous I/O operations, enabling the development of high-performance network and web servers, database connections, distributed task queues, and other concurrent applications.
-
-## Table of Contents
-
-1. [Introduction to Asynchronous Programming](#introduction-to-asynchronous-programming)
-2. [Key Concepts](#key-concepts)
-3. [Basic Usage](#basic-usage)
-4. [Tasks and Coroutines](#tasks-and-coroutines)
-5. [Managing Tasks](#managing-tasks)
-6. [Synchronization Primitives](#synchronization-primitives)
-7. [Asynchronous I/O](#asynchronous-io)
-8. [Creating a Simple Web Server](#creating-a-simple-web-server)
-9. [Best Practices](#best-practices)
-10. [Conclusion](#conclusion)
-
-## Introduction to Asynchronous Programming
-
-Asynchronous programming allows a program to perform tasks concurrently, without waiting for one task to complete before starting another. This is especially useful for I/O-bound and high-level structured network code.
-
-In synchronous programming, tasks are executed sequentially. If one task takes a long time to complete (e.g., waiting for a network response), it can block the entire program. Asynchronous programming avoids this by allowing other tasks to run while waiting for long-running tasks to complete.
-
-## Key Concepts
-
-Before diving into `asyncio`, it's important to understand some key concepts:
-
-- **Coroutines**: Special functions defined with `async def` that can be paused and resumed.
-- **Event Loop**: The core of an asynchronous application, responsible for executing asynchronous tasks, handling I/O operations, and coordinating the overall execution flow.
-- **Tasks**: Wrappers around coroutines that can be scheduled and managed by the event loop.
-- **Futures**: Represent results of asynchronous operations that may not be available yet.
-- **Await**: A keyword used to pause the execution of a coroutine until the awaited coroutine completes.
-
-## Basic Usage
-
-### Example: Running a Simple Coroutine
-
-Let's start with a simple example to understand how coroutines and the event loop work together:
-
-```{python}
-import asyncio
-
-async def say_hello():
-    print("Hello")
-    await asyncio.sleep(1)
-    print("World")
-
-# Get the default event loop and run the coroutine
-asyncio.run(say_hello())
-```
-
-In this example, `say_hello` is a coroutine that prints "Hello", waits for 1 second, and then prints "World". The `asyncio.run` function starts an event loop, runs the coroutine, and closes the loop when the coroutine is finished.
-
-## Tasks and Coroutines
-
-### Creating and Running Multiple Coroutines
-
-You can create multiple coroutines and run them concurrently using `asyncio.gather`:
-
-```{python}
-import asyncio
-
-async def task1():
-    await asyncio.sleep(1)
-    print("Task 1 completed")
-
-async def task2():
-    await asyncio.sleep(2)
-    print("Task 2 completed")
-
-async def main():
-    await asyncio.gather(task1(), task2())
-
-asyncio.run(main())
-```
-
-In this example, `task1` and `task2` are coroutines that run concurrently. `asyncio.gather` runs both coroutines and waits for both to complete.
-
-## Managing Tasks
-
-### Creating and Cancelling Tasks
-
-You can create tasks explicitly using `asyncio.create_task`, and you can cancel tasks if needed:
-
-```{python}
-import asyncio
-
-async def task1():
-    try:
-        await asyncio.sleep(3)
-    except asyncio.CancelledError:
-        print("Task 1 was cancelled")
-        raise
-
-async def task2():
-    await asyncio.sleep(2)
-    print("Task 2 completed")
-
-async def main():
-    t1 = asyncio.create_task(task1())
-    t2 = asyncio.create_task(task2())
-
-    await asyncio.sleep(1)
-    t1.cancel()
-
-    await asyncio.gather(t1, t2, return_exceptions=True)
-
-asyncio.run(main())
-```
-
-In this example, `task1` is cancelled after 1 second, while `task2` completes normally. The `CancelledError` is caught and handled in `task1`.
-
-## Synchronization Primitives
-
-### Using Locks
-
-`asyncio` provides several synchronization primitives, such as `Lock`, `Event`, `Condition`, and `Semaphore`.
-
-#### Example: Using a Lock
-
-```{python}
-import asyncio
-
-lock = asyncio.Lock()
-
-async def task1():
-    async with lock:
-        print("Task 1 acquired lock")
-        await asyncio.sleep(2)
-        print("Task 1 released lock")
-
-async def task2():
-    async with lock:
-        print("Task 2 acquired lock")
-        await asyncio.sleep(2)
-        print("Task 2 released lock")
-
-async def main():
-    await asyncio.gather(task1(), task2())
-
-asyncio.run(main())
-```
-
-In this example, `task1` and `task2` acquire and release the same lock. Only one task can hold the lock at a time, ensuring that the critical section is accessed by only one task at a time.
-
-## Asynchronous I/O
-
-### Example: Asynchronous File I/O
-
-You can perform asynchronous file I/O using the `aiofiles` library:
-
-```{python}
-import asyncio
-import aiofiles
-
-async def write_file():
-    async with aiofiles.open('example.txt', mode='w') as f:
-        await f.write('Hello, asyncio!')
-
-async def read_file():
-    async with aiofiles.open('example.txt', mode='r') as f:
-        contents = await f.read()
-        print(contents)
-
-async def main():
-    await write_file()
-    await read_file()
-
-asyncio.run(main())
-```
-
-In this example, `write_file` writes to a file asynchronously, and `read_file` reads from the file asynchronously using the `aiofiles` library.
-
-## Creating a Simple Web Server
-
-### Example: Simple HTTP Server with `aiohttp`
-
-You can create an asynchronous HTTP server using the `aiohttp` library:
-
-```{python}
-from aiohttp import web
-import asyncio
-
-async def handle(request):
-    return web.Response(text="Hello, asyncio!")
-
-app = web.Application()
-app.add_routes([web.get('/', handle)])
-
-if __name__ == '__main__':
-    web.run_app(app)
-```
-
-In this example, we create a simple HTTP server that responds with "Hello, asyncio!" to any GET request on the root URL.
-
-## Best Practices
-
-1. **Avoid Blocking Calls**: Ensure that you do not use blocking calls in your asynchronous code, as this can block the event loop and degrade performance.
-2. **Use `async` and `await` Appropriately**: Make sure to use `async` and `await` for all asynchronous functions and calls.
-3. **Handle Exceptions**: Always handle exceptions in coroutines and tasks to prevent them from propagating and crashing the application.
-4. **Limit Concurrency**: Use semaphores or other synchronization primitives to limit concurrency and avoid overwhelming resources.
-5. **Leverage Libraries**: Use well-established libraries like `aiohttp` for HTTP operations and `aiomysql` or `aiopg` for database access to avoid reinventing the wheel.
-
-## Conclusion
-
-The `asyncio` module provides a powerful framework for writing concurrent and asynchronous code in Python. By leveraging its features, you can build efficient and scalable applications that handle I/O-bound tasks effectively. This tutorial covered the basics of `asyncio`, including coroutines, tasks, synchronization primitives, and asynchronous I/O. With this foundation, you can explore more advanced topics and libraries to enhance your asynchronous programming skills.
-
-# Deep Dive into Python Decorators
-
-Decorators are a powerful and flexible feature in Python that allows the modification of functions or methods using other functions. They are commonly used for logging, access control, memoization, and many other cross-cutting concerns.
-
-## Table of Contents
-
-1. [Introduction to Decorators](#introduction-to-decorators)
-2. [Function Decorators](#function-decorators)
-3. [Class Decorators](#class-decorators)
-4. [Using Multiple Decorators](#using-multiple-decorators)
-5. [Built-in Decorators](#built-in-decorators)
-6. [Practical Examples](#practical-examples)
-7. [Best Practices](#best-practices)
-8. [Conclusion](#conclusion)
-
-## Introduction to Decorators
-
-A decorator is a function that takes another function and extends its behavior without explicitly modifying it. Decorators provide a way to dynamically alter the functionality of your code.
-
-### Basic Decorator Example
-
-```{python}
-def my_decorator(func):
-    def wrapper():
-        print("Something is happening before the function is called.")
-        func()
-        print("Something is happening after the function is called.")
-    return wrapper
-
-@my_decorator
-def say_hello():
-    print("Hello!")
-
-say_hello()
-```
-
-In this example, `my_decorator` is a decorator function that wraps the `say_hello` function, adding some behavior before and after it is called.
-
-## Function Decorators
-
-### Creating and Using Function Decorators
-
-A function decorator is a function that takes another function as an argument and returns a new function that adds some behavior.
-
-```{python}
-def decorator(func):
-    def wrapper(*args, **kwargs):
-        print("Before the function call")
-        result = func(*args, **kwargs)
-        print("After the function call")
-        return result
-    return wrapper
-
-@decorator
-def greet(name):
-    print(f"Hello, {name}")
-
-greet("Alice")
-```
-
-### Decorating Functions with Arguments
-
-You can also create decorators that work with functions that have arguments.
-
-```{python}
-def decorator(func):
-    def wrapper(*args, **kwargs):
-        print(f"Arguments: {args} {kwargs}")
-        result = func(*args, **kwargs)
-        return result
-    return wrapper
-
-@decorator
-def add(a, b):
-    return a + b
-
-print(add(2, 3))
-```
-
-### Passing Arguments to Decorators
-
-You can pass arguments to decorators by adding an extra layer of wrapping.
-
-```{python}
-def repeat(num_times):
+```python
+def role_required(role):
     def decorator(func):
-        def wrapper(*args, **kwargs):
-            for _ in range(num_times):
-                result = func(*args, **kwargs)
-            return result
+        def wrapper(user_role, *args, **kwargs):
+            if user_role == role:
+                return func(*args, **kwargs)
+            else:
+                print("Access denied")
         return wrapper
     return decorator
 
-@repeat(3)
-def say_hello(name):
-    print(f"Hello, {name}")
+@role_required("finance_manager")
+def generate_financial_report():
+    print("Generating financial report")
 
-say_hello("Bob")
+generate_financial_report("finance_manager")
+generate_financial_report("employee")
 ```
 
-## Class Decorators
-
-Class decorators are similar to function decorators but are used to modify classes.
-
-### Basic Class Decorator
-
-```{python}
-def class_decorator(cls):
-    class Wrapped(cls):
-        def new_method(self):
-            print("New method added by decorator")
-        cls.new_method = new_method
-    return Wrapped
-
-@class_decorator
-class MyClass:
-    def method(self):
-        print("Original method")
-
-obj = MyClass()
-obj.method()
-obj.new_method()
+Output:
+```
+Generating financial report
+Access denied
 ```
 
-### Using Class Decorators to Modify Methods
+#### Timing Decorator
 
-You can also use class decorators to modify class methods.
+A decorator to measure the execution time of business functions.
 
-```{python}
-def method_decorator(method):
-    def wrapper(self, *args, **kwargs):
-        print("Before method call")
-        result = method(self, *args, **kwargs)
-        print("After method call")
-        return result
-    return wrapper
-
-def class_decorator(cls):
-    cls.method = method_decorator(cls.method)
-    return cls
-
-@class_decorator
-class MyClass:
-    def method(self):
-        print("Original method")
-
-obj = MyClass()
-obj.method()
-```
-
-## Using Multiple Decorators
-
-You can stack multiple decorators on a single function or method.
-
-```{python}
-def decorator1(func):
-    def wrapper(*args, **kwargs):
-        print("Decorator 1")
-        return func(*args, **kwargs)
-    return wrapper
-
-def decorator2(func):
-    def wrapper(*args, **kwargs):
-        print("Decorator 2")
-        return func(*args, **kwargs)
-    return wrapper
-
-@decorator1
-@decorator2
-def greet(name):
-    print(f"Hello, {name}")
-
-greet("Alice")
-```
-
-In this example, `decorator2` is applied first, followed by `decorator1`.
-
-## Built-in Decorators
-
-Python provides several built-in decorators, such as `@staticmethod`, `@classmethod`, and `@property`.
-
-### Static Method
-
-```{python}
-class MyClass:
-    @staticmethod
-    def static_method():
-        print("This is a static method")
-
-MyClass.static_method()
-```
-
-### Class Method
-
-```{python}
-class MyClass:
-    @classmethod
-    def class_method(cls):
-        print(f"This is a class method of {cls}")
-
-MyClass.class_method()
-```
-
-### Property
-
-```{python}
-class MyClass:
-    def __init__(self, value):
-        self._value = value
-
-    @property
-    def value(self):
-        return self._value
-
-    @value.setter
-    def value(self, new_value):
-        if new_value < 0:
-            raise ValueError("Value cannot be negative")
-        self._value = new_value
-
-obj = MyClass(10)
-print(obj.value)
-obj.value = 20
-print(obj.value)
-```
-
-## Practical Examples
-
-### Logging Decorator
-
-A logging decorator can be used to log function calls.
-
-```{python}
-import logging
-
-def log(func):
-    def wrapper(*args, **kwargs):
-        logging.info(f"Running {func.__name__} with {args} and {kwargs}")
-        return func(*args, **kwargs)
-    return wrapper
-
-@log
-def multiply(x, y):
-    return x * y
-
-logging.basicConfig(level=logging.INFO)
-print(multiply(2, 3))
-```
-
-### Timing Decorator
-
-A timing decorator can be used to measure the execution time of a function.
-
-```{python}
+```python
 import time
+import functools
 
-def timing(func):
+def timing_decorator(func):
+    @functools.wraps(func)
     def wrapper(*args, **kwargs):
-        start = time.time()
+        start_time = time.time()
         result = func(*args, **kwargs)
-        end = time.time()
-        print(f"{func.__name__} took {end - start:.4f} seconds")
+        end_time = time.time()
+        print(f"{func.__name__} executed in {end_time - start_time:.2f} seconds")
         return result
     return wrapper
 
-@timing
-def calculate_sum(n):
-    return sum(range(n))
+@timing_decorator
+def process_large_dataset():
+    time.sleep(2)  # Simulating processing time
+    print("Dataset processed")
 
-print(calculate_sum(1000000))
+process_large_dataset()
 ```
 
-## Best Practices
-
-1. **Use `functools.wraps`**: Use `functools.wraps` to preserve the original function’s metadata when writing decorators.
-
-```{python}
-from functools import wraps
-
-def decorator(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        return func(*args, **kwargs)
-    return wrapper
+Output:
+```
+Dataset processed
+process_large_dataset executed in 2.00 seconds
 ```
 
-2. **Keep It Simple**: Keep the decorator logic simple and focused on a single responsibility.
-3. **Test Thoroughly**: Test decorators thoroughly to ensure they don’t introduce bugs or side effects.
-4. **Use Decorators Judiciously**: Avoid overusing decorators; they can make the code harder to understand if used excessively.
+### 5. Conclusion
 
-## Conclusion
+Decorators in Python are a powerful tool for modifying the behavior of functions and classes. They can be used to implement cross-cutting concerns like logging, access control, and performance monitoring. Understanding how to create and use decorators will greatly enhance your ability to write clean and maintainable Python code in business applications.
 
-Decorators are a powerful feature in Python that allows you to extend and modify the behavior of functions and methods. By understanding how to create and use function and class decorators, you can write more modular, reusable, and maintainable code. This tutorial covered the basics of decorators, including practical examples and best practices. With this foundation, you can start exploring more advanced uses of decorators in your Python projects.
 
-# Deep Dive into Python Generators
+# Deep Dive Tutorial on Python Generators for Business Applications
 
-Generators are a powerful tool in Python that allows you to iterate over a sequence of values lazily, meaning you generate the values on the fly rather than storing them in memory all at once. This can lead to significant performance improvements, especially when working with large datasets or streams of data.
+Generators provide an efficient way to iterate over large datasets in Python. They allow you to create iterators with a simple syntax using the `yield` keyword.
 
-## Table of Contents
+### Table of Contents
 
-1. [Introduction to Generators](#introduction-to-generators)
-2. [Creating Generators](#creating-generators)
-3. [Using Generators](#using-generators)
-4. [Generator Expressions](#generator-expressions)
-5. [The `yield` Statement](#the-yield-statement)
-6. [Advanced Generator Usage](#advanced-generator-usage)
-    - [Sending Values to Generators](#sending-values-to-generators)
-    - [Throwing Exceptions into Generators](#throwing-exceptions-into-generators)
-    - [Closing Generators](#closing-generators)
-7. [Practical Examples](#practical-examples)
-8. [Comparison with Iterators](#comparison-with-iterators)
-9. [Performance Considerations](#performance-considerations)
-10. [Best Practices](#best-practices)
-11. [Conclusion](#conclusion)
+1. Introduction to Generators
+2. Creating Generators
+3. Generator Expressions
+4. Use Cases for Generators
+   - Reading Large Files
+   - Generating Infinite Sequences
+   - Stream Processing
+5. Generator Functions vs. Normal Functions
+6. Conclusion
 
-## Introduction to Generators
+### 1. Introduction to Generators
 
-Generators provide a way to create iterators in Python. They are written like regular functions but use the `yield` statement whenever they want to return data. Each call to the generator’s `__next__()` method (which is implicitly called by the `next()` function) resumes the function from where it left off (it remembers all the data values and which statement was last executed).
+Generators are a simple way of creating iterators. They use the `yield` keyword instead of `return` to produce a series of values lazily.
 
-## Creating Generators
+### 2. Creating Generators
 
-### Generator Functions
+A generator function is defined like a normal function but uses the `yield` statement to return values one at a time.
 
-A generator function is defined like a normal function but uses the `yield` statement instead of `return` to return a value. Here’s a simple example:
+```python
+def monthly_sales():
+    sales = [300, 400, 500, 600, 700]
+    for sale in sales:
+        yield sale
 
-```{python}
-def simple_generator():
-    yield 1
-    yield 2
-    yield 3
+sales_gen = monthly_sales()
 
-gen = simple_generator()
-
-print(next(gen))  # Output: 1
-print(next(gen))  # Output: 2
-print(next(gen))  # Output: 3
+print(next(sales_gen))  # 300
+print(next(sales_gen))  # 400
+print(next(sales_gen))  # 500
 ```
 
-### Generator Expressions
+### 3. Generator Expressions
 
-Generator expressions provide an easy and concise way to create generators. They are similar to list comprehensions but use parentheses instead of square brackets.
+Generator expressions are a concise way to create generators. They are similar to list comprehensions but use parentheses instead of square brackets.
 
-```{python}
-gen_exp = (x * x for x in range(5))
+```python
+sales = (sale for sale in [300, 400, 500, 600, 700])
 
-print(next(gen_exp))  # Output: 0
-print(next(gen_exp))  # Output: 1
-print(next(gen_exp))  # Output: 4
+print(next(sales))  # 300
+print(next(sales))  # 400
+print(next(sales))  # 500
 ```
 
-## Using Generators
+### 4. Use Cases for Generators
 
-Generators can be iterated over using a `for` loop, which automatically handles the `StopIteration` exception.
+#### Reading Large Files
 
-```{python}
-def countdown(n):
-    while n > 0:
-        yield n
-        n -= 1
+Using generators to read large files line by line without loading the entire file into memory.
 
-for num in countdown(5):
-    print(num)
-```
-
-## The `yield` Statement
-
-The `yield` statement is used to produce a value from the generator and pause its execution. The next time `__next__()` is called, the generator resumes execution immediately after the `yield`.
-
-### Example: Fibonacci Sequence
-
-```{python}
-def fibonacci(limit):
-    a, b = 0, 1
-    while a < limit:
-        yield a
-        a, b = b, a + b
-
-fib = fibonacci(10)
-for num in fib:
-    print(num)
-```
-
-## Advanced Generator Usage
-
-### Sending Values to Generators
-
-You can send values to a generator using the `send()` method. This can be useful for coroutines or advanced control flow.
-
-```{python}
-def echo():
-    while True:
-        received = yield
-        print(f'Received: {received}')
-
-gen = echo()
-next(gen)  # Prime the generator
-gen.send('Hello')  # Output: Received: Hello
-gen.send('World')  # Output: Received: World
-```
-
-### Throwing Exceptions into Generators
-
-You can throw exceptions into a generator using the `throw()` method. This allows you to handle errors within the generator.
-
-```{python}
-def generator():
-    try:
-        yield 'Normal execution'
-    except ValueError:
-        yield 'Handling ValueError'
-    yield 'End'
-
-gen = generator()
-print(next(gen))  # Output: Normal execution
-print(gen.throw(ValueError))  # Output: Handling ValueError
-print(next(gen))  # Output: End
-```
-
-### Closing Generators
-
-You can close a generator using the `close()` method. This raises a `GeneratorExit` exception inside the generator to perform any cleanup.
-
-```{python}
-def generator():
-    try:
-        yield 'Running'
-    finally:
-        print('Closing generator')
-
-gen = generator()
-print(next(gen))  # Output: Running
-gen.close()  # Output: Closing generator
-```
-
-## Practical Examples
-
-### Reading Large Files
-
-Generators can be very useful when reading large files line by line, as they allow you to process each line without loading the entire file into memory.
-
-```{python}
+```python
 def read_large_file(file_path):
-    with open(file_path) as file:
+    with open(file_path, 'r') as file:
         for line in file:
-            yield line
+            yield line.strip()
 
-for line in read_large_file('large_file.txt'):
-    process(line)
+for line in read_large_file('large_sales_data.csv'):
+    print(line)
 ```
 
-### Infinite Sequences
+#### Generating Infinite Sequences
 
 Generators can be used to create infinite sequences.
 
-```{python}
-def infinite_sequence():
-    num = 0
+```python
+def infinite_sequence(start=0):
+    num = start
     while True:
         yield num
         num += 1
 
-for i in infinite_sequence():
-    print(i)
-    if i >= 10:
-        break
+gen = infinite_sequence(1)
+
+print(next(gen))  # 1
+print(next(gen))  # 2
+print(next(gen))  # 3
 ```
 
-## Comparison with Iterators
+#### Stream Processing
 
-Generators are a simple way to create iterators. Unlike a regular iterator, which requires you to define `__iter__()` and `__next__()`, a generator function does this automatically.
+Using generators for stream processing in real-time analytics.
 
-### Iterator Class Example
+```python
+import random
+import time
 
-```{python}
-class Counter:
-    def __init__(self, low, high):
-        self.current = low
-        self.high = high
+def sales_stream():
+    while True:
+        yield random.randint(100, 1000)
+        time.sleep(1)
 
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        if self.current > self.high:
-            raise StopIteration
-        else:
-            self.current += 1
-            return self.current - 1
-
-counter = Counter(1, 5)
-for num in counter:
-    print(num)
+for sales in sales_stream():
+    print(f"New sales data: {sales}")
+    # Process the sales data
 ```
 
-### Equivalent Generator Example
+### 5. Generator Functions vs. Normal Functions
 
-```{python}
-def counter(low, high):
-    current = low
-    while current <= high:
-        yield current
-        current += 1
+- **Memory Efficiency**: Generators do not store their values in memory.
+- **Lazy Evaluation**: Values are computed on the fly and only when needed.
+- **Infinite Sequences**: Generators can produce an infinite number of values without running out of memory.
 
-for num in counter(1, 5):
-    print(num)
+### 6. Conclusion
+
+Generators are a powerful feature in Python that allows you to iterate over data efficiently. They are useful for reading large files, generating infinite sequences, and handling large datasets without consuming a lot of memory. Understanding generators can greatly enhance your ability to handle data streams and large datasets in business analytics and information systems.
+
+# Deep Dive Tutorial on Python's `contextlib` Module for Creating Context Managers
+
+Context managers are a powerful feature in Python that allows you to allocate and release resources precisely when you want to. The `contextlib` module provides utilities for creating and working with context managers. This tutorial will cover the basics of context managers, how to create them using `contextlib`, and practical business-related examples.
+
+### Table of Contents
+
+1. Introduction to Context Managers
+2. The `contextlib` Module
+3. Creating Context Managers with `contextlib`
+   - Using `contextlib.contextmanager`
+   - Creating Classes with `__enter__` and `__exit__` Methods
+4. Practical Business Examples
+   - Managing Database Connections
+   - Handling File Operations
+   - Resource Management in Business Workflows
+5. Conclusion
+
+### 1. Introduction to Context Managers
+
+Context managers are used to manage resources such as files, network connections, and database connections. They provide a way to ensure that resources are properly released after their use.
+
+A context manager is usually used with the `with` statement:
+
+```python
+with open('file.txt', 'w') as f:
+    f.write('Hello, World!')
 ```
 
-## Performance Considerations
+The `with` statement ensures that the file is properly closed after its suite finishes.
 
-Generators can lead to significant performance improvements by reducing memory usage and allowing for lazy evaluation.
+### 2. The `contextlib` Module
 
-### Memory Efficiency
+The `contextlib` module provides utilities to create and work with context managers. It simplifies the process of writing context managers and makes your code more readable and maintainable.
 
-Generators do not store the entire sequence in memory. Instead, they generate each value on the fly, which is much more memory efficient.
+### 3. Creating Context Managers with `contextlib`
 
-### Lazy Evaluation
+#### Using `contextlib.contextmanager`
 
-Generators are evaluated lazily, meaning they only produce values when needed. This can improve performance, especially for large datasets or infinite sequences.
+The `contextlib.contextmanager` decorator is used to define a generator-based context manager.
 
-## Best Practices
-
-1. **Use Generators for Large Datasets**: When working with large datasets, use generators to improve memory efficiency.
-2. **Keep Generators Simple**: Keep your generator functions simple and focused on a single task.
-3. **Use Generator Expressions**: Use generator expressions for simple cases where you would otherwise use a list comprehension.
-4. **Handle Generator Cleanup**: Ensure proper cleanup of resources within generators using try/finally blocks or context managers.
-
-## Conclusion
-
-Generators are a powerful feature in Python that allow you to work with sequences of data in a memory-efficient and performant way. By using `yield`, you can create iterators with less code and more readability. Advanced techniques like sending values, throwing exceptions, and closing generators further extend their capabilities. By following best practices and understanding the intricacies of generators, you can write more efficient and elegant Python code.
-
-# Deep Dive into the `contextlib` Python Module
-
-The `contextlib` module in Python provides utilities for working with context managers and the `with` statement. Context managers are used to properly manage resources such as file streams, network connections, and locks by ensuring that resources are properly cleaned up after use. The `contextlib` module helps simplify the creation and management of these context managers.
-
-## Table of Contents
-
-1. [Introduction to Context Managers](#introduction-to-context-managers)
-2. [The `contextlib` Module](#the-contextlib-module)
-3. [Using `contextlib.contextmanager`](#using-contextlibcontextmanager)
-4. [The `closing` Function](#the-closing-function)
-5. [The `suppress` Function](#the-suppress-function)
-6. [The `redirect_stdout` and `redirect_stderr` Functions](#the-redirect_stdout-and-redirect_stderr-functions)
-7. [The `ExitStack` Class](#the-exitstack-class)
-8. [Combining Context Managers](#combining-context-managers)
-9. [Practical Examples](#practical-examples)
-10. [Best Practices](#best-practices)
-11. [Conclusion](#conclusion)
-
-## Introduction to Context Managers
-
-A context manager is an object that defines the runtime context to be established when executing a `with` statement. Common use cases include opening and closing files, acquiring and releasing locks, and establishing and tearing down network connections.
-
-### Basic Example
-
-```{python}
-with open('example.txt', 'w') as file:
-    file.write('Hello, world!')
-```
-
-In this example, the file is automatically closed when the block inside the `with` statement is exited, even if an exception occurs.
-
-## The `contextlib` Module
-
-The `contextlib` module provides several utilities to help create and manage context managers. It simplifies the process of writing and using context managers.
-
-## Using `contextlib.contextmanager`
-
-The `contextmanager` decorator from the `contextlib` module allows you to create a context manager using a generator function. This approach is often more readable and concise than creating a class-based context manager.
-
-### Example
-
-```{python}
+```python
 from contextlib import contextmanager
 
 @contextmanager
-def open_file(file, mode):
-    f = open(file, mode)
+def business_transaction(transaction_name):
+    print(f"Starting {transaction_name}")
+    yield
+    print(f"Ending {transaction_name}")
+
+with business_transaction("Database Update"):
+    print("Performing database update...")
+```
+
+Output:
+```
+Starting Database Update
+Performing database update...
+Ending Database Update
+```
+
+#### Creating Classes with `__enter__` and `__exit__` Methods
+
+You can also create context managers by defining a class with `__enter__` and `__exit__` methods.
+
+```python
+class BusinessTransaction:
+    def __init__(self, transaction_name):
+        self.transaction_name = transaction_name
+
+    def __enter__(self):
+        print(f"Starting {self.transaction_name}")
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        print(f"Ending {self.transaction_name}")
+
+with BusinessTransaction("Database Update"):
+    print("Performing database update...")
+```
+
+Output:
+```
+Starting Database Update
+Performing database update...
+Ending Database Update
+```
+
+### 4. Practical Business Examples
+
+#### Managing Database Connections
+
+Using a context manager to handle database connections ensures that the connection is properly closed after use.
+
+```python
+import sqlite3
+from contextlib import contextmanager
+
+@contextmanager
+def database_connection(db_name):
+    conn = sqlite3.connect(db_name)
+    cursor = conn.cursor()
+    try:
+        yield cursor
+    finally:
+        conn.commit()
+        conn.close()
+
+with database_connection('business.db') as cursor:
+    cursor.execute('CREATE TABLE IF NOT EXISTS employees (id INTEGER PRIMARY KEY, name TEXT)')
+    cursor.execute('INSERT INTO employees (name) VALUES (?)', ('Alice',))
+    cursor.execute('INSERT INTO employees (name) VALUES (?)', ('Bob',))
+    cursor.execute('SELECT * FROM employees')
+    for row in cursor.fetchall():
+        print(row)
+```
+
+Output:
+```
+(1, 'Alice')
+(2, 'Bob')
+```
+
+#### Handling File Operations
+
+A context manager for handling file operations ensures that the file is properly closed after reading or writing.
+
+```python
+@contextmanager
+def managed_file(name, mode):
+    f = open(name, mode)
     try:
         yield f
     finally:
         f.close()
 
-with open_file('example.txt', 'w') as file:
-    file.write('Hello, world!')
+with managed_file('business_data.txt', 'w') as f:
+    f.write('Business data\n')
+
+with managed_file('business_data.txt', 'r') as f:
+    print(f.read())
 ```
 
-In this example, the `open_file` function is a context manager that ensures the file is properly closed after use.
-
-## The `closing` Function
-
-The `closing` function is a utility that ensures an object with a `close` method is closed when the block inside the `with` statement is exited.
-
-### Example
-
-```{python}
-from contextlib import closing
-import urllib.request
-
-with closing(urllib.request.urlopen('http://www.example.com')) as page:
-    for line in page:
-        print(line)
+Output:
+```
+Business data
 ```
 
-Here, the `closing` function ensures that the URL connection is properly closed after use.
+#### Resource Management in Business Workflows
 
-## The `suppress` Function
+Using context managers to handle resources in business workflows, such as network connections or temporary files.
 
-The `suppress` function allows you to suppress specified exceptions within a `with` statement. This is useful for ignoring specific errors without interrupting the flow of your program.
-
-### Example
-
-```{python}
-from contextlib import suppress
-
-with suppress(FileNotFoundError):
-    open('non_existent_file.txt')
-
-print('File not found, but no exception was raised.')
-```
-
-In this example, the `FileNotFoundError` is suppressed, so the program continues running without interruption.
-
-## The `redirect_stdout` and `redirect_stderr` Functions
-
-The `redirect_stdout` and `redirect_stderr` functions allow you to redirect the output of `stdout` and `stderr` to another stream, such as a file.
-
-### Example
-
-```{python}
-from contextlib import redirect_stdout
-
-with open('output.txt', 'w') as f:
-    with redirect_stdout(f):
-        print('This will be written to the file.')
-
-print('This will be written to the console.')
-```
-
-Here, the `print` statement inside the `with` block is redirected to the `output.txt` file.
-
-## The `ExitStack` Class
-
-The `ExitStack` class allows you to dynamically manage a stack of context managers. This is useful when you need to enter and exit multiple context managers in a flexible way.
-
-### Example
-
-```{python}
-from contextlib import ExitStack
-
-with ExitStack() as stack:
-    files = [stack.enter_context(open(f'file{i}.txt', 'w')) for i in range(3)]
-    for i, file in enumerate(files):
-        file.write(f'This is file {i}.')
-
-print('All files are closed.')
-```
-
-In this example, the `ExitStack` manages multiple file context managers, ensuring they are all properly closed.
-
-## Combining Context Managers
-
-You can use the `ExitStack` class to combine multiple context managers into a single `with` statement.
-
-### Example
-
-```{python}
-from contextlib import ExitStack
-
-with ExitStack() as stack:
-    file1 = stack.enter_context(open('file1.txt', 'w'))
-    file2 = stack.enter_context(open('file2.txt', 'w'))
-    # Perform operations on file1 and file2
-
-print('Both files are closed.')
-```
-
-Here, both `file1` and `file2` are managed by the `ExitStack`, ensuring they are both properly closed.
-
-## Practical Examples
-
-### Creating a Temporary Directory
-
-```{python}
-import os
+```python
 import tempfile
-from contextlib import contextmanager
 
 @contextmanager
-def temporary_directory():
-    dirpath = tempfile.mkdtemp()
+def temporary_file():
+    temp = tempfile.NamedTemporaryFile(delete=False)
     try:
-        yield dirpath
+        yield temp
     finally:
-        os.rmdir(dirpath)
+        temp.close()
 
-with temporary_directory() as tempdir:
-    print(f'Temporary directory created at {tempdir}')
+with temporary_file() as temp_file:
+    temp_file.write(b'Business temporary data\n')
+    temp_file.seek(0)
+    print(temp_file.read())
 ```
 
-### Timing Code Execution
-
-```{python}
-import time
-from contextlib import contextmanager
-
-@contextmanager
-def timer():
-    start = time.time()
-    yield
-    end = time.time()
-    print(f'Time taken: {end - start} seconds')
-
-with timer():
-    sum([i ** 2 for i in range(10000)])
+Output:
+```
+b'Business temporary data\n'
 ```
 
-## Best Practices
+### 5. Conclusion
 
-1. **Use `contextmanager` for Simple Context Managers**: Use the `contextmanager` decorator to create simple context managers using generator functions.
-2. **Use `ExitStack` for Complex Context Managers**: Use the `ExitStack` class for managing multiple context managers dynamically.
-3. **Ensure Proper Cleanup**: Always ensure that resources are properly cleaned up by using `try`/`finally` blocks or context managers.
-4. **Suppress Exceptions Sparingly**: Use the `suppress` function sparingly and only when you are sure that ignoring the exception is safe.
+The `contextlib` module in Python provides powerful utilities for creating and managing context managers. By using context managers, you can ensure that resources are properly allocated and released, which is essential in business applications where resource management is critical. Whether you are handling database connections, file operations, or other resources, context managers can make your code cleaner and more reliable.
 
-## Conclusion
-
-The `contextlib` module in Python provides a suite of tools for working with context managers, making it easier to manage resources and ensure proper cleanup. By using `contextlib.contextmanager`, `closing`, `suppress`, `redirect_stdout`, `redirect_stderr`, and `ExitStack`, you can write more robust and maintainable code. Understanding and utilizing these tools will help you handle resource management tasks efficiently and effectively in your Python programs.
+By understanding and utilizing the `contextlib` module, you can write more robust and maintainable code for business analytics and information systems.

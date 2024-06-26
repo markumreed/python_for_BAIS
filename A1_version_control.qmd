@@ -372,7 +372,7 @@ git init
 
 1. **Create a Python file:**
 
-   ```{python}
+   ```python
    # my_script.py
    print("Hello, World!")
    ```
@@ -560,7 +560,7 @@ git init
 
 Create a simple Python script `src/app.py`:
 
-```{python}
+```python
 # src/app.py
 def greet(name):
     return f"Hello, {name}!"
@@ -573,7 +573,7 @@ if __name__ == "__main__":
 
 Create a test file `tests/test_app.py`:
 
-```{python}
+```python
 # tests/test_app.py
 import unittest
 from src.app import greet
@@ -603,7 +603,7 @@ git checkout -b feature-add-logging
 
 Modify `src/app.py` to add logging:
 
-```{python}
+```python
 # src/app.py
 import logging
 
@@ -717,7 +717,7 @@ touch src/__init__.py tests/__init__.py
 
 Create a simple Python script `src/app.py`:
 
-```{python}
+```python
 # src/app.py
 def greet(name):
     return f"Hello, {name}!"
@@ -728,7 +728,7 @@ if __name__ == "__main__":
 
 Create a test file `tests/test_app.py`:
 
-```{python}
+```python
 # tests/test_app.py
 import unittest
 from src.app import greet

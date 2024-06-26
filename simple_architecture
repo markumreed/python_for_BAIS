@@ -1,0 +1,10 @@
+digraph "Simple Architecture" {
+	graph [fontcolor="#2D3436" fontname="Sans-Serif" fontsize=15 label="Simple Architecture" nodesep=0.60 pad=2.0 rankdir=LR ranksep=0.75 splines=ortho]
+	node [fixedsize=true fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 height=1.4 imagescale=true labelloc=b shape=box style=rounded width=1.4]
+	edge [color="#7B8894"]
+	"978f850c789c4621b7c8164ce10ca0b2" [label="Load Balancer" height=1.9 image="/Users/markumreed/Documents/BAIS_program_updates/python_for_BAIS/venv/lib/python3.12/site-packages/resources/aws/network/elastic-load-balancing.png" shape=none]
+	fa2f11c147c1474a9278c6012690f631 [label="Web Server" height=1.9 image="/Users/markumreed/Documents/BAIS_program_updates/python_for_BAIS/venv/lib/python3.12/site-packages/resources/aws/compute/ec2.png" shape=none]
+	"3ca74102e02841039d2033c2ee1385d4" [label=Database height=1.9 image="/Users/markumreed/Documents/BAIS_program_updates/python_for_BAIS/venv/lib/python3.12/site-packages/resources/aws/database/rds.png" shape=none]
+	"978f850c789c4621b7c8164ce10ca0b2" -> fa2f11c147c1474a9278c6012690f631 [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	fa2f11c147c1474a9278c6012690f631 -> "3ca74102e02841039d2033c2ee1385d4" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+}

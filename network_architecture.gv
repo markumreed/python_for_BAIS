@@ -1,0 +1,20 @@
+// Network Architecture
+digraph {
+	Internet [label=Internet shape=cloud]
+	Router [label=Router shape=box]
+	Firewall [label=Firewall shape=box]
+	Switch [label=Switch shape=box]
+	Server1 [label="Web Server" shape=ellipse]
+	Server2 [label="Database Server" shape=ellipse]
+	Workstation1 [label="Workstation 1" shape=ellipse]
+	Workstation2 [label="Workstation 2" shape=ellipse]
+	Workstation3 [label="Workstation 3" shape=ellipse]
+	Internet -> Router
+	Router -> Firewall
+	Firewall -> Switch
+	Switch -> Server1
+	Switch -> Server2
+	Switch -> Workstation1
+	Switch -> Workstation2
+	Switch -> Workstation3
+}
