@@ -1,142 +1,22 @@
 [
   {
-    "objectID": "A2_docker.html",
-    "href": "A2_docker.html",
-    "title": "22  Using Docker",
+    "objectID": "01_python_install_env_setup.html",
+    "href": "01_python_install_env_setup.html",
+    "title": "2  Installing Python",
     "section": "",
-    "text": "22.1 Introduction to Docker with Python\nDocker is a powerful platform that allows you to create, deploy, and run applications in isolated containers. Containers are lightweight, portable, and ensure that your application runs consistently regardless of the environment. This tutorial will introduce you to Docker, demonstrate how to containerize a Python application, and manage Docker containers.",
+    "text": "2.0.0.1 Windows:\n\nDownload Python: Visit the official Python website at python.org and download the latest version for Windows. Click on the “Download” button for the most recent release.\nRun Installer: Open the downloaded file and make sure to check the box that says “Add Python 3.x to PATH” at the beginning of the installation process. Then click “Install Now”.\nVerify Installation: Open Command Prompt and type python --version. You should see the Python version number if it was installed correctly.\n\n\n\n2.0.0.2 macOS:\n\nDownload Python: Go to python.org and download the latest Python version for macOS.\nInstall Python: Open the downloaded .pkg file and follow the instructions to install Python.\nVerify Installation: Open Terminal and type python3 --version to check that Python installed correctly.\n\n\n\n2.0.0.3 Linux:\n\nInstall Python: Python is usually pre-installed on Linux. To check if it is installed and to install the latest version, open a terminal and type:\nsudo apt update\nsudo apt install python3\nVerify Installation: Type python3 --version in the terminal.\n\n\n\n2.0.1 Installing Visual Studio Code (VSCode)\n\nDownload VSCode: Visit the VSCode website and download the version suitable for your operating system.\nInstall VSCode: Run the downloaded installer file and follow the instructions provided.\n\n\n\n2.0.2 Setting Up Python in VSCode\n\nOpen VSCode.\nInstall the Python extension: Click on the extensions view icon on the Sidebar or press Ctrl+Shift+X. Search for “Python” and install the extension provided by Microsoft.\nSelect Python Interpreter: Press Ctrl+Shift+P to open the Command Palette and type “Python: Select Interpreter”. Choose the Python version you installed earlier.\n\n\n\n2.0.3 Writing Your First Python Program in VSCode\n\nCreate a new file: File &gt; New File.\nSave the file: Save the file with a .py extension, e.g., hello.py.\nWrite some Python code:\n\nprint(\"Hello, world!\")\n\nHello, world!\n\n\nRun the program: Right-click in the editor window and select “Run Python File in Terminal”, or press Ctrl+F5 to run without debugging.\n\n\n\n2.0.4 Basic Python Programming\n\nVariables: Storing data values.\n\nx = 5\ny = \"Hello\"\n\nData Types: Python has various data types including integers, float, string, and more.\nOperators: Perform operations on variables and values.\nControl Structures: Use if, else, and elif for decisions, and for and while loops for repeating blocks of code.\n\n\n\n2.0.5 Exploring More Features\n\nIntellisense: VSCode provides smart completions based on variable types, function definitions, and imported modules.\nDebugging: Set breakpoints, step through your code, and inspect variables.\nExtensions: Enhance VSCode functionality with extensions like “Python Docstring Generator” to automatically generate docstrings for your Python functions.\n\nThis format should help make the tutorial flow more smoothly from one section to the next without the formal structure of numbering.\n\nSetting up a virtual environment in Python using venv is an essential skill for managing dependencies and ensuring that projects run consistently across different systems. Here’s a step-by-step guide to help you set up a Python virtual environment using the venv module.\n\n\n2.0.6 Prerequisites\nBefore creating a virtual environment, make sure Python 3 is installed on your system. You can verify this by running python --version or python3 --version in your command prompt or terminal.\n\n\n2.0.7 Creating a Virtual Environment\n\nNavigate to Your Project Directory: Open your command prompt or terminal. Use the cd command to change to the directory where you want to set up the virtual environment.\ncd path/to/your/project\nCreate the Virtual Environment: Use the following command to create a virtual environment named env (you can choose any name you like). The command might slightly vary depending on whether your system recognizes python or python3.\npython -m venv env\nor\npython3 -m venv env\n\n\n\n2.0.8 Activating the Virtual Environment\nTo use the virtual environment, you need to activate it. The activation command differs depending on your operating system:\n\n2.0.8.1 Windows\nenv\\Scripts\\activate\n\n\n2.0.8.2 macOS and Linux\nsource env/bin/activate\nOnce activated, your command line will typically show the name of the virtual environment (in this case, env), indicating that it is active. From now on, any Python or pip commands will use the Python version and packages installed in the virtual environment.\n\n\n\n2.0.9 Installing Packages\nWith the virtual environment active, install packages using pip. For example, to install the requests library, you would run:\npip install requests\nThis will install the package only within the virtual environment.\n\n\n2.0.10 Running Python Code\nRun Python scripts as usual with the virtual environment activated. For instance:\npython script.py\nor if your system defaults to Python 2:\npython3 script.py\n\n\n2.0.11 Deactivating the Virtual Environment\nWhen you’re done working in the virtual environment, you can deactivate it by simply typing:\ndeactivate\nThis command will return you to the system’s default Python settings.\n\n\n2.0.12 Managing Dependencies\n\nFreezing Dependencies: To keep track of the packages you’ve installed in the virtual environment, you can generate a requirements.txt file using:\npip freeze &gt; requirements.txt\nInstalling from requirements.txt: You can install all the dependencies at once with:\npip install -r requirements.txt\n\n\n\n2.0.13 Best Practices\n\nSeparate Environments: Create a separate virtual environment for each project to avoid conflicts between package versions.\nVersion Control: Exclude your virtual environment directory (env in this case) from version control by adding it to the .gitignore file.\n\nUsing virtual environments is a best practice that keeps your Python projects organized and ensures they work consistently across different setups.",
     "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Installing Python</span>"
     ]
   },
   {
-    "objectID": "A2_docker.html#introduction-to-docker-with-python",
-    "href": "A2_docker.html#introduction-to-docker-with-python",
-    "title": "22  Using Docker",
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
     "section": "",
-    "text": "22.1.1 Installing Docker\nFirst, you need to install Docker. You can download and install Docker from the official Docker website.\n\n\n22.1.2 Docker Basics\n\n22.1.2.1 Key Concepts\n\nImage: A lightweight, standalone, executable package that includes everything needed to run a piece of software, including the code, runtime, libraries, and dependencies.\nContainer: A runnable instance of an image. You can create, start, stop, move, and delete a container using the Docker API or CLI.\nDockerfile: A text file that contains a series of instructions on how to build a Docker image.\n\n\n\n\n22.1.3 Containerizing a Python Application\nLet’s create a simple Python application and containerize it using Docker.\n\n22.1.3.1 Step 1: Create a Simple Python Application\nCreate a directory for your project and add a Python script:\nmkdir docker-python-app\ncd docker-python-app\nCreate a file named app.py with the following content:\n# app.py\nfrom flask import Flask\n\napp = Flask(__name__)\n\n@app.route('/')\ndef hello_world():\n    return 'Hello, Docker!'\n\nif __name__ == '__main__':\n    app.run(host='0.0.0.0', port=5000)\nCreate a requirements.txt file with the following content:\nflask\n\n\n22.1.3.2 Step 2: Create a Dockerfile\nCreate a file named Dockerfile in the project directory with the following content:\n# Use the official Python image from the Docker Hub\nFROM python:3.9-slim\n\n# Set the working directory in the container\nWORKDIR /app\n\n# Copy the current directory contents into the container at /app\nCOPY . /app\n\n# Install the required packages\nRUN pip install --no-cache-dir -r requirements.txt\n\n# Make port 5000 available to the world outside this container\nEXPOSE 5000\n\n# Define the command to run the application\nCMD [\"python\", \"app.py\"]\n\n\n22.1.3.3 Step 3: Build the Docker Image\nOpen a terminal, navigate to your project directory, and run the following command to build the Docker image:\ndocker build -t docker-python-app .\n\n\n22.1.3.4 Step 4: Run the Docker Container\nRun the following command to start a container from the image you built:\ndocker run -d -p 5000:5000 docker-python-app\nThis command runs the container in detached mode (-d) and maps port 5000 on your host to port 5000 in the container (-p 5000:5000).\n\n\n22.1.3.5 Step 5: Test the Application\nOpen a web browser and go to http://localhost:5000. You should see the message “Hello, Docker!”.\n\n\n\n22.1.4 Managing Docker Containers\n\n22.1.4.1 List Running Containers\nTo list all running containers, use the following command:\ndocker ps\n\n\n22.1.4.2 Stop a Container\nTo stop a running container, use the docker stop command followed by the container ID or name:\ndocker stop &lt;container_id&gt;\n\n\n22.1.4.3 Remove a Container\nTo remove a container, use the docker rm command followed by the container ID or name:\ndocker rm &lt;container_id&gt;\n\n\n\n22.1.5 Docker Compose\nDocker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.\n\n22.1.5.1 Step 1: Create a docker-compose.yml File\nCreate a file named docker-compose.yml in your project directory with the following content:\nversion: '3'\nservices:\n  web:\n    build: .\n    ports:\n      - \"5000:5000\"\n\n\n22.1.5.2 Step 2: Run Docker Compose\nRun the following command to start the application:\ndocker-compose up\nThis command builds the image (if it hasn’t been built already) and starts the services defined in the docker-compose.yml file.\n\n\n22.1.5.3 Step 3: Stop Docker Compose\nTo stop the application, run:\ndocker-compose down\n\n\n\n22.1.6 Conclusion\nDocker simplifies the process of developing, shipping, and running applications by using containerization. By containerizing your Python application, you ensure it runs consistently across different environments. Docker Compose further simplifies managing multi-container applications. Mastering Docker can greatly enhance your development workflow, making your applications more portable, scalable, and easier to manage. ## Introduction to Docker with Python\nDocker is a powerful platform that allows you to create, deploy, and run applications in isolated containers. Containers are lightweight, portable, and ensure that your application runs consistently regardless of the environment. This tutorial will introduce you to Docker, demonstrate how to containerize a Python application, and manage Docker containers.\n\n\n22.1.7 Installing Docker\nFirst, you need to install Docker. You can download and install Docker from the official Docker website.\n\n\n22.1.8 Docker Basics\n\n22.1.8.1 Key Concepts\n\nImage: A lightweight, standalone, executable package that includes everything needed to run a piece of software, including the code, runtime, libraries, and dependencies.\nContainer: A runnable instance of an image. You can create, start, stop, move, and delete a container using the Docker API or CLI.\nDockerfile: A text file that contains a series of instructions on how to build a Docker image.\n\n\n\n\n22.1.9 Containerizing a Python Application\nLet’s create a simple Python application and containerize it using Docker.\n\n22.1.9.1 Step 1: Create a Simple Python Application\nCreate a directory for your project and add a Python script:\nmkdir docker-python-app\ncd docker-python-app\nCreate a file named app.py with the following content:\n# app.py\nfrom flask import Flask\n\napp = Flask(__name__)\n\n@app.route('/')\ndef hello_world():\n    return 'Hello, Docker!'\n\nif __name__ == '__main__':\n    app.run(host='0.0.0.0', port=5000)\nCreate a requirements.txt file with the following content:\nflask\n\n\n22.1.9.2 Step 2: Create a Dockerfile\nCreate a file named Dockerfile in the project directory with the following content:\n# Use the official Python image from the Docker Hub\nFROM python:3.9-slim\n\n# Set the working directory in the container\nWORKDIR /app\n\n# Copy the current directory contents into the container at /app\nCOPY . /app\n\n# Install the required packages\nRUN pip install --no-cache-dir -r requirements.txt\n\n# Make port 5000 available to the world outside this container\nEXPOSE 5000\n\n# Define the command to run the application\nCMD [\"python\", \"app.py\"]\n\n\n22.1.9.3 Step 3: Build the Docker Image\nOpen a terminal, navigate to your project directory, and run the following command to build the Docker image:\ndocker build -t docker-python-app .\n\n\n22.1.9.4 Step 4: Run the Docker Container\nRun the following command to start a container from the image you built:\ndocker run -d -p 5000:5000 docker-python-app\nThis command runs the container in detached mode (-d) and maps port 5000 on your host to port 5000 in the container (-p 5000:5000).\n\n\n22.1.9.5 Step 5: Test the Application\nOpen a web browser and go to http://localhost:5000. You should see the message “Hello, Docker!”.\n\n\n\n22.1.10 Managing Docker Containers\n\n22.1.10.1 List Running Containers\nTo list all running containers, use the following command:\ndocker ps\n\n\n22.1.10.2 Stop a Container\nTo stop a running container, use the docker stop command followed by the container ID or name:\ndocker stop &lt;container_id&gt;\n\n\n22.1.10.3 Remove a Container\nTo remove a container, use the docker rm command followed by the container ID or name:\ndocker rm &lt;container_id&gt;\n\n\n\n22.1.11 Docker Compose\nDocker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.\n\n22.1.11.1 Step 1: Create a docker-compose.yml File\nCreate a file named docker-compose.yml in your project directory with the following content:\nversion: '3'\nservices:\n  web:\n    build: .\n    ports:\n      - \"5000:5000\"\n\n\n22.1.11.2 Step 2: Run Docker Compose\nRun the following command to start the application:\ndocker-compose up\nThis command builds the image (if it hasn’t been built already) and starts the services defined in the docker-compose.yml file.\n\n\n22.1.11.3 Step 3: Stop Docker Compose\nTo stop the application, run:\ndocker-compose down\n\n\n\n22.1.12 Conclusion\nDocker simplifies the process of developing, shipping, and running applications by using containerization. By containerizing your Python application, you ensure it runs consistently across different environments. Docker Compose further simplifies managing multi-container applications. Mastering Docker can greatly enhance your development workflow, making your applications more portable, scalable, and easier to manage.",
+    "text": "Introduction\nWelcome to “Python for Business Analytics and Information Systems,” a comprehensive guide designed for students, professionals, and enthusiasts aiming to master Python in the realm of business technology. This book serves as both an educational tool and a practical resource, providing the foundational skills necessary to excel in the rapidly evolving landscape of business analytics and information systems.\nIn this book, we cover a broad spectrum of topics tailored to equip you with the skills required to harness the power of Python in solving real-world business problems. We begin with the basics of setting up a Python environment, ensuring you are well-prepared with the tools needed for effective programming. From there, we delve into the core aspects of Python programming, including basics, control structures, functions, and modules—all crucial for building robust applications.\nAs you progress, we will explore more advanced topics such as object-oriented programming (OOP), database interactions, and API integrations, which are integral to systems analysis and design. We also tackle Python’s role in automating system tasks and conducting thorough software testing, ensuring reliability and efficiency in your applications.\nFor those particularly interested in the interplay between Python and network communications within businesses, we dedicate sections to the foundations of data communication, network architecture, and modern network practices. These chapters are especially pertinent for students enrolled in courses like “Business Data Communications,” blending theoretical knowledge with practical application.\nFinally, the book concludes with a comprehensive summary and an appendix on version control using Git, a critical skill for any programmer working in a collaborative environment.\nThis book is more than just a series of instructions; it is a pathway to becoming proficient in Python for business analytics and information systems, preparing you for a successful career in an interconnected, data-driven world. Whether you are a student preparing for a career in business technology or a professional seeking to upgrade your skills, this book offers the knowledge and practical insights needed to excel in your endeavors.",
     "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
-    ]
-  },
-  {
-    "objectID": "A2_docker.html#table-of-contents",
-    "href": "A2_docker.html#table-of-contents",
-    "title": "22  Using Docker",
-    "section": "23.1 Table of Contents",
-    "text": "23.1 Table of Contents\n\nIntroduction to Docker\nInstalling Docker\nBasic Docker Concepts\nWorking with Docker Images\nCreating and Running Docker Containers\nDocker Networking\nDocker Volumes\nDocker Compose\nDockerfile: Building Custom Images\nBest Practices and Tips\nConclusion",
-    "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
-    ]
-  },
-  {
-    "objectID": "A2_docker.html#introduction-to-docker",
-    "href": "A2_docker.html#introduction-to-docker",
-    "title": "22  Using Docker",
-    "section": "23.2 Introduction to Docker",
-    "text": "23.2 Introduction to Docker\nDocker is a platform that allows developers to automate the deployment of applications inside lightweight, portable containers. Containers include everything needed to run an application, making it easy to deploy on any environment.\n\n23.2.1 Why Use Docker?\n\nConsistency: Ensures that your application runs the same in development, testing, and production.\nIsolation: Provides isolated environments for applications, preventing conflicts.\nEfficiency: Containers are lightweight and share the host OS kernel, making them more efficient than virtual machines.\nPortability: Containers can run anywhere, from your local machine to cloud environments.",
-    "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
-    ]
-  },
-  {
-    "objectID": "A2_docker.html#installing-docker-2",
-    "href": "A2_docker.html#installing-docker-2",
-    "title": "22  Using Docker",
-    "section": "23.3 Installing Docker",
-    "text": "23.3 Installing Docker\nDocker can be installed on various operating systems, including Windows, macOS, and Linux.\n\n23.3.1 Windows and macOS\n\nDownload Docker Desktop from the Docker website.\nRun the installer and follow the installation instructions.\nAfter installation, Docker Desktop will start automatically. You can check the installation by running:\ndocker --version\n\n\n\n23.3.2 Linux\n\nUpdate your package database:\nsudo apt-get update\nInstall Docker:\nsudo apt-get install docker-ce docker-ce-cli containerd.io\nVerify the installation:\nsudo docker --version",
-    "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
-    ]
-  },
-  {
-    "objectID": "A2_docker.html#basic-docker-concepts",
-    "href": "A2_docker.html#basic-docker-concepts",
-    "title": "22  Using Docker",
-    "section": "23.4 Basic Docker Concepts",
-    "text": "23.4 Basic Docker Concepts\n\n23.4.1 Docker Images\nA Docker image is a lightweight, standalone, and executable software package that includes everything needed to run a piece of software, including code, runtime, libraries, environment variables, and configuration files.\n\n\n23.4.2 Docker Containers\nA Docker container is a runtime instance of an image. It includes the application and all its dependencies but shares the kernel with other containers, running as isolated processes on the host operating system.\n\n\n23.4.3 Docker Hub\nDocker Hub is a cloud-based registry service for finding and sharing container images. You can use Docker Hub to distribute your images.",
-    "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
-    ]
-  },
-  {
-    "objectID": "A2_docker.html#working-with-docker-images",
-    "href": "A2_docker.html#working-with-docker-images",
-    "title": "22  Using Docker",
-    "section": "23.5 Working with Docker Images",
-    "text": "23.5 Working with Docker Images\n\n23.5.1 Pulling an Image\nTo pull an image from Docker Hub, use the docker pull command:\ndocker pull hello-world\n\n\n23.5.2 Listing Images\nTo list all downloaded images, use the docker images command:\ndocker images\n\n\n23.5.3 Removing an Image\nTo remove an image, use the docker rmi command followed by the image ID or name:\ndocker rmi hello-world",
-    "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
-    ]
-  },
-  {
-    "objectID": "A2_docker.html#creating-and-running-docker-containers",
-    "href": "A2_docker.html#creating-and-running-docker-containers",
-    "title": "22  Using Docker",
-    "section": "23.6 Creating and Running Docker Containers",
-    "text": "23.6 Creating and Running Docker Containers\n\n23.6.1 Running a Container\nTo create and run a container from an image, use the docker run command:\ndocker run hello-world\nThis command will create a new container from the hello-world image and run it.\n\n\n23.6.2 Listing Containers\nTo list all running containers, use the docker ps command:\ndocker ps\nTo list all containers (running and stopped), use:\ndocker ps -a\n\n\n23.6.3 Stopping a Container\nTo stop a running container, use the docker stop command followed by the container ID or name:\ndocker stop &lt;container_id&gt;\n\n\n23.6.4 Removing a Container\nTo remove a stopped container, use the docker rm command followed by the container ID or name:\ndocker rm &lt;container_id&gt;",
-    "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
-    ]
-  },
-  {
-    "objectID": "A2_docker.html#docker-networking",
-    "href": "A2_docker.html#docker-networking",
-    "title": "22  Using Docker",
-    "section": "23.7 Docker Networking",
-    "text": "23.7 Docker Networking\nDocker provides several networking options to manage communication between containers.\n\n23.7.1 Bridge Network\nThe default network for containers. Containers on the same bridge network can communicate with each other.\ndocker network ls\ndocker network create my-bridge-network\ndocker run --network my-bridge-network --name my-container my-image\n\n\n23.7.2 Host Network\nUses the host’s network stack directly.\ndocker run --network host my-image\n\n\n23.7.3 Overlay Network\nUsed for multi-host networking in a Docker Swarm cluster.\ndocker network create -d overlay my-overlay-network",
-    "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
-    ]
-  },
-  {
-    "objectID": "A2_docker.html#docker-volumes",
-    "href": "A2_docker.html#docker-volumes",
-    "title": "22  Using Docker",
-    "section": "23.8 Docker Volumes",
-    "text": "23.8 Docker Volumes\nVolumes are used to persist data generated by and used by Docker containers.\n\n23.8.1 Creating a Volume\ndocker volume create my-volume\n\n\n23.8.2 Using a Volume\nMount a volume to a container:\ndocker run -v my-volume:/app/data my-image\n\n\n23.8.3 Listing Volumes\ndocker volume ls\n\n\n23.8.4 Removing a Volume\ndocker volume rm my-volume",
-    "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
-    ]
-  },
-  {
-    "objectID": "A2_docker.html#docker-compose-2",
-    "href": "A2_docker.html#docker-compose-2",
-    "title": "22  Using Docker",
-    "section": "23.9 Docker Compose",
-    "text": "23.9 Docker Compose\nDocker Compose is a tool for defining and running multi-container Docker applications.\n\n23.9.1 Creating a docker-compose.yml File\nversion: '3'\nservices:\n  web:\n    image: nginx\n    ports:\n      - \"80:80\"\n  db:\n    image: postgres\n    environment:\n      POSTGRES_PASSWORD: example\n\n\n23.9.2 Running Docker Compose\ndocker-compose up\n\n\n23.9.3 Stopping Docker Compose\ndocker-compose down",
-    "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
-    ]
-  },
-  {
-    "objectID": "A2_docker.html#dockerfile-building-custom-images",
-    "href": "A2_docker.html#dockerfile-building-custom-images",
-    "title": "22  Using Docker",
-    "section": "23.10 Dockerfile: Building Custom Images",
-    "text": "23.10 Dockerfile: Building Custom Images\nA Dockerfile is a text document that contains instructions for building a Docker image.\n\n23.10.1 Example Dockerfile\n# Use an official Python runtime as a parent image\nFROM python:3.8-slim\n\n# Set the working directory\nWORKDIR /app\n\n# Copy the current directory contents into the container\nCOPY . /app\n\n# Install any needed packages specified in requirements.txt\nRUN pip install --no-cache-dir -r requirements.txt\n\n# Make port 80 available to the world outside this container\nEXPOSE 80\n\n# Run app.py when the container launches\nCMD [\"python\", \"app.py\"]\n\n\n23.10.2 Building an Image\ndocker build -t my-python-app .\n\n\n23.10.3 Running the Image\ndocker run -p 4000:80 my-python-app",
-    "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
-    ]
-  },
-  {
-    "objectID": "A2_docker.html#best-practices-and-tips",
-    "href": "A2_docker.html#best-practices-and-tips",
-    "title": "22  Using Docker",
-    "section": "23.11 Best Practices and Tips",
-    "text": "23.11 Best Practices and Tips\n\nKeep Images Small: Use smaller base images and clean up unnecessary files to reduce image size.\nMulti-stage Builds: Use multi-stage builds to keep the final image lean and clean.\nUse .dockerignore: Exclude files and directories not needed in the Docker image.\nTag Images Properly: Use meaningful tags for versioning and identifying images.\nMonitor Containers: Use Docker logs and monitoring tools to keep track of container health and performance.",
-    "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
-    ]
-  },
-  {
-    "objectID": "A2_docker.html#conclusion-2",
-    "href": "A2_docker.html#conclusion-2",
-    "title": "22  Using Docker",
-    "section": "23.12 Conclusion",
-    "text": "23.12 Conclusion\nDocker is a powerful tool for creating, deploying, and managing containerized applications. This tutorial covered the basics of Docker, including images, containers, networking, volumes, Docker Compose, and Dockerfiles. By following these guidelines and best practices, you can effectively use Docker to manage your business analytics and information systems applications. Happy Dockerizing!",
-    "crumbs": [
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
   },
   {
@@ -1300,23 +1180,143 @@
     ]
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "1  Introduction",
+    "objectID": "A2_docker.html",
+    "href": "A2_docker.html",
+    "title": "22  Using Docker",
     "section": "",
-    "text": "Introduction\nWelcome to “Python for Business Analytics and Information Systems,” a comprehensive guide designed for students, professionals, and enthusiasts aiming to master Python in the realm of business technology. This book serves as both an educational tool and a practical resource, providing the foundational skills necessary to excel in the rapidly evolving landscape of business analytics and information systems.\nIn this book, we cover a broad spectrum of topics tailored to equip you with the skills required to harness the power of Python in solving real-world business problems. We begin with the basics of setting up a Python environment, ensuring you are well-prepared with the tools needed for effective programming. From there, we delve into the core aspects of Python programming, including basics, control structures, functions, and modules—all crucial for building robust applications.\nAs you progress, we will explore more advanced topics such as object-oriented programming (OOP), database interactions, and API integrations, which are integral to systems analysis and design. We also tackle Python’s role in automating system tasks and conducting thorough software testing, ensuring reliability and efficiency in your applications.\nFor those particularly interested in the interplay between Python and network communications within businesses, we dedicate sections to the foundations of data communication, network architecture, and modern network practices. These chapters are especially pertinent for students enrolled in courses like “Business Data Communications,” blending theoretical knowledge with practical application.\nFinally, the book concludes with a comprehensive summary and an appendix on version control using Git, a critical skill for any programmer working in a collaborative environment.\nThis book is more than just a series of instructions; it is a pathway to becoming proficient in Python for business analytics and information systems, preparing you for a successful career in an interconnected, data-driven world. Whether you are a student preparing for a career in business technology or a professional seeking to upgrade your skills, this book offers the knowledge and practical insights needed to excel in your endeavors.",
+    "text": "22.1 Introduction to Docker with Python\nDocker is a powerful platform that allows you to create, deploy, and run applications in isolated containers. Containers are lightweight, portable, and ensure that your application runs consistently regardless of the environment. This tutorial will introduce you to Docker, demonstrate how to containerize a Python application, and manage Docker containers.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
     ]
   },
   {
-    "objectID": "01_python_install_env_setup.html",
-    "href": "01_python_install_env_setup.html",
-    "title": "2  Installing Python",
+    "objectID": "A2_docker.html#introduction-to-docker-with-python",
+    "href": "A2_docker.html#introduction-to-docker-with-python",
+    "title": "22  Using Docker",
     "section": "",
-    "text": "2.0.0.1 Windows:\n\nDownload Python: Visit the official Python website at python.org and download the latest version for Windows. Click on the “Download” button for the most recent release.\nRun Installer: Open the downloaded file and make sure to check the box that says “Add Python 3.x to PATH” at the beginning of the installation process. Then click “Install Now”.\nVerify Installation: Open Command Prompt and type python --version. You should see the Python version number if it was installed correctly.\n\n\n\n2.0.0.2 macOS:\n\nDownload Python: Go to python.org and download the latest Python version for macOS.\nInstall Python: Open the downloaded .pkg file and follow the instructions to install Python.\nVerify Installation: Open Terminal and type python3 --version to check that Python installed correctly.\n\n\n\n2.0.0.3 Linux:\n\nInstall Python: Python is usually pre-installed on Linux. To check if it is installed and to install the latest version, open a terminal and type:\nsudo apt update\nsudo apt install python3\nVerify Installation: Type python3 --version in the terminal.\n\n\n\n2.0.1 Installing Visual Studio Code (VSCode)\n\nDownload VSCode: Visit the VSCode website and download the version suitable for your operating system.\nInstall VSCode: Run the downloaded installer file and follow the instructions provided.\n\n\n\n2.0.2 Setting Up Python in VSCode\n\nOpen VSCode.\nInstall the Python extension: Click on the extensions view icon on the Sidebar or press Ctrl+Shift+X. Search for “Python” and install the extension provided by Microsoft.\nSelect Python Interpreter: Press Ctrl+Shift+P to open the Command Palette and type “Python: Select Interpreter”. Choose the Python version you installed earlier.\n\n\n\n2.0.3 Writing Your First Python Program in VSCode\n\nCreate a new file: File &gt; New File.\nSave the file: Save the file with a .py extension, e.g., hello.py.\nWrite some Python code:\n\nprint(\"Hello, world!\")\n\nHello, world!\n\n\nRun the program: Right-click in the editor window and select “Run Python File in Terminal”, or press Ctrl+F5 to run without debugging.\n\n\n\n2.0.4 Basic Python Programming\n\nVariables: Storing data values.\n\nx = 5\ny = \"Hello\"\n\nData Types: Python has various data types including integers, float, string, and more.\nOperators: Perform operations on variables and values.\nControl Structures: Use if, else, and elif for decisions, and for and while loops for repeating blocks of code.\n\n\n\n2.0.5 Exploring More Features\n\nIntellisense: VSCode provides smart completions based on variable types, function definitions, and imported modules.\nDebugging: Set breakpoints, step through your code, and inspect variables.\nExtensions: Enhance VSCode functionality with extensions like “Python Docstring Generator” to automatically generate docstrings for your Python functions.\n\nThis format should help make the tutorial flow more smoothly from one section to the next without the formal structure of numbering.\n\nSetting up a virtual environment in Python using venv is an essential skill for managing dependencies and ensuring that projects run consistently across different systems. Here’s a step-by-step guide to help you set up a Python virtual environment using the venv module.\n\n\n2.0.6 Prerequisites\nBefore creating a virtual environment, make sure Python 3 is installed on your system. You can verify this by running python --version or python3 --version in your command prompt or terminal.\n\n\n2.0.7 Creating a Virtual Environment\n\nNavigate to Your Project Directory: Open your command prompt or terminal. Use the cd command to change to the directory where you want to set up the virtual environment.\ncd path/to/your/project\nCreate the Virtual Environment: Use the following command to create a virtual environment named env (you can choose any name you like). The command might slightly vary depending on whether your system recognizes python or python3.\npython -m venv env\nor\npython3 -m venv env\n\n\n\n2.0.8 Activating the Virtual Environment\nTo use the virtual environment, you need to activate it. The activation command differs depending on your operating system:\n\n2.0.8.1 Windows\nenv\\Scripts\\activate\n\n\n2.0.8.2 macOS and Linux\nsource env/bin/activate\nOnce activated, your command line will typically show the name of the virtual environment (in this case, env), indicating that it is active. From now on, any Python or pip commands will use the Python version and packages installed in the virtual environment.\n\n\n\n2.0.9 Installing Packages\nWith the virtual environment active, install packages using pip. For example, to install the requests library, you would run:\npip install requests\nThis will install the package only within the virtual environment.\n\n\n2.0.10 Running Python Code\nRun Python scripts as usual with the virtual environment activated. For instance:\npython script.py\nor if your system defaults to Python 2:\npython3 script.py\n\n\n2.0.11 Deactivating the Virtual Environment\nWhen you’re done working in the virtual environment, you can deactivate it by simply typing:\ndeactivate\nThis command will return you to the system’s default Python settings.\n\n\n2.0.12 Managing Dependencies\n\nFreezing Dependencies: To keep track of the packages you’ve installed in the virtual environment, you can generate a requirements.txt file using:\npip freeze &gt; requirements.txt\nInstalling from requirements.txt: You can install all the dependencies at once with:\npip install -r requirements.txt\n\n\n\n2.0.13 Best Practices\n\nSeparate Environments: Create a separate virtual environment for each project to avoid conflicts between package versions.\nVersion Control: Exclude your virtual environment directory (env in this case) from version control by adding it to the .gitignore file.\n\nUsing virtual environments is a best practice that keeps your Python projects organized and ensures they work consistently across different setups.",
+    "text": "22.1.1 Installing Docker\nFirst, you need to install Docker. You can download and install Docker from the official Docker website.\n\n\n22.1.2 Docker Basics\n\n22.1.2.1 Key Concepts\n\nImage: A lightweight, standalone, executable package that includes everything needed to run a piece of software, including the code, runtime, libraries, and dependencies.\nContainer: A runnable instance of an image. You can create, start, stop, move, and delete a container using the Docker API or CLI.\nDockerfile: A text file that contains a series of instructions on how to build a Docker image.\n\n\n\n\n22.1.3 Containerizing a Python Application\nLet’s create a simple Python application and containerize it using Docker.\n\n22.1.3.1 Step 1: Create a Simple Python Application\nCreate a directory for your project and add a Python script:\nmkdir docker-python-app\ncd docker-python-app\nCreate a file named app.py with the following content:\n# app.py\nfrom flask import Flask\n\napp = Flask(__name__)\n\n@app.route('/')\ndef hello_world():\n    return 'Hello, Docker!'\n\nif __name__ == '__main__':\n    app.run(host='0.0.0.0', port=5000)\nCreate a requirements.txt file with the following content:\nflask\n\n\n22.1.3.2 Step 2: Create a Dockerfile\nCreate a file named Dockerfile in the project directory with the following content:\n# Use the official Python image from the Docker Hub\nFROM python:3.9-slim\n\n# Set the working directory in the container\nWORKDIR /app\n\n# Copy the current directory contents into the container at /app\nCOPY . /app\n\n# Install the required packages\nRUN pip install --no-cache-dir -r requirements.txt\n\n# Make port 5000 available to the world outside this container\nEXPOSE 5000\n\n# Define the command to run the application\nCMD [\"python\", \"app.py\"]\n\n\n22.1.3.3 Step 3: Build the Docker Image\nOpen a terminal, navigate to your project directory, and run the following command to build the Docker image:\ndocker build -t docker-python-app .\n\n\n22.1.3.4 Step 4: Run the Docker Container\nRun the following command to start a container from the image you built:\ndocker run -d -p 5000:5000 docker-python-app\nThis command runs the container in detached mode (-d) and maps port 5000 on your host to port 5000 in the container (-p 5000:5000).\n\n\n22.1.3.5 Step 5: Test the Application\nOpen a web browser and go to http://localhost:5000. You should see the message “Hello, Docker!”.\n\n\n\n22.1.4 Managing Docker Containers\n\n22.1.4.1 List Running Containers\nTo list all running containers, use the following command:\ndocker ps\n\n\n22.1.4.2 Stop a Container\nTo stop a running container, use the docker stop command followed by the container ID or name:\ndocker stop &lt;container_id&gt;\n\n\n22.1.4.3 Remove a Container\nTo remove a container, use the docker rm command followed by the container ID or name:\ndocker rm &lt;container_id&gt;\n\n\n\n22.1.5 Docker Compose\nDocker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.\n\n22.1.5.1 Step 1: Create a docker-compose.yml File\nCreate a file named docker-compose.yml in your project directory with the following content:\nversion: '3'\nservices:\n  web:\n    build: .\n    ports:\n      - \"5000:5000\"\n\n\n22.1.5.2 Step 2: Run Docker Compose\nRun the following command to start the application:\ndocker-compose up\nThis command builds the image (if it hasn’t been built already) and starts the services defined in the docker-compose.yml file.\n\n\n22.1.5.3 Step 3: Stop Docker Compose\nTo stop the application, run:\ndocker-compose down\n\n\n\n22.1.6 Conclusion\nDocker simplifies the process of developing, shipping, and running applications by using containerization. By containerizing your Python application, you ensure it runs consistently across different environments. Docker Compose further simplifies managing multi-container applications. Mastering Docker can greatly enhance your development workflow, making your applications more portable, scalable, and easier to manage. ## Introduction to Docker with Python\nDocker is a powerful platform that allows you to create, deploy, and run applications in isolated containers. Containers are lightweight, portable, and ensure that your application runs consistently regardless of the environment. This tutorial will introduce you to Docker, demonstrate how to containerize a Python application, and manage Docker containers.\n\n\n22.1.7 Installing Docker\nFirst, you need to install Docker. You can download and install Docker from the official Docker website.\n\n\n22.1.8 Docker Basics\n\n22.1.8.1 Key Concepts\n\nImage: A lightweight, standalone, executable package that includes everything needed to run a piece of software, including the code, runtime, libraries, and dependencies.\nContainer: A runnable instance of an image. You can create, start, stop, move, and delete a container using the Docker API or CLI.\nDockerfile: A text file that contains a series of instructions on how to build a Docker image.\n\n\n\n\n22.1.9 Containerizing a Python Application\nLet’s create a simple Python application and containerize it using Docker.\n\n22.1.9.1 Step 1: Create a Simple Python Application\nCreate a directory for your project and add a Python script:\nmkdir docker-python-app\ncd docker-python-app\nCreate a file named app.py with the following content:\n# app.py\nfrom flask import Flask\n\napp = Flask(__name__)\n\n@app.route('/')\ndef hello_world():\n    return 'Hello, Docker!'\n\nif __name__ == '__main__':\n    app.run(host='0.0.0.0', port=5000)\nCreate a requirements.txt file with the following content:\nflask\n\n\n22.1.9.2 Step 2: Create a Dockerfile\nCreate a file named Dockerfile in the project directory with the following content:\n# Use the official Python image from the Docker Hub\nFROM python:3.9-slim\n\n# Set the working directory in the container\nWORKDIR /app\n\n# Copy the current directory contents into the container at /app\nCOPY . /app\n\n# Install the required packages\nRUN pip install --no-cache-dir -r requirements.txt\n\n# Make port 5000 available to the world outside this container\nEXPOSE 5000\n\n# Define the command to run the application\nCMD [\"python\", \"app.py\"]\n\n\n22.1.9.3 Step 3: Build the Docker Image\nOpen a terminal, navigate to your project directory, and run the following command to build the Docker image:\ndocker build -t docker-python-app .\n\n\n22.1.9.4 Step 4: Run the Docker Container\nRun the following command to start a container from the image you built:\ndocker run -d -p 5000:5000 docker-python-app\nThis command runs the container in detached mode (-d) and maps port 5000 on your host to port 5000 in the container (-p 5000:5000).\n\n\n22.1.9.5 Step 5: Test the Application\nOpen a web browser and go to http://localhost:5000. You should see the message “Hello, Docker!”.\n\n\n\n22.1.10 Managing Docker Containers\n\n22.1.10.1 List Running Containers\nTo list all running containers, use the following command:\ndocker ps\n\n\n22.1.10.2 Stop a Container\nTo stop a running container, use the docker stop command followed by the container ID or name:\ndocker stop &lt;container_id&gt;\n\n\n22.1.10.3 Remove a Container\nTo remove a container, use the docker rm command followed by the container ID or name:\ndocker rm &lt;container_id&gt;\n\n\n\n22.1.11 Docker Compose\nDocker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.\n\n22.1.11.1 Step 1: Create a docker-compose.yml File\nCreate a file named docker-compose.yml in your project directory with the following content:\nversion: '3'\nservices:\n  web:\n    build: .\n    ports:\n      - \"5000:5000\"\n\n\n22.1.11.2 Step 2: Run Docker Compose\nRun the following command to start the application:\ndocker-compose up\nThis command builds the image (if it hasn’t been built already) and starts the services defined in the docker-compose.yml file.\n\n\n22.1.11.3 Step 3: Stop Docker Compose\nTo stop the application, run:\ndocker-compose down\n\n\n\n22.1.12 Conclusion\nDocker simplifies the process of developing, shipping, and running applications by using containerization. By containerizing your Python application, you ensure it runs consistently across different environments. Docker Compose further simplifies managing multi-container applications. Mastering Docker can greatly enhance your development workflow, making your applications more portable, scalable, and easier to manage.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Installing Python</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+    ]
+  },
+  {
+    "objectID": "A2_docker.html#table-of-contents",
+    "href": "A2_docker.html#table-of-contents",
+    "title": "22  Using Docker",
+    "section": "23.1 Table of Contents",
+    "text": "23.1 Table of Contents\n\nIntroduction to Docker\nInstalling Docker\nBasic Docker Concepts\nWorking with Docker Images\nCreating and Running Docker Containers\nDocker Networking\nDocker Volumes\nDocker Compose\nDockerfile: Building Custom Images\nBest Practices and Tips\nConclusion",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+    ]
+  },
+  {
+    "objectID": "A2_docker.html#introduction-to-docker",
+    "href": "A2_docker.html#introduction-to-docker",
+    "title": "22  Using Docker",
+    "section": "23.2 Introduction to Docker",
+    "text": "23.2 Introduction to Docker\nDocker is a platform that allows developers to automate the deployment of applications inside lightweight, portable containers. Containers include everything needed to run an application, making it easy to deploy on any environment.\n\n23.2.1 Why Use Docker?\n\nConsistency: Ensures that your application runs the same in development, testing, and production.\nIsolation: Provides isolated environments for applications, preventing conflicts.\nEfficiency: Containers are lightweight and share the host OS kernel, making them more efficient than virtual machines.\nPortability: Containers can run anywhere, from your local machine to cloud environments.",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+    ]
+  },
+  {
+    "objectID": "A2_docker.html#installing-docker-2",
+    "href": "A2_docker.html#installing-docker-2",
+    "title": "22  Using Docker",
+    "section": "23.3 Installing Docker",
+    "text": "23.3 Installing Docker\nDocker can be installed on various operating systems, including Windows, macOS, and Linux.\n\n23.3.1 Windows and macOS\n\nDownload Docker Desktop from the Docker website.\nRun the installer and follow the installation instructions.\nAfter installation, Docker Desktop will start automatically. You can check the installation by running:\ndocker --version\n\n\n\n23.3.2 Linux\n\nUpdate your package database:\nsudo apt-get update\nInstall Docker:\nsudo apt-get install docker-ce docker-ce-cli containerd.io\nVerify the installation:\nsudo docker --version",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+    ]
+  },
+  {
+    "objectID": "A2_docker.html#basic-docker-concepts",
+    "href": "A2_docker.html#basic-docker-concepts",
+    "title": "22  Using Docker",
+    "section": "23.4 Basic Docker Concepts",
+    "text": "23.4 Basic Docker Concepts\n\n23.4.1 Docker Images\nA Docker image is a lightweight, standalone, and executable software package that includes everything needed to run a piece of software, including code, runtime, libraries, environment variables, and configuration files.\n\n\n23.4.2 Docker Containers\nA Docker container is a runtime instance of an image. It includes the application and all its dependencies but shares the kernel with other containers, running as isolated processes on the host operating system.\n\n\n23.4.3 Docker Hub\nDocker Hub is a cloud-based registry service for finding and sharing container images. You can use Docker Hub to distribute your images.",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+    ]
+  },
+  {
+    "objectID": "A2_docker.html#working-with-docker-images",
+    "href": "A2_docker.html#working-with-docker-images",
+    "title": "22  Using Docker",
+    "section": "23.5 Working with Docker Images",
+    "text": "23.5 Working with Docker Images\n\n23.5.1 Pulling an Image\nTo pull an image from Docker Hub, use the docker pull command:\ndocker pull hello-world\n\n\n23.5.2 Listing Images\nTo list all downloaded images, use the docker images command:\ndocker images\n\n\n23.5.3 Removing an Image\nTo remove an image, use the docker rmi command followed by the image ID or name:\ndocker rmi hello-world",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+    ]
+  },
+  {
+    "objectID": "A2_docker.html#creating-and-running-docker-containers",
+    "href": "A2_docker.html#creating-and-running-docker-containers",
+    "title": "22  Using Docker",
+    "section": "23.6 Creating and Running Docker Containers",
+    "text": "23.6 Creating and Running Docker Containers\n\n23.6.1 Running a Container\nTo create and run a container from an image, use the docker run command:\ndocker run hello-world\nThis command will create a new container from the hello-world image and run it.\n\n\n23.6.2 Listing Containers\nTo list all running containers, use the docker ps command:\ndocker ps\nTo list all containers (running and stopped), use:\ndocker ps -a\n\n\n23.6.3 Stopping a Container\nTo stop a running container, use the docker stop command followed by the container ID or name:\ndocker stop &lt;container_id&gt;\n\n\n23.6.4 Removing a Container\nTo remove a stopped container, use the docker rm command followed by the container ID or name:\ndocker rm &lt;container_id&gt;",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+    ]
+  },
+  {
+    "objectID": "A2_docker.html#docker-networking",
+    "href": "A2_docker.html#docker-networking",
+    "title": "22  Using Docker",
+    "section": "23.7 Docker Networking",
+    "text": "23.7 Docker Networking\nDocker provides several networking options to manage communication between containers.\n\n23.7.1 Bridge Network\nThe default network for containers. Containers on the same bridge network can communicate with each other.\ndocker network ls\ndocker network create my-bridge-network\ndocker run --network my-bridge-network --name my-container my-image\n\n\n23.7.2 Host Network\nUses the host’s network stack directly.\ndocker run --network host my-image\n\n\n23.7.3 Overlay Network\nUsed for multi-host networking in a Docker Swarm cluster.\ndocker network create -d overlay my-overlay-network",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+    ]
+  },
+  {
+    "objectID": "A2_docker.html#docker-volumes",
+    "href": "A2_docker.html#docker-volumes",
+    "title": "22  Using Docker",
+    "section": "23.8 Docker Volumes",
+    "text": "23.8 Docker Volumes\nVolumes are used to persist data generated by and used by Docker containers.\n\n23.8.1 Creating a Volume\ndocker volume create my-volume\n\n\n23.8.2 Using a Volume\nMount a volume to a container:\ndocker run -v my-volume:/app/data my-image\n\n\n23.8.3 Listing Volumes\ndocker volume ls\n\n\n23.8.4 Removing a Volume\ndocker volume rm my-volume",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+    ]
+  },
+  {
+    "objectID": "A2_docker.html#docker-compose-2",
+    "href": "A2_docker.html#docker-compose-2",
+    "title": "22  Using Docker",
+    "section": "23.9 Docker Compose",
+    "text": "23.9 Docker Compose\nDocker Compose is a tool for defining and running multi-container Docker applications.\n\n23.9.1 Creating a docker-compose.yml File\nversion: '3'\nservices:\n  web:\n    image: nginx\n    ports:\n      - \"80:80\"\n  db:\n    image: postgres\n    environment:\n      POSTGRES_PASSWORD: example\n\n\n23.9.2 Running Docker Compose\ndocker-compose up\n\n\n23.9.3 Stopping Docker Compose\ndocker-compose down",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+    ]
+  },
+  {
+    "objectID": "A2_docker.html#dockerfile-building-custom-images",
+    "href": "A2_docker.html#dockerfile-building-custom-images",
+    "title": "22  Using Docker",
+    "section": "23.10 Dockerfile: Building Custom Images",
+    "text": "23.10 Dockerfile: Building Custom Images\nA Dockerfile is a text document that contains instructions for building a Docker image.\n\n23.10.1 Example Dockerfile\n# Use an official Python runtime as a parent image\nFROM python:3.8-slim\n\n# Set the working directory\nWORKDIR /app\n\n# Copy the current directory contents into the container\nCOPY . /app\n\n# Install any needed packages specified in requirements.txt\nRUN pip install --no-cache-dir -r requirements.txt\n\n# Make port 80 available to the world outside this container\nEXPOSE 80\n\n# Run app.py when the container launches\nCMD [\"python\", \"app.py\"]\n\n\n23.10.2 Building an Image\ndocker build -t my-python-app .\n\n\n23.10.3 Running the Image\ndocker run -p 4000:80 my-python-app",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+    ]
+  },
+  {
+    "objectID": "A2_docker.html#best-practices-and-tips",
+    "href": "A2_docker.html#best-practices-and-tips",
+    "title": "22  Using Docker",
+    "section": "23.11 Best Practices and Tips",
+    "text": "23.11 Best Practices and Tips\n\nKeep Images Small: Use smaller base images and clean up unnecessary files to reduce image size.\nMulti-stage Builds: Use multi-stage builds to keep the final image lean and clean.\nUse .dockerignore: Exclude files and directories not needed in the Docker image.\nTag Images Properly: Use meaningful tags for versioning and identifying images.\nMonitor Containers: Use Docker logs and monitoring tools to keep track of container health and performance.",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
+    ]
+  },
+  {
+    "objectID": "A2_docker.html#conclusion-2",
+    "href": "A2_docker.html#conclusion-2",
+    "title": "22  Using Docker",
+    "section": "23.12 Conclusion",
+    "text": "23.12 Conclusion\nDocker is a powerful tool for creating, deploying, and managing containerized applications. This tutorial covered the basics of Docker, including images, containers, networking, volumes, Docker Compose, and Dockerfiles. By following these guidelines and best practices, you can effectively use Docker to manage your business analytics and information systems applications. Happy Dockerizing!",
+    "crumbs": [
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Using Docker</span>"
     ]
   }
 ]
