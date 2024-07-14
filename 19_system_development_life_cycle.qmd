@@ -1,0 +1,361 @@
+# Python Tutorial: System Development Life Cycle (SDLC) with Python
+
+## Introduction
+This tutorial introduces students to Python programming in the context of the System Development Life Cycle (SDLC). You will learn to set up a Python development environment, manage packages, and use essential tools for building and testing software applications. By the end of this tutorial, you'll be ready to use Python effectively in various phases of the SDLC.
+
+### Prerequisites
+- Basic understanding of programming concepts
+- Familiarity with the SDLC phases
+
+## 1. Setting Up the Python Development Environment
+
+### Step 1: Install Python
+First, you need to install Python. Download the latest version from the [official Python website](https://www.python.org/downloads/) and follow the installation instructions for your operating system.
+
+### Step 2: Verify Installation
+Open your terminal (Command Prompt on Windows, Terminal on macOS/Linux) and run the following command to verify that Python is installed correctly:
+```bash
+python --version
+```
+or
+```bash
+python3 --version
+```
+You should see the installed Python version.
+
+### Step 3: Install an Integrated Development Environment (IDE)
+An IDE can make Python development easier. Popular choices include:
+- [PyCharm](https://www.jetbrains.com/pycharm/)
+- [Visual Studio Code (VS Code)](https://code.visualstudio.com/)
+- [Jupyter Notebook](https://jupyter.org/)
+
+For this tutorial, we'll use VS Code.
+
+### Step 4: Setting Up Virtual Environments
+A virtual environment helps manage dependencies for your projects separately.
+
+1. Install `virtualenv`:
+    ```bash
+    pip install virtualenv
+    ```
+
+2. Create a virtual environment:
+    ```bash
+    virtualenv myenv
+    ```
+
+3. Activate the virtual environment:
+    - On Windows:
+        ```bash
+        myenv\Scripts\activate
+        ```
+    - On macOS/Linux:
+        ```bash
+        source myenv/bin/activate
+        ```
+
+To deactivate the virtual environment, simply run:
+```bash
+deactivate
+```
+
+## 2. Package Management
+
+Python uses `pip` to manage packages. To install a package, use:
+```bash
+pip install package_name
+```
+
+For example, to install `requests`:
+```bash
+pip install requests
+```
+
+To list installed packages:
+```bash
+pip list
+```
+
+To uninstall a package:
+```bash
+pip uninstall package_name
+```
+
+## 3. Developing Python Applications
+
+### Example Project: Simple Web Scraper
+
+#### Step 1: Create a Project Directory
+Create a new directory for your project and navigate into it:
+```bash
+mkdir web_scraper
+cd web_scraper
+```
+
+#### Step 2: Initialize a Git Repository (Optional)
+Initialize a Git repository to manage your code:
+```bash
+git init
+```
+
+#### Step 3: Create and Activate a Virtual Environment
+Create and activate a virtual environment:
+```bash
+virtualenv venv
+source venv/bin/activate  # Use venv\Scripts\activate on Windows
+```
+
+#### Step 4: Install Required Packages
+Install the `requests` and `beautifulsoup4` packages:
+```bash
+pip install requests beautifulsoup4
+```
+
+#### Step 5: Create the Web Scraper Script
+Create a file named `scraper.py` and open it in your IDE. Add the following code:
+```python
+import requests
+from bs4 import BeautifulSoup
+
+def scrape_website(url):
+    response = requests.get(url)
+    if response.status_code == 200:
+        soup = BeautifulSoup(response.content, 'html.parser')
+        titles = soup.find_all('h2')
+        for title in titles:
+            print(title.text)
+    else:
+        print("Failed to retrieve the webpage")
+
+if __name__ == "__main__":
+    url = "https://example.com"
+    scrape_website(url)
+```
+
+#### Step 6: Run Your Script
+Run your script from the terminal:
+```bash
+python scraper.py
+```
+
+## 4. Integrating SDLC Phases
+
+### Planning
+Define the scope and objectives of your project. For our web scraper, the objective is to extract and print all `<h2>` tags from a given webpage.
+
+### Analysis
+Identify the requirements and feasibility. Ensure you have access to the website you intend to scrape and check if it allows web scraping.
+
+### Design
+Design the architecture of your scraper. Decide which packages to use (`requests` for HTTP requests and `beautifulsoup4` for parsing HTML).
+
+### Implementation
+Write the code for your web scraper, as shown in the example above.
+
+### Testing
+Test your scraper with different URLs to ensure it works as expected.
+
+### Deployment
+Deploy your script to a server or share it with others via a GitHub repository.
+
+### Maintenance
+Update your script as needed to handle changes in the website structure or to add new features.
+
+## Hands-On Examples and Detailed Discussions
+
+### Example Project 2: To-Do List Application
+
+#### Step 1: Create a Project Directory
+Create a new directory for your project and navigate into it:
+```bash
+mkdir todo_app
+cd todo_app
+```
+
+#### Step 2: Initialize a Git Repository (Optional)
+Initialize a Git repository to manage your code:
+```bash
+git init
+```
+
+#### Step 3: Create and Activate a Virtual Environment
+Create and activate a virtual environment:
+```bash
+virtualenv venv
+source venv/bin/activate  # Use venv\Scripts\activate on Windows
+```
+
+#### Step 4: Install Required Packages
+Install the `flask` package:
+```bash
+pip install flask
+```
+
+#### Step 5: Create the To-Do List Application Script
+Create a file named `app.py` and open it in your IDE. Add the following code:
+```python
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+# In-memory database
+tasks = []
+
+@app.route('/tasks', methods=['GET'])
+def get_tasks():
+    return jsonify(tasks)
+
+@app.route('/tasks', methods=['POST'])
+def add_task():
+    task = request.json.get('task')
+    if task:
+        tasks.append({'task': task, 'completed': False})
+        return jsonify({'message': 'Task added successfully!'}), 201
+    return jsonify({'message': 'Invalid data!'}), 400
+
+@app.route('/tasks/<int:task_id>', methods=['PUT'])
+def update_task(task_id):
+    if 0 <= task_id < len(tasks):
+        task = request.json.get('task')
+        completed = request.json.get('completed')
+        if task:
+            tasks[task_id]['task'] = task
+        if completed is not None:
+            tasks[task_id]['completed'] = completed
+        return jsonify({'message': 'Task updated successfully!'})
+    return jsonify({'message': 'Task not found!'}), 404
+
+@app.route('/tasks/<int:task_id>', methods=['DELETE'])
+def delete_task(task_id):
+    if 0 <= task_id < len(tasks):
+        tasks.pop(task_id)
+        return jsonify({'message': 'Task deleted successfully!'})
+    return jsonify({'message': 'Task not found!'}), 404
+
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+
+#### Step 6: Run Your Application
+Run your application from the terminal:
+```bash
+python app.py
+```
+Visit `http://127.0.0.1:5000/tasks` in your web browser to see the list of tasks (which will be empty initially).
+
+### Using Postman to Test Your API
+[Postman](https://www.postman.com/) is a popular tool for testing APIs.
+
+1. **Get Tasks**: Send a GET request to `http://127.0.0.1:5000/tasks`.
+2. **Add Task**: Send a POST request to `http://127.0.0.1:5000/tasks` with a JSON body like `{"task": "Buy groceries"}`.
+3. **Update Task**: Send a PUT request to `http://127.0.0.1:5000/tasks/0` with a JSON body like `{"task": "Buy groceries and cook dinner", "completed": true}`.
+4. **Delete Task**: Send a DELETE request to `http://127.0.0.1:5000/tasks/0`.
+
+## Detailed Discussion: SDLC Phases in Python Projects
+
+### Planning
+During the planning phase, it's crucial to outline the project's scope, objectives, and deliverables. For example, in the To-Do List application, the objective is to create a RESTful API for managing tasks. The deliverables include endpoints for creating, reading, updating, and deleting tasks.
+
+### Analysis
+In this phase, gather and analyze requirements. For the To-Do List application, requirements might include:
+- Ability to add, update, delete, and retrieve tasks
+- Tasks should have a title and a completion status
+
+### Design
+Design involves creating the architecture of the project. For the To-Do List application, you might design the following:
+- Data structure for tasks (a list of dictionaries)
+- Endpoints for task operations (`/tasks`, `/tasks/<task_id>`)
+
+### Implementation
+Implementation is the coding phase. Write the code to create the desired functionality. For the To-Do List application, this involves writing the Flask application with the necessary routes and logic.
+
+### Testing
+Testing ensures that the code works as expected. Use tools like Postman to test each endpoint of the To-Do List application. Write unit tests to automate the testing process.
+
+#### Example Unit Test for To-Do List Application
+Create a file named `test_app.py` and add the following code:
+```python
+import unittest
+import json
+from app import app
+
+
+
+class TodoAppTestCase(unittest.TestCase):
+    def setUp(self):
+        self.app = app.test_client()
+        self.app.testing = True
+
+    def test_get_tasks(self):
+        response = self.app.get('/tasks')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json, [])
+
+    def test_add_task(self):
+        response = self.app.post('/tasks', data=json.dumps({'task': 'Test task'}), content_type='application/json')
+        self.assertEqual(response.status_code, 201)
+        self.assertIn('message', response.json)
+
+    def test_update_task(self):
+        self.app.post('/tasks', data=json.dumps({'task': 'Test task'}), content_type='application/json')
+        response = self.app.put('/tasks/0', data=json.dumps({'task': 'Updated task', 'completed': True}), content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('message', response.json)
+
+    def test_delete_task(self):
+        self.app.post('/tasks', data=json.dumps({'task': 'Test task'}), content_type='application/json')
+        response = self.app.delete('/tasks/0')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('message', response.json)
+
+if __name__ == '__main__':
+    unittest.main()
+```
+Run your tests from the terminal:
+```bash
+python test_app.py
+```
+
+### Deployment
+Deployment involves moving the application to a production environment. For the To-Do List application, you might deploy it on a cloud platform like Heroku or AWS.
+
+#### Example Deployment to Heroku
+1. Install the Heroku CLI: [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+2. Log in to Heroku:
+    ```bash
+    heroku login
+    ```
+3. Create a `Procfile` in your project directory with the following content:
+    ```plaintext
+    web: python app.py
+    ```
+4. Create a requirements file:
+    ```bash
+    pip freeze > requirements.txt
+    ```
+5. Initialize a Git repository and commit your code:
+    ```bash
+    git init
+    git add .
+    git commit -m "Initial commit"
+    ```
+6. Create a Heroku application:
+    ```bash
+    heroku create
+    ```
+7. Deploy your application:
+    ```bash
+    git push heroku master
+    ```
+8. Open your application in the browser:
+    ```bash
+    heroku open
+    ```
+
+### Maintenance
+Maintenance involves updating and improving the application. Monitor performance, fix bugs, and add new features as needed.
+
+## Conclusion
+By following this tutorial, you've set up a Python development environment, managed packages, created a simple web scraper and a To-Do List application, and integrated Python programming with the SDLC phases. With these skills, you can tackle more complex projects and continue developing your Python expertise.
+
+Happy coding!
